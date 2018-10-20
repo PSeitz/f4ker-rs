@@ -17,13 +17,17 @@ fn main() -> Result<(), std::io::Error> {
             src.read_to_string(&mut data)?;
             drop(src);  // Close the file early
 
-            let result = data.lines().skip(2).collect::<Vec<_>>().join("\n");
+            let result = data.lines().skip(2).collect::<Vec<_>>().join("\n") + "\n";
 
             // Run the replace operation in memory
             // let new_data = data.replace(&*word_from, &*word_to);
 
             // Recreate the file and dump the processed contents to it
-            let mut dst = File::create(&entry.path())?;
+
+            let mut entree = entry.path().to_str().unwrap().to_string();
+            // entree = entree.replace("index.js", "mod.rs");
+            // entree[..entree.len()-8]
+            let mut dst = File::create(&entree)?;
             dst.write(result.as_bytes())?;
         }
 
