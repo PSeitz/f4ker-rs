@@ -15,20 +15,15 @@ fn main() -> Result<(), std::io::Error> {
             let mut src = File::open(&entry.path())?;
             let mut data = String::new();
             src.read_to_string(&mut data)?;
-            drop(src);  // Close the file early
-
+            
             let result = data.lines().skip(2).collect::<Vec<_>>().join("\n") + "\n";
 
-            // Run the replace operation in memory
-            // let new_data = data.replace(&*word_from, &*word_to);
+            let entree = entry.path().to_str().unwrap().to_string();
 
-            // Recreate the file and dump the processed contents to it
+            src.write(result.as_bytes())?;
+            drop(src); 
 
-            let mut entree = entry.path().to_str().unwrap().to_string();
-            // entree = entree.replace("index.js", "mod.rs");
-            // entree[..entree.len()-8]
-            let mut dst = File::create(&entree)?;
-            dst.write(result.as_bytes())?;
+            std::fs::rename(entry.path(), entree.replace("index.js", "mod.rs"))?;
         }
 
 
