@@ -1,0 +1,1 @@
+company.suffix = require("./suffix");

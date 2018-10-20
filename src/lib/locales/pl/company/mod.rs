@@ -1,0 +1,8 @@
+company.suffix = require("./suffix");
+company.adjetive = require("./adjetive");
+company.descriptor = require("./descriptor");
+company.noun = require("./noun");
+company.bs_verb = require("./bs_verb");
+company.bs_adjective = require("./bs_adjective");
+company.bs_noun = require("./bs_noun");
+company.name = require("./name");

@@ -15,15 +15,15 @@ fn main() -> Result<(), std::io::Error> {
             let mut src = File::open(&entry.path())?;
             let mut data = String::new();
             src.read_to_string(&mut data)?;
-            
-            let result = data.lines().skip(2).collect::<Vec<_>>().join("\n") + "\n";
-
-            let entree = entry.path().to_str().unwrap().to_string();
-
-            src.write(result.as_bytes())?;
             drop(src); 
 
-            std::fs::rename(entry.path(), entree.replace("index.js", "mod.rs"))?;
+            let result = data.lines().skip(2).collect::<Vec<_>>().join("\n") + "\n";
+            
+            let entree = entry.path().to_str().unwrap().to_string();
+            File::create(&entree.replace("index.js", "mod.rs"))?.write_all(result.as_bytes())?;
+
+            std::fs::remove_file(entry.path())?;
+            // std::fs::rename(entry.path(), entree.replace("index.js", "mod.rs"))?;
         }
 
 
