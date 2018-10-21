@@ -18,7 +18,7 @@ impl Helpers {
    * @method faker.helpers.randomize
    * @param {array} array
    */
-  self.randomize = function (array) {
+fn randomize(&self, array: &str) -> String {
       array = array || ["a", "b", "c"];
       return faker.random.arrayElement(array);
   };
@@ -29,7 +29,7 @@ impl Helpers {
    * @method faker.helpers.slugify
    * @param {string} string
    */
-  self.slugify = function (string) {
+fn slugify(&self, string: &str) -> String {
       string = string || "";
       return string.replace(/ /g, '-').replace(/[^\w\.\-]+/g, '');
   };
@@ -41,7 +41,7 @@ impl Helpers {
    * @param {string} string
    * @param {string} symbol defaults to `"#"`
    */
-  self.replaceSymbolWithNumber = function (string, symbol) {
+fn replaceSymbolWithNumber(&self, string: &str,  symbol: &str) -> String {
       string = string || "";
       // default symbol is '#'
       if (symbol === undefined) {
@@ -68,7 +68,7 @@ impl Helpers {
    * @method faker.helpers.replaceSymbols
    * @param {string} string
    */
-  self.replaceSymbols = function (string) {
+fn replaceSymbols(&self, string: &str) -> String {
       string = string || "";
       var alpha = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
       var str = '';
@@ -95,7 +95,7 @@ impl Helpers {
    * @param {string} symbol
    */
 
-   self.replaceCreditCardSymbols = function(string, symbol) {
+fn replaceCreditCardSymbols(&self, string: &str,  symbol: &str) -> String {
      symbol = symbol || "#";
 
      // Function calculating the Luhn checksum of a number string
@@ -129,7 +129,7 @@ impl Helpers {
    * @param {string} string
    * @param {number} num
    */
-   self.repeatString = function(string,num) {
+fn repeatString(&self, string: &str, num: &str) -> String {
      if(typeof num ==="undefined") {
        num = 0;
      }
@@ -148,7 +148,7 @@ impl Helpers {
     * @method faker.helpers.regexpStyleStringParse
     * @param {string} string
     */
-   self.regexpStyleStringParse = function(string){
+fn regexpStyleStringParse(&self, string: &str) -> String {
      string = string || "";
      // Deal with range repeat `{min,max}`
      var RANGE_REP_REG = /(.)\{(\d+)\,(\d+)\}/;
@@ -203,7 +203,7 @@ impl Helpers {
    * @method faker.helpers.shuffle
    * @param {array} o
    */
-  self.shuffle = function (o) {
+fn shuffle(&self, o: &str) -> String {
       if (typeof o === 'undefined' || o.length === 0) {
         return [];
       }
@@ -219,7 +219,7 @@ impl Helpers {
    * @param {string} str
    * @param {object} data
    */
-  self.mustache = function (str, data) {
+fn mustache(&self, str: &str,  data: &str) -> String {
     if (typeof str === 'undefined') {
       return '';
     }
@@ -235,7 +235,7 @@ impl Helpers {
    *
    * @method faker.helpers.createCard
    */
-  self.createCard = function () {
+fn createCard(&self) -> String {
       return {
           "name": faker.name.findName(),
           "username": faker.internet.userName(),
@@ -290,7 +290,7 @@ impl Helpers {
    *
    * @method faker.helpers.contextualCard
    */
-  self.contextualCard = function () {
+fn contextualCard(&self) -> String {
     var name = faker.name.firstName(),
         userName = faker.internet.userName(name);
     return {
@@ -325,7 +325,7 @@ impl Helpers {
    *
    * @method faker.helpers.userCard
    */
-  self.userCard = function () {
+fn userCard(&self) -> String {
       return {
           "name": faker.name.findName(),
           "username": faker.internet.userName(),
@@ -355,7 +355,7 @@ impl Helpers {
    *
    * @method faker.helpers.createTransaction
    */
-  self.createTransaction = function(){
+fn createTransaction(&self) -> String {
     return {
       "amount" : faker.finance.amount(),
       "date" : new Date(2012, 1, 2),  //TODO: add a ranged date method

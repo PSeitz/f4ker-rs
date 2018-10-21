@@ -18,7 +18,7 @@ impl Finance {
    * @method faker.finance.account
    * @param {number} length
    */
-  self.account = function (length) {
+fn account(&self, length: &str) -> String {
 
       length = length || 8;
 
@@ -36,7 +36,7 @@ impl Finance {
    *
    * @method faker.finance.accountName
    */
-  self.accountName = function () {
+fn accountName(&self) -> String {
 
       return [Helpers.randomize(faker.definitions.finance.account_type), 'Account'].join(' ');
   };
@@ -46,7 +46,7 @@ impl Finance {
    *
    * @method faker.finance.routingNumber
    */
-  self.routingNumber = function () {
+fn routingNumber(&self) -> String {
 
       var routingNumber = Helpers.replaceSymbolWithNumber('########');
 
@@ -70,7 +70,7 @@ impl Finance {
    * @param {boolean} parens
    * @param {boolean} ellipsis
    */
-  self.mask = function (length, parens, ellipsis) {
+fn mask(&self, length: &str,  parens: &str,  ellipsis: &str) -> String {
 
       //set defaults
       length = (length == 0 || !length || typeof length == 'undefined') ? 4 : length;
@@ -109,7 +109,7 @@ impl Finance {
    *
    * @return {string}
    */
-  self.amount = function (min, max, dec, symbol) {
+fn amount(&self, min: &str,  max: &str,  dec: &str,  symbol: &str) -> String {
 
       min = min || 0;
       max = max || 1000;
@@ -125,7 +125,7 @@ impl Finance {
    *
    * @method faker.finance.transactionType
    */
-  self.transactionType = function () {
+fn transactionType(&self) -> String {
       return Helpers.randomize(faker.definitions.finance.transaction_type);
   };
 
@@ -134,7 +134,7 @@ impl Finance {
    *
    * @method faker.finance.currencyCode
    */
-  self.currencyCode = function () {
+fn currencyCode(&self) -> String {
       return faker.random.objectElement(faker.definitions.finance.currency)['code'];
   };
 
@@ -143,7 +143,7 @@ impl Finance {
    *
    * @method faker.finance.currencyName
    */
-  self.currencyName = function () {
+fn currencyName(&self) -> String {
       return faker.random.objectElement(faker.definitions.finance.currency, 'key');
   };
 
@@ -152,7 +152,7 @@ impl Finance {
    *
    * @method faker.finance.currencySymbol
    */
-  self.currencySymbol = function () {
+fn currencySymbol(&self) -> String {
       var symbol;
 
       while (!symbol) {
@@ -166,7 +166,7 @@ impl Finance {
    *
    * @method  faker.finance.bitcoinAddress
    */
-  self.bitcoinAddress = function () {
+fn bitcoinAddress(&self) -> String {
     var addressLength = faker.random.number({ min: 25, max: 34 });
 
     var address = faker.random.arrayElement(['1', '3']);
@@ -182,7 +182,7 @@ impl Finance {
    * @method faker.finance.creditCardNumber
    * @param {string} provider | scheme
   */
-  self.creditCardNumber = function(provider){
+fn creditCardNumber(&self, provider: &str) -> String {
     provider = provider || "";
     var format, formats;
     var localeFormat = faker.definitions.finance.credit_card;
@@ -215,7 +215,7 @@ impl Finance {
    * Credit card CVV
    * @method faker.finance.creditCardNumber
   */
-  self.creditCardCVV = function() {
+fn creditCardCVV(&self) -> String {
     var cvv = "";
     for (var i = 0; i < 3; i++) {
       cvv += faker.random.number({max:9}).toString();
@@ -228,7 +228,7 @@ impl Finance {
    *
    * @method  faker.finance.ethereumAddress
    */
-  self.ethereumAddress = function () {
+fn ethereumAddress(&self) -> String {
     var address = faker.random.hexaDecimal(40);
 
     return address;
@@ -239,7 +239,7 @@ impl Finance {
    *
    * @method  faker.finance.iban
    */
-  self.iban = function (formatted) {
+fn iban(&self, formatted: &str) -> String {
       var ibanFormat = faker.random.arrayElement(ibanLib.formats);
       var s = "";
       var count = 0;
@@ -286,7 +286,7 @@ impl Finance {
    *
    * @method  faker.finance.bic
    */
-  self.bic = function () {
+fn bic(&self) -> String {
       var vowels = ["A", "E", "I", "O", "U"];
       var prob = faker.random.number(100);
       return Helpers.replaceSymbols("???") +

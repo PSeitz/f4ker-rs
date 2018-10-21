@@ -18,7 +18,7 @@ impl Company {
    *
    * @method faker.company.suffixes
    */
-  this.suffixes = function () {
+fn suffixes(&self) -> String {
     // Don't want the source array exposed to modification, so return a copy
     return faker.definitions.company.suffix.slice(0);
   }
@@ -29,7 +29,7 @@ impl Company {
    * @method faker.company.companyName
    * @param {string} format
    */
-  this.companyName = function (format) {
+fn companyName(&self, format: &str) -> String {
 
     var formats = [
       '{{name.lastName}} {{company.companySuffix}}',
@@ -49,7 +49,7 @@ impl Company {
    *
    * @method faker.company.companySuffix
    */
-  this.companySuffix = function () {
+fn companySuffix(&self) -> String {
       return faker.random.arrayElement(faker.company.suffixes());
   }
 
@@ -58,7 +58,7 @@ impl Company {
    *
    * @method faker.company.catchPhrase
    */
-  this.catchPhrase = function () {
+fn catchPhrase(&self) -> String {
     return f('{{company.catchPhraseAdjective}} {{company.catchPhraseDescriptor}} {{company.catchPhraseNoun}}')
   }
 
@@ -67,7 +67,7 @@ impl Company {
    *
    * @method faker.company.bs
    */
-  this.bs = function () {
+fn bs(&self) -> String {
     return f('{{company.bsBuzz}} {{company.bsAdjective}} {{company.bsNoun}}');
   }
 
@@ -76,7 +76,7 @@ impl Company {
    *
    * @method faker.company.catchPhraseAdjective
    */
-  this.catchPhraseAdjective = function () {
+fn catchPhraseAdjective(&self) -> String {
       return faker.random.arrayElement(faker.definitions.company.adjective);
   }
 
@@ -85,7 +85,7 @@ impl Company {
    *
    * @method faker.company.catchPhraseDescriptor
    */
-  this.catchPhraseDescriptor = function () {
+fn catchPhraseDescriptor(&self) -> String {
       return faker.random.arrayElement(faker.definitions.company.descriptor);
   }
 
@@ -94,7 +94,7 @@ impl Company {
    *
    * @method faker.company.catchPhraseNoun
    */
-  this.catchPhraseNoun = function () {
+fn catchPhraseNoun(&self) -> String {
       return faker.random.arrayElement(faker.definitions.company.noun);
   }
 
@@ -103,7 +103,7 @@ impl Company {
    *
    * @method faker.company.bsAdjective
    */
-  this.bsAdjective = function () {
+fn bsAdjective(&self) -> String {
       return faker.random.arrayElement(faker.definitions.company.bs_adjective);
   }
 
@@ -112,7 +112,7 @@ impl Company {
    *
    * @method faker.company.bsBuzz
    */
-  this.bsBuzz = function () {
+fn bsBuzz(&self) -> String {
       return faker.random.arrayElement(faker.definitions.company.bs_verb);
   }
 
@@ -121,7 +121,7 @@ impl Company {
    *
    * @method faker.company.bsNoun
    */
-  this.bsNoun = function () {
+fn bsNoun(&self) -> String {
       return faker.random.arrayElement(faker.definitions.company.bs_noun);
   }
   

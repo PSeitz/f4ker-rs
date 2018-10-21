@@ -26,7 +26,7 @@ impl Random {
    * @method faker.random.number
    * @param {mixed} options {min, max, precision}
    */
-  this.number = function (options) {
+fn number(&self, options: &str) -> String {
 
     if (typeof options === "number") {
       options = {
@@ -68,7 +68,7 @@ impl Random {
    * @method faker.random.float
    * @param {mixed} options
    */
-  this.float = function (options) {
+fn float(&self, options: &str) -> String {
       if (typeof options === "number") {
         options = {
           precision: options
@@ -91,7 +91,7 @@ impl Random {
    * @method faker.random.arrayElement
    * @param {array} array
    */
-  this.arrayElement = function (array) {
+fn arrayElement(&self, array: &str) -> String {
       array = array || ["a", "b", "c"];
       var r = faker.random.number({ max: array.length - 1 });
       return array[r];
@@ -104,7 +104,7 @@ impl Random {
    * @param {array} array
    * @param {number} count number of elements to pick
    */
-  this.arrayElements = function (array, count) {
+fn arrayElements(&self, array: &str,  count: &str) -> String {
       array = array || ["a", "b", "c"];
 
       if (typeof count !== 'number') {
@@ -132,7 +132,7 @@ impl Random {
    * @param {object} object
    * @param {mixed} field
    */
-  this.objectElement = function (object, field) {
+fn objectElement(&self, object: &str,  field: &str) -> String {
       object = object || { "foo": "bar", "too": "car" };
       var array = Object.keys(object);
       var key = faker.random.arrayElement(array);
@@ -145,7 +145,7 @@ impl Random {
    *
    * @method faker.random.uuid
    */
-  this.uuid = function () {
+fn uuid(&self) -> String {
       var self = this;
       var RFC4122_TEMPLATE = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx';
       var replacePlaceholders = function (placeholder) {
@@ -161,7 +161,7 @@ impl Random {
    *
    * @method faker.random.boolean
    */
-  this.boolean = function () {
+fn boolean(&self) -> String {
       return !!faker.random.number(1)
   }
 
@@ -172,7 +172,7 @@ impl Random {
    * @method faker.random.word
    * @param {string} type
    */
-  this.word = function randomWord (type) {
+fn word(&self, type: &str) -> String {
 
     var wordMethods = [
     'commerce.department',
@@ -219,7 +219,7 @@ impl Random {
    * @method faker.random.words
    * @param {number} count defaults to a random value between 1 and 3
    */
-  this.words = function randomWords (count) {
+fn words(&self, count: &str) -> String {
     var words = [];
     if (typeof count === "undefined") {
       count = faker.random.number({min:1, max: 3});
@@ -235,7 +235,7 @@ impl Random {
    *
    * @method faker.random.image
    */
-  this.image = function randomImage () {
+fn image(&self) -> String {
     return faker.image.image();
   }
 
@@ -244,7 +244,7 @@ impl Random {
    *
    * @method faker.random.locale
    */
-  this.locale = function randomLocale () {
+fn locale(&self) -> String {
     return faker.random.arrayElement(Object.keys(faker.locales));
   };
 
@@ -254,7 +254,7 @@ impl Random {
    * @method faker.random.alphaNumeric
    * @param {number} count defaults to 1
    */
-  this.alphaNumeric = function alphaNumeric(count) {
+fn alphaNumeric(&self, count: &str) -> String {
     if (typeof count === "undefined") {
       count = 1;
     }
@@ -273,7 +273,7 @@ impl Random {
    * @method faker.random.hexaDecimal
    * @param {number} count defaults to 1
    */
-  this.hexaDecimal = function hexaDecimal(count) {
+fn hexaDecimal(&self, count: &str) -> String {
     if (typeof count === "undefined") {
       count = 1;
     }

@@ -16,7 +16,7 @@ impl Commerce {
    *
    * @method faker.commerce.color
    */
-  self.color = function() {
+fn color(&self) -> String {
       return faker.random.arrayElement(faker.definitions.commerce.color);
   };
 
@@ -25,7 +25,7 @@ impl Commerce {
    *
    * @method faker.commerce.department
    */
-  self.department = function() {
+fn department(&self) -> String {
       return faker.random.arrayElement(faker.definitions.commerce.department);
   };
 
@@ -34,7 +34,7 @@ impl Commerce {
    *
    * @method faker.commerce.productName
    */
-  self.productName = function() {
+fn productName(&self) -> String {
       return faker.commerce.productAdjective() + " " +
               faker.commerce.productMaterial() + " " +
               faker.commerce.product();
@@ -51,7 +51,7 @@ impl Commerce {
    *
    * @return {string}
    */
-  self.price = function(min, max, dec, symbol) {
+fn price(&self, min: &str,  max: &str,  dec: &str,  symbol: &str) -> String {
       min = min || 1;
       max = max || 1000;
       dec = dec === undefined ? 2 : dec;
@@ -67,7 +67,7 @@ impl Commerce {
   };
 
   /*
-  self.categories = function(num) {
+fn categories(&self, num: &str) -> String {
       var categories = [];
 
       do {
@@ -82,7 +82,7 @@ impl Commerce {
 
   */
   /*
-  self.mergeCategories = function(categories) {
+fn mergeCategories(&self, categories: &str) -> String {
       var separator = faker.definitions.separator || " &";
       // TODO: find undefined here
       categories = categories || faker.definitions.commerce.categories;
@@ -97,7 +97,7 @@ impl Commerce {
    *
    * @method faker.commerce.productAdjective
    */
-  self.productAdjective = function() {
+fn productAdjective(&self) -> String {
       return faker.random.arrayElement(faker.definitions.commerce.product_name.adjective);
   };
 
@@ -106,7 +106,7 @@ impl Commerce {
    *
    * @method faker.commerce.productMaterial
    */
-  self.productMaterial = function() {
+fn productMaterial(&self) -> String {
       return faker.random.arrayElement(faker.definitions.commerce.product_name.material);
   };
 
@@ -115,7 +115,7 @@ impl Commerce {
    *
    * @method faker.commerce.product
    */
-  self.product = function() {
+fn product(&self) -> String {
       return faker.random.arrayElement(faker.definitions.commerce.product_name.product);
   };
 

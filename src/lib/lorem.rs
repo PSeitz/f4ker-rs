@@ -19,7 +19,7 @@ impl Lorem {
    * @method faker.lorem.word
    * @param {number} num
    */
-  self.word = function (num) {
+fn word(&self, num: &str) -> String {
     return faker.random.arrayElement(faker.definitions.lorem.words);
   };
 
@@ -29,7 +29,7 @@ impl Lorem {
    * @method faker.lorem.words
    * @param {number} num number of words, defaults to 3
    */
-  self.words = function (num) {
+fn words(&self, num: &str) -> String {
       if (typeof num == 'undefined') { num = 3; }
       var words = [];
       for (var i = 0; i < num; i++) {
@@ -45,7 +45,7 @@ impl Lorem {
    * @param {number} wordCount defaults to a random number between 3 and 10
    * @param {number} range
    */
-  self.sentence = function (wordCount, range) {
+fn sentence(&self, wordCount: &str,  range: &str) -> String {
       if (typeof wordCount == 'undefined') { wordCount = faker.random.number({ min: 3, max: 10 }); }
       // if (typeof range == 'undefined') { range = 7; }
 
@@ -62,7 +62,7 @@ impl Lorem {
    * @method faker.lorem.slug
    * @param {number} wordCount number of words, defaults to 3
    */
-  self.slug = function (wordCount) {
+fn slug(&self, wordCount: &str) -> String {
       var words = faker.lorem.words(wordCount);
       return Helpers.slugify(words);
   };
@@ -74,7 +74,7 @@ impl Lorem {
    * @param {number} sentenceCount defautls to a random number between 2 and 6
    * @param {string} separator defaults to `' '`
    */
-  self.sentences = function (sentenceCount, separator) {
+fn sentences(&self, sentenceCount: &str,  separator: &str) -> String {
       if (typeof sentenceCount === 'undefined') { sentenceCount = faker.random.number({ min: 2, max: 6 });}
       if (typeof separator == 'undefined') { separator = " "; }
       var sentences = [];
@@ -90,7 +90,7 @@ impl Lorem {
    * @method faker.lorem.paragraph
    * @param {number} sentenceCount defaults to 3
    */
-  self.paragraph = function (sentenceCount) {
+fn paragraph(&self, sentenceCount: &str) -> String {
       if (typeof sentenceCount == 'undefined') { sentenceCount = 3; }
       return faker.lorem.sentences(sentenceCount + faker.random.number(3));
   };
@@ -102,7 +102,7 @@ impl Lorem {
    * @param {number} paragraphCount defaults to 3
    * @param {string} separator defaults to `'\n \r'`
    */
-  self.paragraphs = function (paragraphCount, separator) {
+fn paragraphs(&self, paragraphCount: &str,  separator: &str) -> String {
     if (typeof separator === "undefined") {
       separator = "\n \r";
     }
@@ -120,7 +120,7 @@ impl Lorem {
    * @method faker.lorem.text
    * @param {number} times
    */
-  self.text = function loremText (times) {
+fn text(&self, times: &str) -> String {
     var loremMethods = ['lorem.word', 'lorem.words', 'lorem.sentence', 'lorem.sentences', 'lorem.paragraph', 'lorem.paragraphs', 'lorem.lines'];
     var randomLoremMethod = faker.random.arrayElement(loremMethods);
     return faker.fake('{{' + randomLoremMethod + '}}');
@@ -132,7 +132,7 @@ impl Lorem {
    * @method faker.lorem.lines
    * @param {number} lineCount defaults to a random number between 1 and 5
    */
-  self.lines = function lines (lineCount) {
+fn lines(&self, lineCount: &str) -> String {
     if (typeof lineCount === 'undefined') { lineCount = faker.random.number({ min: 1, max: 5 });}
     return faker.lorem.sentences(lineCount, '\n')
   };

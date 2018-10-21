@@ -19,7 +19,7 @@ impl Address {
    * @method faker.address.zipCode
    * @param {String} format
    */
-  this.zipCode = function(format) {
+fn zipCode(&self, format: &str) -> String {
     // if zip format is not specified, use the zip format defined for the locale
     if (typeof format === 'undefined') {
       var localeFormat = faker.definitions.address.postcode;
@@ -42,7 +42,7 @@ impl Address {
    * @method faker.address.zipCodeByState
    * @param {String} state
    */
-  this.zipCodeByState = function (state) {
+fn zipCodeByState(&self, state: &str) -> String {
     var zipRange = faker.definitions.address.postcode_by_state[state];
     if (zipRange) {
       return faker.random.number(zipRange);
@@ -65,7 +65,7 @@ impl Address {
    * @method faker.address.city
    * @param {String} format
    */
-  this.city = function (format) {
+fn city(&self, format: &str) -> String {
     var formats = [
       '{{address.cityPrefix}} {{name.firstName}}{{address.citySuffix}}',
       '{{address.cityPrefix}} {{name.firstName}}',
@@ -85,7 +85,7 @@ impl Address {
    * Return a random localized city prefix
    * @method faker.address.cityPrefix
    */
-  this.cityPrefix = function () {
+fn cityPrefix(&self) -> String {
     return faker.random.arrayElement(faker.definitions.address.city_prefix);
   }
 
@@ -94,7 +94,7 @@ impl Address {
    *
    * @method faker.address.citySuffix
    */
-  this.citySuffix = function () {
+fn citySuffix(&self) -> String {
     return faker.random.arrayElement(faker.definitions.address.city_suffix);
   }
 
@@ -103,7 +103,7 @@ impl Address {
    *
    * @method faker.address.streetName
    */
-  this.streetName = function () {
+fn streetName(&self) -> String {
       var result;
       var suffix = faker.address.streetSuffix();
       if (suffix !== "") {
@@ -130,7 +130,7 @@ impl Address {
    * @method faker.address.streetAddress
    * @param {Boolean} useFullAddress
    */
-  this.streetAddress = function (useFullAddress) {
+fn streetAddress(&self, useFullAddress: &str) -> String {
       if (useFullAddress === undefined) { useFullAddress = false; }
       var address = "";
       switch (faker.random.number(2)) {
@@ -152,7 +152,7 @@ impl Address {
    *
    * @method faker.address.streetSuffix
    */
-  this.streetSuffix = function () {
+fn streetSuffix(&self) -> String {
       return faker.random.arrayElement(faker.definitions.address.street_suffix);
   }
 
@@ -161,7 +161,7 @@ impl Address {
    *
    * @method faker.address.streetPrefix
    */
-  this.streetPrefix = function () {
+fn streetPrefix(&self) -> String {
       return faker.random.arrayElement(faker.definitions.address.street_prefix);
   }
 
@@ -170,7 +170,7 @@ impl Address {
    *
    * @method faker.address.secondaryAddress
    */
-  this.secondaryAddress = function () {
+fn secondaryAddress(&self) -> String {
       return Helpers.replaceSymbolWithNumber(faker.random.arrayElement(
           [
               'Apt. ###',
@@ -184,7 +184,7 @@ impl Address {
    *
    * @method faker.address.county
    */
-  this.county = function () {
+fn county(&self) -> String {
     return faker.random.arrayElement(faker.definitions.address.county);
   }
 
@@ -193,7 +193,7 @@ impl Address {
    *
    * @method faker.address.country
    */
-  this.country = function () {
+fn country(&self) -> String {
     return faker.random.arrayElement(faker.definitions.address.country);
   }
 
@@ -202,7 +202,7 @@ impl Address {
    *
    * @method faker.address.countryCode
    */
-  this.countryCode = function () {
+fn countryCode(&self) -> String {
     return faker.random.arrayElement(faker.definitions.address.country_code);
   }
 
@@ -212,7 +212,7 @@ impl Address {
    * @method faker.address.state
    * @param {Boolean} useAbbr
    */
-  this.state = function (useAbbr) {
+fn state(&self, useAbbr: &str) -> String {
       return faker.random.arrayElement(faker.definitions.address.state);
   }
 
@@ -221,7 +221,7 @@ impl Address {
    *
    * @method faker.address.stateAbbr
    */
-  this.stateAbbr = function () {
+fn stateAbbr(&self) -> String {
       return faker.random.arrayElement(faker.definitions.address.state_abbr);
   }
 
@@ -233,7 +233,7 @@ impl Address {
    * @param {Double} min default is -90
    * @param {number} precision default is 4
    */
-  this.latitude = function (max, min, precision) {
+fn latitude(&self, max: &str,  min: &str,  precision: &str) -> String {
       max       = max || 90
       min       = min || -90
       precision = precision || 4
@@ -253,7 +253,7 @@ impl Address {
    * @param {Double} min default is -180
    * @param {number} precision default is 4
    */
-  this.longitude = function (max, min, precision) {
+fn longitude(&self, max: &str,  min: &str,  precision: &str) -> String {
       max       = max || 180
       min       = min || -180
       precision = precision || 4
@@ -271,7 +271,7 @@ impl Address {
    * @method faker.address.direction
    * @param {Boolean} useAbbr return direction abbreviation. defaults to false
    */
-  this.direction = function (useAbbr) {
+fn direction(&self, useAbbr: &str) -> String {
     if (typeof useAbbr === 'undefined' || useAbbr === false) {
       return faker.random.arrayElement(faker.definitions.address.direction);
     }
@@ -289,7 +289,7 @@ impl Address {
    * @method faker.address.cardinalDirection
    * @param {Boolean} useAbbr return direction abbreviation. defaults to false
    */
-  this.cardinalDirection = function (useAbbr) {
+fn cardinalDirection(&self, useAbbr: &str) -> String {
     if (typeof useAbbr === 'undefined' || useAbbr === false) {
       return (
         faker.random.arrayElement(faker.definitions.address.direction.slice(0, 4))
@@ -311,7 +311,7 @@ impl Address {
    * @method faker.address.ordinalDirection
    * @param {Boolean} useAbbr return direction abbreviation. defaults to false
    */
-  this.ordinalDirection = function (useAbbr) {
+fn ordinalDirection(&self, useAbbr: &str) -> String {
     if (typeof useAbbr === 'undefined' || useAbbr === false) {
       return (
         faker.random.arrayElement(faker.definitions.address.direction.slice(4, 8))
@@ -327,7 +327,7 @@ impl Address {
     "sampleResults": ["Northwest", "Southeast", "SW", "NE"]
   };
 
-  this.nearbyGPSCoordinate = function(coordinate, radius, isMetric) {
+fn nearbyGPSCoordinate(&self, coordinate: &str,  radius: &str,  isMetric: &str) -> String {
         function randomFloat(min, max) {
             return Math.random() * (max-min) + min;
         }

@@ -19,7 +19,7 @@ impl System {
    * @param {string} ext
    * @param {string} type
    */
-  this.fileName = function (ext, type) {
+fn fileName(&self, ext: &str,  type: &str) -> String {
     var str = faker.fake("{{random.words}}.{{system.fileExt}}");
     str = str.replace(/ /g, '_');
     str = str.replace(/\,/g, '_');
@@ -37,7 +37,7 @@ impl System {
    * @param {string} ext
    * @param {string} type
    */
-  this.commonFileName = function (ext, type) {
+fn commonFileName(&self, ext: &str,  type: &str) -> String {
     var str = faker.random.words() + "." + (ext || faker.system.commonFileExt());
     str = str.replace(/ /g, '_');
     str = str.replace(/\,/g, '_');
@@ -53,7 +53,7 @@ impl System {
    *
    * @method faker.system.mimeType
    */
-  this.mimeType = function () {
+fn mimeType(&self) -> String {
     return faker.random.arrayElement(Object.keys(faker.definitions.system.mimeTypes));
   };
 
@@ -62,7 +62,7 @@ impl System {
    *
    * @method faker.system.commonFileType
    */
-  this.commonFileType = function () {
+fn commonFileType(&self) -> String {
     var types = ['video', 'audio', 'image', 'text', 'application'];
     return faker.random.arrayElement(types)
   };
@@ -73,7 +73,7 @@ impl System {
    * @method faker.system.commonFileExt
    * @param {string} type
    */
-  this.commonFileExt = function (type) {
+fn commonFileExt(&self, type: &str) -> String {
     var types = [
       'application/pdf',
       'audio/mpeg',
@@ -94,7 +94,7 @@ impl System {
    *
    * @method faker.system.fileType
    */
-  this.fileType = function () {
+fn fileType(&self) -> String {
     var types = [];
     var mimes = faker.definitions.system.mimeTypes;
     Object.keys(mimes).forEach(function(m){
@@ -112,7 +112,7 @@ impl System {
    * @method faker.system.fileExt
    * @param {string} mimeType
    */
-  this.fileExt = function (mimeType) {
+fn fileExt(&self, mimeType: &str) -> String {
     var exts = [];
     var mimes = faker.definitions.system.mimeTypes;
 
@@ -137,7 +137,7 @@ impl System {
    *
    * @method faker.system.directoryPath
    */
-  this.directoryPath = function () {
+fn directoryPath(&self) -> String {
       var paths = faker.definitions.system.directoryPaths
       return faker.random.arrayElement(paths);
   };
@@ -147,7 +147,7 @@ impl System {
    *
    * @method faker.system.filePath
    */
-  this.filePath = function () {
+fn filePath(&self) -> String {
       return faker.fake("{{system.directoryPath}}/{{system.fileName}}");
   };
 
@@ -156,7 +156,7 @@ impl System {
    *
    * @method faker.system.semver
    */
-  this.semver = function () {
+fn semver(&self) -> String {
       return [faker.random.number(9),
               faker.random.number(9),
               faker.random.number(9)].join('.');

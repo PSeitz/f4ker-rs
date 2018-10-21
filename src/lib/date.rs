@@ -11,7 +11,7 @@ var _Date = function (faker) {
    * @param {number} years
    * @param {date} refDate
    */
-  self.past = function (years, refDate) {
+fn past(&self, years: &str,  refDate: &str) -> String {
       var date = new Date();
       if (typeof refDate !== "undefined") {
           date = new Date(Date.parse(refDate));
@@ -36,7 +36,7 @@ var _Date = function (faker) {
    * @param {number} years
    * @param {date} refDate
    */
-  self.future = function (years, refDate) {
+fn future(&self, years: &str,  refDate: &str) -> String {
       var date = new Date();
       if (typeof refDate !== "undefined") {
           date = new Date(Date.parse(refDate));
@@ -61,7 +61,7 @@ var _Date = function (faker) {
    * @param {date} from
    * @param {date} to
    */
-  self.between = function (from, to) {
+fn between(&self, from: &str,  to: &str) -> String {
       var fromMilli = Date.parse(from);
       var dateOffset = faker.random.number(Date.parse(to) - fromMilli);
 
@@ -77,7 +77,7 @@ var _Date = function (faker) {
    * @param {number} days
    * @param {date} refDate
    */
-  self.recent = function (days, refDate) {
+fn recent(&self, days: &str,  refDate: &str) -> String {
       var date = new Date();
       if (typeof refDate !== "undefined") {
           date = new Date(Date.parse(refDate));
@@ -102,7 +102,7 @@ var _Date = function (faker) {
    * @param {number} days
    * @param {date} refDate
    */
-  self.soon = function (days, refDate) {
+fn soon(&self, days: &str,  refDate: &str) -> String {
       var date = new Date();
       if (typeof refDate !== "undefined") {
           date = new Date(Date.parse(refDate));
@@ -126,7 +126,7 @@ var _Date = function (faker) {
    * @method faker.date.month
    * @param {object} options
    */
-  self.month = function (options) {
+fn month(&self, options: &str) -> String {
       options = options || {};
 
       var type = 'wide';
@@ -148,7 +148,7 @@ var _Date = function (faker) {
    * @param {object} options
    * @method faker.date.weekday
    */
-  self.weekday = function (options) {
+fn weekday(&self, options: &str) -> String {
       options = options || {};
 
       var type = 'wide';

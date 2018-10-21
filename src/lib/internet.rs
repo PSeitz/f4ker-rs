@@ -17,7 +17,7 @@ impl Internet {
    *
    * @method faker.internet.avatar
    */
-  self.avatar = function () {
+fn avatar(&self) -> String {
       return faker.random.arrayElement(faker.definitions.internet.avatar_uri);
   };
 
@@ -34,7 +34,7 @@ impl Internet {
    * @param {string} lastName
    * @param {string} provider
    */
-  self.email = function (firstName, lastName, provider) {
+fn email(&self, firstName: &str,  lastName: &str,  provider: &str) -> String {
       provider = provider || faker.random.arrayElement(faker.definitions.internet.free_email);
       return  faker.helpers.slugify(faker.internet.userName(firstName, lastName)) + "@" + provider;
   };
@@ -67,7 +67,7 @@ impl Internet {
    * @param {string} firstName
    * @param {string} lastName
    */
-  self.exampleEmail = function (firstName, lastName) {
+fn exampleEmail(&self, firstName: &str,  lastName: &str) -> String {
       var provider = faker.random.arrayElement(faker.definitions.internet.example_email);
       return self.email(firstName, lastName, provider);
   };
@@ -79,7 +79,7 @@ impl Internet {
    * @param {string} firstName
    * @param {string} lastName
    */
-  self.userName = function (firstName, lastName) {
+fn userName(&self, firstName: &str,  lastName: &str) -> String {
       var result;
       firstName = firstName || faker.name.firstName();
       lastName = lastName || faker.name.lastName();
@@ -127,7 +127,7 @@ impl Internet {
    *
    * @method faker.internet.protocol
    */
-  self.protocol = function () {
+fn protocol(&self) -> String {
       var protocols = ['http','https'];
       return faker.random.arrayElement(protocols);
   };
@@ -142,7 +142,7 @@ impl Internet {
    *
    * @method faker.internet.url
    */
-  self.url = function () {
+fn url(&self) -> String {
       return faker.internet.protocol() + '://' + faker.internet.domainName();
   };
 
@@ -159,7 +159,7 @@ impl Internet {
    *
    * @method faker.internet.domainName
    */
-  self.domainName = function () {
+fn domainName(&self) -> String {
       return faker.internet.domainWord() + "." + faker.internet.domainSuffix();
   };
 
@@ -173,7 +173,7 @@ impl Internet {
    *
    * @method faker.internet.domainSuffix
    */
-  self.domainSuffix = function () {
+fn domainSuffix(&self) -> String {
       return faker.random.arrayElement(faker.definitions.internet.domain_suffix);
   };
 
@@ -187,7 +187,7 @@ impl Internet {
    *
    * @method faker.internet.domainWord
    */
-  self.domainWord = function () {
+fn domainWord(&self) -> String {
       return faker.name.firstName().replace(/([\\~#&*{}/:<>?|\"'])/ig, '').toLowerCase();
   };
 
@@ -201,7 +201,7 @@ impl Internet {
    *
    * @method faker.internet.ip
    */
-  self.ip = function () {
+fn ip(&self) -> String {
       var randNum = function () {
           return (faker.random.number(255)).toFixed(0);
       };
@@ -250,7 +250,7 @@ impl Internet {
    *
    * @method faker.internet.userAgent
    */
-  self.userAgent = function () {
+fn userAgent(&self) -> String {
     return random_ua.generate();
   };
 
@@ -267,7 +267,7 @@ impl Internet {
    * @param {number} baseGreen255
    * @param {number} baseBlue255
    */
-  self.color = function (baseRed255, baseGreen255, baseBlue255) {
+fn color(&self, baseRed: &str) -> String {
       baseRed255 = baseRed255 || 0;
       baseGreen255 = baseGreen255 || 0;
       baseBlue255 = baseBlue255 || 0;
@@ -313,7 +313,7 @@ impl Internet {
    * @method faker.internet.mac
    * @param {string} sep
    */
-  self.mac = function(sep){
+fn mac(&self, sep: &str) -> String {
       var i, 
         mac = "",
         validSep = ':';
@@ -347,7 +347,7 @@ impl Internet {
    * @param {string} pattern
    * @param {string} prefix
    */
-   self.password = function (len, memorable, pattern, prefix) {
+fn password(&self, len: &str,  memorable: &str,  pattern: &str,  prefix: &str) -> String {
      len = len || 15;
      if (typeof memorable === "undefined") {
        memorable = false;

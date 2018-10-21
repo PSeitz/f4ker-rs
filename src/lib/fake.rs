@@ -28,7 +28,7 @@ impl Fake {
    * @method faker.fake
    * @param {string} str
    */
-  this.fake = function fake (str) {
+fn fake(&self, str: &str) -> String {
     // setup default response as empty string
     var res = '';
 

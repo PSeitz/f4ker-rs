@@ -15,7 +15,7 @@ impl Database {
    *
    * @method faker.database.column
    */
-  self.column = function () {
+fn column(&self) -> String {
       return faker.random.arrayElement(faker.definitions.database.column);
   };
 
@@ -29,7 +29,7 @@ impl Database {
    *
    * @method faker.database.type
    */
-  self.type = function () {
+fn type(&self) -> String {
       return faker.random.arrayElement(faker.definitions.database.type);
   };
 
@@ -43,7 +43,7 @@ impl Database {
    *
    * @method faker.database.collation
    */
-  self.collation = function () {
+fn collation(&self) -> String {
       return faker.random.arrayElement(faker.definitions.database.collation);
   };
 
@@ -57,7 +57,7 @@ impl Database {
    *
    * @method faker.database.engine
    */
-  self.engine = function () {
+fn engine(&self) -> String {
       return faker.random.arrayElement(faker.definitions.database.engine);
   };
 

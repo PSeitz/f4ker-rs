@@ -18,7 +18,7 @@ impl Phone {
    * @param {string} format
    * @memberOf faker.phone
    */
-  self.phoneNumber = function (format) {
+fn phoneNumber(&self, format: &str) -> String {
       format = format || faker.phone.phoneFormats();
       return faker.helpers.replaceSymbolWithNumber(format);
   };
@@ -31,7 +31,7 @@ impl Phone {
    * @param phoneFormatsArrayIndex
    * @memberOf faker.phone
    */
-  self.phoneNumberFormat = function (phoneFormatsArrayIndex) {
+fn phoneNumberFormat(&self, phoneFormatsArrayIndex: &str) -> String {
       phoneFormatsArrayIndex = phoneFormatsArrayIndex || 0;
       return faker.helpers.replaceSymbolWithNumber(faker.definitions.phone_number.formats[phoneFormatsArrayIndex]);
   };
@@ -41,7 +41,7 @@ impl Phone {
    *
    * @method faker.phone.phoneFormats
    */
-  self.phoneFormats = function () {
+fn phoneFormats(&self) -> String {
     return faker.random.arrayElement(faker.definitions.phone_number.formats);
   };
   

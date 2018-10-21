@@ -152,17 +152,31 @@ fn main() -> Result<(), std::io::Error> {
 
         //this.zipCode = function(format) {
 
-        let re = Regex::new(r"^this\.([A-Za-z]*) = function\(([A-Za-z,\s]*)\)*.").unwrap(); // var Phone = function (faker) {
+        let re = Regex::new(r"^\s*(this|self)\.([A-Za-z]*)\s*=\s*function\s*[A-Za-z]*\s*\(([A-Za-z,\s]*)\)*.").unwrap(); // var Phone = function (faker) {
         // MOETHOS
         let mut lines: Vec<String> = lines.iter().flat_map(|line|{
-                
             if let Some(pat) = re.captures(&line) {
-                println!("{:?}", pat[1].to_string());
+                // println!("{:?} {:?}", pat[2].to_string(), pat[3].to_string());
+                if !pat[3].to_string().is_empty(){
+
+                    let params = pat[3].to_string().split(",").map(|el| el.to_string() + ": &str").collect::<Vec<_>>().join(", ");
+
+                    return vec![format!("fn {}(&self, {}) -> String {{", pat[2].to_string(), params)]
+                }
+                return vec![format!("fn {}(&self) -> String {{", pat[2].to_string())]
+
             }
-            vec![line.to_string()]
+            return vec![line.to_string()]
         }).collect();
 
         write_lines(lines, &entry.path());
+
+        if file_name.ends_with(".js") {
+            let entree = entry.path().to_str().unwrap().to_string();
+            let entree = entree.replace("index.js", "mod.rs");
+            let entree = entree.replace(".js", ".rs");
+            std::fs::rename(entry.path(), entree)?;
+        }
     }
     
 

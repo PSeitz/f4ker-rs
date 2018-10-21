@@ -17,7 +17,7 @@ impl Name {
    * @param {mixed} gender
    * @memberof faker.name
    */
-  this.firstName = function (gender) {
+fn firstName(&self, gender: &str) -> String {
     if (typeof faker.definitions.name.male_first_name !== "undefined" && typeof faker.definitions.name.female_first_name !== "undefined") {
       // some locale datasets ( like ru ) have first_name split by gender. since the name.first_name field does not exist in these datasets,
       // we must randomly pick a name from either gender array so faker.name.firstName will return the correct locale data ( and not fallback )
@@ -46,7 +46,7 @@ impl Name {
    * @param {mixed} gender
    * @memberof faker.name
    */
-  this.lastName = function (gender) {
+fn lastName(&self, gender: &str) -> String {
     if (typeof faker.definitions.name.male_last_name !== "undefined" && typeof faker.definitions.name.female_last_name !== "undefined") {
       // some locale datasets ( like ru ) have last_name split by gender. i have no idea how last names can have genders, but also i do not speak russian
       // see above comment of firstName method
@@ -71,7 +71,7 @@ impl Name {
    * @param {mixed} gender
    * @memberof faker.name
    */
-  this.findName = function (firstName, lastName, gender) {
+fn findName(&self, firstName: &str,  lastName: &str,  gender: &str) -> String {
       var r = faker.random.number(8);
       var prefix, suffix;
       // in particular locales first and last names split by gender,
@@ -103,7 +103,7 @@ impl Name {
    * @method jobTitle
    * @memberof faker.name
    */
-  this.jobTitle = function () {
+fn jobTitle(&self) -> String {
     return  faker.name.jobDescriptor() + " " +
       faker.name.jobArea() + " " +
       faker.name.jobType();
@@ -115,7 +115,7 @@ impl Name {
    * @method gender
    * @memberof faker.name
    */
-  this.gender = function () {
+fn gender(&self) -> String {
     return faker.random.arrayElement(faker.definitions.name.gender);
   }
   
@@ -126,7 +126,7 @@ impl Name {
    * @param {mixed} gender
    * @memberof faker.name
    */
-  this.prefix = function (gender) {
+fn prefix(&self, gender: &str) -> String {
     if (typeof faker.definitions.name.male_prefix !== "undefined" && typeof faker.definitions.name.female_prefix !== "undefined") {
       if (typeof gender !== 'number') {
         gender = faker.random.number(1);
@@ -146,7 +146,7 @@ impl Name {
    * @method suffix
    * @memberof faker.name
    */
-  this.suffix = function () {
+fn suffix(&self) -> String {
       return faker.random.arrayElement(faker.definitions.name.suffix);
   };
 
@@ -156,7 +156,7 @@ impl Name {
    * @method title
    * @memberof faker.name
    */
-  this.title = function() {
+fn title(&self) -> String {
       var descriptor  = faker.random.arrayElement(faker.definitions.name.title.descriptor),
           level       = faker.random.arrayElement(faker.definitions.name.title.level),
           job         = faker.random.arrayElement(faker.definitions.name.title.job);
@@ -170,7 +170,7 @@ impl Name {
    * @method jobDescriptor
    * @memberof faker.name
    */
-  this.jobDescriptor = function () {
+fn jobDescriptor(&self) -> String {
     return faker.random.arrayElement(faker.definitions.name.title.descriptor);
   };
 
@@ -180,7 +180,7 @@ impl Name {
    * @method jobArea
    * @memberof faker.name
    */
-  this.jobArea = function () {
+fn jobArea(&self) -> String {
     return faker.random.arrayElement(faker.definitions.name.title.level);
   };
 
@@ -190,7 +190,7 @@ impl Name {
    * @method jobType
    * @memberof faker.name
    */
-  this.jobType = function () {
+fn jobType(&self) -> String {
     return faker.random.arrayElement(faker.definitions.name.title.job);
   };
 

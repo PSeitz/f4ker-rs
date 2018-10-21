@@ -19,7 +19,7 @@ impl Git {
    *
    * @method faker.git.branch
    */
-  self.branch = function() {
+fn branch(&self) -> String {
     var noun = faker.hacker.noun().replace(' ', '-');
     var verb = faker.hacker.verb().replace(' ', '-');
     return noun + '-' + verb;
@@ -31,7 +31,7 @@ impl Git {
    * @method faker.git.commitEntry
    * @param {object} options
    */
-  self.commitEntry = function(options) {
+fn commitEntry(&self, options: &str) -> String {
     options = options || {};
 
     var entry = 'commit {{git.commitSha}}\r\n';
@@ -52,7 +52,7 @@ impl Git {
    *
    * @method faker.git.commitMessage
    */
-  self.commitMessage = function() {
+fn commitMessage(&self) -> String {
     var format = '{{hacker.verb}} {{hacker.adjective}} {{hacker.noun}}';
     return f(format);
   };
@@ -62,7 +62,7 @@ impl Git {
    *
    * @method faker.git.commitSha
    */
-  self.commitSha = function() {
+fn commitSha(&self) -> String {
     var commit = "";
 
     for (var i = 0; i < 40; i++) {
@@ -77,7 +77,7 @@ impl Git {
    *
    * @method faker.git.shortSha
    */
-  self.shortSha = function() {
+fn shortSha(&self) -> String {
     var shortSha = "";
 
     for (var i = 0; i < 7; i++) {

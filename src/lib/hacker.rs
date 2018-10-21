@@ -16,7 +16,7 @@ impl Hacker {
    *
    * @method faker.hacker.abbreviation
    */
-  self.abbreviation = function () {
+fn abbreviation(&self) -> String {
     return faker.random.arrayElement(faker.definitions.hacker.abbreviation);
   };
 
@@ -25,7 +25,7 @@ impl Hacker {
    *
    * @method faker.hacker.adjective
    */
-  self.adjective = function () {
+fn adjective(&self) -> String {
     return faker.random.arrayElement(faker.definitions.hacker.adjective);
   };
 
@@ -34,7 +34,7 @@ impl Hacker {
    *
    * @method faker.hacker.noun
    */
-  self.noun = function () {
+fn noun(&self) -> String {
     return faker.random.arrayElement(faker.definitions.hacker.noun);
   };
 
@@ -43,7 +43,7 @@ impl Hacker {
    *
    * @method faker.hacker.verb
    */
-  self.verb = function () {
+fn verb(&self) -> String {
     return faker.random.arrayElement(faker.definitions.hacker.verb);
   };
 
@@ -52,7 +52,7 @@ impl Hacker {
    *
    * @method faker.hacker.ingverb
    */
-  self.ingverb = function () {
+fn ingverb(&self) -> String {
     return faker.random.arrayElement(faker.definitions.hacker.ingverb);
   };
 
@@ -61,7 +61,7 @@ impl Hacker {
    *
    * @method faker.hacker.phrase
    */
-  self.phrase = function () {
+fn phrase(&self) -> String {
 
     var data = {
       abbreviation: self.abbreviation,
