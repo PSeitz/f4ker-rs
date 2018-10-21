@@ -1,5 +1,5 @@
 
-mod lib;
+mod locales;
 // use a::series::of::nested_modules;
 
 #[cfg(test)]

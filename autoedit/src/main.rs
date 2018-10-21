@@ -5,10 +5,12 @@ use std::fs::File;
 use std::fs::OpenOptions;
 // use std::fs;
 use std::io::prelude::*;
+use regex::Regex;
+
 fn main() -> Result<(), std::io::Error> {
     use walkdir::WalkDir;
 
-    for entry in WalkDir::new("../src/lib/locales") {
+    for entry in WalkDir::new("../src/locales") {
         let entry = entry.unwrap();
         // println!("{}", entry.path().display());
 
@@ -32,7 +34,7 @@ fn main() -> Result<(), std::io::Error> {
     }
 
     //require to mod
-    for entry in WalkDir::new("../src/lib/locales") {
+    for entry in WalkDir::new("../src/locales") {
         let entry = entry.unwrap();
         let file_name = entry.file_name().to_str().unwrap();
 
@@ -53,7 +55,7 @@ fn main() -> Result<(), std::io::Error> {
     }
 
     //reexport
-    // for entry in WalkDir::new("../src/lib/locales") {
+    // for entry in WalkDir::new("../src/locales") {
     //     let entry = entry.unwrap();
     //     let file_name = entry.file_name().to_str().unwrap();
 
@@ -71,8 +73,13 @@ fn main() -> Result<(), std::io::Error> {
     //     }
     // }
 
+
+    let re = Regex::new(r#"[A-Z][A-Za-z]*\.([A-Z][A-Za-z]*) = \"([A-Z][A-Za-z]*)\".*"#).unwrap();
+
     // convert module["exports"] = [
-    for entry in WalkDir::new("../src/lib/locales") {
+    // az.title = "Azerbaijani"; to const title
+    // az.separator = "Azerbaijani"; to const title
+    for entry in WalkDir::new("../src/locales") {
         let entry = entry.unwrap();
         if entry.path().is_dir() {
             continue;
@@ -82,6 +89,8 @@ fn main() -> Result<(), std::io::Error> {
         let result = lines(&entry.path()).into_iter().map(|line|{
             if line.contains(r#"module["exports"] = ["#) {
                 format!("pub static {}: &'static [&'static str] = &[ ", &file_name[..file_name.len()-3])
+            }else if let Some(pat) = re.captures(&line) {
+                format!("const {}: str = {};", &pat[1], &pat[2])
             }else{
                 line
             }
@@ -92,7 +101,7 @@ fn main() -> Result<(), std::io::Error> {
     }
 
     // rename .js to .rs
-    for entry in WalkDir::new("../src/lib/locales") {
+    for entry in WalkDir::new("../src/locales") {
         let entry = entry.unwrap();
         if entry.path().is_dir() {
             continue;
@@ -112,7 +121,6 @@ fn main() -> Result<(), std::io::Error> {
         }
         let file_name = entry.file_name().to_str().unwrap();
         println!("{:?}", file_name);
-        use regex::Regex;
         let re = Regex::new(r"^function ([A-Z][A-Za-z]*).*").unwrap(); // function Address (faker) {
         let re2 = Regex::new(r"^var ([A-Z][A-Za-z]*).*").unwrap(); // var Phone = function (faker) {
 
