@@ -1,4 +1,4 @@
-en_IND.title = "India (English)";
+pub const title: &str = "India (English)";
 mod name;
 mod address;
 mod internet;

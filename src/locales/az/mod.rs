@@ -1,5 +1,5 @@
-az.title = "Azerbaijani";
-az.separator = " və ";
+pub const title: &str = "Azerbaijani";
+pub const separator: &str = " və ";
 mod address;
 mod internet;
 mod name;

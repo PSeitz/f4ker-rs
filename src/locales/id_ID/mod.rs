@@ -1,4 +1,4 @@
-id.title = "Indonesia";
+pub const title: &str = "Indonesia";
 mod address;
 mod company;
 mod internet;

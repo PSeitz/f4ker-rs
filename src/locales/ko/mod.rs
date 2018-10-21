@@ -1,4 +1,4 @@
-ko.title = "Korean";
+pub const title: &str = "Korean";
 mod address;
 mod phone_number;
 mod company;

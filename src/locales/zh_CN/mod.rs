@@ -1,4 +1,4 @@
-zh_CN.title = "Chinese";
+pub const title: &str = "Chinese";
 mod address;
 mod name;
 mod phone_number;

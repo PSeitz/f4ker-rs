@@ -1,4 +1,4 @@
-nb_NO.title = "Norwegian";
+pub const title: &str = "Norwegian";
 mod address;
 mod company;
 mod internet;

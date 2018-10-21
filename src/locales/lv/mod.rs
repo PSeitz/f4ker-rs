@@ -1,5 +1,5 @@
-lv.title = "Latvian";
-lv.separator = " un ";
+pub const title: &str = "Latvian";
+pub const separator: &str = " un ";
 mod name;
 mod date;
 mod address;

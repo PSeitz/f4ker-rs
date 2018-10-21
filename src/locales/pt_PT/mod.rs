@@ -1,4 +1,4 @@
-pt_PT.title = "Portuguese (Portugal)";
+pub const title: &str = "Portuguese (Portugal)";
 mod address;
 mod internet;
 mod name;

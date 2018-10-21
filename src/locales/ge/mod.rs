@@ -1,5 +1,5 @@
-ge.title = "Georgian";
-ge.separator = " და ";
+pub const title: &str = "Georgian";
+pub const separator: &str = " და ";
 mod name;
 mod address;
 mod internet;

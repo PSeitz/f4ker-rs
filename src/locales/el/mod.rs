@@ -1,5 +1,5 @@
-el.title = "Ελληνικά";
-el.separator = " & ";
+pub const title: &str = "Ελληνικά";
+pub const separator: &str = " & ";
 mod address;
 mod credit_card;
 mod company;

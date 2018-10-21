@@ -1,4 +1,4 @@
-pl.title = "Polish";
+pub const title: &str = "Polish";
 mod name;
 mod address;
 mod company;

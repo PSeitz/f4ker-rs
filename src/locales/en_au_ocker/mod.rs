@@ -1,4 +1,4 @@
-en_au_ocker.title = "Australia Ocker (English)";
+pub const title: &str = "Australia Ocker (English)";
 mod name;
 mod company;
 mod internet;

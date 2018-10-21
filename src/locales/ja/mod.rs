@@ -1,4 +1,4 @@
-ja.title = "Japanese";
+pub const title: &str = "Japanese";
 mod address;
 mod phone_number;
 mod cell_phone;

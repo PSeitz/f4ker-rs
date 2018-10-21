@@ -1,5 +1,5 @@
-en.title = "English";
-en.separator = " & ";
+pub const title: &str = "English";
+pub const separator: &str = " & ";
 mod address;
 mod company;
 mod internet;

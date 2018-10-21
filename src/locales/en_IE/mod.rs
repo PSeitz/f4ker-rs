@@ -1,4 +1,4 @@
-en_IE.title = "Ireland (English)";
+pub const title: &str = "Ireland (English)";
 mod address;
 mod internet;
 mod phone_number;

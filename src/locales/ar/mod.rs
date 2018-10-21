@@ -1,5 +1,5 @@
-ar.title = "Arabic";
-ar.separator = " & ";
+pub const title: &str = "Arabic";
+pub const separator: &str = " & ";
 mod address;
 mod phone_number;
 mod cell_phone;

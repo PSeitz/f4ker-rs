@@ -1,5 +1,5 @@
-ru.title = "Russian";
-ru.separator = " и ";
+pub const title: &str = "Russian";
+pub const separator: &str = " и ";
 mod address;
 mod internet;
 mod name;

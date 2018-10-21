@@ -1,4 +1,4 @@
-vi.title = "Vietnamese";
+pub const title: &str = "Vietnamese";
 mod address;
 mod internet;
 mod phone_number;

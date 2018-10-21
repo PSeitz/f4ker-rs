@@ -74,7 +74,7 @@ fn main() -> Result<(), std::io::Error> {
     // }
 
 
-    let re = Regex::new(r#"[A-Z][A-Za-z]*\.([A-Z][A-Za-z]*) = \"([A-Z][A-Za-z]*)\".*"#).unwrap();
+    let re = Regex::new(r#"[A-Za-z]*\.([A-Za-z]*)\s*=\s*(".*").*"#).unwrap();
 
     // convert module["exports"] = [
     // az.title = "Azerbaijani"; to const title
@@ -90,7 +90,7 @@ fn main() -> Result<(), std::io::Error> {
             if line.contains(r#"module["exports"] = ["#) {
                 format!("pub static {}: &'static [&'static str] = &[ ", &file_name[..file_name.len()-3])
             }else if let Some(pat) = re.captures(&line) {
-                format!("const {}: str = {};", &pat[1], &pat[2])
+                format!("pub const {}: &str = {};", &pat[1], &pat[2])
             }else{
                 line
             }

@@ -1,4 +1,4 @@
-ro.title = "Romanian";
+pub const title: &str = "Romanian";
 mod address;
 mod cell_phone;
 mod date;

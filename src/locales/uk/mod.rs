@@ -1,4 +1,4 @@
-uk.title = "Ukrainian";
+pub const title: &str = "Ukrainian";
 mod address;
 mod company;
 mod internet;

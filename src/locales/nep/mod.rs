@@ -1,4 +1,4 @@
-nep.title = "Nepalese";
+pub const title: &str = "Nepalese";
 mod name;
 mod address;
 mod internet;

@@ -1,4 +1,4 @@
-fa.title = "Farsi";
+pub const title: &str = "Farsi";
 mod name;
 mod address;
 pub use  name::*;

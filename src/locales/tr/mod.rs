@@ -1,4 +1,4 @@
-tr.title = "Turkish";
+pub const title: &str = "Turkish";
 mod address;
 mod internet;
 mod lorem;

@@ -1,4 +1,4 @@
-en_AU.title = "Australia (English)";
+pub const title: &str = "Australia (English)";
 mod name;
 mod company;
 mod internet;

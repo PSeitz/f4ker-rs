@@ -1,4 +1,4 @@
-en_ZA.title = "South Africa (English)";
+pub const title: &str = "South Africa (English)";
 mod address;
 mod internet;
 mod name;

@@ -1,5 +1,5 @@
-es_MX.title = "Spanish Mexico";
-es_MX.separator = " & ";
+pub const title: &str = "Spanish Mexico";
+pub const separator: &str = " & ";
 mod name;
 mod address;
 mod company;

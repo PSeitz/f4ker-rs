@@ -1,4 +1,4 @@
-de_AT.title = "German (Austria)";
+pub const title: &str = "German (Austria)";
 mod address;
 mod company;
 mod internet;

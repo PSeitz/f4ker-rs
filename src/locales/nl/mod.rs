@@ -1,4 +1,4 @@
-nl.title = "Dutch";
+pub const title: &str = "Dutch";
 mod address;
 mod company;
 mod internet;

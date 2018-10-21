@@ -1,4 +1,4 @@
-en_BORK.title = "Bork (English)";
+pub const title: &str = "Bork (English)";
 mod lorem;
 pub use  lorem::*;
 pub use  lorem::*;
