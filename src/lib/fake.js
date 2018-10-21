@@ -1,9 +1,15 @@
+struct Fake {
+{
+}
 /*
   fake.js - generator method for combining faker methods based on string input
 
 */
 
-function Fake (faker) {
+impl Fake {
+    fn new() -> Self {
+
+    }
   
   /**
    * Generator method for combining faker methods based on string input

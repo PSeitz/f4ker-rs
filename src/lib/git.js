@@ -1,8 +1,14 @@
+struct Git {
+{
+}
 /**
  * @namespace faker.git
  */
 
-var Git = function(faker) {
+impl Git {
+    fn new() -> Self {
+
+    }
   var self = this;
   var f = faker.fake;
 

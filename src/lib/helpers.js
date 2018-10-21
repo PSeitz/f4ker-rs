@@ -1,8 +1,14 @@
+struct Helpers {
+{
+}
 /**
  *
  * @namespace faker.helpers
  */
-var Helpers = function (faker) {
+impl Helpers {
+    fn new() -> Self {
+
+    }
 
   var self = this;
 

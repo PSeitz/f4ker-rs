@@ -1,10 +1,16 @@
+struct Random {
+{
+}
 var mersenne = require('../vendor/mersenne');
 
 /**
  *
  * @namespace faker.random
  */
-function Random (faker, seed) {
+impl Random {
+    fn new() -> Self {
+
+    }
   // Use a user provided seed if it exists
   if (seed) {
     if (Array.isArray(seed) && seed.length) {

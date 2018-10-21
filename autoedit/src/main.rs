@@ -120,24 +120,54 @@ fn main() -> Result<(), std::io::Error> {
 
         let mut structs = vec![];
 
-        for line in lines {
+        let mut lines: Vec<String> = lines.iter().flat_map(|line|{
             if let Some(pat) = re.captures(&line) {
-                println!("{:?}", &pat[1]);
                 structs.push(pat[1].to_string());
+                return vec![format!("impl {} {{",  &pat[1]),
+                    "    fn new() -> Self {".to_string(),
+                    "".to_string(),
+                    "    }".to_string()
+                ];
+
             }
             if let Some(pat) = re2.captures(&line) {
                 println!("{:?}", &pat[1]);
                 structs.push(pat[1].to_string());
+                return vec![format!("impl {} {{",  &pat[1]),
+                    "    fn new() -> Self {".to_string(),
+                    "".to_string(),
+                    "    }".to_string()
+                ];
             }
-            // re.is_match("2014-01-01")
+            vec![line.to_string()]
+        }).collect();
+
+
+
+        for structo in structs {
+            lines.insert(0, format!("struct {} {{", structo));
+            lines.insert(1, "{".to_string());
+            lines.insert(2, "}".to_string());
         }
 
-    }
+        //this.zipCode = function(format) {
 
+        let re = Regex::new(r"^this\.([A-Za-z]*) = function\(([A-Za-z,\s]*)\)*.").unwrap(); // var Phone = function (faker) {
+        // MOETHOS
+        let mut lines: Vec<String> = lines.iter().flat_map(|line|{
+                
+            if let Some(pat) = re.captures(&line) {
+                println!("{:?}", pat[1].to_string());
+            }
+            vec![line.to_string()]
+        }).collect();
+
+        write_lines(lines, &entry.path());
+    }
+    
 
     Ok(())
 }
-
 
 fn lines(path: &std::path::Path) -> Vec<String> {
     BufReader::new(File::open(path).expect(&format!("{:?}", path))).lines().map(|line|line.expect(&format!("{:?}", path))).collect()

@@ -1,7 +1,13 @@
+struct Finance {
+{
+}
 /**
  * @namespace faker.finance
  */
-var Finance = function (faker) {
+impl Finance {
+    fn new() -> Self {
+
+    }
   var ibanLib = require("./iban");
   var Helpers = faker.helpers,
       self = this;

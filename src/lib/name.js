@@ -1,8 +1,14 @@
+struct Name {
+{
+}
 /**
  *
  * @namespace faker.name
  */
-function Name (faker) {
+impl Name {
+    fn new() -> Self {
+
+    }
 
   /**
    * firstName

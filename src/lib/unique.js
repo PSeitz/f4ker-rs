@@ -1,9 +1,15 @@
+struct Unique {
+{
+}
 var uniqueExec = require('../vendor/unique');
 /**
  *
  * @namespace faker.unique
  */
-function Unique (faker) {
+impl Unique {
+    fn new() -> Self {
+
+    }
 
   // initialize unique module class variables
 

@@ -1,10 +1,16 @@
+struct Internet {
+{
+}
 var random_ua = require('../vendor/user-agent');
 
 /**
  *
  * @namespace faker.internet
  */
-var Internet = function (faker) {
+impl Internet {
+    fn new() -> Self {
+
+    }
   var self = this;
   /**
    * avatar

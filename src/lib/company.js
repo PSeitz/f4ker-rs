@@ -1,8 +1,14 @@
+struct Company {
+{
+}
 /**
  *
  * @namespace faker.company
  */
-var Company = function (faker) {
+impl Company {
+    fn new() -> Self {
+
+    }
   
   var self = this;
   var f = faker.fake;

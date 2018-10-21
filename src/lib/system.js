@@ -1,10 +1,16 @@
+struct System {
+{
+}
 // generates fake data for many computer systems properties
 
 /**
  *
  * @namespace faker.system
  */
-function System (faker) {
+impl System {
+    fn new() -> Self {
+
+    }
 
   /**
    * generates a file name with extension or optional type

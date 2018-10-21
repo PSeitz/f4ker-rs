@@ -1,8 +1,14 @@
+struct Image {
+{
+}
 /**
  *
  * @namespace faker.image
  */
-var Image = function (faker) {
+impl Image {
+    fn new() -> Self {
+
+    }
 
   var self = this;
 

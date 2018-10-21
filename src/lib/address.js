@@ -1,8 +1,14 @@
+struct Address {
+{
+}
 /**
  *
  * @namespace faker.address
  */
-function Address (faker) {
+impl Address {
+    fn new() -> Self {
+
+    }
   var f = faker.fake,
       Helpers = faker.helpers;
 

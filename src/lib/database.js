@@ -1,8 +1,14 @@
+struct Database {
+{
+}
 /**
  *
  * @namespace faker.database
  */
-var Database = function (faker) {
+impl Database {
+    fn new() -> Self {
+
+    }
   var self = this;
   /**
    * column

@@ -1,3 +1,6 @@
+struct Faker {
+{
+}
 /*
 
    this index.js file is used for including the faker library as a CommonJS module, instead of a bundle
@@ -21,7 +24,10 @@
  *
  * @namespace faker
  */
-function Faker (opts) {
+impl Faker {
+    fn new() -> Self {
+
+    }
 
   var self = this;
 

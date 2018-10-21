@@ -1,8 +1,14 @@
+struct Hacker {
+{
+}
 /**
  *
  * @namespace faker.hacker
  */
-var Hacker = function (faker) {
+impl Hacker {
+    fn new() -> Self {
+
+    }
   var self = this;
   
   /**

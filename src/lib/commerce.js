@@ -1,8 +1,14 @@
+struct Commerce {
+{
+}
 /**
  *
  * @namespace faker.commerce
  */
-var Commerce = function (faker) {
+impl Commerce {
+    fn new() -> Self {
+
+    }
   var self = this;
 
   /**

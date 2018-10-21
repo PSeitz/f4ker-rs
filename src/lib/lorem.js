@@ -1,9 +1,15 @@
+struct Lorem {
+{
+}
 
 /**
  *
  * @namespace faker.lorem
  */
-var Lorem = function (faker) {
+impl Lorem {
+    fn new() -> Self {
+
+    }
   var self = this;
   var Helpers = faker.helpers;
 
