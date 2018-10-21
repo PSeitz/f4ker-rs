@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static words: &'static [&'static str] = &[ 
   "ā",
   "āb",
   "āččūšāmūš",

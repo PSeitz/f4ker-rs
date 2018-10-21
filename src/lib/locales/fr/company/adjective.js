@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static adjective: &'static [&'static str] = &[ 
   "Adaptive",
   "Advanced",
   "Ameliorated",

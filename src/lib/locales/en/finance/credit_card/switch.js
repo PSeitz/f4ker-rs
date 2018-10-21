@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static switch: &'static [&'static str] = &[ 
   "6759-####-####-###L",
   "6759-####-####-####-#L",
   "6759-####-####-####-##L"

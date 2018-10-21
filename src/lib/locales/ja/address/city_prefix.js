@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static city_prefix: &'static [&'static str] = &[ 
   "北",
   "東",
   "西",

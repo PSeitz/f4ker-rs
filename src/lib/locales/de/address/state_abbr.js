@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static state_abbr: &'static [&'static str] = &[ 
   "BW",
   "BY",
   "BE",

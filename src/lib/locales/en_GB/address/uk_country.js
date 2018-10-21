@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static uk_country: &'static [&'static str] = &[ 
   "England",
   "Scotland",
   "Wales",

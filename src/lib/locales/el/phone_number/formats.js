@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static formats: &'static [&'static str] = &[ 
   "2310# #####",
   "2312# #####",
   "2313# #####",

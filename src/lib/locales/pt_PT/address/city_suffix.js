@@ -1,2 +1,2 @@
-module["exports"] = [
+pub static city_suffix: &'static [&'static str] = &[ 
 ];

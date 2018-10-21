@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static column: &'static [&'static str] = &[ 
   "id",
   "title",
   "name",

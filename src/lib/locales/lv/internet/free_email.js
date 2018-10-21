@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static free_email: &'static [&'static str] = &[ 
   "inbox.lv",
   "one.lv",
   "mail.lv",

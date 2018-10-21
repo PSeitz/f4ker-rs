@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static bs_adjective: &'static [&'static str] = &[ 
   "clicks-and-mortar",
   "value-added",
   "vertical",

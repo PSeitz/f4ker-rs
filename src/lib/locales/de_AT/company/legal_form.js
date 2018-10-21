@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static legal_form: &'static [&'static str] = &[ 
   "GmbH",
   "AG",
   "Gruppe",

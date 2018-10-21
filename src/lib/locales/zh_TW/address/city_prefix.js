@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static city_prefix: &'static [&'static str] = &[ 
   "臺北",
   "新北",
   "桃園",

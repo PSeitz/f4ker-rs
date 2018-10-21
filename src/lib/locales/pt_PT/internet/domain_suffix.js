@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static domain_suffix: &'static [&'static str] = &[ 
   "pt",
   "gov.pt",
   "com.pt",

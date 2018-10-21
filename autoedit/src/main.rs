@@ -53,6 +53,29 @@ fn main() -> Result<(), std::io::Error> {
             src.write_all(result.as_bytes())?;
 
         }
+    }
+
+    // convert module["exports"] = [
+    for entry in WalkDir::new("../src/lib/locales") {
+        let entry = entry.unwrap();
+        if entry.path().is_dir() {
+            continue;
+        }
+        let file_name = entry.file_name().to_str().unwrap();
+
+        let result = lines(&entry.path()).iter().map(|line|{
+            if line.contains(r#"module["exports"] = ["#) {
+                format!("pub static {}: &'static [&'static str] = &[ ", &file_name[..file_name.len()-3])
+                // pub static LOREM_WORD: &'static [&'static str] = &[
+            }else{
+                line.to_string()
+            }
+
+
+        }).collect::<Vec<_>>();
+
+        write_lines(result, &entry.path());
+
 
 
     }
@@ -61,7 +84,15 @@ fn main() -> Result<(), std::io::Error> {
 }
 
 
+fn lines(path: &std::path::Path) -> Vec<String> {
+    BufReader::new(File::open(path).expect(&format!("{:?}", path))).lines().map(|line|line.expect(&format!("{:?}", path))).collect()
+}
 
+fn write_lines(lines: Vec<String>, path: &std::path::Path) {
+    let text = lines.join("\n") + "\n";
+    let mut src = OpenOptions::new().create(true).truncate(true).write(true).open(path).expect(&format!("{:?}", path));
+    src.write_all(text.as_bytes()).expect(&format!("{:?}", path));
+}
 
 fn get_between(src:&str, start: &str, end: &str) -> Option<String> {
     if let Some(mut start_pos) = src.find(start) {

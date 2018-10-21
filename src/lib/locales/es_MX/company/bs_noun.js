@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static bs_noun: &'static [&'static str] = &[ 
    "sinergias",
    "web-readiness",
    "paradigmas",

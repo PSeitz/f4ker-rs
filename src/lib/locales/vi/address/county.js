@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static county: &'static [&'static str] = &[ 
   "Avon",
   "Bedfordshire",
   "Berkshire",

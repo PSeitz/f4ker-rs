@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static street_title: &'static [&'static str] = &[ 
   "13. janvāra",
   "Admirāļu",
   "Airītes",

@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static color: &'static [&'static str] = &[ 
   "κοκκικο",
   "πράσινο",
   "μπλε",

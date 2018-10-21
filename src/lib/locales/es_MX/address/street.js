@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static street: &'static [&'static str] = &[ 
 	"20 de Noviembre",
 	"Cinco de Mayo",
 	"Cuahutemoc",

@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static area_code: &'static [&'static str] = &[ 
   "10",
   "11",
   "12",

@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static city_suffix: &'static [&'static str] = &[ 
   " aan de IJssel",
   " aan de Rijn",
   "ambacht",

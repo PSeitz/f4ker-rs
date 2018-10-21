@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static country_code: &'static [&'static str] = &[ 
   "AD",
   "AE",
   "AF",

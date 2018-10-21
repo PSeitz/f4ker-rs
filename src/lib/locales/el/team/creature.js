@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static creature: &'static [&'static str] = &[ 
   "μυρμήγκια",
   "νυχτερίδες",
   "αρκούδες",

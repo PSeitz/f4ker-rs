@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static verb: &'static [&'static str] = &[ 
   "back up",
   "bypass",
   "hack",

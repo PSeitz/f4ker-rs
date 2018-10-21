@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static maestro: &'static [&'static str] = &[ 
   "5018-#{4}-#{4}-#{3}L",
   "5020-#{4}-#{4}-#{3}L",
   "5038-#{4}-#{4}-#{3}L",

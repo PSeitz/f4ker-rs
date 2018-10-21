@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static city_root: &'static [&'static str] = &[ 
   "Bắc Giang",
   "Bắc Kạn",
   "Bắc Ninh",

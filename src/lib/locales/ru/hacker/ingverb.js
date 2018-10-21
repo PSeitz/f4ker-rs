@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static ingverb: &'static [&'static str] = &[ 
   "резервное копирование",
   "обход",
   "архивирование",

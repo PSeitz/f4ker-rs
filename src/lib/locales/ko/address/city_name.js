@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static city_name: &'static [&'static str] = &[ 
   "강릉",
   "양양",
   "인제",

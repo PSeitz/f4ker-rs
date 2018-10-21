@@ -1,3 +1,3 @@
-module["exports"] = [
+pub static secondary_address: &'static [&'static str] = &[ 
   "кв. ###"
 ];

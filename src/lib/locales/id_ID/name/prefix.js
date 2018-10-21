@@ -1,1 +1,1 @@
-module["exports"] = [];
+pub static prefix: &'static [&'static str] = &[ 

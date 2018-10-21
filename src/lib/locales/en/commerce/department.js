@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static department: &'static [&'static str] = &[ 
   "Books",
   "Movies",
   "Music",

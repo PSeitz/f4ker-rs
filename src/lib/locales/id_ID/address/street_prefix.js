@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static street_prefix: &'static [&'static str] = &[ 
   "Ds.",
   "Dk.",
   "Gg.",

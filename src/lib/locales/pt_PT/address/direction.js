@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static direction: &'static [&'static str] = &[ 
   "Norte",
   "Este",
   "Sul",

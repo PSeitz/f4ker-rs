@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static street_root: &'static [&'static str] = &[ 
   "Eike",
   "Bjørke",
   "Gran",

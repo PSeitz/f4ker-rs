@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static account_type: &'static [&'static str] = &[ 
   "Checking",
   "Savings",
   "Money Market",

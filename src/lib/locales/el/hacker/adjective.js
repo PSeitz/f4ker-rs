@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static adjective: &'static [&'static str] = &[ 
   "οδηγός",
   "πρωτογενής",
   "ψηφιακή",

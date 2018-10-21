@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static suffix: &'static [&'static str] = &[ 
   "проф.",
   "доц.",
   "докт. пед. наук",

@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static bs_verb: &'static [&'static str] = &[ 
    "poner en práctica",
    "utilizar",
    "integrar",

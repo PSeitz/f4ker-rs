@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static supplemental: &'static [&'static str] = &[ 
   "ābbās",
   "ābduco",
   "ābēo",

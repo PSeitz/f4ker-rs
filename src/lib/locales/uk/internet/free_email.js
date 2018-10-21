@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static free_email: &'static [&'static str] = &[ 
   "ukr.net",
   "ex.ua",
   "e-mail.ua",

@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static street_root: &'static [&'static str] = &[ 
   "Ramsay Street",
   "Bonnie Doon",
   "Cavill Avenue",

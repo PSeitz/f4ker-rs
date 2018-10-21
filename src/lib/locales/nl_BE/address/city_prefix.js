@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static city_prefix: &'static [&'static str] = &[ 
   "'s Herenelderen",
   "'s-Gravenvoeren",
   "'s-Gravenwezel",

@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static state: &'static [&'static str] = &[ 
   "Andaman and Nicobar Islands",
   "Andra Pradesh",
   "Arunachal Pradesh",

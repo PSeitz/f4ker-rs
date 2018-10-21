@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static laser: &'static [&'static str] = &[ 
   "6304###########L",
   "6706###########L",
   "6771###########L",

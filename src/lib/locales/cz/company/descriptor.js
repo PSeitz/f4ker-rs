@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static descriptor: &'static [&'static str] = &[ 
   "24 hour",
   "24/7",
   "3rd generation",

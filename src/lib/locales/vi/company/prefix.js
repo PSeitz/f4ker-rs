@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static prefix: &'static [&'static str] = &[ 
   "Công ty",
   "Cty TNHH",
   "Cty",

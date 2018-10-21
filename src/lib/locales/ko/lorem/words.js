@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static words: &'static [&'static str] = &[ 
   "국가는",
   "법률이",
   "정하는",

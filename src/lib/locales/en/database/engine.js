@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static engine: &'static [&'static str] = &[ 
   "InnoDB",
   "MyISAM",
   "MEMORY",

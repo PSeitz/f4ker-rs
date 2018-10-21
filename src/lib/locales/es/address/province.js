@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static province: &'static [&'static str] = &[ 
   "Álava",
   "Albacete",
   "Alicante",

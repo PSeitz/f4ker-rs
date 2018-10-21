@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static street_title: &'static [&'static str] = &[ 
   "Abbas Fətullayev",
   "Abbas Mirzə Şərifzadə",
   "Abbas Səhhət",

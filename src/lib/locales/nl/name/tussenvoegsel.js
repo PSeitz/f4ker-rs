@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static tussenvoegsel: &'static [&'static str] = &[ 
   "van",
   "van de",
   "van den",

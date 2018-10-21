@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static city: &'static [&'static str] = &[ 
   "Bhaktapur",
   "Biratnagar",
   "Birendranagar",

@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static direction_abbr: &'static [&'static str] = &[ 
   "N",
   "E",
   "S",

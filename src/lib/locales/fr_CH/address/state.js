@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static state: &'static [&'static str] = &[ 
   "Argovie",
   "Appenzell Rhodes-Intérieures",
   "Appenzell Rhodes-Extérieures",

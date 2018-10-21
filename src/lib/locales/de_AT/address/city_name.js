@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static city_name: &'static [&'static str] = &[ 
   "Aigen im Mühlkreis",
   "Allerheiligen bei Wildon",
   "Altenfelden",

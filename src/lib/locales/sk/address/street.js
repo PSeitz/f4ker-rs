@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static street: &'static [&'static str] = &[ 
   "Adámiho",
   "Ahoj",
   "Albína Brunovského",

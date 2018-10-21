@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static street_address: &'static [&'static str] = &[ 
   "#{street_name}, پلاک #{building_number}",
   "#{street_name}, #{street_name}, پلاک #{building_number}"
 ];

@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static discover: &'static [&'static str] = &[ 
   "/6011-####-####-###L/",
   "/65##-####-####-###L/",
   "/64[4-9]#-####-####-###L/",

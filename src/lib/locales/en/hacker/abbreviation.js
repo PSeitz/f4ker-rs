@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static abbreviation: &'static [&'static str] = &[ 
   "TCP",
   "HTTP",
   "SDD",

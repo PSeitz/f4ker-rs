@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static exchange_code: &'static [&'static str] = &[ 
   "201",
   "202",
   "203",

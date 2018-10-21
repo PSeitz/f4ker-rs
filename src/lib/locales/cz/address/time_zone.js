@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static time_zone: &'static [&'static str] = &[ 
   "Pacific/Midway",
   "Pacific/Pago_Pago",
   "Pacific/Honolulu",

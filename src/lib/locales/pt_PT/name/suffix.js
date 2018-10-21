@@ -1,2 +1,2 @@
-module["exports"] = [
+pub static suffix: &'static [&'static str] = &[ 
 ];

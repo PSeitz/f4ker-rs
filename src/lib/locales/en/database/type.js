@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static type: &'static [&'static str] = &[ 
   "int",
   "varchar",
   "text",

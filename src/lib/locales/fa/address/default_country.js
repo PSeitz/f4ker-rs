@@ -1,3 +1,2 @@
-module["exports"] = [
-  "«Ì—«‰"
+pub static default_country: &'static [&'static str] = &[ 
 ];

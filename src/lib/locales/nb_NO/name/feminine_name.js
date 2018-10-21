@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static feminine_name: &'static [&'static str] = &[ 
   "Emma",
   "Sara",
   "Thea",

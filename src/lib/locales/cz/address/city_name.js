@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static city_name: &'static [&'static str] = &[ 
   "Abertamy",
   "Adamov",
   "Andělská Hora",

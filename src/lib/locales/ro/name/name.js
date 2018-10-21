@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static name: &'static [&'static str] = &[ 
     "#{male_first_name} #{last_name}",
     "#{male_first_name} #{last_name}",
     "#{male_first_name} #{last_name}",

@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static name: &'static [&'static str] = &[ 
   "Redhold",
   "Treeflex",
   "Trippledex",

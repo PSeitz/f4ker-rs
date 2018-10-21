@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static solo: &'static [&'static str] = &[ 
   "6767-####-####-###L",
   "6767-####-####-####-#L",
   "6767-####-####-####-##L"

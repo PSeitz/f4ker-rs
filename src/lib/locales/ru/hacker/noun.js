@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static noun: &'static [&'static str] = &[ 
   "драйвер",
   "протокол",
   "ограничитель",

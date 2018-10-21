@@ -1,4 +1,4 @@
-module["exports"] = [
+pub static city_suffix: &'static [&'static str] = &[ 
   "a mare",
   "lido",
   "ligure",
