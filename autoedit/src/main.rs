@@ -53,23 +53,23 @@ fn main() -> Result<(), std::io::Error> {
     }
 
     //reexport
-    for entry in WalkDir::new("../src/lib/locales") {
-        let entry = entry.unwrap();
-        let file_name = entry.file_name().to_str().unwrap();
+    // for entry in WalkDir::new("../src/lib/locales") {
+    //     let entry = entry.unwrap();
+    //     let file_name = entry.file_name().to_str().unwrap();
 
-        if file_name == "mod.rs" {
-            let mut lines = lines(&entry.path());
+    //     if file_name == "mod.rs" {
+    //         let mut lines = lines(&entry.path());
 
-            let reexport = lines.iter()
-            .flat_map(|line| get_between(&line, "mod", ";") )
-            .map(|module|format!("pub use {}::*;", module)).collect::<Vec<_>>();
+    //         let reexport = lines.iter()
+    //         .flat_map(|line| get_between(&line, "mod", ";") )
+    //         .map(|module|format!("pub use {}::*;", module)).collect::<Vec<_>>();
 
-            lines.extend(reexport);
+    //         lines.extend(reexport);
 
-            write_lines(lines, &entry.path());
+    //         write_lines(lines, &entry.path());
 
-        }
-    }
+    //     }
+    // }
 
     // convert module["exports"] = [
     for entry in WalkDir::new("../src/lib/locales") {
@@ -103,6 +103,37 @@ fn main() -> Result<(), std::io::Error> {
             std::fs::rename(entry.path(), entree.replace(".js", ".rs"))?;
         }
     }
+
+    // handle lib files
+    for entry in WalkDir::new("../src/lib/") {
+        let entry = entry.unwrap();
+        if entry.path().is_dir() || entry.depth() >= 2 {
+            continue;
+        }
+        let file_name = entry.file_name().to_str().unwrap();
+        println!("{:?}", file_name);
+        use regex::Regex;
+        let re = Regex::new(r"^function ([A-Z][A-Za-z]*).*").unwrap(); // function Address (faker) {
+        let re2 = Regex::new(r"^var ([A-Z][A-Za-z]*).*").unwrap(); // var Phone = function (faker) {
+
+        let mut lines = lines(&entry.path());
+
+        let mut structs = vec![];
+
+        for line in lines {
+            if let Some(pat) = re.captures(&line) {
+                println!("{:?}", &pat[1]);
+                structs.push(pat[1].to_string());
+            }
+            if let Some(pat) = re2.captures(&line) {
+                println!("{:?}", &pat[1]);
+                structs.push(pat[1].to_string());
+            }
+            // re.is_match("2014-01-01")
+        }
+
+    }
+
 
     Ok(())
 }
