@@ -8,3 +8,8 @@ pub use  mastercard::*;
 pub use  discover::*;
 pub use  american_express::*;
 pub use  maestro::*;
+pub use  visa::*;
+pub use  mastercard::*;
+pub use  discover::*;
+pub use  american_express::*;
+pub use  maestro::*;

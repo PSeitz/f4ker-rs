@@ -4,3 +4,6 @@ mod name;
 pub use  suffix::*;
 pub use  legal_form::*;
 pub use  name::*;
+pub use  suffix::*;
+pub use  legal_form::*;
+pub use  name::*;

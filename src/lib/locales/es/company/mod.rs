@@ -8,3 +8,8 @@ pub use  noun::*;
 pub use  descriptor::*;
 pub use  adjective::*;
 pub use  name::*;
+pub use  suffix::*;
+pub use  noun::*;
+pub use  descriptor::*;
+pub use  adjective::*;
+pub use  name::*;

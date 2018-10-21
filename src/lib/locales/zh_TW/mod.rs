@@ -5,3 +5,6 @@ mod phone_number;
 pub use  address::*;
 pub use  name::*;
 pub use  phone_number::*;
+pub use  address::*;
+pub use  name::*;
+pub use  phone_number::*;

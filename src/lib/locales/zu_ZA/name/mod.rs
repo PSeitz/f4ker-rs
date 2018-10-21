@@ -6,3 +6,7 @@ pub use  male_first_name::*;
 pub use  female_first_name::*;
 pub use  first_name::*;
 pub use  last_name::*;
+pub use  male_first_name::*;
+pub use  female_first_name::*;
+pub use  first_name::*;
+pub use  last_name::*;

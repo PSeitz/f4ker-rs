@@ -4,3 +4,6 @@ mod author;
 pub use  name::*;
 pub use  version::*;
 pub use  author::*;
+pub use  name::*;
+pub use  version::*;
+pub use  author::*;

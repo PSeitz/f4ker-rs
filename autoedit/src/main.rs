@@ -89,9 +89,19 @@ fn main() -> Result<(), std::io::Error> {
         }).collect::<Vec<_>>();
 
         write_lines(result, &entry.path());
+    }
 
-
-
+    // rename .js to .rs
+    for entry in WalkDir::new("../src/lib/locales") {
+        let entry = entry.unwrap();
+        if entry.path().is_dir() {
+            continue;
+        }
+        let file_name = entry.file_name().to_str().unwrap();
+        if file_name.ends_with(".js") {
+            let entree = entry.path().to_str().unwrap().to_string();
+            std::fs::rename(entry.path(), entree.replace(".js", ".rs"))?;
+        }
     }
 
     Ok(())

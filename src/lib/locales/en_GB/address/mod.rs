@@ -6,3 +6,7 @@ pub use  county::*;
 pub use  uk_country::*;
 pub use  default_country::*;
 pub use  postcode::*;
+pub use  county::*;
+pub use  uk_country::*;
+pub use  default_country::*;
+pub use  postcode::*;

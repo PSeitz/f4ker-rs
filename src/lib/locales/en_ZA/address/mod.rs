@@ -8,3 +8,8 @@ pub use  city_prefix::*;
 pub use  default_country::*;
 pub use  postcode::*;
 pub use  state::*;
+pub use  city::*;
+pub use  city_prefix::*;
+pub use  default_country::*;
+pub use  postcode::*;
+pub use  state::*;

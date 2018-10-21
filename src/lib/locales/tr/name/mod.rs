@@ -6,3 +6,7 @@ pub use  first_name::*;
 pub use  last_name::*;
 pub use  prefix::*;
 pub use  name::*;
+pub use  first_name::*;
+pub use  last_name::*;
+pub use  prefix::*;
+pub use  name::*;

@@ -9,3 +9,8 @@ pub use  address::*;
 pub use  internet::*;
 pub use  company::*;
 pub use  phone_number::*;
+pub use  name::*;
+pub use  address::*;
+pub use  internet::*;
+pub use  company::*;
+pub use  phone_number::*;

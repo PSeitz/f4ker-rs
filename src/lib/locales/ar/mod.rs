@@ -8,3 +8,7 @@ pub use  address::*;
 pub use  phone_number::*;
 pub use  cell_phone::*;
 pub use  commerce::*;
+pub use  address::*;
+pub use  phone_number::*;
+pub use  cell_phone::*;
+pub use  commerce::*;
