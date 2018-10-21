@@ -31,26 +31,42 @@ fn main() -> Result<(), std::io::Error> {
 
     }
 
+    //require to mod
     for entry in WalkDir::new("../src/lib/locales") {
         let entry = entry.unwrap();
         let file_name = entry.file_name().to_str().unwrap();
 
         if file_name == "mod.rs" {
 
-            let result = BufReader::new(File::open(&entry.path())?).lines().map(|line|line.unwrap()).map(|line|{
+            let result = lines(&entry.path()).into_iter().map(|line|{
                 if let Some(module) = get_between(&line, "require(\"./", "\");") {
                     "mod " .to_string() + &module + ";"
                 }else{
-                    line.to_string()
+                    line
                 }
 
-            }).collect::<Vec<_>>().join("\n") + "\n";
+            }).collect::<Vec<_>>();
 
-            let mut src = OpenOptions::new().create(true).truncate(true).read(true).write(true).open(&entry.path())?;
-            // src.set_len(0)?;
-            // address.default_country = require("./default_country");
-            // address.postcode = require("./postcode");
-            src.write_all(result.as_bytes())?;
+            write_lines(result, &entry.path());
+
+        }
+    }
+
+    //reexport
+    for entry in WalkDir::new("../src/lib/locales") {
+        let entry = entry.unwrap();
+        let file_name = entry.file_name().to_str().unwrap();
+
+        if file_name == "mod.rs" {
+            let mut lines = lines(&entry.path());
+
+            let reexport = lines.iter()
+            .flat_map(|line| get_between(&line, "mod", ";") )
+            .map(|module|format!("pub use {}::*;", module)).collect::<Vec<_>>();
+
+            lines.extend(reexport);
+
+            write_lines(lines, &entry.path());
 
         }
     }
@@ -63,14 +79,12 @@ fn main() -> Result<(), std::io::Error> {
         }
         let file_name = entry.file_name().to_str().unwrap();
 
-        let result = lines(&entry.path()).iter().map(|line|{
+        let result = lines(&entry.path()).into_iter().map(|line|{
             if line.contains(r#"module["exports"] = ["#) {
                 format!("pub static {}: &'static [&'static str] = &[ ", &file_name[..file_name.len()-3])
-                // pub static LOREM_WORD: &'static [&'static str] = &[
             }else{
-                line.to_string()
+                line
             }
-
 
         }).collect::<Vec<_>>();
 

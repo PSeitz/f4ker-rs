@@ -9,3 +9,13 @@ mod solo;
 mod maestro;
 mod laser;
 credit_card.instapayment = require("./instapayment.js")
+pub use  visa::*;
+pub use  mastercard::*;
+pub use  discover::*;
+pub use  american_express::*;
+pub use  diners_club::*;
+pub use  jcb::*;
+pub use  switch::*;
+pub use  solo::*;
+pub use  maestro::*;
+pub use  laser::*;

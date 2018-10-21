@@ -4,3 +4,8 @@ mod internet;
 mod phone_number;
 mod cell_phone;
 mod company;
+pub use  address::*;
+pub use  internet::*;
+pub use  phone_number::*;
+pub use  cell_phone::*;
+pub use  company::*;

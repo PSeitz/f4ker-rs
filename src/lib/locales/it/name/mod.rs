@@ -3,3 +3,8 @@ mod last_name;
 mod prefix;
 mod suffix;
 mod name;
+pub use  first_name::*;
+pub use  last_name::*;
+pub use  prefix::*;
+pub use  suffix::*;
+pub use  name::*;

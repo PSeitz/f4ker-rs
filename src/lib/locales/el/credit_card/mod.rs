@@ -3,3 +3,8 @@ mod mastercard;
 mod discover;
 mod american_express;
 mod maestro;
+pub use  visa::*;
+pub use  mastercard::*;
+pub use  discover::*;
+pub use  american_express::*;
+pub use  maestro::*;
