@@ -1,1 +1,1 @@
-phone_number.formats = require("./formats");
+mod formats;

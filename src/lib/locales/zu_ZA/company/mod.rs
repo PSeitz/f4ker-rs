@@ -1,1 +1,1 @@
-company.suffix = require("./suffix");
+mod suffix;

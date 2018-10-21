@@ -1,6 +1,6 @@
 de_CH.title = "German (Switzerland)";
-de_CH.address = require("./address");
-de_CH.company = require("./company");
-de_CH.internet = require("./internet");
-de_CH.name = require("./name");
-de_CH.phone_number = require("./phone_number");
+mod address;
+mod company;
+mod internet;
+mod name;
+mod phone_number;

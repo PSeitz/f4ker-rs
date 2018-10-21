@@ -1,4 +1,4 @@
-hacker.abbreviation = require("./abbreviation");
-hacker.adjective = require("./adjective");
-hacker.noun = require("./noun");
-hacker.verb = require("./verb");
+mod abbreviation;
+mod adjective;
+mod noun;
+mod verb;

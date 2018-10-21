@@ -1,2 +1,2 @@
-lorem.words = require("./words");
-lorem.supplemental = require("./supplemental");
+mod words;
+mod supplemental;

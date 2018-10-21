@@ -1,1 +1,1 @@
-internet.domain_suffix = require("./domain_suffix");
+mod domain_suffix;

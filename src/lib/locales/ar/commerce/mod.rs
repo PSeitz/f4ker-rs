@@ -1,2 +1,2 @@
-commerce.color = require("./color");
-commerce.department = require("./department");
+mod color;
+mod department;

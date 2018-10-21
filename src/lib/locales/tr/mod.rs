@@ -1,7 +1,7 @@
 tr.title = "Turkish";
-tr.address = require("./address");
-tr.internet = require("./internet");
-tr.lorem = require("./lorem");
-tr.phone_number = require("./phone_number");
-tr.cell_phone = require("./cell_phone");
-tr.name = require("./name");
+mod address;
+mod internet;
+mod lorem;
+mod phone_number;
+mod cell_phone;
+mod name;

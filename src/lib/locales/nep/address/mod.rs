@@ -1,4 +1,4 @@
-address.postcode = require("./postcode");
-address.state = require("./state");
-address.city = require("./city");
-address.default_country = require("./default_country");
+mod postcode;
+mod state;
+mod city;
+mod default_country;

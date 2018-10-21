@@ -1,7 +1,7 @@
 de_AT.title = "German (Austria)";
-de_AT.address = require("./address");
-de_AT.company = require("./company");
-de_AT.internet = require("./internet");
-de_AT.name = require("./name");
-de_AT.phone_number = require("./phone_number");
-de_AT.cell_phone = require("./cell_phone");
+mod address;
+mod company;
+mod internet;
+mod name;
+mod phone_number;
+mod cell_phone;

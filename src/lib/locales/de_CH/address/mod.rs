@@ -1,3 +1,3 @@
-address.country_code = require("./country_code");
-address.postcode = require("./postcode");
-address.default_country = require("./default_country");
+mod country_code;
+mod postcode;
+mod default_country;

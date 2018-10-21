@@ -1,2 +1,2 @@
-name.first_name = require("./first_name");
-name.last_name = require("./last_name");
+mod first_name;
+mod last_name;

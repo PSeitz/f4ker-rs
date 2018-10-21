@@ -1,3 +1,3 @@
-name.first_name = require("./first_name");
-name.last_name = require("./last_name");
-name.ocker_first_name = require("./ocker_first_name");
+mod first_name;
+mod last_name;
+mod ocker_first_name;

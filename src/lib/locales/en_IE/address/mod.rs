@@ -1,2 +1,2 @@
-address.county = require("./county");
-address.default_country = require("./default_country");
+mod county;
+mod default_country;

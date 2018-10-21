@@ -1,2 +1,2 @@
-team.creature = require("./creature");
-team.name = require("./name");
+mod creature;
+mod name;

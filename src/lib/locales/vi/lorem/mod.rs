@@ -1,1 +1,1 @@
-lorem.words = require("./words");
+mod words;

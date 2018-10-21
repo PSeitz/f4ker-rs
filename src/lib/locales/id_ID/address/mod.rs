@@ -1,9 +1,9 @@
-address.building_number = require("./building_number");
-address.postcode = require("./postcode");
-address.state = require("./state");
-address.city_name = require("./city_name");
-address.city = require("./city");
-address.street_prefix = require("./street_prefix");
-address.street_name = require("./street_name");
-address.street_address = require("./street_address");
-address.default_country = require("./default_country");
+mod building_number;
+mod postcode;
+mod state;
+mod city_name;
+mod city;
+mod street_prefix;
+mod street_name;
+mod street_address;
+mod default_country;

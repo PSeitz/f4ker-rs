@@ -1,8 +1,8 @@
-name.male_first_name = require("./male_first_name");
-name.male_last_name = require("./male_last_name");
-name.female_first_name = require("./female_first_name");
-name.female_last_name = require("./female_last_name");
-name.title = require("./title");
-name.prefix = require("./prefix");
-name.suffix = require("./suffix");
-name.name = require("./name");
+mod male_first_name;
+mod male_last_name;
+mod female_first_name;
+mod female_last_name;
+mod title;
+mod prefix;
+mod suffix;
+mod name;

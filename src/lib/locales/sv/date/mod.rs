@@ -1,2 +1,2 @@
-date.month = require("./month");
-date.weekday = require("./weekday");
+mod month;
+mod weekday;

@@ -1,9 +1,9 @@
 az.title = "Azerbaijani";
 az.separator = " və ";
-az.address = require("./address");
-az.internet = require("./internet");
-az.name = require("./name");
-az.phone_number = require("./phone_number");
-az.commerce = require("./commerce");
-az.company = require("./company");
-az.date = require("./date");
+mod address;
+mod internet;
+mod name;
+mod phone_number;
+mod commerce;
+mod company;
+mod date;

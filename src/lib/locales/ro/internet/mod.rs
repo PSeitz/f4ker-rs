@@ -1,3 +1,3 @@
-internet.free_email = require("./free_email");
-internet.domain_suffix = require("./domain_suffix");
-internet.avatar_uri = require("./avatar_uri");
+mod free_email;
+mod domain_suffix;
+mod avatar_uri;

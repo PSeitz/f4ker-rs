@@ -1,4 +1,4 @@
-database.collation = require("./collation");
-database.column = require("./column");
-database.engine = require("./engine");
-database.type = require("./type");
+mod collation;
+mod column;
+mod engine;
+mod type;

@@ -1,9 +1,9 @@
-address.postcode = require("./postcode");
-address.state = require("./state");
-address.state_abbr = require("./state_abbr");
-address.city_suffix = require("./city_suffix");
-address.city_name = require("./city_name");
-address.city = require("./city");
-address.street_root = require("./street_root");
-address.street_suffix = require("./street_suffix");
-address.street_name = require("./street_name");
+mod postcode;
+mod state;
+mod state_abbr;
+mod city_suffix;
+mod city_name;
+mod city;
+mod street_root;
+mod street_suffix;
+mod street_name;

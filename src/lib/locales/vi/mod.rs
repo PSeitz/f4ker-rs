@@ -1,8 +1,8 @@
 vi.title = "Vietnamese";
-vi.address = require("./address");
-vi.internet = require("./internet");
-vi.phone_number = require("./phone_number");
-vi.cell_phone = require("./cell_phone");
-vi.name = require("./name");
-vi.company = require("./company");
-vi.lorem = require("./lorem");
+mod address;
+mod internet;
+mod phone_number;
+mod cell_phone;
+mod name;
+mod company;
+mod lorem;

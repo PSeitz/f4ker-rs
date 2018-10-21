@@ -1,3 +1,3 @@
-commerce.color = require("./color");
-commerce.department = require("./department");
-commerce.product_name = require("./product_name");
+mod color;
+mod department;
+mod product_name;

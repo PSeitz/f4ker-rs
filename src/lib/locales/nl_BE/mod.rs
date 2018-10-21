@@ -1,6 +1,6 @@
 nl_BE.title = "Dutch (Belgium)";
-nl_BE.address = require("./address");
-nl_BE.company = require("./company");
-nl_BE.internet = require("./internet");
-nl_BE.name = require("./name");
-nl_BE.phone_number = require("./phone_number");
+mod address;
+mod company;
+mod internet;
+mod name;
+mod phone_number;

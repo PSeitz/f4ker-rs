@@ -1,8 +1,8 @@
-company.suffix = require("./suffix");
-company.noun = require("./noun");
-company.descriptor = require("./descriptor");
-company.adjective = require("./adjective");
-company.bs_noun = require("./bs_noun");
-company.bs_verb = require("./bs_verb");
-company.bs_adjective = require("./bs_adjective");
-company.name = require("./name");
+mod suffix;
+mod noun;
+mod descriptor;
+mod adjective;
+mod bs_noun;
+mod bs_verb;
+mod bs_adjective;
+mod name;

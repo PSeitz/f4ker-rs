@@ -1,7 +1,7 @@
 fr.title = "French";
-fr.address = require("./address");
-fr.company = require("./company");
-fr.internet = require("./internet");
-fr.lorem = require("./lorem");
-fr.name = require("./name");
-fr.phone_number = require("./phone_number");
+mod address;
+mod company;
+mod internet;
+mod lorem;
+mod name;
+mod phone_number;

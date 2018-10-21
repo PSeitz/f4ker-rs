@@ -1,3 +1,3 @@
-company.suffix = require("./suffix");
-company.legal_form = require("./legal_form");
-company.name = require("./name");
+mod suffix;
+mod legal_form;
+mod name;
