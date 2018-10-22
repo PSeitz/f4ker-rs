@@ -1,6 +1,6 @@
 // Source: http://unicode.org/cldr/trac/browser/tags/release-27/common/main/en.xml#L1799
-module["exports"] = {
-  wide: [
+
+pub static wide: &'static [&'static str] = &[ 
     "January",
     "February",
     "March",
@@ -13,10 +13,10 @@ module["exports"] = {
     "October",
     "November",
     "December"
-  ],
+];
   // Property "wide_context" is optional, if not set then "wide" will be used instead
   // It is used to specify a word in context, which may differ from a stand-alone word
-  wide_context: [
+pub static wide_context: &'static [&'static str] = &[ 
     "January",
     "February",
     "March",
@@ -29,8 +29,8 @@ module["exports"] = {
     "October",
     "November",
     "December"
-  ],
-  abbr: [
+];
+pub static abbr: &'static [&'static str] = &[ 
     "Jan",
     "Feb",
     "Mar",
@@ -43,10 +43,10 @@ module["exports"] = {
     "Oct",
     "Nov",
     "Dec"
-  ],
+];
   // Property "abbr_context" is optional, if not set then "abbr" will be used instead
   // It is used to specify a word in context, which may differ from a stand-alone word
-  abbr_context: [
+pub static abbr_context: &'static [&'static str] = &[ 
     "Jan",
     "Feb",
     "Mar",
@@ -59,5 +59,5 @@ module["exports"] = {
     "Oct",
     "Nov",
     "Dec"
-  ]
-};
+];
+

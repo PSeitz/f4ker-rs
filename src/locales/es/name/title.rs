@@ -1,5 +1,5 @@
-module["exports"] = {
-  "descriptor": [
+
+pub static descriptor: &'static [&'static str] = &[ 
     "Jefe",
     "Senior",
     "Directo",
@@ -21,8 +21,8 @@ module["exports"] = {
     "Humano",
     "Gerente",
     "Director"
-  ],
-  "level": [
+];
+pub static level: &'static [&'static str] = &[ 
     "Soluciones",
     "Programa",
     "Marca",
@@ -59,8 +59,8 @@ module["exports"] = {
     "Factores",
     "Usabilidad",
     "Métricas"
-  ],
-  "job": [
+];
+pub static job: &'static [&'static str] = &[ 
     "Supervisor",
     "Asociado",
     "Ejecutivo",
@@ -86,5 +86,5 @@ module["exports"] = {
     "Agente",
     "Representante",
     "Estratega"
-  ]
-};
+];
+

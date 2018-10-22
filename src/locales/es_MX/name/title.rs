@@ -1,5 +1,4 @@
- module["exports"] = {
-  "descriptor": [
+pub static descriptor: &'static [&'static str] = &[ 
     "Jefe",
     "Senior",
     "Directo",
@@ -22,8 +21,8 @@
     "Gerente",
     "SubGerente",
     "Director"
-  ],
-  "level": [
+];
+pub static level: &'static [&'static str] = &[ 
     "Soluciones",
     "Programa",
     "Marca",
@@ -60,8 +59,8 @@
     "Factores",
     "Usabilidad",
     "Métricas",
-  ],
-  "job": [
+];
+pub static job: &'static [&'static str] = &[ 
     "Supervisor",
     "Asociado",
     "Ejecutivo",
@@ -91,5 +90,5 @@
     "Scrum Owner",
     "Product Owner",
     "Scrum Developer"
-  ]
-};
+];
+

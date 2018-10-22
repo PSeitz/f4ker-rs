@@ -1,5 +1,5 @@
-module["exports"] = {
-  "adjective": [
+
+pub static adjective: &'static [&'static str] = &[ 
     "Liten",
     "Ergonomisk",
     "Robust",
@@ -10,8 +10,8 @@ module["exports"] = {
     "Praktisk",
     "Slimmad",
     "Grym"
-  ],
-  "material": [
+];
+pub static material: &'static [&'static str] = &[ 
     "Stål",
     "Metall",
     "Trä",
@@ -21,8 +21,8 @@ module["exports"] = {
     "Grnit",
     "Gummi",
     "Latex"
-  ],
-  "product": [
+];
+pub static product: &'static [&'static str] = &[ 
     "Stol",
     "Bil",
     "Dator",
@@ -32,5 +32,5 @@ module["exports"] = {
     "Table",
     "Shoes",
     "Hat"
-  ]
-};
+];
+

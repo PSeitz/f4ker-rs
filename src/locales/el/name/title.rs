@@ -1,13 +1,13 @@
-module["exports"] = {
-  "descriptor": [
+
+pub static descriptor: &'static [&'static str] = &[ 
     "Senior",
     "Εταιρείες",
     "Πελάτης",
     "Επενδυτής",
     "Εσωτερικό",
     "Κύριος"
-  ],
-  "level": [
+];
+pub static level: &'static [&'static str] = &[ 
     "Λύσεις",
     "Πρόγραμμα",
     "Μάρκα",
@@ -38,8 +38,8 @@ module["exports"] = {
     "Δημιουργική",
     "Διαμόρφωση",
     "Μετρήσεις"
-  ],
-  "job": [
+];
+pub static job: &'static [&'static str] = &[ 
     "Επόπτης",
     "Συνεργάτης",
     "Σύμβουλος",
@@ -59,5 +59,5 @@ module["exports"] = {
     "Συντονιστής",
     "Εκπρόσωπος",
     "Αντιπρόσωπος"
-  ]
-};
+];
+

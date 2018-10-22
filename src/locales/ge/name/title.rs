@@ -1,13 +1,13 @@
-module["exports"] = {
-  "descriptor": [
+
+pub static descriptor: &'static [&'static str] = &[ 
     "გენერალური",
     "მთავარი",
     "სტაჟიორ",
     "უმცროსი",
     "ყოფილი",
     "წამყვანი"
-  ],
-  "level": [
+];
+pub static level: &'static [&'static str] = &[ 
     "აღრიცხვების",
     "ბრენდინგის",
     "ბრენიდს",
@@ -33,8 +33,8 @@ module["exports"] = {
     "ქსელის",
     "ხარისხის",
     "ჯგუფის"
-  ],
-  "job": [
+];
+pub static job: &'static [&'static str] = &[ 
     "აგენტი",
     "ადვოკატი",
     "ადმინისტრატორი",
@@ -72,5 +72,5 @@ module["exports"] = {
     "ტექნიკოსი",
     "ფოტოგრაფი",
     "წარმომადგენელი"
-  ]
-};
+];
+

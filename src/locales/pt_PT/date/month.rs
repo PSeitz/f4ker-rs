@@ -1,6 +1,6 @@
 // Source: https://unicode.org/cldr/trac/browser/trunk/common/main/pt.xml?rev=14409#L1811
-module["exports"] = {
-  wide: [
+
+pub static wide: &'static [&'static str] = &[ 
     "Janeiro",
     "Fevereiro",
     "Março",
@@ -13,8 +13,8 @@ module["exports"] = {
     "Outubro",
     "Novembro",
     "Dezembro"
-  ],
-  abbr: [
+];
+pub static abbr: &'static [&'static str] = &[ 
     "Jan",
     "Fev",
     "Mar",
@@ -27,5 +27,5 @@ module["exports"] = {
     "Out",
     "Nov",
     "Dez"
-  ]
-};
+];
+

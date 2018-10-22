@@ -1,5 +1,5 @@
-module["exports"] = {
-  wide: [
+
+pub static wide: &'static [&'static str] = &[ 
     "Luni",
     "Marți",
     "Miercuri",
@@ -7,10 +7,10 @@ module["exports"] = {
     "Vineri",
     "Sâmbătă",
     "Duminică"
-  ],
+];
   // Property "wide_context" is optional, if not set then "wide" will be used instead
   // It is used to specify a word in context, which may differ from a stand-alone word
-  wide_context: [
+pub static wide_context: &'static [&'static str] = &[ 
     "Luni",
     "Marți",
     "Miercuri",
@@ -18,8 +18,8 @@ module["exports"] = {
     "Vineri",
     "Sâmbătă",
     "Duminică"
-  ],
-  abbr: [
+];
+pub static abbr: &'static [&'static str] = &[ 
     "Luni",
     "Marți",
     "Miercuri",
@@ -27,10 +27,10 @@ module["exports"] = {
     "Vineri",
     "Sâmbătă",
     "Duminică"
-  ],
+];
   // Property "abbr_context" is optional, if not set then "abbr" will be used instead
   // It is used to specify a word in context, which may differ from a stand-alone word
-  abbr_context: [
+pub static abbr_context: &'static [&'static str] = &[ 
     "Luni",
     "Marți",
     "Miercuri",
@@ -38,5 +38,5 @@ module["exports"] = {
     "Vineri",
     "Sâmbătă",
     "Duminică"
-  ]
-};
+];
+

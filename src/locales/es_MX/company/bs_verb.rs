@@ -59,4 +59,4 @@ pub static bs_verb: &'static [&'static str] = &[
    "productize",
    "redefinir",
    "recontextualizar"
-]
+];

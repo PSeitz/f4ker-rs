@@ -1,5 +1,5 @@
-module["exports"] = {
-  wide: [
+
+pub static wide: &'static [&'static str] = &[ 
     "Januari",
     "Februari",
     "Maret",
@@ -12,8 +12,8 @@ module["exports"] = {
     "Oktober",
     "November",
     "Desember"
-  ],
-  wide_context: [
+];
+pub static wide_context: &'static [&'static str] = &[ 
     "Januari",
     "Februari",
     "Maret",
@@ -26,8 +26,8 @@ module["exports"] = {
     "Oktober",
     "November",
     "Desember"
-  ],
-  abbr: [
+];
+pub static abbr: &'static [&'static str] = &[ 
     "Jan",
     "Feb",
     "Mar",
@@ -40,8 +40,8 @@ module["exports"] = {
     "Okt",
     "Nov",
     "Des"
-  ],
-  abbr_context: [
+];
+pub static abbr_context: &'static [&'static str] = &[ 
     "Jan",
     "Feb",
     "Mar",
@@ -54,5 +54,5 @@ module["exports"] = {
     "Okt",
     "Nov",
     "Des"
-  ]
-};
+];
+

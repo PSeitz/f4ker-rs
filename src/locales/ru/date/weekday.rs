@@ -1,6 +1,6 @@
 // source: http://unicode.org/cldr/trac/browser/tags/release-27/common/main/ru.xml#L1825
-module["exports"] = {
-  wide: [
+
+pub static wide: &'static [&'static str] = &[ 
     "Воскресенье",
     "Понедельник",
     "Вторник",
@@ -8,8 +8,8 @@ module["exports"] = {
     "Четверг",
     "Пятница",
     "Суббота"
-  ],
-  wide_context: [
+];
+pub static wide_context: &'static [&'static str] = &[ 
     "воскресенье",
     "понедельник",
     "вторник",
@@ -17,8 +17,8 @@ module["exports"] = {
     "четверг",
     "пятница",
     "суббота"
-  ],
-  abbr: [
+];
+pub static abbr: &'static [&'static str] = &[ 
     "Вс",
     "Пн",
     "Вт",
@@ -26,8 +26,8 @@ module["exports"] = {
     "Чт",
     "Пт",
     "Сб"
-  ],
-  abbr_context: [
+];
+pub static abbr_context: &'static [&'static str] = &[ 
     "вс",
     "пн",
     "вт",
@@ -35,5 +35,5 @@ module["exports"] = {
     "чт",
     "пт",
     "сб"
-  ]
-};
+];
+

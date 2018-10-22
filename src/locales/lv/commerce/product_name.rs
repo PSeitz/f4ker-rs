@@ -1,5 +1,5 @@
-module["exports"] = {
-  "adjective": [
+
+pub static adjective: &'static [&'static str] = &[ 
     "Mazs",
     "Ergonomisks",
     "Raupjš",
@@ -12,8 +12,8 @@ module["exports"] = {
     "Ciets",
 	"Mīksts",
 	"Rūgts"
-  ],
-  "material": [
+];
+pub static material: &'static [&'static str] = &[ 
     "dzelzs",
     "koka",
     "betona",
@@ -21,8 +21,8 @@ module["exports"] = {
     "kokvilnas",
     "granīta",
     "gumijas"
-  ],
-  "product": [
+];
+pub static product: &'static [&'static str] = &[ 
     "krēsls",
     "auto",
     "dators",
@@ -44,5 +44,5 @@ module["exports"] = {
 	"plāksteris",
 	"telefons",
 	"pončiks"
-  ]
-};
+];
+

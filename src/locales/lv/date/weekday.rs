@@ -1,5 +1,5 @@
-module["exports"] = {
-  wide: [
+
+pub static wide: &'static [&'static str] = &[ 
     "Svētdiena",
     "Pirmdiena",
     "Otrdiena",
@@ -7,8 +7,8 @@ module["exports"] = {
     "Ceturtdiena",
     "Piektdiena",
     "Sestdiena"
-  ],
-  wide_context: [
+];
+pub static wide_context: &'static [&'static str] = &[ 
     "svētdien",
     "pirmdien",
     "otrdien",
@@ -16,8 +16,8 @@ module["exports"] = {
     "ceturtdien",
     "piektdien",
     "sestdien"
-  ],
-  abbr: [
+];
+pub static abbr: &'static [&'static str] = &[ 
     "Pr",
     "Ot",
     "Tr",
@@ -25,8 +25,8 @@ module["exports"] = {
     "Pk",
     "Se",
     "Sv"
-  ],
-  abbr_context: [
+];
+pub static abbr_context: &'static [&'static str] = &[ 
     "sv.",
     "pr.",
     "otr.",
@@ -34,5 +34,5 @@ module["exports"] = {
     "cet.",
     "pk.",
     "se."
-  ]
-};
+];
+

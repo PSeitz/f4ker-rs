@@ -18,4 +18,4 @@ pub static department: &'static [&'static str] = &[
     "Música",
     "Hogar",
     "Decoración"
-]
+];

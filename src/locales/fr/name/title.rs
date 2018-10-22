@@ -1,5 +1,5 @@
-module["exports"] = {
-  "job": [
+
+pub static job: &'static [&'static str] = &[ 
     "Superviseur",
     "Executif",
     "Manager",
@@ -18,5 +18,5 @@ module["exports"] = {
     "Assistant",
     "Agent",
     "Stagiaire"
-  ]
-};
+];
+

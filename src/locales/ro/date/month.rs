@@ -1,5 +1,5 @@
-module["exports"] = {
-  wide: [
+
+pub static wide: &'static [&'static str] = &[ 
     "Ianuarie",
     "Februarie",
     "Martie",
@@ -12,10 +12,10 @@ module["exports"] = {
     "Octombrie",
     "Noiembrie",
     "Decembrie"
-  ],
+];
   // Property "wide_context" is optional, if not set then "wide" will be used instead
   // It is used to specify a word in context, which may differ from a stand-alone word
-  wide_context: [
+pub static wide_context: &'static [&'static str] = &[ 
     "Ianuarie",
     "Februarie",
     "Martie",
@@ -28,8 +28,8 @@ module["exports"] = {
     "Octombrie",
     "Noiembrie",
     "Decembrie"
-  ],
-  abbr: [
+];
+pub static abbr: &'static [&'static str] = &[ 
     "Ian",
     "Feb",
     "Mar",
@@ -42,10 +42,10 @@ module["exports"] = {
     "Oct",
     "Noi",
     "Dec"
-  ],
+];
   // Property "abbr_context" is optional, if not set then "abbr" will be used instead
   // It is used to specify a word in context, which may differ from a stand-alone word
-  abbr_context: [
+pub static abbr_context: &'static [&'static str] = &[ 
     "Ian",
     "Feb",
     "Mar",
@@ -58,5 +58,5 @@ module["exports"] = {
     "Oct",
     "Noi",
     "Dec"
-  ]
-};
+];
+

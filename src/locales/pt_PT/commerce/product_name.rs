@@ -1,5 +1,5 @@
-module["exports"] = {
-  "adjective": [
+
+pub static adjective: &'static [&'static str] = &[ 
     "Pequeno",
     "Ergonómico",
     "Rústico",
@@ -17,8 +17,8 @@ module["exports"] = {
     "Refinado",
     "Sem Marca",
     "Saboroso"
-  ],
-  "material": [
+];
+pub static material: &'static [&'static str] = &[ 
     "Aço",
     "Madeira",
     "Betão",
@@ -30,8 +30,8 @@ module["exports"] = {
     "Suave",
     "Fresco",
     "Congelado"
-  ],
-  "product": [
+];
+pub static product: &'static [&'static str] = &[ 
     "Cadeira",
     "Carro",
     "Computador",
@@ -56,5 +56,5 @@ module["exports"] = {
     "Salada",
     "Salsichas",
     "Batatas Fritas"
-  ]
-};
+];
+

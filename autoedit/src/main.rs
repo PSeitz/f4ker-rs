@@ -120,13 +120,13 @@ fn main() -> Result<(), std::io::Error> {
             continue;
         }
         let file_name = entry.file_name().to_str().unwrap();
-        if file_name == "product_name.rs" || file_name == "month.rs" || file_name == "weekday.rs" {
+        if file_name == "product_name.rs" || file_name == "month.rs" || file_name == "weekday.rs"|| file_name == "title.rs" {
 
             let lines = lines(&entry.path());
 
             let re = Regex::new(r"\s*],\s*").unwrap(); 
             let re3 = Regex::new(r"\s*]\s*").unwrap(); 
-            let re2 = Regex::new(r#"\s*"(adjective|material|product)"\s*:\s*\[\s*"#).unwrap();
+            let re2 = Regex::new(r#"\s*"([a-z_]*)"\s*:\s*\[\s*"#).unwrap();
             let re4 = Regex::new(r#"\s*([a-z_]*)\s*:\s*\[\s*"#).unwrap();
             let lines = lines.iter().map(|line|{
                 if line == "module[\"exports\"] = {" {

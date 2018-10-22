@@ -1,6 +1,6 @@
 // Source: http://unicode.org/cldr/trac/browser/tags/release-27/common/main/en.xml#L1847
-module["exports"] = {
-  wide: [
+
+pub static wide: &'static [&'static str] = &[ 
     "söndag",
     "måndag",
     "tisdag",
@@ -8,8 +8,8 @@ module["exports"] = {
     "torsdag",
     "fredag",
     "lördag"
-  ],
-  abbr: [
+];
+pub static abbr: &'static [&'static str] = &[ 
     "sön",
     "mån",
     "tis",
@@ -17,5 +17,5 @@ module["exports"] = {
     "tor",
     "fre",
     "lör"
-  ]
-};
+];
+

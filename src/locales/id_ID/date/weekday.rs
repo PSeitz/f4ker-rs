@@ -1,5 +1,5 @@
-module["exports"] = {
-  wide: [
+
+pub static wide: &'static [&'static str] = &[ 
     "Minggu",
     "Senin",
     "Selasa",
@@ -7,8 +7,8 @@ module["exports"] = {
     "Kamis",
     "Jumat",
     "Sabtu"
-  ],
-  wide_context: [
+];
+pub static wide_context: &'static [&'static str] = &[ 
     "Minggu",
     "Senin",
     "Selasa",
@@ -16,8 +16,8 @@ module["exports"] = {
     "Kamis",
     "Jumat",
     "Sabtu"
-  ],
-  abbr: [
+];
+pub static abbr: &'static [&'static str] = &[ 
     "Min",
     "Sen",
     "Sel",
@@ -25,8 +25,8 @@ module["exports"] = {
     "Kam",
     "Jum",
     "Sab"
-  ],
-  abbr_context: [
+];
+pub static abbr_context: &'static [&'static str] = &[ 
     "Min",
     "Sen",
     "Sel",
@@ -34,5 +34,5 @@ module["exports"] = {
     "Kam",
     "Jum",
     "Sab"
-  ]
-};
+];
+

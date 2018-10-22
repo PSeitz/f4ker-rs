@@ -8,4 +8,4 @@ pub static color: &'static [&'static str] = &[
     "Verde",
     "Morado",
     "Violeta"
-]
+];

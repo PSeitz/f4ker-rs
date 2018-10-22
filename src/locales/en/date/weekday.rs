@@ -1,6 +1,6 @@
 // Source: http://unicode.org/cldr/trac/browser/tags/release-27/common/main/en.xml#L1847
-module["exports"] = {
-  wide: [
+
+pub static wide: &'static [&'static str] = &[ 
     "Sunday",
     "Monday",
     "Tuesday",
@@ -8,10 +8,10 @@ module["exports"] = {
     "Thursday",
     "Friday",
     "Saturday"
-  ],
+];
   // Property "wide_context" is optional, if not set then "wide" will be used instead
   // It is used to specify a word in context, which may differ from a stand-alone word
-  wide_context: [
+pub static wide_context: &'static [&'static str] = &[ 
     "Sunday",
     "Monday",
     "Tuesday",
@@ -19,8 +19,8 @@ module["exports"] = {
     "Thursday",
     "Friday",
     "Saturday"
-  ],
-  abbr: [
+];
+pub static abbr: &'static [&'static str] = &[ 
     "Sun",
     "Mon",
     "Tue",
@@ -28,10 +28,10 @@ module["exports"] = {
     "Thu",
     "Fri",
     "Sat"
-  ],
+];
   // Property "abbr_context" is optional, if not set then "abbr" will be used instead
   // It is used to specify a word in context, which may differ from a stand-alone word
-  abbr_context: [
+pub static abbr_context: &'static [&'static str] = &[ 
     "Sun",
     "Mon",
     "Tue",
@@ -39,5 +39,5 @@ module["exports"] = {
     "Thu",
     "Fri",
     "Sat"
-  ]
-};
+];
+

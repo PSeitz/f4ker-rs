@@ -1,5 +1,5 @@
-module["exports"] = {
-  "descriptor": [
+
+pub static descriptor: &'static [&'static str] = &[ 
     "Galvenais",
     "Vecākais",
     "Tiešo",
@@ -12,8 +12,8 @@ module["exports"] = {
     "Starptautiskās",
     "Iekšējās",
     "Personu"
-  ],
-  "level": [
+];
+pub static level: &'static [&'static str] = &[ 
     "risinājumu",
     "programmu",
     "drošības",
@@ -44,8 +44,8 @@ module["exports"] = {
     "sadarbības",
     "lietojamības",
     "mērījumu"
-  ],
-  "job": [
+];
+pub static job: &'static [&'static str] = &[ 
     "uzraugs",
     "vadītājs",
     "pārstāvis",
@@ -68,5 +68,5 @@ module["exports"] = {
     "asistents",
     "aģents",
     "stratēģis"
-  ]
-};
+];
+

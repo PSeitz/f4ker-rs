@@ -1,5 +1,5 @@
-module["exports"] = {
-  "adjective": [
+
+pub static adjective: &'static [&'static str] = &[ 
     "Μικρό",
     "Εργονομικό",
     "Αγροτικό",
@@ -10,15 +10,15 @@ module["exports"] = {
     "Χειροποίητα",
     "Χειροποίητο",
     "Άδεια"
-  ],
-  "material": [
+];
+pub static material: &'static [&'static str] = &[ 
     "Ξύλινο",
     "Πλαστικό",
     "Μέταλο",
     "Φρέσκο",
     "Κατεψυγμένο"
-  ],
-  "product": [
+];
+pub static product: &'static [&'static str] = &[ 
     "Καρέκλα",
     "Αυτοκίνητο",
     "Υπολογιστής",
@@ -41,5 +41,5 @@ module["exports"] = {
     "Pizza",
     "Σαλάτα",
     "Λουκάνικα"
-  ]
-};
+];
+

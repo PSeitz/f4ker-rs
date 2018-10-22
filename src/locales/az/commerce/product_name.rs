@@ -1,5 +1,5 @@
-module["exports"] = {
-  "adjective": [
+
+pub static adjective: &'static [&'static str] = &[ 
     "Balaca",
     "Ergonomik",
     "Kobud",
@@ -10,8 +10,8 @@ module["exports"] = {
     "Əlverişli",
     "Parlaq",
     "Mükəmməl"
-  ],
-  "material": [
+];
+pub static material: &'static [&'static str] = &[ 
     "Polad",
     "Ağac",
     "Beton",
@@ -19,8 +19,8 @@ module["exports"] = {
     "Pambıq",
     "Qranit",
     "Rezin"
-  ],
-  "product": [
+];
+pub static product: &'static [&'static str] = &[ 
     "Stul",
     "Avtomobil",
     "Kompyuter",
@@ -29,5 +29,5 @@ module["exports"] = {
     "Stol",
     "Sviter",
     "Kəmər",
-  ]
-};
+];
+

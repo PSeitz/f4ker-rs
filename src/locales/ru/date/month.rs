@@ -1,6 +1,6 @@
 // source: http://unicode.org/cldr/trac/browser/tags/release-27/common/main/ru.xml#L1734
-module["exports"] = {
-  wide: [
+
+pub static wide: &'static [&'static str] = &[ 
     "январь",
     "февраль",
     "март",
@@ -13,8 +13,8 @@ module["exports"] = {
     "октябрь",
     "ноябрь",
     "декабрь"
-  ],
-  wide_context: [
+];
+pub static wide_context: &'static [&'static str] = &[ 
     "января",
     "февраля",
     "марта",
@@ -27,8 +27,8 @@ module["exports"] = {
     "октября",
     "ноября",
     "декабря"
-  ],
-  abbr: [
+];
+pub static abbr: &'static [&'static str] = &[ 
     "янв.",
     "февр.",
     "март",
@@ -41,8 +41,8 @@ module["exports"] = {
     "окт.",
     "нояб.",
     "дек."
-  ],
-  abbr_context: [
+];
+pub static abbr_context: &'static [&'static str] = &[ 
     "янв.",
     "февр.",
     "марта",
@@ -55,5 +55,5 @@ module["exports"] = {
     "окт.",
     "нояб.",
     "дек."
-  ]
-};
+];
+

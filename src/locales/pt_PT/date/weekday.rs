@@ -1,6 +1,6 @@
 // Source: https://unicode.org/cldr/trac/browser/trunk/common/main/pt_PT.xml?rev=14409#L491
-module["exports"] = {
-  wide: [
+
+pub static wide: &'static [&'static str] = &[ 
     "Segunda",
     "Terça",
     "Quarta",
@@ -8,8 +8,8 @@ module["exports"] = {
     "Sexta",
     "Sábado",
     "Domingo"
-  ],
-  abbr: [
+];
+pub static abbr: &'static [&'static str] = &[ 
     "Seg",
     "Ter",
     "Qua",
@@ -17,5 +17,5 @@ module["exports"] = {
     "Sex",
     "Sáb",
     "Dom"
-  ]
-};
+];
+

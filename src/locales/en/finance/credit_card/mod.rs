@@ -8,7 +8,7 @@ mod switch;
 mod solo;
 mod maestro;
 mod laser;
-credit_card.instapayment = require("./instapayment.js")
+pub use  instapayment::*;
 pub use  visa::*;
 pub use  mastercard::*;
 pub use  discover::*;
