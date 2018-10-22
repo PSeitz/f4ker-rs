@@ -113,8 +113,50 @@ fn main() -> Result<(), std::io::Error> {
         }
     }
 
+    // fix object to arrays -- commented only once 
+    for entry in WalkDir::new("../src/locales") {
+        let entry = entry.unwrap();
+        if entry.path().is_dir() {
+            continue;
+        }
+        let file_name = entry.file_name().to_str().unwrap();
+        if file_name == "product_name.rs" || file_name == "month.rs" || file_name == "weekday.rs" {
+
+            let lines = lines(&entry.path());
+
+            let re = Regex::new(r"\s*],\s*").unwrap(); 
+            let re3 = Regex::new(r"\s*]\s*").unwrap(); 
+            let re2 = Regex::new(r#"\s*"(adjective|material|product)"\s*:\s*\[\s*"#).unwrap();
+            let re4 = Regex::new(r#"\s*([a-z_]*)\s*:\s*\[\s*"#).unwrap();
+            let lines = lines.iter().map(|line|{
+                if line == "module[\"exports\"] = {" {
+                    return "".to_string();
+                }
+                if line == "};" {
+                    return "".to_string();
+                }
+                if re.is_match(line) {
+                    return "];".to_string();
+                }
+                if re3.is_match(line) {
+                    return "];".to_string();
+                }
+                if let Some(pat) = re2.captures(&line) {
+                    return format!("pub static {}: &'static [&'static str] = &[ ", &pat[1]);
+                }
+                if let Some(pat) = re4.captures(&line) {
+                    return format!("pub static {}: &'static [&'static str] = &[ ", &pat[1]);
+                }
+                line.to_string()
+            }).collect();
+
+            write_lines(lines, &entry.path());
+
+        }
+    }
+
     // handle lib files
-    for entry in WalkDir::new("../src/lib/") {
+    for entry in WalkDir::new("../src/") {
         let entry = entry.unwrap();
         if entry.path().is_dir() || entry.depth() >= 2 {
             continue;
@@ -124,7 +166,7 @@ fn main() -> Result<(), std::io::Error> {
         let re = Regex::new(r"^function ([A-Z][A-Za-z]*).*").unwrap(); // function Address (faker) {
         let re2 = Regex::new(r"^var ([A-Z][A-Za-z]*).*").unwrap(); // var Phone = function (faker) {
 
-        let mut lines = lines(&entry.path());
+        let lines = lines(&entry.path());
 
         let mut structs = vec![];
 
@@ -149,8 +191,6 @@ fn main() -> Result<(), std::io::Error> {
             }
             vec![line.to_string()]
         }).collect();
-
-
 
         for structo in structs {
             lines.insert(0, format!("struct {} {{", structo));

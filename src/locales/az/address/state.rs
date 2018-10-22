@@ -1,3 +1,1 @@
-pub static state: &'static [&'static str] = &[ 
-
-];
+pub static state: &'static [&'static str] = &[];
