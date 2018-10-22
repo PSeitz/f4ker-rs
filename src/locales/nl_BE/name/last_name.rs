@@ -31,4 +31,4 @@ pub static last_name: &'static [&'static str] = &[
   "Verstraete",
   "Willems",
   "Wouters"
-]
+];

@@ -3,4 +3,4 @@ pub static city_suffix: &'static [&'static str] = &[
   "tem",
   "vijve",
   "zele"
-]
+];
