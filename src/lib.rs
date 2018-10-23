@@ -1,5 +1,6 @@
 
-mod locales;
+pub mod locales;
+mod faker;
 // use a::series::of::nested_modules;
 
 

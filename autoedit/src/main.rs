@@ -7,6 +7,28 @@ use std::fs::OpenOptions;
 use std::io::prelude::*;
 use regex::Regex;
 
+fn find_matching_braces(text: &str, opening_brace:char, closing_brace:char) -> Option<usize> {
+    let mut num = 1;
+    for (i, cha) in text.char_indices() {
+        if cha == closing_brace {
+            num -=1;
+            if num == 0 {
+                return Some(i);
+            }
+        }
+        if cha == opening_brace {
+            num +=1;
+        }
+    }
+    None
+}
+
+#[test]
+fn test_matching_braces() {
+    // let test_text = "if let Some(pat) = expr {unimplemented!(); }"
+    println!("{:?}", find_matching_braces("unimplemented!(); }", '{', '}'));
+}
+
 fn main() -> Result<(), std::io::Error> {
     use walkdir::WalkDir;
 
@@ -37,7 +59,9 @@ fn main() -> Result<(), std::io::Error> {
 
             let result = lines(&entry.path()).into_iter().map(|line|{
                 if let Some(module) = get_between(&line, "require(\"./", "\");") {
-                    "mod " .to_string() + &module + ";"
+                    "pub mod " .to_string() + &module + ";"
+                }else if line.trim().starts_with("mod"){
+                    "pub ".to_string() + &line
                 }else{
                     line
                 }
