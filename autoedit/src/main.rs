@@ -57,7 +57,9 @@ fn main() -> Result<(), std::io::Error> {
         if file_name == "mod.rs" {
             let mut liness:Vec<_> = lines(&entry.path()).into_iter().filter(|el|!el.contains("pub use")).collect();
 
-            let reexport = liness.iter().filter(|el|!el.contains("pub use"))
+            let reexport = liness.iter()
+            .filter(|el|!el.contains("pub use"))
+            .filter(|line|!line.trim().starts_with("//")) // is commented
             .flat_map(|line| get_between(&line, "mod", ";") )
             .filter(|module|{
                 let mod_path = entry.path().parent().unwrap().to_str().unwrap().to_string()+"/" + module.trim()+".rs";

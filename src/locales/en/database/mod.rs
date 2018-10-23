@@ -5,4 +5,3 @@ mod engine;
 pub use self::collation::*;
 pub use self::column::*;
 pub use self::engine::*;
-pub use self::type::*;
