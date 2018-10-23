@@ -17,13 +17,8 @@ fn main() -> Result<(), std::io::Error> {
         let file_name = entry.file_name().to_str().unwrap();
 
         if file_name == "index.js" {
-            let mut src = File::open(&entry.path())?;
-            let mut data = String::new();
-            src.read_to_string(&mut data)?;
-            drop(src); 
+            let result = lines(&entry.path()).into_iter().skip(2).collect::<Vec<_>>().join("\n") + "\n";
 
-            let result = data.lines().skip(2).collect::<Vec<_>>().join("\n") + "\n";
-            
             let entree = entry.path().to_str().unwrap().to_string();
             File::create(&entree.replace("index.js", "mod.rs"))?.write_all(result.as_bytes())?;
 
@@ -55,23 +50,32 @@ fn main() -> Result<(), std::io::Error> {
     }
 
     //reexport
-    // for entry in WalkDir::new("../src/locales") {
-    //     let entry = entry.unwrap();
-    //     let file_name = entry.file_name().to_str().unwrap();
+    for entry in WalkDir::new("../src/locales") {
+        let entry = entry.unwrap();
+        let file_name = entry.file_name().to_str().unwrap();
 
-    //     if file_name == "mod.rs" {
-    //         let mut lines = lines(&entry.path());
+        if file_name == "mod.rs" {
+            let mut liness:Vec<_> = lines(&entry.path()).into_iter().filter(|el|!el.contains("pub use")).collect();
 
-    //         let reexport = lines.iter()
-    //         .flat_map(|line| get_between(&line, "mod", ";") )
-    //         .map(|module|format!("pub use {}::*;", module)).collect::<Vec<_>>();
+            let reexport = liness.iter().filter(|el|!el.contains("pub use"))
+            .flat_map(|line| get_between(&line, "mod", ";") )
+            .filter(|module|{
+                let mod_path = entry.path().parent().unwrap().to_str().unwrap().to_string()+"/" + module.trim()+".rs";
+                let path = std::path::Path::new(&mod_path);
+                if !path.exists(){
+                    return true;
+                }
+                let commented_file = lines(&path).iter().all(|line| line.trim().starts_with("//") || line.trim()=="");
+                !commented_file
+            })
+            .map(|module|format!("pub use self::{}::*;", module.trim())).collect::<Vec<_>>();
 
-    //         lines.extend(reexport);
+            liness.extend(reexport);
 
-    //         write_lines(lines, &entry.path());
+            write_lines(liness, &entry.path());
 
-    //     }
-    // }
+        }
+    }
 
 
     let re = Regex::new(r#"[A-Za-z]*\.([A-Za-z]*)\s*=\s*(".*").*"#).unwrap();
@@ -113,7 +117,7 @@ fn main() -> Result<(), std::io::Error> {
         }
     }
 
-    // fix object to arrays -- commented only once 
+    // fix object to arrays -- commented only once
     for entry in WalkDir::new("../src/locales") {
         let entry = entry.unwrap();
         if entry.path().is_dir() {
@@ -124,13 +128,16 @@ fn main() -> Result<(), std::io::Error> {
 
             let lines = lines(&entry.path());
 
-            let re = Regex::new(r"\s*],\s*").unwrap(); 
-            let re3 = Regex::new(r"\s*]\s*").unwrap(); 
+            let re = Regex::new(r"\s*],\s*").unwrap();
+            let re3 = Regex::new(r"\s*]\s*").unwrap();
             let re2 = Regex::new(r#"\s*"([a-z_]*)"\s*:\s*\[\s*"#).unwrap();
             let re4 = Regex::new(r#"\s*([a-z_]*)\s*:\s*\[\s*"#).unwrap();
             let lines = lines.iter().map(|line|{
                 if line == "module[\"exports\"] = {" {
                     return "".to_string();
+                }
+                if line.contains("pub static") { // already converted
+                    return line.to_string();
                 }
                 if line == "};" {
                     return "".to_string();

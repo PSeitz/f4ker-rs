@@ -1,9 +1,6 @@
 mod name;
 mod version;
 mod author;
-pub use  name::*;
-pub use  version::*;
-pub use  author::*;
-pub use  name::*;
-pub use  version::*;
-pub use  author::*;
+pub use self::name::*;
+pub use self::version::*;
+pub use self::author::*;

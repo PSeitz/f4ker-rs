@@ -1,10 +1,6 @@
 mod state;
 mod state_abbr;
 mod default_country;
-pub use  postcode::*;
-pub use  state::*;
-pub use  state_abbr::*;
-pub use  default_country::*;
-pub use  state::*;
-pub use  state_abbr::*;
-pub use  default_country::*;
+pub use self::state::*;
+pub use self::state_abbr::*;
+pub use self::default_country::*;

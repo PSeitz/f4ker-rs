@@ -1,9 +1,6 @@
 mod prefix;
 mod suffix;
 mod name;
-pub use  prefix::*;
-pub use  suffix::*;
-pub use  name::*;
-pub use  prefix::*;
-pub use  suffix::*;
-pub use  name::*;
+pub use self::prefix::*;
+pub use self::suffix::*;
+pub use self::name::*;

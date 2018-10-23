@@ -1,6 +1,4 @@
 mod area_code;
 mod formats;
-pub use  area_code::*;
-pub use  formats::*;
-pub use  area_code::*;
-pub use  formats::*;
+pub use self::area_code::*;
+pub use self::formats::*;
