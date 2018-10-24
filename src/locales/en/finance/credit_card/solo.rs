@@ -1,4 +1,4 @@
-pub static solo: &'static [&'static str] = &[ 
+pub static SOLO: &'static [&'static str] = &[ 
   "6767-####-####-###L",
   "6767-####-####-####-#L",
   "6767-####-####-####-##L"

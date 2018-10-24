@@ -1,5 +1,5 @@
 
-pub static wide: &'static [&'static str] = &[ 
+pub static WIDE: &'static [&'static str] = &[ 
     "Svētdiena",
     "Pirmdiena",
     "Otrdiena",
@@ -8,7 +8,7 @@ pub static wide: &'static [&'static str] = &[
     "Piektdiena",
     "Sestdiena"
 ];
-pub static wide_context: &'static [&'static str] = &[ 
+pub static WIDE_CONTEXT: &'static [&'static str] = &[ 
     "svētdien",
     "pirmdien",
     "otrdien",
@@ -17,7 +17,7 @@ pub static wide_context: &'static [&'static str] = &[
     "piektdien",
     "sestdien"
 ];
-pub static abbr: &'static [&'static str] = &[ 
+pub static ABBR: &'static [&'static str] = &[ 
     "Pr",
     "Ot",
     "Tr",
@@ -26,7 +26,7 @@ pub static abbr: &'static [&'static str] = &[
     "Se",
     "Sv"
 ];
-pub static abbr_context: &'static [&'static str] = &[ 
+pub static ABBR_CONTEXT: &'static [&'static str] = &[ 
     "sv.",
     "pr.",
     "otr.",

@@ -1,4 +1,4 @@
-pub static department: &'static [&'static str] = &[ 
+pub static DEPARTMENT: &'static [&'static str] = &[ 
   "Books",
   "Movies",
   "Music",

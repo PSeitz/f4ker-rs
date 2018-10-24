@@ -1,2 +1,2 @@
-pub static suffix: &'static [&'static str] = &[ 
+pub static SUFFIX: &'static [&'static str] = &[ 
 ];

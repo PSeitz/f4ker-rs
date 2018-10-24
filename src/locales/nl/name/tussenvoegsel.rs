@@ -1,4 +1,4 @@
-pub static tussenvoegsel: &'static [&'static str] = &[ 
+pub static TUSSENVOEGSEL: &'static [&'static str] = &[ 
   "van",
   "van de",
   "van den",

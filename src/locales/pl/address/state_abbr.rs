@@ -1,4 +1,4 @@
-pub static state_abbr: &'static [&'static str] = &[ 
+pub static STATE_ABBR: &'static [&'static str] = &[ 
   "DŚ",
   "KP",
   "LB",

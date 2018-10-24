@@ -1,4 +1,4 @@
-pub static direction: &'static [&'static str] = &[ 
+pub static DIRECTION: &'static [&'static str] = &[ 
   "North",
   "East",
   "South",

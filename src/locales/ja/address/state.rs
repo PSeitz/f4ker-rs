@@ -1,4 +1,4 @@
-pub static state: &'static [&'static str] = &[ 
+pub static STATE: &'static [&'static str] = &[ 
   "北海道",
   "青森県",
   "岩手県",

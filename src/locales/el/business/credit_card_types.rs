@@ -1,4 +1,4 @@
-pub static credit_card_types: &'static [&'static str] = &[ 
+pub static CREDIT_CARD_TYPES: &'static [&'static str] = &[ 
   "visa",
   "mastercard",
   "americanexpress",

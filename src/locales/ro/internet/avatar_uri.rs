@@ -1,4 +1,4 @@
-pub static avatar_uri: &'static [&'static str] = &[ 
+pub static AVATAR_URI: &'static [&'static str] = &[ 
   "https://s3.amazonaws.com/uifaces/faces/twitter/jarjan/128.jpg",
   "https://s3.amazonaws.com/uifaces/faces/twitter/mahdif/128.jpg",
   "https://s3.amazonaws.com/uifaces/faces/twitter/sprayaga/128.jpg",

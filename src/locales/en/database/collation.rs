@@ -1,4 +1,4 @@
-pub static collation: &'static [&'static str] = &[ 
+pub static COLLATION: &'static [&'static str] = &[ 
   "utf8_unicode_ci",
   "utf8_general_ci",
   "utf8_bin",

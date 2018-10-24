@@ -1,4 +1,4 @@
-pub static time_zone: &'static [&'static str] = &[ 
+pub static TIME_ZONE: &'static [&'static str] = &[ 
   "Pacific/Midway",
   "Pacific/Pago_Pago",
   "Pacific/Honolulu",

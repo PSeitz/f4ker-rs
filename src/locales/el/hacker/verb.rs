@@ -1,4 +1,4 @@
-pub static verb: &'static [&'static str] = &[ 
+pub static VERB: &'static [&'static str] = &[ 
   "back up",
   "bypass",
   "hack",

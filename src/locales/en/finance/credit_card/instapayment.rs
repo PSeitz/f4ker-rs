@@ -1,3 +1,3 @@
-pub static instapayment: &'static [&'static str] = &[ 
+pub static INSTAPAYMENT: &'static [&'static str] = &[ 
   "63[7-9]#-####-####-###L"
 ];

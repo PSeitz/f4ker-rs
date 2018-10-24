@@ -1,4 +1,4 @@
-pub static abbreviation: &'static [&'static str] = &[ 
+pub static ABBREVIATION: &'static [&'static str] = &[ 
   "TCP",
   "HTTP",
   "SDD",

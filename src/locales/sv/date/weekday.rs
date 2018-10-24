@@ -1,6 +1,6 @@
 // Source: http://unicode.org/cldr/trac/browser/tags/release-27/common/main/en.xml#L1847
 
-pub static wide: &'static [&'static str] = &[ 
+pub static WIDE: &'static [&'static str] = &[ 
     "söndag",
     "måndag",
     "tisdag",
@@ -9,7 +9,7 @@ pub static wide: &'static [&'static str] = &[
     "fredag",
     "lördag"
 ];
-pub static abbr: &'static [&'static str] = &[ 
+pub static ABBR: &'static [&'static str] = &[ 
     "sön",
     "mån",
     "tis",

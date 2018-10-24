@@ -1,4 +1,4 @@
-pub static nobility_title_prefix: &'static [&'static str] = &[ 
+pub static NOBILITY_TITLE_PREFIX: &'static [&'static str] = &[ 
   "zu",
   "von",
   "vom",

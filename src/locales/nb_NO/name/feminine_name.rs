@@ -1,4 +1,4 @@
-pub static feminine_name: &'static [&'static str] = &[ 
+pub static FEMININE_NAME: &'static [&'static str] = &[ 
   "Emma",
   "Sara",
   "Thea",

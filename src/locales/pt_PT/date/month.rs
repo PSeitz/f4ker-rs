@@ -1,6 +1,6 @@
 // Source: https://unicode.org/cldr/trac/browser/trunk/common/main/pt.xml?rev=14409#L1811
 
-pub static wide: &'static [&'static str] = &[ 
+pub static WIDE: &'static [&'static str] = &[ 
     "Janeiro",
     "Fevereiro",
     "Março",
@@ -14,7 +14,7 @@ pub static wide: &'static [&'static str] = &[
     "Novembro",
     "Dezembro"
 ];
-pub static abbr: &'static [&'static str] = &[ 
+pub static ABBR: &'static [&'static str] = &[ 
     "Jan",
     "Fev",
     "Mar",

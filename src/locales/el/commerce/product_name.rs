@@ -1,5 +1,5 @@
 
-pub static adjective: &'static [&'static str] = &[ 
+pub static ADJECTIVE: &'static [&'static str] = &[ 
     "Μικρό",
     "Εργονομικό",
     "Αγροτικό",
@@ -11,14 +11,14 @@ pub static adjective: &'static [&'static str] = &[
     "Χειροποίητο",
     "Άδεια"
 ];
-pub static material: &'static [&'static str] = &[ 
+pub static MATERIAL: &'static [&'static str] = &[ 
     "Ξύλινο",
     "Πλαστικό",
     "Μέταλο",
     "Φρέσκο",
     "Κατεψυγμένο"
 ];
-pub static product: &'static [&'static str] = &[ 
+pub static PRODUCT: &'static [&'static str] = &[ 
     "Καρέκλα",
     "Αυτοκίνητο",
     "Υπολογιστής",

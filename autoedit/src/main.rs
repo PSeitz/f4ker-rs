@@ -29,6 +29,64 @@ fn test_matching_braces() {
     println!("{:?}", find_matching_braces("unimplemented!(); }", '{', '}'));
 }
 
+use std::path::Path;
+
+trait BetterAccess {
+    fn gimme_that(&self) -> String;
+}
+impl BetterAccess for Path {
+    fn gimme_that(&self) -> String {
+        self.to_str().unwrap().to_string()
+    }
+}
+impl BetterAccess for std::ffi::OsStr {
+    fn gimme_that(&self) -> String {
+        self.to_str().unwrap().to_string()
+    }
+}
+impl BetterAccess for Option<&std::ffi::OsStr> {
+    fn gimme_that(&self) -> String {
+        self.as_ref().unwrap().to_str().unwrap().to_string()
+    }
+}
+
+trait BetterFilename {
+    fn gimme_filename(&self) -> String;
+}
+impl BetterFilename for Path {
+    fn gimme_filename(&self) -> String {
+        self.file_name().unwrap().to_str().unwrap().to_string()
+    }
+}
+impl BetterFilename for Option<&Path> {
+    fn gimme_filename(&self) -> String {
+        self.unwrap().file_name().unwrap().to_str().unwrap().to_string()
+    }
+}
+impl BetterFilename for walkdir::DirEntry {
+    fn gimme_filename(&self) -> String {
+        self.file_name().to_str().unwrap().to_string()
+    }
+}
+
+trait BetterAccessDir {
+    fn read_diro(&self) -> Vec<std::fs::DirEntry>;
+}
+impl BetterAccessDir for Path {
+    fn read_diro(&self) -> Vec<std::fs::DirEntry> {
+        self.read_dir().unwrap().map(|entry|entry.unwrap()).collect()
+    }
+}
+
+impl BetterAccessDir for Option<&Path> {
+    fn read_diro(&self) -> Vec<std::fs::DirEntry> {
+        self.unwrap().read_dir().unwrap().map(|entry|entry.unwrap()).collect()
+    }
+}
+
+
+
+
 fn main() -> Result<(), std::io::Error> {
     use walkdir::WalkDir;
 
@@ -36,12 +94,12 @@ fn main() -> Result<(), std::io::Error> {
         let entry = entry.unwrap();
         // println!("{}", entry.path().display());
 
-        let file_name = entry.file_name().to_str().unwrap();
+        let file_name = entry.gimme_filename();
 
         if file_name == "index.js" {
-            let result = lines(&entry.path()).into_iter().skip(2).collect::<Vec<_>>().join("\n") + "\n";
+            let result = into_lines(&entry.path()).into_iter().skip(2).collect::<Vec<_>>().join("\n") + "\n";
 
-            let entree = entry.path().to_str().unwrap().to_string();
+            let entree = entry.path().gimme_that();
             File::create(&entree.replace("index.js", "mod.rs"))?.write_all(result.as_bytes())?;
 
             std::fs::remove_file(entry.path())?;
@@ -53,22 +111,40 @@ fn main() -> Result<(), std::io::Error> {
     //require to mod
     for entry in WalkDir::new("../src/locales") {
         let entry = entry.unwrap();
-        let file_name = entry.file_name().to_str().unwrap();
+        let file_name = entry.gimme_filename();
 
         if file_name == "mod.rs" {
+            let lines = into_lines(&entry.path());
+            // let lines = into_lines(&entry.path()).into_iter().map(|line|{
+            //     let mut line = if let Some(module) = get_between(&line, "require(\"./", "\");") {
+            //         "mod " .to_string() + &module + ";"
+            //     }else if line.trim().starts_with("pub mod"){
+            //         (&line.trim()[3..]).to_string()
+            //     }else{
+            //         line
+            //     };
+            //     line
+            // }).collect::<Vec<_>>();
 
-            let result = lines(&entry.path()).into_iter().map(|line|{
-                if let Some(module) = get_between(&line, "require(\"./", "\");") {
-                    "pub mod " .to_string() + &module + ";"
-                }else if line.trim().starts_with("mod"){
-                    "pub ".to_string() + &line
-                }else{
-                    line
-                }
+            let sub_modules:Vec<_> = entry.path()
+                .parent()
+                .read_diro()
+                .iter()
+                .map(|entry|entry.path().file_stem().gimme_that())
+                .filter(|file_name|file_name != "mod")
+                .map(|mod_name|{
 
-            }).collect::<Vec<_>>();
+                    if entry.depth() <= 2{
+                        format!("pub mod {};", mod_name)
+                    }else{
+                        format!("mod {};", mod_name)
+                    }
 
-            write_lines(result, &entry.path());
+                })
+                .collect();
+            let lines = lines.into_iter().filter(|el|!el.contains("require")).filter(|el|!el.contains("mod")).chain(sub_modules.into_iter()).collect();
+
+            write_lines(lines, &entry.path());
 
         }
     }
@@ -76,18 +152,18 @@ fn main() -> Result<(), std::io::Error> {
     //reexport
     for entry in WalkDir::new("../src/locales") {
         let entry = entry.unwrap();
-        let file_name = entry.file_name().to_str().unwrap();
+        let file_name = entry.gimme_filename();
 
         if file_name == "mod.rs" {
-            let mut liness:Vec<_> = lines(&entry.path()).into_iter().filter(|el|!el.contains("pub use")).collect();
+            let mut liness:Vec<_> = into_lines(&entry.path()).into_iter().filter(|el|!el.contains("pub use")).collect();
 
             // let reexport = liness.iter()
             // .filter(|el|!el.contains("pub use"))
             // .filter(|line|!line.trim().starts_with("//")) // is commented
             // .flat_map(|line| get_between(&line, "mod", ";") )
             // .filter(|module|{
-            //     let mod_path = entry.path().parent().unwrap().to_str().unwrap().to_string()+"/" + module.trim()+".rs";
-            //     let path = std::path::Path::new(&mod_path);
+            //     let mod_path = entry.path().parent().unwrap().gimme_that()+"/" + module.trim()+".rs";
+            //     let path = Path::new(&mod_path);
             //     if !path.exists(){
             //         return true;
             //     }
@@ -103,31 +179,112 @@ fn main() -> Result<(), std::io::Error> {
         }
     }
 
+    let re_static_name = Regex::new(r#"(\s*pub static )([A-Za-z_]*)(: &'static \[&'static str\].*)"#).unwrap();
+    //reexport
+    for entry in WalkDir::new("../src/locales") {
+        let entry = entry.unwrap();
+        if entry.path().is_dir(){
+            continue;
+        }
+        let lines:Vec<_> = into_lines(&entry.path());
+
+        let lines = lines.iter().map(|line|{
+            re_static_name.replace(line, |caps: &regex::Captures| {
+                caps[1].to_string()+ &caps[2].to_uppercase()+ &caps[3]
+            }).to_string()
+        }).collect();
+
+        write_lines(lines, &entry.path());
+
+    }
+
     use std::collections::HashMap;
     use std::collections::HashSet;
-    let mut file_name_to_submodules:HashMap<String, HashSet<String>> = HashMap::default();
+    let mut file_name_to_submodules:HashMap<String, HashSet<(String,String)>> = HashMap::default();
+    // let mut file_name_to_submodules_always:HashMap<String, HashSet<String>> = HashMap::default();
     //collect a list of all available data
     for entry in WalkDir::new("../src/locales") {
         let entry = entry.unwrap();
-        let file_name = entry.file_name().to_str().unwrap();
+        let file_name = entry.gimme_filename();
 
         if entry.path().is_dir() && entry.depth() == 2 {
             let set = file_name_to_submodules.entry(file_name.to_string()).or_insert(HashSet::new());
-            let sub_modules_iter = entry.path()
-                .read_dir().unwrap()
-                .map(|entry|entry.unwrap())
-                .filter(|entry|entry.file_name() == "mod.rs");
-            for path in sub_modules_iter {
-                set.insert(path.path().file_stem().unwrap().to_str().unwrap().to_string());
+            let sub_modules: HashSet<(String, String)> = entry.path()
+                .read_diro().iter()
+                .filter(|entry|entry.file_name() != "mod.rs")
+                .flat_map(|entry|{
+                    if entry.path().is_dir() {
+                        return vec![].into_iter();
+                    }
+                    let lines = into_lines(&entry.path());
+                    let vecco = lines.iter().flat_map(|line|re_static_name.captures(line)).map(|cap|cap[2].to_string())
+                        .map(|array_name|(entry.path().file_stem().gimme_that(),array_name)).collect::<Vec<_>>();
+                    vecco.into_iter()
+                })
+                .collect();
+            set.extend(sub_modules.clone());
+
+        }
+    }
+
+    //Add Accessor functions
+    println!("{:?}", file_name_to_submodules);
+    for entry in WalkDir::new("../src/locales") {
+        let entry = entry.unwrap();
+        let file_name = entry.gimme_filename();
+        if file_name == "mod.rs" && entry.depth() == 3 {
+            let file_name = entry.path().parent().gimme_filename();
+            let all_submodules = file_name_to_submodules.entry(file_name.to_string()).or_insert(HashSet::new());
+            // let inter_set = file_name_to_submodules_always.entry(file_name.to_string()).or_insert(HashSet::new());
+            let sub_modules: HashSet<_> = entry.path().parent().unwrap()
+                .read_diro().iter()
+                .filter(|entry|entry.file_name() != "mod.rs")
+                .flat_map(|entry|{
+                    if entry.path().is_dir() {
+                        return vec![].into_iter();
+                    }
+                    let lines = into_lines(&entry.path());
+                    let vecco = lines.iter().flat_map(|line|re_static_name.captures(line)).map(|cap|cap[2].to_string())
+                        .map(|array_name|(entry.path().file_stem().gimme_that(),array_name)).collect::<Vec<_>>();
+                    vecco.into_iter()
+                })
+                // .map(|path|path.path().file_stem().unwrap().gimme_that())
+                .collect();
+
+            let much_fun: Vec<_> = all_submodules.iter().map(|(sub_mod, array_name)|{
+                let fun_name = if sub_mod == &array_name.to_lowercase() {
+                    array_name.to_lowercase()
+                }else{
+                    sub_mod.to_string()+"_"+&array_name.to_lowercase()
+                };
+                if sub_modules.contains(&(sub_mod.to_string(), array_name.to_string())) {
+                    format!(r#"
+pub fn {}() -> Option<&'static [&'static str]> {{
+    Some(self::{}::{})
+}}"#, fun_name, sub_mod, array_name)
+                }else{
+                    format!(r#"
+pub fn {}() -> Option<&'static [&'static str]> {{
+    None
+}}"#, fun_name)
+                }
+
+            }).collect();
+
+            let mut lines = into_lines(&entry.path());
+            //remove old pub fn block
+            if let Some(fn_start) = lines.iter().position(|line| line.contains("pub fn")) {
+                lines = lines.split_at(fn_start).0.to_vec();
             }
 
-            // println!("{:?}", entry.path().components().last().unwrap());
-            // continue;
-        }
-            // write_lines(liness, &entry.path());
+            // if file_name != "date" {
+                lines.extend(much_fun);
+            // }
+            write_lines(lines, &entry.path());
 
+        }
     }
-    println!("{:?}", file_name_to_submodules);
+    // println!("{:?}", file_name_to_submodules_always);
 
     let re = Regex::new(r#"[A-Za-z]*\.([A-Za-z]*)\s*=\s*(".*").*"#).unwrap();
 
@@ -139,9 +296,9 @@ fn main() -> Result<(), std::io::Error> {
         if entry.path().is_dir() {
             continue;
         }
-        let file_name = entry.file_name().to_str().unwrap();
+        let file_name = entry.gimme_filename();
 
-        let result = lines(&entry.path()).into_iter().map(|line|{
+        let result = into_lines(&entry.path()).into_iter().map(|line|{
             if line.contains(r#"module["exports"] = ["#) {
                 format!("pub static {}: &'static [&'static str] = &[ ", &file_name[..file_name.len()-3])
             }else if let Some(pat) = re.captures(&line) {
@@ -161,9 +318,9 @@ fn main() -> Result<(), std::io::Error> {
         if entry.path().is_dir() {
             continue;
         }
-        let file_name = entry.file_name().to_str().unwrap();
+        let file_name = entry.gimme_filename();
         if file_name.ends_with(".js") {
-            let entree = entry.path().to_str().unwrap().to_string();
+            let entree = entry.path().gimme_that();
             std::fs::rename(entry.path(), entree.replace(".js", ".rs"))?;
         }
     }
@@ -174,10 +331,10 @@ fn main() -> Result<(), std::io::Error> {
         if entry.path().is_dir() {
             continue;
         }
-        let file_name = entry.file_name().to_str().unwrap();
+        let file_name = entry.gimme_filename();
         if file_name == "product_name.rs" || file_name == "month.rs" || file_name == "weekday.rs"|| file_name == "title.rs" {
 
-            let lines = lines(&entry.path());
+            let lines = into_lines(&entry.path());
 
             let re = Regex::new(r"\s*],\s*").unwrap();
             let re3 = Regex::new(r"\s*]\s*").unwrap();
@@ -219,12 +376,12 @@ fn main() -> Result<(), std::io::Error> {
         if entry.path().is_dir() || entry.depth() >= 2 {
             continue;
         }
-        let file_name = entry.file_name().to_str().unwrap();
+        let file_name = entry.gimme_filename();
         println!("{:?}", file_name);
         let re = Regex::new(r"^function ([A-Z][A-Za-z]*).*").unwrap(); // function Address (faker) {
         let re2 = Regex::new(r"^var ([A-Z][A-Za-z]*).*").unwrap(); // var Phone = function (faker) {
 
-        let lines = lines(&entry.path());
+        let lines = into_lines(&entry.path());
 
         let mut structs = vec![];
 
@@ -278,22 +435,22 @@ fn main() -> Result<(), std::io::Error> {
         write_lines(lines, &entry.path());
 
         if file_name.ends_with(".js") {
-            let entree = entry.path().to_str().unwrap().to_string();
+            let entree = entry.path().gimme_that();
             let entree = entree.replace("index.js", "mod.rs");
             let entree = entree.replace(".js", ".rs");
             std::fs::rename(entry.path(), entree)?;
         }
     }
-    
+
 
     Ok(())
 }
 
-fn lines(path: &std::path::Path) -> Vec<String> {
+fn into_lines(path: &Path) -> Vec<String> {
     BufReader::new(File::open(path).expect(&format!("{:?}", path))).lines().map(|line|line.expect(&format!("{:?}", path))).collect()
 }
 
-fn write_lines(lines: Vec<String>, path: &std::path::Path) {
+fn write_lines(lines: Vec<String>, path: &Path) {
     let text = lines.join("\n") + "\n";
     let mut src = OpenOptions::new().create(true).truncate(true).write(true).open(path).expect(&format!("{:?}", path));
     src.write_all(text.as_bytes()).expect(&format!("{:?}", path));

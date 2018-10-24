@@ -1,4 +1,4 @@
-pub static last_name: &'static [&'static str] = &[ 
+pub static LAST_NAME: &'static [&'static str] = &[ 
   "Silva",
   "Souza",
   "Carvalho",

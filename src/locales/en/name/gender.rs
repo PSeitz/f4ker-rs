@@ -1,4 +1,4 @@
-pub static gender: &'static [&'static str] = &[ 
+pub static GENDER: &'static [&'static str] = &[ 
 "Asexual",
 "Female to male trans man",
 "Female to male transgender man",

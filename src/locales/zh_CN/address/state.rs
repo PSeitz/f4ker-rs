@@ -1,4 +1,4 @@
-pub static state: &'static [&'static str] = &[ 
+pub static STATE: &'static [&'static str] = &[ 
   "北京市",
   "上海市",
   "天津市",

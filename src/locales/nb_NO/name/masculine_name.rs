@@ -1,4 +1,4 @@
-pub static masculine_name: &'static [&'static str] = &[ 
+pub static MASCULINE_NAME: &'static [&'static str] = &[ 
   "Markus",
   "Mathias",
   "Kristian",

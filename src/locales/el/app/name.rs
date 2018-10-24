@@ -1,4 +1,4 @@
-pub static name: &'static [&'static str] = &[ 
+pub static NAME: &'static [&'static str] = &[ 
   "ΤΡΑΠΕΖΑ ΤΗΣ ΕΛΛΑΔΟΣ",
   "ΕΜΠΟΡΙΚΗ ΤΡΑΠΕΖΑ ΤΗΣ ΕΛΛΑΔΟΣ Α.Ε.",
   "Η ΕΘΝΙΚΗ (ΕΛΛ. ΕΤΑΙΡΙΑ ΓΕΝ. ΑΣΦΑΛΕΙΩΝ)",

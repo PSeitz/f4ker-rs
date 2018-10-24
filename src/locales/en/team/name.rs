@@ -1,3 +1,3 @@
-pub static name: &'static [&'static str] = &[ 
+pub static NAME: &'static [&'static str] = &[ 
   "#{Address.state} #{creature}"
 ];

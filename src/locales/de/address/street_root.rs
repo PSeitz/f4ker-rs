@@ -1,4 +1,4 @@
-pub static street_root: &'static [&'static str] = &[ 
+pub static STREET_ROOT: &'static [&'static str] = &[ 
   "Ackerweg",
   "Adalbert-Stifter-Str.",
   "Adalbertstr.",

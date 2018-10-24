@@ -1,4 +1,4 @@
-pub static descriptor: &'static [&'static str] = &[ 
+pub static DESCRIPTOR: &'static [&'static str] = &[ 
   "24 ώρες το 24ώρο",
   "24/7",
   "3η γενιά",

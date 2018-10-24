@@ -1,4 +1,4 @@
-pub static formats: &'static [&'static str] = &[ 
+pub static FORMATS: &'static [&'static str] = &[ 
   "02# #### ###",
   "02## #### ###",
   "03## #### ###",

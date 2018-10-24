@@ -1,4 +1,4 @@
-pub static jcb: &'static [&'static str] = &[ 
+pub static JCB: &'static [&'static str] = &[ 
   "3528-####-####-###L",
   "3529-####-####-###L",
   "35[3-8]#-####-####-###L"

@@ -1,4 +1,4 @@
-pub static words: &'static [&'static str] = &[ 
+pub static WORDS: &'static [&'static str] = &[ 
 "Abacalero",
 "Abacería",
 "Abacero",

@@ -1,5 +1,5 @@
 
-pub static wide: &'static [&'static str] = &[ 
+pub static WIDE: &'static [&'static str] = &[ 
     "Januari",
     "Februari",
     "Maret",
@@ -13,7 +13,7 @@ pub static wide: &'static [&'static str] = &[
     "November",
     "Desember"
 ];
-pub static wide_context: &'static [&'static str] = &[ 
+pub static WIDE_CONTEXT: &'static [&'static str] = &[ 
     "Januari",
     "Februari",
     "Maret",
@@ -27,7 +27,7 @@ pub static wide_context: &'static [&'static str] = &[
     "November",
     "Desember"
 ];
-pub static abbr: &'static [&'static str] = &[ 
+pub static ABBR: &'static [&'static str] = &[ 
     "Jan",
     "Feb",
     "Mar",
@@ -41,7 +41,7 @@ pub static abbr: &'static [&'static str] = &[
     "Nov",
     "Des"
 ];
-pub static abbr_context: &'static [&'static str] = &[ 
+pub static ABBR_CONTEXT: &'static [&'static str] = &[ 
     "Jan",
     "Feb",
     "Mar",

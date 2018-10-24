@@ -1,4 +1,4 @@
-pub static maestro: &'static [&'static str] = &[ 
+pub static MAESTRO: &'static [&'static str] = &[ 
   "5018-#{4}-#{4}-#{3}L",
   "5020-#{4}-#{4}-#{3}L",
   "5038-#{4}-#{4}-#{3}L",

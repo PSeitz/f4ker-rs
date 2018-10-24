@@ -1,4 +1,4 @@
-pub static noun: &'static [&'static str] = &[ 
+pub static NOUN: &'static [&'static str] = &[ 
   "ικανότητα",
   "πρόσβαση",
   "αλγόριθμος",

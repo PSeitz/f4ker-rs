@@ -1,4 +1,4 @@
-pub static female_first_name: &'static [&'static str] = &[ 
+pub static FEMALE_FIRST_NAME: &'static [&'static str] = &[ 
   "Аврелія",
   "Аврора",
   "Агапія",

@@ -1,4 +1,4 @@
-pub static street_suffix: &'static [&'static str] = &[ 
+pub static STREET_SUFFIX: &'static [&'static str] = &[ 
   "vägen",
   "gatan",
   "gränden",

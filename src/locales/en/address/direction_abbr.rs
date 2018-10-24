@@ -1,4 +1,4 @@
-pub static direction_abbr: &'static [&'static str] = &[ 
+pub static DIRECTION_ABBR: &'static [&'static str] = &[ 
   "N",
   "E",
   "S",

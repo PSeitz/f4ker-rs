@@ -1,4 +1,4 @@
-pub static phrase: &'static [&'static str] = &[ 
+pub static PHRASE: &'static [&'static str] = &[ 
   "Чтобы {{verb}} {{noun}}, мы можем получить {{abbreviation}} {{noun}} через {{adjective}} {{abbreviation}} {{noun}}!",
   "Необходимо {{verb}} {{adjective}} {{abbreviation}} {{noun}}!",
   "Попробуйте {{verb}} {{abbreviation}} {{noun}}, возможно это позволит {{verb}} {{adjective}} {{noun}}!",

@@ -1,4 +1,4 @@
-pub static male_middle_name: &'static [&'static str] = &[ 
+pub static MALE_MIDDLE_NAME: &'static [&'static str] = &[ 
   "Александрович",
   "Алексеевич",
   "Альбертович",

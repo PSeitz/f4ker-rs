@@ -1,4 +1,4 @@
-pub static bs_noun: &'static [&'static str] = &[ 
+pub static BS_NOUN: &'static [&'static str] = &[ 
   "clicks-and-mortar",
   "value-added",
   "vertical",

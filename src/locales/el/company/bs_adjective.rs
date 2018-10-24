@@ -1,4 +1,4 @@
-pub static bs_adjective: &'static [&'static str] = &[ 
+pub static BS_ADJECTIVE: &'static [&'static str] = &[ 
   "Προστιθέμενη αξία",
   "Κάθετη",
   "Προληπτική",

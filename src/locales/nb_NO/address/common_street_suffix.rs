@@ -1,4 +1,4 @@
-pub static common_street_suffix: &'static [&'static str] = &[ 
+pub static COMMON_STREET_SUFFIX: &'static [&'static str] = &[ 
   "sgate",
   "svei",
   "s Gate",

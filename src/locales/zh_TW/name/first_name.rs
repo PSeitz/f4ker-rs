@@ -1,4 +1,4 @@
-pub static first_name: &'static [&'static str] = &[ 
+pub static FIRST_NAME: &'static [&'static str] = &[ 
   "王",
   "李",
   "張",

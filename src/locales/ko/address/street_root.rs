@@ -1,4 +1,4 @@
-pub static street_root: &'static [&'static str] = &[ 
+pub static STREET_ROOT: &'static [&'static str] = &[ 
   "상계",
   "화곡",
   "신정",

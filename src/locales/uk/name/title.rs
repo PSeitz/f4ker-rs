@@ -1,5 +1,5 @@
 
-pub static descriptor: &'static [&'static str] = &[ 
+pub static DESCRIPTOR: &'static [&'static str] = &[ 
     "Головний",
     "Генеральний",
     "Провідний",
@@ -11,7 +11,7 @@ pub static descriptor: &'static [&'static str] = &[
     "Міжнародний",
     "Центральний"
 ];
-pub static level: &'static [&'static str] = &[ 
+pub static LEVEL: &'static [&'static str] = &[ 
     "маркетинговий",
     "оптимізаційний",
     "страховий",
@@ -19,7 +19,7 @@ pub static level: &'static [&'static str] = &[
     "інтеграційний",
     "логістичний"
 ];
-pub static job: &'static [&'static str] = &[ 
+pub static JOB: &'static [&'static str] = &[ 
     "інженер",
     "агент",
     "адміністратор",

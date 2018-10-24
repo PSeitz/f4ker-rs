@@ -1,3 +1,3 @@
-pub static city_prefix: &'static [&'static str] = &[ 
+pub static CITY_PREFIX: &'static [&'static str] = &[ 
   ""
 ];

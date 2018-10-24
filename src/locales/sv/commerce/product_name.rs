@@ -1,5 +1,5 @@
 
-pub static adjective: &'static [&'static str] = &[ 
+pub static ADJECTIVE: &'static [&'static str] = &[ 
     "Liten",
     "Ergonomisk",
     "Robust",
@@ -11,7 +11,7 @@ pub static adjective: &'static [&'static str] = &[
     "Slimmad",
     "Grym"
 ];
-pub static material: &'static [&'static str] = &[ 
+pub static MATERIAL: &'static [&'static str] = &[ 
     "Stål",
     "Metall",
     "Trä",
@@ -22,7 +22,7 @@ pub static material: &'static [&'static str] = &[
     "Gummi",
     "Latex"
 ];
-pub static product: &'static [&'static str] = &[ 
+pub static PRODUCT: &'static [&'static str] = &[ 
     "Stol",
     "Bil",
     "Dator",

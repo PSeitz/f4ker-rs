@@ -1,4 +1,4 @@
-pub static column: &'static [&'static str] = &[ 
+pub static COLUMN: &'static [&'static str] = &[ 
   "id",
   "title",
   "name",

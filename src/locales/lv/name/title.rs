@@ -1,5 +1,5 @@
 
-pub static descriptor: &'static [&'static str] = &[ 
+pub static DESCRIPTOR: &'static [&'static str] = &[ 
     "Galvenais",
     "Vecākais",
     "Tiešo",
@@ -13,7 +13,7 @@ pub static descriptor: &'static [&'static str] = &[
     "Iekšējās",
     "Personu"
 ];
-pub static level: &'static [&'static str] = &[ 
+pub static LEVEL: &'static [&'static str] = &[ 
     "risinājumu",
     "programmu",
     "drošības",
@@ -45,7 +45,7 @@ pub static level: &'static [&'static str] = &[
     "lietojamības",
     "mērījumu"
 ];
-pub static job: &'static [&'static str] = &[ 
+pub static JOB: &'static [&'static str] = &[ 
     "uzraugs",
     "vadītājs",
     "pārstāvis",

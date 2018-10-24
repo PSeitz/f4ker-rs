@@ -1,5 +1,5 @@
 
-pub static adjective: &'static [&'static str] = &[ 
+pub static ADJECTIVE: &'static [&'static str] = &[ 
     "Mazs",
     "Ergonomisks",
     "Raupjš",
@@ -13,7 +13,7 @@ pub static adjective: &'static [&'static str] = &[
 	"Mīksts",
 	"Rūgts"
 ];
-pub static material: &'static [&'static str] = &[ 
+pub static MATERIAL: &'static [&'static str] = &[ 
     "dzelzs",
     "koka",
     "betona",
@@ -22,7 +22,7 @@ pub static material: &'static [&'static str] = &[
     "granīta",
     "gumijas"
 ];
-pub static product: &'static [&'static str] = &[ 
+pub static PRODUCT: &'static [&'static str] = &[ 
     "krēsls",
     "auto",
     "dators",

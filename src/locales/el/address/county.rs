@@ -1,4 +1,4 @@
-pub static county: &'static [&'static str] = &[ 
+pub static COUNTY: &'static [&'static str] = &[ 
   "Αθήνα",
   "Θεσσαλονίκη",
   "Πειραιάς",

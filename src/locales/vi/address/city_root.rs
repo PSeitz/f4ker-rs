@@ -1,4 +1,4 @@
-pub static city_root: &'static [&'static str] = &[ 
+pub static CITY_ROOT: &'static [&'static str] = &[ 
   "Bắc Giang",
   "Bắc Kạn",
   "Bắc Ninh",

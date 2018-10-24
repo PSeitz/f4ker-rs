@@ -1,4 +1,4 @@
-pub static uk_country: &'static [&'static str] = &[ 
+pub static UK_COUNTRY: &'static [&'static str] = &[ 
   "England",
   "Scotland",
   "Wales",

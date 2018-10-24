@@ -1,4 +1,4 @@
-pub static area_code: &'static [&'static str] = &[ 
+pub static AREA_CODE: &'static [&'static str] = &[ 
   "392",
   "510",
   "512",

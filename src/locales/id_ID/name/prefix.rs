@@ -1,1 +1,1 @@
-pub static prefix: &'static [&'static str] = &[];
+pub static PREFIX: &'static [&'static str] = &[];

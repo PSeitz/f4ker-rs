@@ -1,4 +1,4 @@
-pub static engine: &'static [&'static str] = &[ 
+pub static ENGINE: &'static [&'static str] = &[ 
   "InnoDB",
   "MyISAM",
   "MEMORY",

@@ -1,4 +1,4 @@
-pub static domain_suffix: &'static [&'static str] = &[ 
+pub static DOMAIN_SUFFIX: &'static [&'static str] = &[ 
   "co.za",
   "com",
   "org.za",

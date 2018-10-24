@@ -1,4 +1,4 @@
-pub static adjective: &'static [&'static str] = &[ 
+pub static ADJECTIVE: &'static [&'static str] = &[ 
   "auxiliary",
   "primary",
   "back-end",

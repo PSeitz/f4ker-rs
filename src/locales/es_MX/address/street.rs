@@ -1,4 +1,4 @@
-pub static street: &'static [&'static str] = &[ 
+pub static STREET: &'static [&'static str] = &[ 
 	"20 de Noviembre",
 	"Cinco de Mayo",
 	"Cuahutemoc",

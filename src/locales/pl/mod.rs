@@ -1,8 +1,8 @@
 pub const title: &str = "Polish";
-pub mod name;
-pub mod address;
-pub mod company;
-pub mod internet;
+pub mod cell_phone;
 pub mod lorem;
 pub mod phone_number;
-pub mod cell_phone;
+pub mod internet;
+pub mod address;
+pub mod name;
+pub mod company;

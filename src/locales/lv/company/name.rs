@@ -1,4 +1,4 @@
-pub static name: &'static [&'static str] = &[ 
+pub static NAME: &'static [&'static str] = &[ 
   "#{prefix} #{Name.male_last_name}",
   "#{prefix} #{Name.male_last_name} #{suffix}",
   "#{prefix} #{Name.female_last_name} #{suffix}",

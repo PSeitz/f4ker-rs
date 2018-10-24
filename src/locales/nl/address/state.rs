@@ -1,4 +1,4 @@
-pub static state: &'static [&'static str] = &[ 
+pub static STATE: &'static [&'static str] = &[ 
   "Noord-Holland",
   "Zuid-Holland",
   "Utrecht",

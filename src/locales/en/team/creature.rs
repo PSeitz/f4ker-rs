@@ -1,4 +1,4 @@
-pub static creature: &'static [&'static str] = &[ 
+pub static CREATURE: &'static [&'static str] = &[ 
   "ants",
   "bats",
   "bears",

@@ -1,4 +1,4 @@
-pub static female_middle_name: &'static [&'static str] = &[ 
+pub static FEMALE_MIDDLE_NAME: &'static [&'static str] = &[ 
   "Адамівна",
   "Азарівна",
   "Алевтинівна",

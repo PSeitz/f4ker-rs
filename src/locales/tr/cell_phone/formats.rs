@@ -1,4 +1,4 @@
-pub static formats: &'static [&'static str] = &[ 
+pub static FORMATS: &'static [&'static str] = &[ 
   "+90-53#-###-##-##",
   "+90-54#-###-##-##",
   "+90-55#-###-##-##",

@@ -1,4 +1,4 @@
-pub static ocker_first_name: &'static [&'static str] = &[ 
+pub static OCKER_FIRST_NAME: &'static [&'static str] = &[ 
   "Bazza",
   "Bluey",
   "Davo",

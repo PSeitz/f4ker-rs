@@ -1,4 +1,4 @@
-pub static street_suffix: &'static [&'static str] = &[ 
+pub static STREET_SUFFIX: &'static [&'static str] = &[ 
   "de l'Abbaye",
   "Adolphe Mille",
   "d'Alésia",

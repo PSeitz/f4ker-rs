@@ -1,5 +1,5 @@
 
-pub static descriptor: &'static [&'static str] = &[ 
+pub static DESCRIPTOR: &'static [&'static str] = &[ 
     "Senior",
     "Εταιρείες",
     "Πελάτης",
@@ -7,7 +7,7 @@ pub static descriptor: &'static [&'static str] = &[
     "Εσωτερικό",
     "Κύριος"
 ];
-pub static level: &'static [&'static str] = &[ 
+pub static LEVEL: &'static [&'static str] = &[ 
     "Λύσεις",
     "Πρόγραμμα",
     "Μάρκα",
@@ -39,7 +39,7 @@ pub static level: &'static [&'static str] = &[
     "Διαμόρφωση",
     "Μετρήσεις"
 ];
-pub static job: &'static [&'static str] = &[ 
+pub static JOB: &'static [&'static str] = &[ 
     "Επόπτης",
     "Συνεργάτης",
     "Σύμβουλος",

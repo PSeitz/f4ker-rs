@@ -1,4 +1,4 @@
-pub static bs_verb: &'static [&'static str] = &[ 
+pub static BS_VERB: &'static [&'static str] = &[ 
   "χρησιμοποιούν",
   "ενσωμάτωση",
   "βελτιστοποιήσουν",

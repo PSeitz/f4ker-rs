@@ -1,4 +1,4 @@
-pub static streets: &'static [&'static str] = &[ 
+pub static STREETS: &'static [&'static str] = &[ 
     "Capalna",
     "Gheorghe Duca",
     "Acvila",

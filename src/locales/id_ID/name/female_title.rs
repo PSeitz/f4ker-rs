@@ -1,4 +1,4 @@
-pub static female_title: &'static [&'static str] = &[ 
+pub static FEMALE_TITLE: &'static [&'static str] = &[ 
   "dr.",
   "drg.",
   "Dr.",

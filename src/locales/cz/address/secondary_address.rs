@@ -1,4 +1,4 @@
-pub static secondary_address: &'static [&'static str] = &[ 
+pub static SECONDARY_ADDRESS: &'static [&'static str] = &[ 
   "Apt. ###",
   "Suite ###"
 ];

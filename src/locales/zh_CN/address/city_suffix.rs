@@ -1,4 +1,4 @@
-pub static city_suffix: &'static [&'static str] = &[ 
+pub static CITY_SUFFIX: &'static [&'static str] = &[ 
   "沙市",
   "京市",
   "宁市",

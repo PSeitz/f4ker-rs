@@ -1,4 +1,4 @@
-pub static female_prefix: &'static [&'static str] = &[ 
+pub static FEMALE_PREFIX: &'static [&'static str] = &[ 
   "Sra.",
   "Dra.",
   "Prof.ª",

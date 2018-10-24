@@ -1,4 +1,4 @@
-pub static city_name: &'static [&'static str] = &[ 
+pub static CITY_NAME: &'static [&'static str] = &[ 
   "강릉",
   "양양",
   "인제",

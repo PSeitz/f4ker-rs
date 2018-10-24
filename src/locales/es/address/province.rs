@@ -1,4 +1,4 @@
-pub static province: &'static [&'static str] = &[ 
+pub static PROVINCE: &'static [&'static str] = &[ 
   "Álava",
   "Albacete",
   "Alicante",

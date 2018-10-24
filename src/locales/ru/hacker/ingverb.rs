@@ -1,4 +1,4 @@
-pub static ingverb: &'static [&'static str] = &[ 
+pub static INGVERB: &'static [&'static str] = &[ 
   "резервное копирование",
   "обход",
   "архивирование",

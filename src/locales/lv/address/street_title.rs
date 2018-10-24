@@ -1,4 +1,4 @@
-pub static street_title: &'static [&'static str] = &[ 
+pub static STREET_TITLE: &'static [&'static str] = &[ 
   "13. janvāra",
   "Admirāļu",
   "Airītes",

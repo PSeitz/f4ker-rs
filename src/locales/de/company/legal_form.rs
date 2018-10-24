@@ -1,4 +1,4 @@
-pub static legal_form: &'static [&'static str] = &[ 
+pub static LEGAL_FORM: &'static [&'static str] = &[ 
   "GmbH",
   "AG",
   "Gruppe",

@@ -1,4 +1,4 @@
-pub static exchange_code: &'static [&'static str] = &[ 
+pub static EXCHANGE_CODE: &'static [&'static str] = &[ 
   "201",
   "202",
   "203",

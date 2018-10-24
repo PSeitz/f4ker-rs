@@ -1,4 +1,4 @@
-pub static credit_card_numbers: &'static [&'static str] = &[ 
+pub static CREDIT_CARD_NUMBERS: &'static [&'static str] = &[ 
   "1234-2121-1221-1211",
   "1212-1221-1121-1234",
   "1211-1221-1234-2201",

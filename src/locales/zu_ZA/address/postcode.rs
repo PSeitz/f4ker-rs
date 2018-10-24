@@ -1,4 +1,4 @@
-pub static postcode: &'static [&'static str] = &[ 
+pub static POSTCODE: &'static [&'static str] = &[ 
   "#####",
   "####"
 ];

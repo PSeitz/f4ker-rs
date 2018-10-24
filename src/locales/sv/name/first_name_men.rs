@@ -1,4 +1,4 @@
-pub static first_name_men: &'static [&'static str] = &[ 
+pub static FIRST_NAME_MEN: &'static [&'static str] = &[ 
   "Erik",
   "Lars",
   "Karl",

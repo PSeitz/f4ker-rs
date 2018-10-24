@@ -1,4 +1,4 @@
-pub static free_email: &'static [&'static str] = &[ 
+pub static FREE_EMAIL: &'static [&'static str] = &[ 
   "gmail.com",
   "seznam.cz",
   "centrum.cz",

@@ -1,4 +1,4 @@
-pub static type: &'static [&'static str] = &[ 
+pub static TYPE: &'static [&'static str] = &[ 
   "int",
   "varchar",
   "text",

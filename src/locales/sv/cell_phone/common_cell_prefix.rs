@@ -1,4 +1,4 @@
-pub static common_cell_prefix: &'static [&'static str] = &[ 
+pub static COMMON_CELL_PREFIX: &'static [&'static str] = &[ 
   "56",
   "62",
   "59"

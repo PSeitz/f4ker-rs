@@ -1,4 +1,4 @@
-pub static supplemental: &'static [&'static str] = &[ 
+pub static SUPPLEMENTAL: &'static [&'static str] = &[ 
   "ābbās",
   "ābduco",
   "ābēo",

@@ -1,4 +1,4 @@
-pub static female_last_name: &'static [&'static str] = &[ 
+pub static FEMALE_LAST_NAME: &'static [&'static str] = &[ 
   "Antalová",
   "Babková",
   "Bahnová",

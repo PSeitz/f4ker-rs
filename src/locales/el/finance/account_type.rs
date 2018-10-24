@@ -1,4 +1,4 @@
-pub static account_type: &'static [&'static str] = &[ 
+pub static ACCOUNT_TYPE: &'static [&'static str] = &[ 
   "Καταθετικός",
   "Μισθοδοσίας",
   "Δανειακός"

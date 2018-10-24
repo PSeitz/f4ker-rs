@@ -1,5 +1,5 @@
 
-pub static wide: &'static [&'static str] = &[ 
+pub static WIDE: &'static [&'static str] = &[ 
     "Minggu",
     "Senin",
     "Selasa",
@@ -8,7 +8,7 @@ pub static wide: &'static [&'static str] = &[
     "Jumat",
     "Sabtu"
 ];
-pub static wide_context: &'static [&'static str] = &[ 
+pub static WIDE_CONTEXT: &'static [&'static str] = &[ 
     "Minggu",
     "Senin",
     "Selasa",
@@ -17,7 +17,7 @@ pub static wide_context: &'static [&'static str] = &[
     "Jumat",
     "Sabtu"
 ];
-pub static abbr: &'static [&'static str] = &[ 
+pub static ABBR: &'static [&'static str] = &[ 
     "Min",
     "Sen",
     "Sel",
@@ -26,7 +26,7 @@ pub static abbr: &'static [&'static str] = &[
     "Jum",
     "Sab"
 ];
-pub static abbr_context: &'static [&'static str] = &[ 
+pub static ABBR_CONTEXT: &'static [&'static str] = &[ 
     "Min",
     "Sen",
     "Sel",

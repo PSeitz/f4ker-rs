@@ -1,4 +1,4 @@
-pub static transaction_type: &'static [&'static str] = &[ 
+pub static TRANSACTION_TYPE: &'static [&'static str] = &[ 
   "deposit",
   "withdrawal",
   "payment",

@@ -1,4 +1,4 @@
-pub static street_prefix: &'static [&'static str] = &[ 
+pub static STREET_PREFIX: &'static [&'static str] = &[ 
   "Allée",
   "Voie",
   "Rue",

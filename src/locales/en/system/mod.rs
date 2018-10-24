@@ -1,2 +1,2 @@
-// mod directoryPaths;
-// mod mimeTypes;
+mod mimeTypes;
+mod directoryPaths;

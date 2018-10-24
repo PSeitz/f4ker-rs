@@ -1,4 +1,4 @@
-pub static city_name: &'static [&'static str] = &[ 
+pub static CITY_NAME: &'static [&'static str] = &[ 
   "Aleksandrów Kujawski",
   "Aleksandrów Łódzki",
   "Alwernia",

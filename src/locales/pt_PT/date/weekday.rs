@@ -1,6 +1,6 @@
 // Source: https://unicode.org/cldr/trac/browser/trunk/common/main/pt_PT.xml?rev=14409#L491
 
-pub static wide: &'static [&'static str] = &[ 
+pub static WIDE: &'static [&'static str] = &[ 
     "Segunda",
     "Terça",
     "Quarta",
@@ -9,7 +9,7 @@ pub static wide: &'static [&'static str] = &[
     "Sábado",
     "Domingo"
 ];
-pub static abbr: &'static [&'static str] = &[ 
+pub static ABBR: &'static [&'static str] = &[ 
     "Seg",
     "Ter",
     "Qua",

@@ -1,4 +1,4 @@
-pub static region: &'static [&'static str] = &[ 
+pub static REGION: &'static [&'static str] = &[ 
   "South East Queensland",
   "Wide Bay Burnett",
   "Margaret River",

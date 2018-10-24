@@ -1,5 +1,5 @@
 
-pub static job: &'static [&'static str] = &[ 
+pub static JOB: &'static [&'static str] = &[ 
     "Superviseur",
     "Executif",
     "Manager",

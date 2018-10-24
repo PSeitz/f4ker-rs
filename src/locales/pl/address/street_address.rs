@@ -1,3 +1,3 @@
-pub static street_address: &'static [&'static str] = &[ 
+pub static STREET_ADDRESS: &'static [&'static str] = &[ 
   "#{street_name} #{building_number}"
 ];

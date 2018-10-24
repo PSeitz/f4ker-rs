@@ -1,5 +1,5 @@
 
-pub static wide: &'static [&'static str] = &[ 
+pub static WIDE: &'static [&'static str] = &[ 
     "janvāris",
     "februāris",
     "marts",
@@ -13,7 +13,7 @@ pub static wide: &'static [&'static str] = &[
     "novembris",
     "decembris"
 ];
-pub static wide_context: &'static [&'static str] = &[ 
+pub static WIDE_CONTEXT: &'static [&'static str] = &[ 
     "janvārī",
     "februārī",
     "martā",
@@ -27,7 +27,7 @@ pub static wide_context: &'static [&'static str] = &[
     "novembrī",
     "decembrī"
 ];
-pub static abbr: &'static [&'static str] = &[ 
+pub static ABBR: &'static [&'static str] = &[ 
     "jan.",
     "feb.",
     "mar.",
@@ -41,7 +41,7 @@ pub static abbr: &'static [&'static str] = &[
     "nov.",
     "dec."
 ];
-pub static abbr_context: &'static [&'static str] = &[ 
+pub static ABBR_CONTEXT: &'static [&'static str] = &[ 
     "janv.",
     "febr.",
     "mar.",

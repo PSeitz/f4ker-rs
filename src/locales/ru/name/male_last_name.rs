@@ -1,4 +1,4 @@
-pub static male_last_name: &'static [&'static str] = &[ 
+pub static MALE_LAST_NAME: &'static [&'static str] = &[ 
   "Смирнов",
   "Иванов",
   "Кузнецов",

@@ -1,4 +1,4 @@
-pub static example_email: &'static [&'static str] = &[ 
+pub static EXAMPLE_EMAIL: &'static [&'static str] = &[ 
   "example.org",
   "example.com",
   "example.net"

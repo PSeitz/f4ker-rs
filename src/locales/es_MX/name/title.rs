@@ -1,4 +1,4 @@
-pub static descriptor: &'static [&'static str] = &[ 
+pub static DESCRIPTOR: &'static [&'static str] = &[ 
     "Jefe",
     "Senior",
     "Directo",
@@ -22,7 +22,7 @@ pub static descriptor: &'static [&'static str] = &[
     "SubGerente",
     "Director"
 ];
-pub static level: &'static [&'static str] = &[ 
+pub static LEVEL: &'static [&'static str] = &[ 
     "Soluciones",
     "Programa",
     "Marca",
@@ -60,7 +60,7 @@ pub static level: &'static [&'static str] = &[
     "Usabilidad",
     "Métricas",
 ];
-pub static job: &'static [&'static str] = &[ 
+pub static JOB: &'static [&'static str] = &[ 
     "Supervisor",
     "Asociado",
     "Ejecutivo",

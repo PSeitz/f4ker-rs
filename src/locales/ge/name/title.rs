@@ -1,5 +1,5 @@
 
-pub static descriptor: &'static [&'static str] = &[ 
+pub static DESCRIPTOR: &'static [&'static str] = &[ 
     "გენერალური",
     "მთავარი",
     "სტაჟიორ",
@@ -7,7 +7,7 @@ pub static descriptor: &'static [&'static str] = &[
     "ყოფილი",
     "წამყვანი"
 ];
-pub static level: &'static [&'static str] = &[ 
+pub static LEVEL: &'static [&'static str] = &[ 
     "აღრიცხვების",
     "ბრენდინგის",
     "ბრენიდს",
@@ -34,7 +34,7 @@ pub static level: &'static [&'static str] = &[
     "ხარისხის",
     "ჯგუფის"
 ];
-pub static job: &'static [&'static str] = &[ 
+pub static JOB: &'static [&'static str] = &[ 
     "აგენტი",
     "ადვოკატი",
     "ადმინისტრატორი",

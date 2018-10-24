@@ -1,4 +1,4 @@
-pub static color: &'static [&'static str] = &[ 
+pub static COLOR: &'static [&'static str] = &[ 
    "rojo",
    "verde",
    "azul",

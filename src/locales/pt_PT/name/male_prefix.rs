@@ -1,4 +1,4 @@
-pub static male_prefix: &'static [&'static str] = &[ 
+pub static MALE_PREFIX: &'static [&'static str] = &[ 
   "Sr.",
   "Dr.",
   "Prof.",

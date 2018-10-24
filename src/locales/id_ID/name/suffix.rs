@@ -1,4 +1,4 @@
-pub static suffix: &'static [&'static str] = &[ 
+pub static SUFFIX: &'static [&'static str] = &[ 
   "S.Ked",
   "S.Gz",
   "S.Pt",
