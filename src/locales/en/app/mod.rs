@@ -1,6 +1,6 @@
 mod author;
-mod version;
 mod name;
+mod version;
 
 pub fn author() -> Option<&'static [&'static str]> {
     Some(self::author::AUTHOR)

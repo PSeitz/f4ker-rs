@@ -1,6 +1,6 @@
-pub const title: &str = "Australia (English)";
-pub mod phone_number;
-pub mod internet;
 pub mod address;
-pub mod name;
 pub mod company;
+pub mod internet;
+pub mod name;
+pub mod phone_number;
+pub const title: &str = "Australia (English)";

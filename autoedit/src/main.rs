@@ -133,16 +133,19 @@ fn main() -> Result<(), std::io::Error> {
                 .map(|entry|entry.path().file_stem().gimme_that())
                 .filter(|file_name|file_name != "mod")
                 .map(|mod_name|{
-
                     if entry.depth() <= 2{
                         format!("pub mod {};", mod_name)
                     }else{
                         format!("mod {};", mod_name)
                     }
-
                 })
                 .collect();
-            let lines = lines.into_iter().filter(|el|!el.contains("require")).filter(|el|!el.contains("mod")).chain(sub_modules.into_iter()).collect();
+            let lines = sub_modules.into_iter()
+                .chain(lines.into_iter()
+                    .filter(|el|el.trim() != "")
+                    .filter(|el|!el.contains("require"))
+                    .filter(|el|!el.contains("mod"))
+                ).collect();
 
             write_lines(lines, &entry.path());
 
@@ -180,7 +183,7 @@ fn main() -> Result<(), std::io::Error> {
     }
 
     let re_static_name = Regex::new(r#"(\s*pub static )([A-Za-z_]*)(: &'static \[&'static str\].*)"#).unwrap();
-    //reexport
+    //convert static arrays to upper case
     for entry in WalkDir::new("../src/locales") {
         let entry = entry.unwrap();
         if entry.path().is_dir(){
@@ -251,7 +254,7 @@ fn main() -> Result<(), std::io::Error> {
                 // .map(|path|path.path().file_stem().unwrap().gimme_that())
                 .collect();
 
-            let much_fun: Vec<_> = all_submodules.iter().map(|(sub_mod, array_name)|{
+            let mut much_fun: Vec<_> = all_submodules.iter().map(|(sub_mod, array_name)|{
                 let fun_name = if sub_mod == &array_name.to_lowercase() {
                     array_name.to_lowercase()
                 }else{
@@ -270,6 +273,7 @@ pub fn {}() -> Option<&'static [&'static str]> {{
                 }
 
             }).collect();
+            much_fun.sort();
 
             let mut lines = into_lines(&entry.path());
             //remove old pub fn block

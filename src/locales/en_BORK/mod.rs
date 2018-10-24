@@ -1,2 +1,2 @@
-pub const title: &str = "Bork (English)";
 pub mod lorem;
+pub const title: &str = "Bork (English)";

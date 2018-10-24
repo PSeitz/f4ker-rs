@@ -1,2 +1,2 @@
-mod mimeTypes;
 mod directoryPaths;
+mod mimeTypes;

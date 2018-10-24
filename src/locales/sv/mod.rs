@@ -1,10 +1,10 @@
-pub const title: &str = "Swedish";
-pub mod commerce;
-pub mod date;
-pub mod cell_phone;
-pub mod phone_number;
-pub mod internet;
-pub mod team;
 pub mod address;
-pub mod name;
+pub mod cell_phone;
+pub mod commerce;
 pub mod company;
+pub mod date;
+pub mod internet;
+pub mod name;
+pub mod phone_number;
+pub mod team;
+pub const title: &str = "Swedish";

@@ -1,10 +1,10 @@
 mod formats;
 
-pub fn exchange_code() -> Option<&'static [&'static str]> {
+pub fn area_code() -> Option<&'static [&'static str]> {
     None
 }
 
-pub fn area_code() -> Option<&'static [&'static str]> {
+pub fn exchange_code() -> Option<&'static [&'static str]> {
     None
 }
 
