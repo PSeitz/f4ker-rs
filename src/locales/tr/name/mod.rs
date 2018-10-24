@@ -1,8 +1,4 @@
-mod first_name;
-mod last_name;
-mod prefix;
-mod name;
-pub use self::first_name::*;
-pub use self::last_name::*;
-pub use self::prefix::*;
-pub use self::name::*;
+pub mod first_name;
+pub mod last_name;
+pub mod prefix;
+pub mod name;

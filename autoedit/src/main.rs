@@ -81,28 +81,53 @@ fn main() -> Result<(), std::io::Error> {
         if file_name == "mod.rs" {
             let mut liness:Vec<_> = lines(&entry.path()).into_iter().filter(|el|!el.contains("pub use")).collect();
 
-            let reexport = liness.iter()
-            .filter(|el|!el.contains("pub use"))
-            .filter(|line|!line.trim().starts_with("//")) // is commented
-            .flat_map(|line| get_between(&line, "mod", ";") )
-            .filter(|module|{
-                let mod_path = entry.path().parent().unwrap().to_str().unwrap().to_string()+"/" + module.trim()+".rs";
-                let path = std::path::Path::new(&mod_path);
-                if !path.exists(){
-                    return true;
-                }
-                let commented_file = lines(&path).iter().all(|line| line.trim().starts_with("//") || line.trim()=="");
-                !commented_file
-            })
-            .map(|module|format!("pub use self::{}::*;", module.trim())).collect::<Vec<_>>();
+            // let reexport = liness.iter()
+            // .filter(|el|!el.contains("pub use"))
+            // .filter(|line|!line.trim().starts_with("//")) // is commented
+            // .flat_map(|line| get_between(&line, "mod", ";") )
+            // .filter(|module|{
+            //     let mod_path = entry.path().parent().unwrap().to_str().unwrap().to_string()+"/" + module.trim()+".rs";
+            //     let path = std::path::Path::new(&mod_path);
+            //     if !path.exists(){
+            //         return true;
+            //     }
+            //     let commented_file = lines(&path).iter().all(|line| line.trim().starts_with("//") || line.trim()=="");
+            //     !commented_file
+            // })
+            // .map(|module|format!("pub use self::{}::*;", module.trim())).collect::<Vec<_>>();
 
-            liness.extend(reexport);
+            // liness.extend(reexport);
 
             write_lines(liness, &entry.path());
 
         }
     }
 
+    use std::collections::HashMap;
+    use std::collections::HashSet;
+    let mut file_name_to_submodules:HashMap<String, HashSet<String>> = HashMap::default();
+    //collect a list of all available data
+    for entry in WalkDir::new("../src/locales") {
+        let entry = entry.unwrap();
+        let file_name = entry.file_name().to_str().unwrap();
+
+        if entry.path().is_dir() && entry.depth() == 2 {
+            let set = file_name_to_submodules.entry(file_name.to_string()).or_insert(HashSet::new());
+            let sub_modules_iter = entry.path()
+                .read_dir().unwrap()
+                .map(|entry|entry.unwrap())
+                .filter(|entry|entry.file_name() == "mod.rs");
+            for path in sub_modules_iter {
+                set.insert(path.path().file_stem().unwrap().to_str().unwrap().to_string());
+            }
+
+            // println!("{:?}", entry.path().components().last().unwrap());
+            // continue;
+        }
+            // write_lines(liness, &entry.path());
+
+    }
+    println!("{:?}", file_name_to_submodules);
 
     let re = Regex::new(r#"[A-Za-z]*\.([A-Za-z]*)\s*=\s*(".*").*"#).unwrap();
 

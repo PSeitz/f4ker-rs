@@ -1,2 +1,1 @@
-mod words;
-pub use self::words::*;
+pub mod words;

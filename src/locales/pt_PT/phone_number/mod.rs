@@ -1,2 +1,1 @@
-mod formats;
-pub use self::formats::*;
+pub mod formats;

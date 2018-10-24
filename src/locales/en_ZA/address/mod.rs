@@ -1,10 +1,5 @@
-mod city;
-mod city_prefix;
-mod default_country;
-mod postcode;
-mod state;
-pub use self::city::*;
-pub use self::city_prefix::*;
-pub use self::default_country::*;
-pub use self::postcode::*;
-pub use self::state::*;
+pub mod city;
+pub mod city_prefix;
+pub mod default_country;
+pub mod postcode;
+pub mod state;

@@ -1,6 +1,3 @@
-mod first_name;
-mod last_name;
-mod name;
-pub use self::first_name::*;
-pub use self::last_name::*;
-pub use self::name::*;
+pub mod first_name;
+pub mod last_name;
+pub mod name;

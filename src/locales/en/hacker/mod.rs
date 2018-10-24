@@ -1,12 +1,6 @@
-mod abbreviation;
-mod adjective;
-mod noun;
-mod verb;
-mod ingverb;
-mod phrase;
-pub use self::abbreviation::*;
-pub use self::adjective::*;
-pub use self::noun::*;
-pub use self::verb::*;
-pub use self::ingverb::*;
-pub use self::phrase::*;
+pub mod abbreviation;
+pub mod adjective;
+pub mod noun;
+pub mod verb;
+pub mod ingverb;
+pub mod phrase;

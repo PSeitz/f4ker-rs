@@ -1,11 +1,6 @@
 pub const title: &str = "Ukrainian";
-mod address;
-mod company;
-mod internet;
-mod name;
-mod phone_number;
-pub use self::address::*;
-pub use self::company::*;
-pub use self::internet::*;
-pub use self::name::*;
-pub use self::phone_number::*;
+pub mod address;
+pub mod company;
+pub mod internet;
+pub mod name;
+pub mod phone_number;

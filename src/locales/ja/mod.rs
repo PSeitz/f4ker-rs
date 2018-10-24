@@ -1,9 +1,5 @@
 pub const title: &str = "Japanese";
-mod address;
-mod phone_number;
-mod cell_phone;
-mod name;
-pub use self::address::*;
-pub use self::phone_number::*;
-pub use self::cell_phone::*;
-pub use self::name::*;
+pub mod address;
+pub mod phone_number;
+pub mod cell_phone;
+pub mod name;

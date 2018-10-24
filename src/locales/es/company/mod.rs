@@ -1,10 +1,5 @@
-mod suffix;
-mod noun;
-mod descriptor;
-mod adjective;
-mod name;
-pub use self::suffix::*;
-pub use self::noun::*;
-pub use self::descriptor::*;
-pub use self::adjective::*;
-pub use self::name::*;
+pub mod suffix;
+pub mod noun;
+pub mod descriptor;
+pub mod adjective;
+pub mod name;

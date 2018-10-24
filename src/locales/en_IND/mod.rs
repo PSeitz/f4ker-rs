@@ -1,11 +1,6 @@
 pub const title: &str = "India (English)";
-mod name;
-mod address;
-mod internet;
-mod company;
-mod phone_number;
-pub use self::name::*;
-pub use self::address::*;
-pub use self::internet::*;
-pub use self::company::*;
-pub use self::phone_number::*;
+pub mod name;
+pub mod address;
+pub mod internet;
+pub mod company;
+pub mod phone_number;

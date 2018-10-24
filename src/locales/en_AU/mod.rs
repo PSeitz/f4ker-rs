@@ -1,11 +1,6 @@
 pub const title: &str = "Australia (English)";
-mod name;
-mod company;
-mod internet;
-mod address;
-mod phone_number;
-pub use self::name::*;
-pub use self::company::*;
-pub use self::internet::*;
-pub use self::address::*;
-pub use self::phone_number::*;
+pub mod name;
+pub mod company;
+pub mod internet;
+pub mod address;
+pub mod phone_number;

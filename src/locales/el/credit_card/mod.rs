@@ -1,10 +1,5 @@
-mod visa;
-mod mastercard;
-mod discover;
-mod american_express;
-mod maestro;
-pub use self::visa::*;
-pub use self::mastercard::*;
-pub use self::discover::*;
-pub use self::american_express::*;
-pub use self::maestro::*;
+pub mod visa;
+pub mod mastercard;
+pub mod discover;
+pub mod american_express;
+pub mod maestro;

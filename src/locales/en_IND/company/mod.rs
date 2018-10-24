@@ -1,2 +1,1 @@
-mod suffix;
-pub use self::suffix::*;
+pub mod suffix;

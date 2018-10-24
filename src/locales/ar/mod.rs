@@ -1,10 +1,6 @@
 pub const title: &str = "Arabic";
 pub const separator: &str = " & ";
-mod address;
-mod phone_number;
-mod cell_phone;
-mod commerce;
-pub use self::address::*;
-pub use self::phone_number::*;
-pub use self::cell_phone::*;
-pub use self::commerce::*;
+pub mod address;
+pub mod phone_number;
+pub mod cell_phone;
+pub mod commerce;

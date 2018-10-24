@@ -1,6 +1,3 @@
-mod area_code;
-mod exchange_code;
-mod formats;
-pub use self::area_code::*;
-pub use self::exchange_code::*;
-pub use self::formats::*;
+pub mod area_code;
+pub mod exchange_code;
+pub mod formats;

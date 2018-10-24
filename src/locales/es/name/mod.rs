@@ -1,12 +1,6 @@
-mod first_name;
-mod last_name;
-mod prefix;
-mod suffix;
-mod title;
-mod name;
-pub use self::first_name::*;
-pub use self::last_name::*;
-pub use self::prefix::*;
-pub use self::suffix::*;
-pub use self::title::*;
-pub use self::name::*;
+pub mod first_name;
+pub mod last_name;
+pub mod prefix;
+pub mod suffix;
+pub mod title;
+pub mod name;

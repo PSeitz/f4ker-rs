@@ -1,12 +1,6 @@
-mod state_abbr;
-mod state;
-mod postcode;
-mod building_number;
-mod street_suffix;
-mod default_country;
-pub use self::state_abbr::*;
-pub use self::state::*;
-pub use self::postcode::*;
-pub use self::building_number::*;
-pub use self::street_suffix::*;
-pub use self::default_country::*;
+pub mod state_abbr;
+pub mod state;
+pub mod postcode;
+pub mod building_number;
+pub mod street_suffix;
+pub mod default_country;

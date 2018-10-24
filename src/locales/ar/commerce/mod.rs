@@ -1,4 +1,2 @@
-mod color;
-mod department;
-pub use self::color::*;
-pub use self::department::*;
+pub mod color;
+pub mod department;
