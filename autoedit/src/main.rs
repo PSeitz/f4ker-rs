@@ -84,7 +84,21 @@ impl BetterAccessDir for Option<&Path> {
     }
 }
 
+trait FindEnd {
+    fn find_end(&self, pat: &str) -> Option<usize>;
+}
 
+impl FindEnd for &str {
+    fn find_end(&self, pat: &str) -> Option<usize>{
+        self.find(pat).map(|pos|pos+pat.len())
+    }
+}
+
+impl FindEnd for String {
+    fn find_end(&self, pat: &str) -> Option<usize>{
+        self.find(pat).map(|pos|pos+pat.len())
+    }
+}
 
 
 fn main() -> Result<(), std::io::Error> {
@@ -443,8 +457,7 @@ pub fn {}() -> Option<&'static [&'static str]> {{
 
         //this.zipCode = function(format) {
         let re = Regex::new(r"^\s*(this|self)\.([A-Za-z]*)\s*=\s*function\s*[A-Za-z]*\s*\(([A-Za-z,\s]*)\)*.").unwrap(); // var Phone = function (faker) {
-        // MOETHOS
-        let mut lines: Vec<String> = lines.iter().flat_map(|line|{
+        let lines: Vec<String> = lines.iter().flat_map(|line|{
             if let Some(pat) = re.captures(&line) {
                 // println!("{:?} {:?}", pat[2].to_string(), pat[3].to_string());
                 if !pat[3].to_string().is_empty(){
@@ -462,11 +475,43 @@ pub fn {}() -> Option<&'static [&'static str]> {{
 
         let re_def_name = Regex::new(r#"(.*?)typeof\s*faker\.definitions\.([A-Za-z\._]*)(\s*!==\s*"undefined")"#).unwrap();
 
-        let lines = lines.iter().map(|line|{
+        let lines:Vec<String> = lines.iter().map(|line|{
             re_def_name.replace_all(line, |caps: &regex::Captures| {
-                caps[1].to_string() + "faker."+ &caps[2].replace(".", "_")+ ".is_some()"
+                caps[1].to_string() + "self.faker."+ &caps[2].replace(".", "_")+ ".is_some()"
             }).to_string()
         }).collect();
+
+
+        //typeof useAbbr === 'undefined'
+        let re = Regex::new(r#"(.*?)typeof\s*([A-Za-z\._]*)\s*(==|===|!==)\s*"undefined"(.*)"#).unwrap();
+        let lines:Vec<String> = lines.iter().map(|line|{
+            re.replace_all(line, |caps: &regex::Captures| {
+                let suffix = if  &caps[3] == "!=="{
+                    ".is_some()"
+                }else{
+                    ".is_none()"
+                };
+                caps[1].to_string() + &caps[2] + suffix + &caps[4]
+            }).to_string()
+        }).collect();
+
+
+        //eg. convert faker.definitions.address.postcode to self.faker.address_postcode()
+        let re_def_name = Regex::new(r#"(.*?)faker\.definitions\.([A-Za-z\._]*)(.*)"#).unwrap();
+        let lines:Vec<String> = lines.iter().map(|line|{
+            re_def_name.replace_all(line, |caps: &regex::Captures| {
+                caps[1].to_string() + "self.faker."+ &caps[2].replace(".", "_")+ "()"+ &caps[3]
+            }).to_string()
+        }).collect();
+
+        let lines:Vec<String> = lines.into_iter().map(|line|{
+            line.replace("faker.random.arrayElement(", "thread_rng().choose(")
+        }).collect();
+
+
+        let mut lines:Vec<String> = lines.into_iter().filter(|el|!el.contains("use rand")).collect();
+        lines.insert(0, "use rand::{thread_rng, Rng};".to_string());
+
         // println!("result {:?}", result);
 
         write_lines(lines, &entry.path());

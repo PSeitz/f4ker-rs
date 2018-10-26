@@ -1,3 +1,4 @@
+use rand::{thread_rng, Rng};
 exports['az'] = require('./locales/az');
 exports['ar'] = require('./locales/ar');
 exports['cz'] = require('./locales/cz');

@@ -1,3 +1,4 @@
+use rand::{thread_rng, Rng};
 struct Fake {
 {
 }

@@ -1,3 +1,4 @@
+use rand::{thread_rng, Rng};
 struct Internet {
 {
 }
@@ -18,7 +19,7 @@ impl Internet {
    * @method faker.internet.avatar
    */
 fn avatar(&self) -> String {
-      return faker.random.arrayElement(faker.definitions.internet.avatar_uri);
+      return thread_rng().choose(self.faker.internet_avatar_uri());
   };
 
   self.avatar.schema = {
@@ -35,7 +36,7 @@ fn avatar(&self) -> String {
    * @param {string} provider
    */
 fn email(&self, firstName: &str,  lastName: &str,  provider: &str) -> String {
-      provider = provider || faker.random.arrayElement(faker.definitions.internet.free_email);
+      provider = provider || thread_rng().choose(self.faker.internet_free_email());
       return  faker.helpers.slugify(faker.internet.userName(firstName, lastName)) + "@" + provider;
   };
 
@@ -68,7 +69,7 @@ fn email(&self, firstName: &str,  lastName: &str,  provider: &str) -> String {
    * @param {string} lastName
    */
 fn exampleEmail(&self, firstName: &str,  lastName: &str) -> String {
-      var provider = faker.random.arrayElement(faker.definitions.internet.example_email);
+      var provider = thread_rng().choose(self.faker.internet_example_email());
       return self.email(firstName, lastName, provider);
   };
 
@@ -88,10 +89,10 @@ fn userName(&self, firstName: &str,  lastName: &str) -> String {
           result = firstName + faker.random.number(99);
           break;
       case 1:
-          result = firstName + faker.random.arrayElement([".", "_"]) + lastName;
+          result = firstName + thread_rng().choose([".", "_"]) + lastName;
           break;
       case 2:
-          result = firstName + faker.random.arrayElement([".", "_"]) + lastName + faker.random.number(99);
+          result = firstName + thread_rng().choose([".", "_"]) + lastName + faker.random.number(99);
           break;
       }
       result = result.toString().replace(/'/g, "");
@@ -129,7 +130,7 @@ fn userName(&self, firstName: &str,  lastName: &str) -> String {
    */
 fn protocol(&self) -> String {
       var protocols = ['http','https'];
-      return faker.random.arrayElement(protocols);
+      return thread_rng().choose(protocols);
   };
 
   self.protocol.schema = {
@@ -174,7 +175,7 @@ fn domainName(&self) -> String {
    * @method faker.internet.domainSuffix
    */
 fn domainSuffix(&self) -> String {
-      return faker.random.arrayElement(faker.definitions.internet.domain_suffix);
+      return thread_rng().choose(self.faker.internet_domain_suffix());
   };
 
   self.domainSuffix.schema = {
@@ -228,7 +229,7 @@ fn ip(&self) -> String {
       var randHash = function () {
           var result = "";
           for (var i = 0; i < 4; i++) {
-            result += (faker.random.arrayElement(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"]));
+            result += (thread_rng().choose(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"]));
           }
           return result
       };

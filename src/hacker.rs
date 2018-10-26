@@ -1,3 +1,4 @@
+use rand::{thread_rng, Rng};
 struct Hacker {
 {
 }
@@ -17,7 +18,7 @@ impl Hacker {
    * @method faker.hacker.abbreviation
    */
 fn abbreviation(&self) -> String {
-    return faker.random.arrayElement(faker.definitions.hacker.abbreviation);
+    return thread_rng().choose(self.faker.hacker_abbreviation());
   };
 
   /**
@@ -26,7 +27,7 @@ fn abbreviation(&self) -> String {
    * @method faker.hacker.adjective
    */
 fn adjective(&self) -> String {
-    return faker.random.arrayElement(faker.definitions.hacker.adjective);
+    return thread_rng().choose(self.faker.hacker_adjective());
   };
 
   /**
@@ -35,7 +36,7 @@ fn adjective(&self) -> String {
    * @method faker.hacker.noun
    */
 fn noun(&self) -> String {
-    return faker.random.arrayElement(faker.definitions.hacker.noun);
+    return thread_rng().choose(self.faker.hacker_noun());
   };
 
   /**
@@ -44,7 +45,7 @@ fn noun(&self) -> String {
    * @method faker.hacker.verb
    */
 fn verb(&self) -> String {
-    return faker.random.arrayElement(faker.definitions.hacker.verb);
+    return thread_rng().choose(self.faker.hacker_verb());
   };
 
   /**
@@ -53,7 +54,7 @@ fn verb(&self) -> String {
    * @method faker.hacker.ingverb
    */
 fn ingverb(&self) -> String {
-    return faker.random.arrayElement(faker.definitions.hacker.ingverb);
+    return thread_rng().choose(self.faker.hacker_ingverb());
   };
 
   /**
@@ -71,7 +72,7 @@ fn phrase(&self) -> String {
       verb: self.verb
     };
 
-    var phrase = faker.random.arrayElement(faker.definitions.hacker.phrase);
+    var phrase = thread_rng().choose(self.faker.hacker_phrase());
     return faker.helpers.mustache(phrase, data);
   };
   

@@ -1,3 +1,4 @@
+use rand::{thread_rng, Rng};
 struct Commerce {
 {
 }
@@ -17,7 +18,7 @@ impl Commerce {
    * @method faker.commerce.color
    */
 fn color(&self) -> String {
-      return faker.random.arrayElement(faker.definitions.commerce.color);
+      return thread_rng().choose(self.faker.commerce_color());
   };
 
   /**
@@ -26,7 +27,7 @@ fn color(&self) -> String {
    * @method faker.commerce.department
    */
 fn department(&self) -> String {
-      return faker.random.arrayElement(faker.definitions.commerce.department);
+      return thread_rng().choose(self.faker.commerce_department());
   };
 
   /**
@@ -71,7 +72,7 @@ fn categories(&self, num: &str) -> String {
       var categories = [];
 
       do {
-          var category = faker.random.arrayElement(faker.definitions.commerce.department);
+          var category = thread_rng().choose(self.faker.commerce_department());
           if(categories.indexOf(category) === -1) {
               categories.push(category);
           }
@@ -83,9 +84,9 @@ fn categories(&self, num: &str) -> String {
   */
   /*
 fn mergeCategories(&self, categories: &str) -> String {
-      var separator = faker.definitions.separator || " &";
+      var separator = self.faker.separator() || " &";
       // TODO: find undefined here
-      categories = categories || faker.definitions.commerce.categories;
+      categories = categories || self.faker.commerce_categories();
       var commaSeparated = categories.slice(0, -1).join(', ');
 
       return [commaSeparated, categories[categories.length - 1]].join(separator + " ");
@@ -98,7 +99,7 @@ fn mergeCategories(&self, categories: &str) -> String {
    * @method faker.commerce.productAdjective
    */
 fn productAdjective(&self) -> String {
-      return faker.random.arrayElement(faker.definitions.commerce.product_name.adjective);
+      return thread_rng().choose(self.faker.commerce_product_name_adjective());
   };
 
   /**
@@ -107,7 +108,7 @@ fn productAdjective(&self) -> String {
    * @method faker.commerce.productMaterial
    */
 fn productMaterial(&self) -> String {
-      return faker.random.arrayElement(faker.definitions.commerce.product_name.material);
+      return thread_rng().choose(self.faker.commerce_product_name_material());
   };
 
   /**
@@ -116,7 +117,7 @@ fn productMaterial(&self) -> String {
    * @method faker.commerce.product
    */
 fn product(&self) -> String {
-      return faker.random.arrayElement(faker.definitions.commerce.product_name.product);
+      return thread_rng().choose(self.faker.commerce_product_name_product());
   };
 
   return self;

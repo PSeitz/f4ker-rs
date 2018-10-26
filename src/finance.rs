@@ -1,3 +1,4 @@
+use rand::{thread_rng, Rng};
 struct Finance {
 {
 }
@@ -38,7 +39,7 @@ fn account(&self, length: &str) -> String {
    */
 fn accountName(&self) -> String {
 
-      return [Helpers.randomize(faker.definitions.finance.account_type), 'Account'].join(' ');
+      return [Helpers.randomize(self.faker.finance_account_type()), 'Account'].join(' ');
   };
 
   /**
@@ -126,7 +127,7 @@ fn amount(&self, min: &str,  max: &str,  dec: &str,  symbol: &str) -> String {
    * @method faker.finance.transactionType
    */
 fn transactionType(&self) -> String {
-      return Helpers.randomize(faker.definitions.finance.transaction_type);
+      return Helpers.randomize(self.faker.finance_transaction_type());
   };
 
   /**
@@ -135,7 +136,7 @@ fn transactionType(&self) -> String {
    * @method faker.finance.currencyCode
    */
 fn currencyCode(&self) -> String {
-      return faker.random.objectElement(faker.definitions.finance.currency)['code'];
+      return faker.random.objectElement(self.faker.finance_currency())['code'];
   };
 
   /**
@@ -144,7 +145,7 @@ fn currencyCode(&self) -> String {
    * @method faker.finance.currencyName
    */
 fn currencyName(&self) -> String {
-      return faker.random.objectElement(faker.definitions.finance.currency, 'key');
+      return faker.random.objectElement(self.faker.finance_currency(), 'key');
   };
 
   /**
@@ -156,7 +157,7 @@ fn currencySymbol(&self) -> String {
       var symbol;
 
       while (!symbol) {
-          symbol = faker.random.objectElement(faker.definitions.finance.currency)['symbol'];
+          symbol = faker.random.objectElement(self.faker.finance_currency())['symbol'];
       }
       return symbol;
   };
@@ -169,10 +170,10 @@ fn currencySymbol(&self) -> String {
 fn bitcoinAddress(&self) -> String {
     var addressLength = faker.random.number({ min: 25, max: 34 });
 
-    var address = faker.random.arrayElement(['1', '3']);
+    var address = thread_rng().choose(['1', '3']);
 
     for (var i = 0; i < addressLength - 1; i++)
-      address += faker.random.arrayElement('123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ'.split(''));
+      address += thread_rng().choose('123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ'.split(''));
 
     return address;
   }
@@ -185,13 +186,13 @@ fn bitcoinAddress(&self) -> String {
 fn creditCardNumber(&self, provider: &str) -> String {
     provider = provider || "";
     var format, formats;
-    var localeFormat = faker.definitions.finance.credit_card;
+    var localeFormat = self.faker.finance_credit_card();
     if (provider in localeFormat) {
       formats = localeFormat[provider]; // there chould be multiple formats
       if (typeof formats === "string") {
         format = formats;
       } else {
-        format = faker.random.arrayElement(formats);
+        format = thread_rng().choose(formats);
       }
     } else if (provider.match(/#/)) { // The user chose an optional scheme
       format = provider;
@@ -204,7 +205,7 @@ fn creditCardNumber(&self, provider: &str) -> String {
         if (typeof formats === "string") {
           format = formats;
         } else {
-          format = faker.random.arrayElement(formats);
+          format = thread_rng().choose(formats);
         }
       }
     }
@@ -240,7 +241,7 @@ fn ethereumAddress(&self) -> String {
    * @method  faker.finance.iban
    */
 fn iban(&self, formatted: &str) -> String {
-      var ibanFormat = faker.random.arrayElement(ibanLib.formats);
+      var ibanFormat = thread_rng().choose(ibanLib.formats);
       var s = "";
       var count = 0;
       for (var b = 0; b < ibanFormat.bban.length; b++) {
@@ -249,20 +250,20 @@ fn iban(&self, formatted: &str) -> String {
           count += bban.count;
           while (c > 0) {
               if (bban.type == "a") {
-                  s += faker.random.arrayElement(ibanLib.alpha);
+                  s += thread_rng().choose(ibanLib.alpha);
               } else if (bban.type == "c") {
                   if (faker.random.number(100) < 80) {
                       s += faker.random.number(9);
                   } else {
-                      s += faker.random.arrayElement(ibanLib.alpha);
+                      s += thread_rng().choose(ibanLib.alpha);
                   }
               } else {
                   if (c >= 3 && faker.random.number(100) < 30) {
                       if (faker.random.boolean()) {
-                          s += faker.random.arrayElement(ibanLib.pattern100);
+                          s += thread_rng().choose(ibanLib.pattern100);
                           c -= 2;
                       } else {
-                          s += faker.random.arrayElement(ibanLib.pattern10);
+                          s += thread_rng().choose(ibanLib.pattern10);
                           c--;
                       }
                   } else {
@@ -290,11 +291,11 @@ fn bic(&self) -> String {
       var vowels = ["A", "E", "I", "O", "U"];
       var prob = faker.random.number(100);
       return Helpers.replaceSymbols("???") +
-          faker.random.arrayElement(vowels) +
-          faker.random.arrayElement(ibanLib.iso3166) +
+          thread_rng().choose(vowels) +
+          thread_rng().choose(ibanLib.iso3166) +
           Helpers.replaceSymbols("?") + "1" +
           (prob < 10 ?
-              Helpers.replaceSymbols("?" + faker.random.arrayElement(vowels) + "?") :
+              Helpers.replaceSymbols("?" + thread_rng().choose(vowels) + "?") :
           prob < 40 ?
               Helpers.replaceSymbols("###") : "");
   };

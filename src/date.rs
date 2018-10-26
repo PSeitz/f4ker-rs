@@ -1,3 +1,4 @@
+use rand::{thread_rng, Rng};
 /**
  *
  * @namespace faker.date
@@ -133,13 +134,13 @@ fn month(&self, options: &str) -> String {
       if (options.abbr) {
           type = 'abbr';
       }
-      if (options.context && typeof faker.definitions.date.month[type + '_context'] !== 'undefined') {
+      if (options.context && typeof self.faker.date_month()[type + '_context'] !== 'undefined') {
           type += '_context';
       }
 
-      var source = faker.definitions.date.month[type];
+      var source = self.faker.date_month()[type];
 
-      return faker.random.arrayElement(source);
+      return thread_rng().choose(source);
   };
 
   /**
@@ -155,13 +156,13 @@ fn weekday(&self, options: &str) -> String {
       if (options.abbr) {
           type = 'abbr';
       }
-      if (options.context && typeof faker.definitions.date.weekday[type + '_context'] !== 'undefined') {
+      if (options.context && typeof self.faker.date_weekday()[type + '_context'] !== 'undefined') {
           type += '_context';
       }
 
-      var source = faker.definitions.date.weekday[type];
+      var source = self.faker.date_weekday()[type];
 
-      return faker.random.arrayElement(source);
+      return thread_rng().choose(source);
   };
 
   return self;

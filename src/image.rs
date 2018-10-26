@@ -1,3 +1,4 @@
+use rand::{thread_rng, Rng};
 struct Image {
 {
 }
@@ -22,7 +23,7 @@ impl Image {
    */
 fn image(&self, width: &str,  height: &str,  randomize: &str) -> String {
     var categories = ["abstract", "animals", "business", "cats", "city", "food", "nightlife", "fashion", "people", "nature", "sports", "technics", "transport"];
-    return self[faker.random.arrayElement(categories)](width, height, randomize);
+    return self[thread_rng().choose(categories)](width, height, randomize);
   };
   /**
    * avatar

@@ -1,3 +1,4 @@
+use rand::{thread_rng, Rng};
 struct Database {
 {
 }
@@ -16,7 +17,7 @@ impl Database {
    * @method faker.database.column
    */
 fn column(&self) -> String {
-      return faker.random.arrayElement(faker.definitions.database.column);
+      return thread_rng().choose(self.faker.database_column());
   };
 
   self.column.schema = {
@@ -30,7 +31,7 @@ fn column(&self) -> String {
    * @method faker.database.type
    */
 fn type(&self) -> String {
-      return faker.random.arrayElement(faker.definitions.database.type);
+      return thread_rng().choose(self.faker.database_type());
   };
 
   self.type.schema = {
@@ -44,7 +45,7 @@ fn type(&self) -> String {
    * @method faker.database.collation
    */
 fn collation(&self) -> String {
-      return faker.random.arrayElement(faker.definitions.database.collation);
+      return thread_rng().choose(self.faker.database_collation());
   };
 
   self.collation.schema = {
@@ -58,7 +59,7 @@ fn collation(&self) -> String {
    * @method faker.database.engine
    */
 fn engine(&self) -> String {
-      return faker.random.arrayElement(faker.definitions.database.engine);
+      return thread_rng().choose(self.faker.database_engine());
   };
 
   self.engine.schema = {

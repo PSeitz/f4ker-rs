@@ -1,3 +1,4 @@
+use rand::{thread_rng, Rng};
 struct Git {
 {
 }
@@ -66,7 +67,7 @@ fn commitSha(&self) -> String {
     var commit = "";
 
     for (var i = 0; i < 40; i++) {
-      commit += faker.random.arrayElement(hexChars);
+      commit += thread_rng().choose(hexChars);
     }
 
     return commit;
@@ -81,7 +82,7 @@ fn shortSha(&self) -> String {
     var shortSha = "";
 
     for (var i = 0; i < 7; i++) {
-      shortSha += faker.random.arrayElement(hexChars);
+      shortSha += thread_rng().choose(hexChars);
     }
 
     return shortSha;

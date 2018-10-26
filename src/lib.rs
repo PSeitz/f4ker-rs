@@ -1,3 +1,4 @@
+use rand::{thread_rng, Rng};
 
 pub mod locales;
 mod faker;

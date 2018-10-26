@@ -1,3 +1,4 @@
+use rand::{thread_rng, Rng};
 struct Helpers {
 {
 }
@@ -20,7 +21,7 @@ impl Helpers {
    */
 fn randomize(&self, array: &str) -> String {
       array = array || ["a", "b", "c"];
-      return faker.random.arrayElement(array);
+      return thread_rng().choose(array);
   };
 
   /**
@@ -77,9 +78,9 @@ fn replaceSymbols(&self, string: &str) -> String {
           if (string.charAt(i) == "#") {
               str += faker.random.number(9);
           } else if (string.charAt(i) == "?") {
-              str += faker.random.arrayElement(alpha);
+              str += thread_rng().choose(alpha);
           } else if (string.charAt(i) == "*") {
-            str += faker.random.boolean() ? faker.random.arrayElement(alpha) : faker.random.number(9);
+            str += faker.random.boolean() ? thread_rng().choose(alpha) : faker.random.number(9);
           } else {
               str += string.charAt(i);
           }
@@ -361,7 +362,7 @@ fn createTransaction(&self) -> String {
       "date" : new Date(2012, 1, 2),  //TODO: add a ranged date method
       "business": faker.company.companyName(),
       "name": [faker.finance.accountName(), faker.finance.mask()].join(' '),
-      "type" : self.randomize(faker.definitions.finance.transaction_type),
+      "type" : self.randomize(self.faker.finance_transaction_type()),
       "account" : faker.finance.account()
     };
   };

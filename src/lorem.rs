@@ -1,3 +1,4 @@
+use rand::{thread_rng, Rng};
 struct Lorem {
 {
 }
@@ -20,7 +21,7 @@ impl Lorem {
    * @param {number} num
    */
 fn word(&self, num: &str) -> String {
-    return faker.random.arrayElement(faker.definitions.lorem.words);
+    return thread_rng().choose(self.faker.lorem_words());
   };
 
   /**
@@ -122,7 +123,7 @@ fn paragraphs(&self, paragraphCount: &str,  separator: &str) -> String {
    */
 fn text(&self, times: &str) -> String {
     var loremMethods = ['lorem.word', 'lorem.words', 'lorem.sentence', 'lorem.sentences', 'lorem.paragraph', 'lorem.paragraphs', 'lorem.lines'];
-    var randomLoremMethod = faker.random.arrayElement(loremMethods);
+    var randomLoremMethod = thread_rng().choose(loremMethods);
     return faker.fake('{{' + randomLoremMethod + '}}');
   };
 

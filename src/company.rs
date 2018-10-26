@@ -1,3 +1,4 @@
+use rand::{thread_rng, Rng};
 struct Company {
 {
 }
@@ -20,7 +21,7 @@ impl Company {
    */
 fn suffixes(&self) -> String {
     // Don't want the source array exposed to modification, so return a copy
-    return faker.definitions.company.suffix.slice(0);
+    return self.faker.company_suffix_slice()(0);
   }
 
   /**
@@ -50,7 +51,7 @@ fn companyName(&self, format: &str) -> String {
    * @method faker.company.companySuffix
    */
 fn companySuffix(&self) -> String {
-      return faker.random.arrayElement(faker.company.suffixes());
+      return thread_rng().choose(faker.company.suffixes());
   }
 
   /**
@@ -77,7 +78,7 @@ fn bs(&self) -> String {
    * @method faker.company.catchPhraseAdjective
    */
 fn catchPhraseAdjective(&self) -> String {
-      return faker.random.arrayElement(faker.definitions.company.adjective);
+      return thread_rng().choose(self.faker.company_adjective());
   }
 
   /**
@@ -86,7 +87,7 @@ fn catchPhraseAdjective(&self) -> String {
    * @method faker.company.catchPhraseDescriptor
    */
 fn catchPhraseDescriptor(&self) -> String {
-      return faker.random.arrayElement(faker.definitions.company.descriptor);
+      return thread_rng().choose(self.faker.company_descriptor());
   }
 
   /**
@@ -95,7 +96,7 @@ fn catchPhraseDescriptor(&self) -> String {
    * @method faker.company.catchPhraseNoun
    */
 fn catchPhraseNoun(&self) -> String {
-      return faker.random.arrayElement(faker.definitions.company.noun);
+      return thread_rng().choose(self.faker.company_noun());
   }
 
   /**
@@ -104,7 +105,7 @@ fn catchPhraseNoun(&self) -> String {
    * @method faker.company.bsAdjective
    */
 fn bsAdjective(&self) -> String {
-      return faker.random.arrayElement(faker.definitions.company.bs_adjective);
+      return thread_rng().choose(self.faker.company_bs_adjective());
   }
 
   /**
@@ -113,7 +114,7 @@ fn bsAdjective(&self) -> String {
    * @method faker.company.bsBuzz
    */
 fn bsBuzz(&self) -> String {
-      return faker.random.arrayElement(faker.definitions.company.bs_verb);
+      return thread_rng().choose(self.faker.company_bs_verb());
   }
 
   /**
@@ -122,7 +123,7 @@ fn bsBuzz(&self) -> String {
    * @method faker.company.bsNoun
    */
 fn bsNoun(&self) -> String {
-      return faker.random.arrayElement(faker.definitions.company.bs_noun);
+      return thread_rng().choose(self.faker.company_bs_noun());
   }
   
 }

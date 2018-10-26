@@ -1,3 +1,4 @@
+use rand::{thread_rng, Rng};
 struct System {
 {
 }
@@ -54,7 +55,7 @@ fn commonFileName(&self, ext: &str,  type: &str) -> String {
    * @method faker.system.mimeType
    */
 fn mimeType(&self) -> String {
-    return faker.random.arrayElement(Object.keys(faker.definitions.system.mimeTypes));
+    return thread_rng().choose(Object.keys(self.faker.system_mimeTypes()));
   };
 
   /**
@@ -64,7 +65,7 @@ fn mimeType(&self) -> String {
    */
 fn commonFileType(&self) -> String {
     var types = ['video', 'audio', 'image', 'text', 'application'];
-    return faker.random.arrayElement(types)
+    return thread_rng().choose(types)
   };
 
   /**
@@ -85,7 +86,7 @@ fn commonFileExt(&self, type: &str) -> String {
       'video/mpeg',
       'text/html'
     ];
-    return faker.system.fileExt(faker.random.arrayElement(types));
+    return faker.system.fileExt(thread_rng().choose(types));
   };
 
 
@@ -96,14 +97,14 @@ fn commonFileExt(&self, type: &str) -> String {
    */
 fn fileType(&self) -> String {
     var types = [];
-    var mimes = faker.definitions.system.mimeTypes;
+    var mimes = self.faker.system_mimeTypes();
     Object.keys(mimes).forEach(function(m){
       var parts = m.split('/');
       if (types.indexOf(parts[0]) === -1) {
         types.push(parts[0]);
       }
     });
-    return faker.random.arrayElement(types);
+    return thread_rng().choose(types);
   };
 
   /**
@@ -114,11 +115,11 @@ fn fileType(&self) -> String {
    */
 fn fileExt(&self, mimeType: &str) -> String {
     var exts = [];
-    var mimes = faker.definitions.system.mimeTypes;
+    var mimes = self.faker.system_mimeTypes();
 
     // get specific ext by mime-type
     if (typeof mimes[mimeType] === "object") {
-      return faker.random.arrayElement(mimes[mimeType].extensions);
+      return thread_rng().choose(mimes[mimeType].extensions);
     }
 
     // reduce mime-types to those with file-extensions
@@ -129,7 +130,7 @@ fn fileExt(&self, mimeType: &str) -> String {
         });
       }
     });
-    return faker.random.arrayElement(exts);
+    return thread_rng().choose(exts);
   };
 
   /**
@@ -138,8 +139,8 @@ fn fileExt(&self, mimeType: &str) -> String {
    * @method faker.system.directoryPath
    */
 fn directoryPath(&self) -> String {
-      var paths = faker.definitions.system.directoryPaths
-      return faker.random.arrayElement(paths);
+      var paths = self.faker.system_directoryPaths()
+      return thread_rng().choose(paths);
   };
 
   /**

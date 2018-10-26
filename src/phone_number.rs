@@ -1,3 +1,4 @@
+use rand::{thread_rng, Rng};
 struct Phone {
 {
 }
@@ -33,7 +34,7 @@ fn phoneNumber(&self, format: &str) -> String {
    */
 fn phoneNumberFormat(&self, phoneFormatsArrayIndex: &str) -> String {
       phoneFormatsArrayIndex = phoneFormatsArrayIndex || 0;
-      return faker.helpers.replaceSymbolWithNumber(faker.definitions.phone_number.formats[phoneFormatsArrayIndex]);
+      return faker.helpers.replaceSymbolWithNumber(self.faker.phone_number_formats()[phoneFormatsArrayIndex]);
   };
 
   /**
@@ -42,7 +43,7 @@ fn phoneNumberFormat(&self, phoneFormatsArrayIndex: &str) -> String {
    * @method faker.phone.phoneFormats
    */
 fn phoneFormats(&self) -> String {
-    return faker.random.arrayElement(faker.definitions.phone_number.formats);
+    return thread_rng().choose(self.faker.phone_number_formats());
   };
   
   return self;

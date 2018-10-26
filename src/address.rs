@@ -1,3 +1,4 @@
+use rand::{thread_rng, Rng};
 struct Address {
 {
 }
@@ -22,11 +23,11 @@ impl Address {
 fn zipCode(&self, format: &str) -> String {
     // if zip format is not specified, use the zip format defined for the locale
     if (typeof format === 'undefined') {
-      var localeFormat = faker.definitions.address.postcode;
+      var localeFormat = self.faker.address_postcode();
       if (typeof localeFormat === 'string') {
         format = localeFormat;
       } else {
-        format = faker.random.arrayElement(localeFormat);
+        format = thread_rng().choose(localeFormat);
       }
     }
     return Helpers.replaceSymbols(format);
@@ -43,7 +44,7 @@ fn zipCode(&self, format: &str) -> String {
    * @param {String} state
    */
 fn zipCodeByState(&self, state: &str) -> String {
-    var zipRange = faker.definitions.address.postcode_by_state[state];
+    var zipRange = self.faker.address_postcode_by_state()[state];
     if (zipRange) {
       return faker.random.number(zipRange);
     }
@@ -86,7 +87,7 @@ fn city(&self, format: &str) -> String {
    * @method faker.address.cityPrefix
    */
 fn cityPrefix(&self) -> String {
-    return faker.random.arrayElement(faker.definitions.address.city_prefix);
+    return thread_rng().choose(self.faker.address_city_prefix());
   }
 
   /**
@@ -95,7 +96,7 @@ fn cityPrefix(&self) -> String {
    * @method faker.address.citySuffix
    */
 fn citySuffix(&self) -> String {
-    return faker.random.arrayElement(faker.definitions.address.city_suffix);
+    return thread_rng().choose(self.faker.address_city_suffix());
   }
 
   /**
@@ -153,7 +154,7 @@ fn streetAddress(&self, useFullAddress: &str) -> String {
    * @method faker.address.streetSuffix
    */
 fn streetSuffix(&self) -> String {
-      return faker.random.arrayElement(faker.definitions.address.street_suffix);
+      return thread_rng().choose(self.faker.address_street_suffix());
   }
 
   /**
@@ -162,7 +163,7 @@ fn streetSuffix(&self) -> String {
    * @method faker.address.streetPrefix
    */
 fn streetPrefix(&self) -> String {
-      return faker.random.arrayElement(faker.definitions.address.street_prefix);
+      return thread_rng().choose(self.faker.address_street_prefix());
   }
 
   /**
@@ -171,7 +172,7 @@ fn streetPrefix(&self) -> String {
    * @method faker.address.secondaryAddress
    */
 fn secondaryAddress(&self) -> String {
-      return Helpers.replaceSymbolWithNumber(faker.random.arrayElement(
+      return Helpers.replaceSymbolWithNumber(thread_rng().choose(
           [
               'Apt. ###',
               'Suite ###'
@@ -185,7 +186,7 @@ fn secondaryAddress(&self) -> String {
    * @method faker.address.county
    */
 fn county(&self) -> String {
-    return faker.random.arrayElement(faker.definitions.address.county);
+    return thread_rng().choose(self.faker.address_county());
   }
 
   /**
@@ -194,7 +195,7 @@ fn county(&self) -> String {
    * @method faker.address.country
    */
 fn country(&self) -> String {
-    return faker.random.arrayElement(faker.definitions.address.country);
+    return thread_rng().choose(self.faker.address_country());
   }
 
   /**
@@ -203,7 +204,7 @@ fn country(&self) -> String {
    * @method faker.address.countryCode
    */
 fn countryCode(&self) -> String {
-    return faker.random.arrayElement(faker.definitions.address.country_code);
+    return thread_rng().choose(self.faker.address_country_code());
   }
 
   /**
@@ -213,7 +214,7 @@ fn countryCode(&self) -> String {
    * @param {Boolean} useAbbr
    */
 fn state(&self, useAbbr: &str) -> String {
-      return faker.random.arrayElement(faker.definitions.address.state);
+      return thread_rng().choose(self.faker.address_state());
   }
 
   /**
@@ -222,7 +223,7 @@ fn state(&self, useAbbr: &str) -> String {
    * @method faker.address.stateAbbr
    */
 fn stateAbbr(&self) -> String {
-      return faker.random.arrayElement(faker.definitions.address.state_abbr);
+      return thread_rng().choose(self.faker.address_state_abbr());
   }
 
   /**
@@ -273,9 +274,9 @@ fn longitude(&self, max: &str,  min: &str,  precision: &str) -> String {
    */
 fn direction(&self, useAbbr: &str) -> String {
     if (typeof useAbbr === 'undefined' || useAbbr === false) {
-      return faker.random.arrayElement(faker.definitions.address.direction);
+      return thread_rng().choose(self.faker.address_direction());
     }
-    return faker.random.arrayElement(faker.definitions.address.direction_abbr);
+    return thread_rng().choose(self.faker.address_direction_abbr());
   }
 
   this.direction.schema = {
@@ -292,11 +293,11 @@ fn direction(&self, useAbbr: &str) -> String {
 fn cardinalDirection(&self, useAbbr: &str) -> String {
     if (typeof useAbbr === 'undefined' || useAbbr === false) {
       return (
-        faker.random.arrayElement(faker.definitions.address.direction.slice(0, 4))
+        thread_rng().choose(self.faker.address_direction_slice()(0, 4))
       );
     }
     return (
-      faker.random.arrayElement(faker.definitions.address.direction_abbr.slice(0, 4))
+      thread_rng().choose(self.faker.address_direction_abbr_slice()(0, 4))
     );
   }
 
@@ -314,11 +315,11 @@ fn cardinalDirection(&self, useAbbr: &str) -> String {
 fn ordinalDirection(&self, useAbbr: &str) -> String {
     if (typeof useAbbr === 'undefined' || useAbbr === false) {
       return (
-        faker.random.arrayElement(faker.definitions.address.direction.slice(4, 8))
+        thread_rng().choose(self.faker.address_direction_slice()(4, 8))
       );
     }
     return (
-      faker.random.arrayElement(faker.definitions.address.direction_abbr.slice(4, 8))
+      thread_rng().choose(self.faker.address_direction_abbr_slice()(4, 8))
     );
   }
 

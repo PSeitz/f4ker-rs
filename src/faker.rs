@@ -1,3 +1,4 @@
+use rand::{thread_rng, Rng};
 use crate::locales;
 
 struct Faker {
