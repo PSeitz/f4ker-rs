@@ -131,7 +131,7 @@ fn replaceCreditCardSymbols(&self, string: &str,  symbol: &str) -> String {
    * @param {number} num
    */
 fn repeatString(&self, string: &str, num: &str) -> String {
-     if(typeof num ==="undefined") {
+     if(num.is_none()) {
        num = 0;
      }
      var text = "";

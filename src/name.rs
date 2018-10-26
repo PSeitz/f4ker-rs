@@ -1,14 +1,15 @@
 use rand::{thread_rng, Rng};
 struct Name {
 {
+  faker: Faker
 }
 /**
  *
  * @namespace faker.name
  */
 impl Name {
-    fn new() -> Self {
-
+    fn new(faker: Faker) -> Self {
+      Name{faker}
     }
 
   /**

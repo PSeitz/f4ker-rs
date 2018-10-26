@@ -350,7 +350,7 @@ fn mac(&self, sep: &str) -> String {
    */
 fn password(&self, len: &str,  memorable: &str,  pattern: &str,  prefix: &str) -> String {
      len = len || 15;
-     if (typeof memorable === "undefined") {
+     if (memorable.is_none()) {
        memorable = false;
      }
      /*

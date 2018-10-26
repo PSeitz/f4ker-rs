@@ -104,7 +104,7 @@ fn paragraph(&self, sentenceCount: &str) -> String {
    * @param {string} separator defaults to `'\n \r'`
    */
 fn paragraphs(&self, paragraphCount: &str,  separator: &str) -> String {
-    if (typeof separator === "undefined") {
+    if (separator.is_none()) {
       separator = "\n \r";
     }
     if (typeof paragraphCount == 'undefined') { paragraphCount = 3; }

@@ -37,14 +37,14 @@ fn number(&self, options: &str) -> String {
 
     options = options || {};
 
-    if (typeof options.min === "undefined") {
+    if (options.min.is_none()) {
       options.min = 0;
     }
 
-    if (typeof options.max === "undefined") {
+    if (options.max.is_none()) {
       options.max = 99999;
     }
-    if (typeof options.precision === "undefined") {
+    if (options.precision.is_none()) {
       options.precision = 1;
     }
 
@@ -222,7 +222,7 @@ fn word(&self, type: &str) -> String {
    */
 fn words(&self, count: &str) -> String {
     var words = [];
-    if (typeof count === "undefined") {
+    if (count.is_none()) {
       count = faker.random.number({min:1, max: 3});
     }
     for (var i = 0; i<count; i++) {
@@ -256,7 +256,7 @@ fn locale(&self) -> String {
    * @param {number} count defaults to 1
    */
 fn alphaNumeric(&self, count: &str) -> String {
-    if (typeof count === "undefined") {
+    if (count.is_none()) {
       count = 1;
     }
 
@@ -275,7 +275,7 @@ fn alphaNumeric(&self, count: &str) -> String {
    * @param {number} count defaults to 1
    */
 fn hexaDecimal(&self, count: &str) -> String {
-    if (typeof count === "undefined") {
+    if (count.is_none()) {
       count = 1;
     }
 

@@ -14,7 +14,7 @@ var _Date = function (faker) {
    */
 fn past(&self, years: &str,  refDate: &str) -> String {
       var date = new Date();
-      if (typeof refDate !== "undefined") {
+      if (refDate.is_some()) {
           date = new Date(Date.parse(refDate));
       }
 
@@ -39,7 +39,7 @@ fn past(&self, years: &str,  refDate: &str) -> String {
    */
 fn future(&self, years: &str,  refDate: &str) -> String {
       var date = new Date();
-      if (typeof refDate !== "undefined") {
+      if (refDate.is_some()) {
           date = new Date(Date.parse(refDate));
       }
 
@@ -80,7 +80,7 @@ fn between(&self, from: &str,  to: &str) -> String {
    */
 fn recent(&self, days: &str,  refDate: &str) -> String {
       var date = new Date();
-      if (typeof refDate !== "undefined") {
+      if (refDate.is_some()) {
           date = new Date(Date.parse(refDate));
       }
 
@@ -105,7 +105,7 @@ fn recent(&self, days: &str,  refDate: &str) -> String {
    */
 fn soon(&self, days: &str,  refDate: &str) -> String {
       var date = new Date();
-      if (typeof refDate !== "undefined") {
+      if (refDate.is_some()) {
           date = new Date(Date.parse(refDate));
       }
 
