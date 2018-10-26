@@ -6,10 +6,10 @@ mod postcode;
 mod secondary_address;
 mod state;
 mod state_abbr;
-mod streets;
 mod street_address;
 mod street_name;
 mod street_suffix;
+mod streets;
 
 pub fn building_number() -> Option<&'static [&'static str]> {
     Some(self::building_number::BUILDING_NUMBER)

@@ -126,7 +126,7 @@ fn main() -> Result<(), std::io::Error> {
             //     line
             // }).collect::<Vec<_>>();
 
-            let sub_modules:Vec<_> = entry.path()
+            let mut sub_modules:Vec<_> = entry.path()
                 .parent()
                 .read_diro()
                 .iter()
@@ -140,6 +140,7 @@ fn main() -> Result<(), std::io::Error> {
                     }
                 })
                 .collect();
+            sub_modules.sort();
             let lines = sub_modules.into_iter()
                 .chain(lines.into_iter()
                     .filter(|el|el.trim() != "")
@@ -230,6 +231,29 @@ fn main() -> Result<(), std::io::Error> {
         }
     }
 
+    // name_first_name: en::name::first_name(),
+    let vecco: Vec<String> = file_name_to_submodules.iter()
+        .flat_map(|(file_name, sub_modules)|{
+            let file_name = file_name.to_string();
+            sub_modules.iter().map(move |(sub_mod, array_name)|{
+
+                let fun_name = if sub_mod == &array_name.to_lowercase() {
+                    array_name.to_lowercase()
+                }else{
+                    sub_mod.to_string()+"_"+&array_name.to_lowercase()
+                };
+
+
+                let name = if sub_mod == &array_name.to_lowercase() {
+                    file_name.to_string()+"_"+&array_name.to_lowercase()
+                }else{
+                    file_name.to_string()+"_"+&sub_mod.to_string()+"_"+&array_name.to_lowercase()
+                };
+                name + ": "  + &format!("{}::{}()", file_name, fun_name)
+            })
+        }).collect();
+
+    println!("{}", vecco.join(",\n"));
     //Add Accessor functions
     println!("{:?}", file_name_to_submodules);
     for entry in WalkDir::new("../src/locales") {
@@ -418,7 +442,6 @@ pub fn {}() -> Option<&'static [&'static str]> {{
         }
 
         //this.zipCode = function(format) {
-
         let re = Regex::new(r"^\s*(this|self)\.([A-Za-z]*)\s*=\s*function\s*[A-Za-z]*\s*\(([A-Za-z,\s]*)\)*.").unwrap(); // var Phone = function (faker) {
         // MOETHOS
         let mut lines: Vec<String> = lines.iter().flat_map(|line|{
@@ -435,6 +458,16 @@ pub fn {}() -> Option<&'static [&'static str]> {{
             }
             return vec![line.to_string()]
         }).collect();
+
+
+        let re_def_name = Regex::new(r#"(.*?)typeof\s*faker\.definitions\.([A-Za-z\._]*)(\s*!==\s*"undefined")"#).unwrap();
+
+        let lines = lines.iter().map(|line|{
+            re_def_name.replace_all(line, |caps: &regex::Captures| {
+                caps[1].to_string() + "faker."+ &caps[2].replace(".", "_")+ ".is_some()"
+            }).to_string()
+        }).collect();
+        // println!("result {:?}", result);
 
         write_lines(lines, &entry.path());
 
