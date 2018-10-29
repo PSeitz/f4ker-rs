@@ -13,7 +13,7 @@ fn find_matching_braces(text: &str, opening_brace:char, closing_brace:char) -> O
         if cha == closing_brace {
             num -=1;
             if num == 0 {
-                return Some(i);
+                return Some(i + closing_brace.len_utf8());
             }
         }
         if cha == opening_brace {
@@ -28,6 +28,31 @@ fn test_matching_braces() {
     // let test_text = "if let Some(pat) = expr {unimplemented!(); }"
     println!("{:?}", find_matching_braces("unimplemented!(); }", '{', '}'));
 }
+
+
+#[test]
+fn testo() {
+    let mut orig =  "    return faker.random.arrayElement(faker.definitions.name.first_name);".to_string();
+    let find = "faker.random.arrayElement(";
+    if let Some(pos) = orig.find_end(find) {
+        orig.replace_range(pos-find.len()..pos, "thread_rng().choose(");
+        assert_eq!(orig, "    return thread_rng().choose(faker.definitions.name.first_name);");
+
+        // let offset = pos-find.len() + "thread_rng().choose(".len();
+        // let _wa = std::str::from_utf8(&orig.as_bytes()[offset .. ]).unwrap();
+
+        assert_eq!(orig, "    return thread_rng().choose(faker.definitions.name.first_name);");
+
+        let pos = orig.find_end("thread_rng().choose(").unwrap();
+        let end_braces = find_matching_braces(&orig[pos..], '(', ')').unwrap();
+        orig.insert_str(pos+end_braces, ".unwrap()");
+        assert_eq!(orig, "    return thread_rng().choose(faker.definitions.name.first_name).unwrap();");
+
+        // assert_eq!(cooel, "    return thread_rng().choose(faker.definitions.name");
+    }
+}
+
+
 
 use std::path::Path;
 
@@ -482,7 +507,7 @@ pub fn {}() -> Option<&'static [&'static str]> {{
 
 
         //typeof useAbbr === 'undefined'
-        let re = Regex::new(r#"(.*?)typeof\s*([0-9A-Za-z\._\(\)\[\]*)\s*(==|===|!==)\s*["']undefined["'](.*)"#).unwrap();
+        let re = Regex::new(r#"(.*?)typeof\s*([0-9A-Za-z\._\(\)\[\]]*)\s*(==|===|!==)\s*["']undefined["'](.*)"#).unwrap();
         let lines:Vec<String> = lines.iter().map(|line|{
             re.replace_all(line, |caps: &regex::Captures| {
                 let suffix = if  &caps[3] == "!=="{
@@ -511,6 +536,15 @@ pub fn {}() -> Option<&'static [&'static str]> {{
 
         let lines:Vec<String> = lines.into_iter().map(|line|{
             line.replace("faker.random.arrayElement(", "thread_rng().choose(")
+        }).collect();
+
+        let lines:Vec<String> = lines.into_iter().map(|mut line|{
+            if let Some(pos) = line.find_end("thread_rng().choose(") {
+                if let Some(end_braces) = find_matching_braces(&line[pos..], '(', ')') {
+                    line.insert_str(pos+end_braces, ".unwrap()");
+                }
+            }
+            line
         }).collect();
 
 

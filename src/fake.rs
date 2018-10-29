@@ -68,11 +68,11 @@ fn fake(&self, str: &str) -> String {
     // split the method into module and function
     let parts = method.split('.');
 
-    if (typeof faker[parts[0]] == "undefined") {
+    if (faker[parts[0]].is_none()) {
       throw new Error('Invalid module: ' + parts[0]);
     }
 
-    if (typeof faker[parts[0]][parts[1]] == "undefined") {
+    if (faker[parts[0]][parts[1]].is_none()) {
       throw new Error('Invalid method: ' + parts[0] + "." + parts[1]);
     }
 

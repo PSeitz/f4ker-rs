@@ -1,7 +1,8 @@
 use rand::{thread_rng, Rng};
 use crate::locales;
 
-struct Faker {
+#[derive(Debug, Clone)]
+pub struct Faker {
     // name_first_name: Option<&'static [&'static str]>,
     // name_last_name: Option<&'static [&'static str]>,
     // name_prefix: Option<&'static [&'static str]>,
@@ -522,7 +523,7 @@ address_county: address::county(),
 
 //   // Create a Getter for all definitions.foo.bar properties
 //   Object.keys(_definitions).forEach(function(d){
-//     if (typeof self.definitions[d] == "undefined") {
+//     if (self.definitions[d].is_none()) {
 //       self.definitions[d] = {};
 //     }
 
@@ -534,7 +535,7 @@ address_county: address::county(),
 //     _definitions[d].forEach(function(p){
 //       Object.defineProperty(self.definitions[d], p, {
 //         get: function () {
-//           if (typeof self.locales[self.locale][d] == "undefined" || typeof self.locales[self.locale][d][p] == "undefined") {
+//           if (self.locales[self.locale][d].is_none() || typeof self.locales[self.locale][d][p] == "undefined") {
 //             // certain localization sets contain less data then others.
 //             // in the case of a missing definition, use the default localeFallback to substitute the missing set data
 //             // throw new Error('unknown property ' + d + p)

@@ -2,6 +2,7 @@ use rand::{thread_rng, Rng};
 
 pub mod locales;
 mod faker;
+mod name;
 // use a::series::of::nested_modules;
 
 
