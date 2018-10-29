@@ -50,8 +50,8 @@ fn replace_symbol_with_number(templ:&str) -> String {
     }).collect();
 
 
-      // var str = '';
-      // for (var i = 0; i < string.length; i++) {
+      // let str = '';
+      // for (let i = 0; i < string.length; i++) {
       //     if (string.charAt(i) == symbol) {
       //         str += faker.random.number(9);
       //     } else if (string.charAt(i) == "!"){

@@ -337,13 +337,13 @@ address_county: address::county(),
 
    you can include the faker library into your existing node.js application by requiring the entire /faker directory
 
-    var faker = require(./faker);
-    var randomName = faker.name.findName();
+    let faker = require(./faker);
+    let randomName = faker.name.findName();
 
    you can also simply include the "faker.js" file which is the auto-generated bundled version of the faker library
 
-    var faker = require(./customAppPath/faker);
-    var randomName = faker.name.findName();
+    let faker = require(./customAppPath/faker);
+    let randomName = faker.name.findName();
 
 
   if you plan on modifying the faker library you should be performing your changes in the /lib/ directory
@@ -359,14 +359,14 @@ address_county: address::county(),
 
 //     }
 
-//   var self = this;
+//   let self = this;
 
 //   opts = opts || {};
 
 //   // assign options
-//   var locales = self.locales || opts.locales || {};
-//   var locale = self.locale || opts.locale || "en";
-//   var localeFallback = self.localeFallback || opts.localeFallback || "en";
+//   let locales = self.locales || opts.locales || {};
+//   let locale = self.locale || opts.locale || "en";
+//   let localeFallback = self.localeFallback || opts.localeFallback || "en";
 
 //   self.locales = locales;
 //   self.locale = locale;
@@ -383,62 +383,62 @@ address_county: address::county(),
 //       return obj;
 //   }
 
-//   var Fake = require('./fake');
+//   let Fake = require('./fake');
 //   self.fake = new Fake(self).fake;
 
-//   var Unique = require('./unique');
+//   let Unique = require('./unique');
 //   self.unique = bindAll(new Unique(self).unique);
 
-//   var Random = require('./random');
+//   let Random = require('./random');
 //   self.random = bindAll(new Random(self));
 
-//   var Helpers = require('./helpers');
+//   let Helpers = require('./helpers');
 //   self.helpers = new Helpers(self);
 
 
-//   var Name = require('./name');
+//   let Name = require('./name');
 //   self.name = bindAll(new Name(self));
 
-//   var Address = require('./address');
+//   let Address = require('./address');
 //   self.address = bindAll(new Address(self));
 
-//   var Company = require('./company');
+//   let Company = require('./company');
 //   self.company = bindAll(new Company(self));
 
-//   var Finance = require('./finance');
+//   let Finance = require('./finance');
 //   self.finance = bindAll(new Finance(self));
 
-//   var Image = require('./image');
+//   let Image = require('./image');
 //   self.image = bindAll(new Image(self));
 
-//   var Lorem = require('./lorem');
+//   let Lorem = require('./lorem');
 //   self.lorem = bindAll(new Lorem(self));
 
-//   var Hacker = require('./hacker');
+//   let Hacker = require('./hacker');
 //   self.hacker = bindAll(new Hacker(self));
 
-//   var Internet = require('./internet');
+//   let Internet = require('./internet');
 //   self.internet = bindAll(new Internet(self));
 
-//   var Database = require('./database');
+//   let Database = require('./database');
 //   self.database = bindAll(new Database(self));
 
-//   var Phone = require('./phone_number');
+//   let Phone = require('./phone_number');
 //   self.phone = bindAll(new Phone(self));
 
-//   var _Date = require('./date');
+//   let _Date = require('./date');
 //   self.date = bindAll(new _Date(self));
 
-//   var Commerce = require('./commerce');
+//   let Commerce = require('./commerce');
 //   self.commerce = bindAll(new Commerce(self));
 
-//   var System = require('./system');
+//   let System = require('./system');
 //   self.system = bindAll(new System(self));
 
-//   var Git = require('./git');
+//   let Git = require('./git');
 //   self.git = bindAll(new Git(self));
 
-//   var _definitions = {
+//   let _definitions = {
 //     // "name": ["first_name", "last_name", "prefix", "suffix", "gender", "title", "male_prefix", "female_prefix", "male_first_name", "female_first_name", "male_middle_name", "female_middle_name", "male_last_name", "female_last_name"],
 //     "name.first_name",
 //     "name.last_name",
@@ -555,7 +555,7 @@ address_county: address::county(),
 // }
 
 // Faker.prototype.seed = function(value) {
-//   var Random = require('./random');
+//   let Random = require('./random');
 //   this.seedValue = value;
 //   this.random = new Random(this, this.seedValue);
 // }

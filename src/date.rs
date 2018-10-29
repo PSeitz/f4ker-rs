@@ -3,8 +3,8 @@ use rand::{thread_rng, Rng};
  *
  * @namespace faker.date
  */
-var _Date = function (faker) {
-  var self = this;
+let _Date = function (faker) {
+  let self = this;
   /**
    * past
    *
@@ -13,17 +13,17 @@ var _Date = function (faker) {
    * @param {date} refDate
    */
 fn past(&self, years: &str,  refDate: &str) -> String {
-      var date = new Date();
+      let date = new Date();
       if (refDate.is_some()) {
           date = new Date(Date.parse(refDate));
       }
 
-      var range = {
+      let range = {
         min: 1000,
         max: (years || 1) * 365 * 24 * 3600 * 1000
       };
 
-      var past = date.getTime();
+      let past = date.getTime();
       past -= faker.random.number(range); // some time from now to N years ago, in milliseconds
       date.setTime(past);
 
@@ -38,17 +38,17 @@ fn past(&self, years: &str,  refDate: &str) -> String {
    * @param {date} refDate
    */
 fn future(&self, years: &str,  refDate: &str) -> String {
-      var date = new Date();
+      let date = new Date();
       if (refDate.is_some()) {
           date = new Date(Date.parse(refDate));
       }
 
-      var range = {
+      let range = {
         min: 1000,
         max: (years || 1) * 365 * 24 * 3600 * 1000
       };
 
-      var future = date.getTime();
+      let future = date.getTime();
       future += faker.random.number(range); // some time from now to N years later, in milliseconds
       date.setTime(future);
 
@@ -63,10 +63,10 @@ fn future(&self, years: &str,  refDate: &str) -> String {
    * @param {date} to
    */
 fn between(&self, from: &str,  to: &str) -> String {
-      var fromMilli = Date.parse(from);
-      var dateOffset = faker.random.number(Date.parse(to) - fromMilli);
+      let fromMilli = Date.parse(from);
+      let dateOffset = faker.random.number(Date.parse(to) - fromMilli);
 
-      var newDate = new Date(fromMilli + dateOffset);
+      let newDate = new Date(fromMilli + dateOffset);
 
       return newDate;
   };
@@ -79,17 +79,17 @@ fn between(&self, from: &str,  to: &str) -> String {
    * @param {date} refDate
    */
 fn recent(&self, days: &str,  refDate: &str) -> String {
-      var date = new Date();
+      let date = new Date();
       if (refDate.is_some()) {
           date = new Date(Date.parse(refDate));
       }
 
-      var range = {
+      let range = {
         min: 1000,
         max: (days || 1) * 24 * 3600 * 1000
       };
 
-      var future = date.getTime();
+      let future = date.getTime();
       future -= faker.random.number(range); // some time from now to N days ago, in milliseconds
       date.setTime(future);
 
@@ -104,17 +104,17 @@ fn recent(&self, days: &str,  refDate: &str) -> String {
    * @param {date} refDate
    */
 fn soon(&self, days: &str,  refDate: &str) -> String {
-      var date = new Date();
+      let date = new Date();
       if (refDate.is_some()) {
           date = new Date(Date.parse(refDate));
       }
 
-      var range = {
+      let range = {
         min: 1000,
         max: (days || 1) * 24 * 3600 * 1000
       };
 
-      var future = date.getTime();
+      let future = date.getTime();
       future += faker.random.number(range); // some time from now to N days later, in milliseconds
       date.setTime(future);
 
@@ -130,7 +130,7 @@ fn soon(&self, days: &str,  refDate: &str) -> String {
 fn month(&self, options: &str) -> String {
       options = options || {};
 
-      var type = 'wide';
+      let type = 'wide';
       if (options.abbr) {
           type = 'abbr';
       }
@@ -138,7 +138,7 @@ fn month(&self, options: &str) -> String {
           type += '_context';
       }
 
-      var source = self.faker.date_month()[type];
+      let source = self.faker.date_month()[type];
 
       return thread_rng().choose(source);
   };
@@ -152,7 +152,7 @@ fn month(&self, options: &str) -> String {
 fn weekday(&self, options: &str) -> String {
       options = options || {};
 
-      var type = 'wide';
+      let type = 'wide';
       if (options.abbr) {
           type = 'abbr';
       }
@@ -160,7 +160,7 @@ fn weekday(&self, options: &str) -> String {
           type += '_context';
       }
 
-      var source = self.faker.date_weekday()[type];
+      let source = self.faker.date_weekday()[type];
 
       return thread_rng().choose(source);
   };

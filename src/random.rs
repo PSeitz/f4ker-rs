@@ -2,7 +2,7 @@ use rand::{thread_rng, Rng};
 struct Random {
 {
 }
-var mersenne = require('../vendor/mersenne');
+let mersenne = require('../vendor/mersenne');
 
 /**
  *
@@ -49,12 +49,12 @@ fn number(&self, options: &str) -> String {
     }
 
     // Make the range inclusive of the max value
-    var max = options.max;
+    let max = options.max;
     if (max >= 0) {
       max += options.precision;
     }
 
-    var randomNumber = Math.floor(
+    let randomNumber = Math.floor(
       mersenne.rand(max / options.precision, options.min / options.precision));
     // Workaround problem in Float point arithmetics for e.g. 6681493 / 0.01
     randomNumber = randomNumber / (1 / options.precision);
@@ -76,8 +76,8 @@ fn float(&self, options: &str) -> String {
         };
       }
       options = options || {};
-      var opts = {};
-      for (var p in options) {
+      let opts = {};
+      for (let p in options) {
         opts[p] = options[p];
       }
       if (typeof opts.precision === 'undefined') {
@@ -94,7 +94,7 @@ fn float(&self, options: &str) -> String {
    */
 fn arrayElement(&self, array: &str) -> String {
       array = array || ["a", "b", "c"];
-      var r = faker.random.number({ max: array.length - 1 });
+      let r = faker.random.number({ max: array.length - 1 });
       return array[r];
   }
 
@@ -116,10 +116,10 @@ fn arrayElements(&self, array: &str,  count: &str) -> String {
         count = 0;
       }
 
-      var arrayCopy = array.slice();
-      var countToRemove = arrayCopy.length - count;
-      for (var i = 0; i < countToRemove; i++) {
-        var indexToRemove = faker.random.number({ max: arrayCopy.length - 1 });
+      let arrayCopy = array.slice();
+      let countToRemove = arrayCopy.length - count;
+      for (let i = 0; i < countToRemove; i++) {
+        let indexToRemove = faker.random.number({ max: arrayCopy.length - 1 });
         arrayCopy.splice(indexToRemove, 1);
       }
 
@@ -135,8 +135,8 @@ fn arrayElements(&self, array: &str,  count: &str) -> String {
    */
 fn objectElement(&self, object: &str,  field: &str) -> String {
       object = object || { "foo": "bar", "too": "car" };
-      var array = Object.keys(object);
-      var key = thread_rng().choose(array);
+      let array = Object.keys(object);
+      let key = thread_rng().choose(array);
 
       return field === "key" ? key : object[key];
   }
@@ -147,11 +147,11 @@ fn objectElement(&self, object: &str,  field: &str) -> String {
    * @method faker.random.uuid
    */
 fn uuid(&self) -> String {
-      var self = this;
-      var RFC4122_TEMPLATE = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx';
-      var replacePlaceholders = function (placeholder) {
-          var random = self.number({ min: 0, max: 15 });
-          var value = placeholder == 'x' ? random : (random &0x3 | 0x8);
+      let self = this;
+      let RFC4122_TEMPLATE = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx';
+      let replacePlaceholders = function (placeholder) {
+          let random = self.number({ min: 0, max: 15 });
+          let value = placeholder == 'x' ? random : (random &0x3 | 0x8);
           return value.toString(16);
       };
       return RFC4122_TEMPLATE.replace(/[xy]/g, replacePlaceholders);
@@ -175,7 +175,7 @@ fn boolean(&self) -> String {
    */
 fn word(&self, type: &str) -> String {
 
-    var wordMethods = [
+    let wordMethods = [
     'commerce.department',
     'commerce.productName',
     'commerce.productAdjective',
@@ -209,7 +209,7 @@ fn word(&self, type: &str) -> String {
     'name.jobType'];
 
     // randomly pick from the many faker methods that can generate words
-    var randomWordMethod = thread_rng().choose(wordMethods);
+    let randomWordMethod = thread_rng().choose(wordMethods);
     return faker.fake('{{' + randomWordMethod + '}}');
 
   }
@@ -221,11 +221,11 @@ fn word(&self, type: &str) -> String {
    * @param {number} count defaults to a random value between 1 and 3
    */
 fn words(&self, count: &str) -> String {
-    var words = [];
+    let words = [];
     if (count.is_none()) {
       count = faker.random.number({min:1, max: 3});
     }
-    for (var i = 0; i<count; i++) {
+    for (let i = 0; i<count; i++) {
       words.push(faker.random.word());
     }
     return words.join(' ');
@@ -260,8 +260,8 @@ fn alphaNumeric(&self, count: &str) -> String {
       count = 1;
     }
 
-    var wholeString = "";
-    for(var i = 0; i < count; i++) {
+    let wholeString = "";
+    for(let i = 0; i < count; i++) {
       wholeString += thread_rng().choose(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]);
     }
 
@@ -279,8 +279,8 @@ fn hexaDecimal(&self, count: &str) -> String {
       count = 1;
     }
 
-    var wholeString = "";
-    for(var i = 0; i < count; i++) {
+    let wholeString = "";
+    for(let i = 0; i < count; i++) {
       wholeString += thread_rng().choose(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f", "A", "B", "C", "D", "E", "F"]);
     }
 

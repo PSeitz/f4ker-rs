@@ -11,7 +11,7 @@ impl Image {
 
     }
 
-  var self = this;
+  let self = this;
 
   /**
    * image
@@ -22,7 +22,7 @@ impl Image {
    * @method faker.image.image
    */
 fn image(&self, width: &str,  height: &str,  randomize: &str) -> String {
-    var categories = ["abstract", "animals", "business", "cats", "city", "food", "nightlife", "fashion", "people", "nature", "sports", "technics", "transport"];
+    let categories = ["abstract", "animals", "business", "cats", "city", "food", "nightlife", "fashion", "people", "nature", "sports", "technics", "transport"];
     return self[thread_rng().choose(categories)](width, height, randomize);
   };
   /**
@@ -43,13 +43,13 @@ fn avatar(&self) -> String {
    * @method faker.image.imageUrl
    */
 fn imageUrl(&self, width: &str,  height: &str,  category: &str,  randomize: &str,  https: &str) -> String {
-      var width = width || 640;
-      var height = height || 480;
-      var protocol = 'http://';
+      let width = width || 640;
+      let height = height || 480;
+      let protocol = 'http://';
       if (typeof https !== 'undefined' && https === true) {
         protocol = 'https://';
       }
-      var url = protocol + 'lorempixel.com/' + width + '/' + height;
+      let url = protocol + 'lorempixel.com/' + width + '/' + height;
       if (typeof category !== 'undefined') {
         url += '/' + category;
       }
@@ -213,8 +213,8 @@ fn transport(&self, width: &str,  height: &str,  randomize: &str) -> String {
    */
 fn dataUri(&self, width: &str,  height: &str,  color: &str) -> String {
     color = color || 'grey';
-    var svgString = '<svg xmlns="http://www.w3.org/2000/svg" version="1.1" baseProfile="full" width="' + width + '" height="' + height + '"><rect width="100%" height="100%" fill="' + color + '"/><text x="' + width / 2 + '" y="' + height / 2 + '" font-size="20" alignment-baseline="middle" text-anchor="middle" fill="white">' + width + 'x' + height + '</text></svg>';
-    var rawPrefix = 'data:image/svg+xml;charset=UTF-8,';
+    let svgString = '<svg xmlns="http://www.w3.org/2000/svg" version="1.1" baseProfile="full" width="' + width + '" height="' + height + '"><rect width="100%" height="100%" fill="' + color + '"/><text x="' + width / 2 + '" y="' + height / 2 + '" font-size="20" alignment-baseline="middle" text-anchor="middle" fill="white">' + width + 'x' + height + '</text></svg>';
+    let rawPrefix = 'data:image/svg+xml;charset=UTF-8,';
     return rawPrefix + encodeURIComponent(svgString);
   };
 }

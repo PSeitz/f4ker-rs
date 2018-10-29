@@ -2,7 +2,7 @@ use rand::{thread_rng, Rng};
 struct Internet {
 {
 }
-var random_ua = require('../vendor/user-agent');
+let random_ua = require('../vendor/user-agent');
 
 /**
  *
@@ -12,7 +12,7 @@ impl Internet {
     fn new() -> Self {
 
     }
-  var self = this;
+  let self = this;
   /**
    * avatar
    *
@@ -69,7 +69,7 @@ fn email(&self, firstName: &str,  lastName: &str,  provider: &str) -> String {
    * @param {string} lastName
    */
 fn exampleEmail(&self, firstName: &str,  lastName: &str) -> String {
-      var provider = thread_rng().choose(self.faker.internet_example_email());
+      let provider = thread_rng().choose(self.faker.internet_example_email());
       return self.email(firstName, lastName, provider);
   };
 
@@ -81,7 +81,7 @@ fn exampleEmail(&self, firstName: &str,  lastName: &str) -> String {
    * @param {string} lastName
    */
 fn userName(&self, firstName: &str,  lastName: &str) -> String {
-      var result;
+      let result;
       firstName = firstName || faker.name.firstName();
       lastName = lastName || faker.name.lastName();
       switch (faker.random.number(2)) {
@@ -129,7 +129,7 @@ fn userName(&self, firstName: &str,  lastName: &str) -> String {
    * @method faker.internet.protocol
    */
 fn protocol(&self) -> String {
-      var protocols = ['http','https'];
+      let protocols = ['http','https'];
       return thread_rng().choose(protocols);
   };
 
@@ -203,12 +203,12 @@ fn domainWord(&self) -> String {
    * @method faker.internet.ip
    */
 fn ip(&self) -> String {
-      var randNum = function () {
+      let randNum = function () {
           return (faker.random.number(255)).toFixed(0);
       };
 
-      var result = [];
-      for (var i = 0; i < 4; i++) {
+      let result = [];
+      for (let i = 0; i < 4; i++) {
           result[i] = randNum();
       }
 
@@ -226,16 +226,16 @@ fn ip(&self) -> String {
    * @method faker.internet.ipv6
    */
   self.ipv6 = function () {
-      var randHash = function () {
-          var result = "";
-          for (var i = 0; i < 4; i++) {
+      let randHash = function () {
+          let result = "";
+          for (let i = 0; i < 4; i++) {
             result += (thread_rng().choose(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"]));
           }
           return result
       };
 
-      var result = [];
-      for (var i = 0; i < 8; i++) {
+      let result = [];
+      for (let i = 0; i < 8; i++) {
         result[i] = randHash();
       }
       return result.join(":");
@@ -273,12 +273,12 @@ fn color(&self, baseRed: &str) -> String {
       baseGreen255 = baseGreen255 || 0;
       baseBlue255 = baseBlue255 || 0;
       // based on awesome response : http://stackoverflow.com/questions/43044/algorithm-to-randomly-generate-an-aesthetically-pleasing-color-palette
-      var red = Math.floor((faker.random.number(256) + baseRed255) / 2);
-      var green = Math.floor((faker.random.number(256) + baseGreen255) / 2);
-      var blue = Math.floor((faker.random.number(256) + baseBlue255) / 2);
-      var redStr = red.toString(16);
-      var greenStr = green.toString(16);
-      var blueStr = blue.toString(16);
+      let red = Math.floor((faker.random.number(256) + baseRed255) / 2);
+      let green = Math.floor((faker.random.number(256) + baseGreen255) / 2);
+      let blue = Math.floor((faker.random.number(256) + baseBlue255) / 2);
+      let redStr = red.toString(16);
+      let greenStr = green.toString(16);
+      let blueStr = blue.toString(16);
       return '#' +
         (redStr.length === 1 ? '0' : '') + redStr +
         (greenStr.length === 1 ? '0' : '') + greenStr +
@@ -315,7 +315,7 @@ fn color(&self, baseRed: &str) -> String {
    * @param {string} sep
    */
 fn mac(&self, sep: &str) -> String {
-      var i, 
+      let i, 
         mac = "",
         validSep = ':';
 
@@ -358,12 +358,12 @@ fn password(&self, len: &str,  memorable: &str,  pattern: &str,  prefix: &str) -
       * Copyright(c) 2011-2013 Bermi Ferrer <bermi@bermilabs.com>
       * MIT Licensed
       */
-     var consonant, letter, password, vowel;
+     let consonant, letter, password, vowel;
      letter = /[a-zA-Z]$/;
      vowel = /[aeiouAEIOU]$/;
      consonant = /[bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ]$/;
-     var _password = function (length, memorable, pattern, prefix) {
-       var char, n;
+     let _password = function (length, memorable, pattern, prefix) {
+       let char, n;
        if (length == null) {
          length = 10;
        }

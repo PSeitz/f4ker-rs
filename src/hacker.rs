@@ -10,7 +10,7 @@ impl Hacker {
     fn new() -> Self {
 
     }
-  var self = this;
+  let self = this;
   
   /**
    * abbreviation
@@ -64,7 +64,7 @@ fn ingverb(&self) -> String {
    */
 fn phrase(&self) -> String {
 
-    var data = {
+    let data = {
       abbreviation: self.abbreviation,
       adjective: self.adjective,
       ingverb: self.ingverb,
@@ -72,7 +72,7 @@ fn phrase(&self) -> String {
       verb: self.verb
     };
 
-    var phrase = thread_rng().choose(self.faker.hacker_phrase());
+    let phrase = thread_rng().choose(self.faker.hacker_phrase());
     return faker.helpers.mustache(phrase, data);
   };
   

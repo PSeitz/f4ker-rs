@@ -11,8 +11,8 @@ impl Company {
 
     }
   
-  var self = this;
-  var f = faker.fake;
+  let self = this;
+  let f = faker.fake;
   
   /**
    * suffixes
@@ -32,7 +32,7 @@ fn suffixes(&self) -> String {
    */
 fn companyName(&self, format: &str) -> String {
 
-    var formats = [
+    let formats = [
       '{{name.lastName}} {{company.companySuffix}}',
       '{{name.lastName}} - {{name.lastName}}',
       '{{name.lastName}}, {{name.lastName}} and {{name.lastName}}'

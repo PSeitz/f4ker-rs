@@ -9,8 +9,8 @@ impl Finance {
     fn new() -> Self {
 
     }
-  var ibanLib = require("./iban");
-  var Helpers = faker.helpers,
+  let ibanLib = require("./iban");
+  let Helpers = faker.helpers,
       self = this;
 
   /**
@@ -23,9 +23,9 @@ fn account(&self, length: &str) -> String {
 
       length = length || 8;
 
-      var template = '';
+      let template = '';
 
-      for (var i = 0; i < length; i++) {
+      for (let i = 0; i < length; i++) {
           template = template + '#';
       }
       length = null;
@@ -49,12 +49,12 @@ fn accountName(&self) -> String {
    */
 fn routingNumber(&self) -> String {
 
-      var routingNumber = Helpers.replaceSymbolWithNumber('########');
+      let routingNumber = Helpers.replaceSymbolWithNumber('########');
 
       // Modules 10 straight summation.
-      var sum = 0;
+      let sum = 0;
 
-      for (var i = 0; i < routingNumber.length; i += 3) {
+      for (let i = 0; i < routingNumber.length; i += 3) {
         sum += Number(routingNumber[i]) * 3;
         sum += Number(routingNumber[i + 1]) * 7;
         sum += Number(routingNumber[i + 2]) || 0;
@@ -79,9 +79,9 @@ fn mask(&self, length: &str,  parens: &str,  ellipsis: &str) -> String {
       ellipsis = (ellipsis === null) ? true : ellipsis;
 
       //create a template for length
-      var template = '';
+      let template = '';
 
-      for (var i = 0; i < length; i++) {
+      for (let i = 0; i < length; i++) {
           template = template + '#';
       }
 
@@ -116,7 +116,7 @@ fn amount(&self, min: &str,  max: &str,  dec: &str,  symbol: &str) -> String {
       max = max || 1000;
       dec = dec === undefined ? 2 : dec;
       symbol = symbol || '';
-      var randValue = faker.random.number({ max: max, min: min, precision: Math.pow(10, -dec) });
+      let randValue = faker.random.number({ max: max, min: min, precision: Math.pow(10, -dec) });
 
       return symbol + randValue.toFixed(dec);
   };
@@ -154,7 +154,7 @@ fn currencyName(&self) -> String {
    * @method faker.finance.currencySymbol
    */
 fn currencySymbol(&self) -> String {
-      var symbol;
+      let symbol;
 
       while (!symbol) {
           symbol = faker.random.objectElement(self.faker.finance_currency())['symbol'];
@@ -168,11 +168,11 @@ fn currencySymbol(&self) -> String {
    * @method  faker.finance.bitcoinAddress
    */
 fn bitcoinAddress(&self) -> String {
-    var addressLength = faker.random.number({ min: 25, max: 34 });
+    let addressLength = faker.random.number({ min: 25, max: 34 });
 
-    var address = thread_rng().choose(['1', '3']);
+    let address = thread_rng().choose(['1', '3']);
 
-    for (var i = 0; i < addressLength - 1; i++)
+    for (let i = 0; i < addressLength - 1; i++)
       address += thread_rng().choose('123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ'.split(''));
 
     return address;
@@ -185,8 +185,8 @@ fn bitcoinAddress(&self) -> String {
   */
 fn creditCardNumber(&self, provider: &str) -> String {
     provider = provider || "";
-    var format, formats;
-    var localeFormat = self.faker.finance_credit_card();
+    let format, formats;
+    let localeFormat = self.faker.finance_credit_card();
     if (provider in localeFormat) {
       formats = localeFormat[provider]; // there chould be multiple formats
       if (typeof formats === "string") {
@@ -217,8 +217,8 @@ fn creditCardNumber(&self, provider: &str) -> String {
    * @method faker.finance.creditCardNumber
   */
 fn creditCardCVV(&self) -> String {
-    var cvv = "";
-    for (var i = 0; i < 3; i++) {
+    let cvv = "";
+    for (let i = 0; i < 3; i++) {
       cvv += faker.random.number({max:9}).toString();
     }
     return cvv;
@@ -230,7 +230,7 @@ fn creditCardCVV(&self) -> String {
    * @method  faker.finance.ethereumAddress
    */
 fn ethereumAddress(&self) -> String {
-    var address = faker.random.hexaDecimal(40);
+    let address = faker.random.hexaDecimal(40);
 
     return address;
   };
@@ -241,12 +241,12 @@ fn ethereumAddress(&self) -> String {
    * @method  faker.finance.iban
    */
 fn iban(&self, formatted: &str) -> String {
-      var ibanFormat = thread_rng().choose(ibanLib.formats);
-      var s = "";
-      var count = 0;
-      for (var b = 0; b < ibanFormat.bban.length; b++) {
-          var bban = ibanFormat.bban[b];
-          var c = bban.count;
+      let ibanFormat = thread_rng().choose(ibanLib.formats);
+      let s = "";
+      let count = 0;
+      for (let b = 0; b < ibanFormat.bban.length; b++) {
+          let bban = ibanFormat.bban[b];
+          let c = bban.count;
           count += bban.count;
           while (c > 0) {
               if (bban.type == "a") {
@@ -274,11 +274,11 @@ fn iban(&self, formatted: &str) -> String {
           }
           s = s.substring(0, count);
       }
-      var checksum = 98 - ibanLib.mod97(ibanLib.toDigitString(s + ibanFormat.country + "00"));
+      let checksum = 98 - ibanLib.mod97(ibanLib.toDigitString(s + ibanFormat.country + "00"));
       if (checksum < 10) {
           checksum = "0" + checksum;
       }
-      var iban = ibanFormat.country + checksum + s;
+      let iban = ibanFormat.country + checksum + s;
       return formatted ? iban.match(/.{1,4}/g).join(" ") : iban;
   };
 
@@ -288,8 +288,8 @@ fn iban(&self, formatted: &str) -> String {
    * @method  faker.finance.bic
    */
 fn bic(&self) -> String {
-      var vowels = ["A", "E", "I", "O", "U"];
-      var prob = faker.random.number(100);
+      let vowels = ["A", "E", "I", "O", "U"];
+      let prob = faker.random.number(100);
       return Helpers.replaceSymbols("???") +
           thread_rng().choose(vowels) +
           thread_rng().choose(ibanLib.iso3166) +

@@ -11,7 +11,7 @@ impl Helpers {
 
     }
 
-  var self = this;
+  let self = this;
 
   /**
    * backword-compatibility
@@ -49,8 +49,8 @@ fn replaceSymbolWithNumber(&self, string: &str,  symbol: &str) -> String {
           symbol = '#';
       }
 
-      var str = '';
-      for (var i = 0; i < string.length; i++) {
+      let str = '';
+      for (let i = 0; i < string.length; i++) {
           if (string.charAt(i) == symbol) {
               str += faker.random.number(9);
           } else if (string.charAt(i) == "!"){
@@ -71,10 +71,10 @@ fn replaceSymbolWithNumber(&self, string: &str,  symbol: &str) -> String {
    */
 fn replaceSymbols(&self, string: &str) -> String {
       string = string || "";
-      var alpha = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
-      var str = '';
+      let alpha = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+      let str = '';
 
-      for (var i = 0; i < string.length; i++) {
+      for (let i = 0; i < string.length; i++) {
           if (string.charAt(i) == "#") {
               str += faker.random.number(9);
           } else if (string.charAt(i) == "?") {
@@ -100,7 +100,7 @@ fn replaceCreditCardSymbols(&self, string: &str,  symbol: &str) -> String {
      symbol = symbol || "#";
 
      // Function calculating the Luhn checksum of a number string
-     var getCheckBit = function(number) {
+     let getCheckBit = function(number) {
        number.reverse();
        number = number.map(function(num, index){
          if(index%2 === 0) {
@@ -111,7 +111,7 @@ fn replaceCreditCardSymbols(&self, string: &str,  symbol: &str) -> String {
          }
          return num;
        });
-       var sum = number.reduce(function(prev,curr){return prev + curr;});
+       let sum = number.reduce(function(prev,curr){return prev + curr;});
        return sum % 10;
      };
 
@@ -119,8 +119,8 @@ fn replaceCreditCardSymbols(&self, string: &str,  symbol: &str) -> String {
      string = faker.helpers.regexpStyleStringParse(string); // replace [4-9] with a random number in range etc...
      string = faker.helpers.replaceSymbolWithNumber(string, symbol); // replace ### with random numbers
 
-     var numberList = string.replace(/\D/g,"").split("").map(function(num){return parseInt(num);});
-     var checkNum = getCheckBit(numberList);
+     let numberList = string.replace(/\D/g,"").split("").map(function(num){return parseInt(num);});
+     let checkNum = getCheckBit(numberList);
      return string.replace("L",checkNum);
    };
 
@@ -134,8 +134,8 @@ fn repeatString(&self, string: &str, num: &str) -> String {
      if(num.is_none()) {
        num = 0;
      }
-     var text = "";
-     for(var i = 0; i < num; i++){
+     let text = "";
+     for(let i = 0; i < num; i++){
        text += string.toString();
      }
      return text;
@@ -152,11 +152,11 @@ fn repeatString(&self, string: &str, num: &str) -> String {
 fn regexpStyleStringParse(&self, string: &str) -> String {
      string = string || "";
      // Deal with range repeat `{min,max}`
-     var RANGE_REP_REG = /(.)\{(\d+)\,(\d+)\}/;
-     var REP_REG = /(.)\{(\d+)\}/;
-     var RANGE_REG = /\[(\d+)\-(\d+)\]/;
-     var min, max, tmp, repetitions;
-     var token = string.match(RANGE_REP_REG);
+     let RANGE_REP_REG = /(.)\{(\d+)\,(\d+)\}/;
+     let REP_REG = /(.)\{(\d+)\}/;
+     let RANGE_REG = /\[(\d+)\-(\d+)\]/;
+     let min, max, tmp, repetitions;
+     let token = string.match(RANGE_REP_REG);
      while(token !== null){
        min = parseInt(token[2]);
        max =  parseInt(token[3]);
@@ -209,7 +209,7 @@ fn shuffle(&self, o: &str) -> String {
         return [];
       }
       o = o || ["a", "b", "c"];
-      for (var j, x, i = o.length-1; i; j = faker.random.number(i), x = o[--i], o[i] = o[j], o[j] = x);
+      for (let j, x, i = o.length-1; i; j = faker.random.number(i), x = o[--i], o[i] = o[j], o[j] = x);
       return o;
   };
 
@@ -224,8 +224,8 @@ fn mustache(&self, str: &str,  data: &str) -> String {
     if (typeof str === 'undefined') {
       return '';
     }
-    for(var p in data) {
-      var re = new RegExp('{{' + p + '}}', 'g')
+    for(let p in data) {
+      let re = new RegExp('{{' + p + '}}', 'g')
       str = str.replace(re, data[p]);
     }
     return str;
@@ -292,7 +292,7 @@ fn createCard(&self) -> String {
    * @method faker.helpers.contextualCard
    */
 fn contextualCard(&self) -> String {
-    var name = faker.name.firstName(),
+    let name = faker.name.firstName(),
         userName = faker.internet.userName(name);
     return {
         "name": name,

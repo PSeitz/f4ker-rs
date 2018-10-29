@@ -21,7 +21,7 @@ impl System {
    * @param {string} type
    */
 fn fileName(&self, ext: &str,  type: &str) -> String {
-    var str = faker.fake("{{random.words}}.{{system.fileExt}}");
+    let str = faker.fake("{{random.words}}.{{system.fileExt}}");
     str = str.replace(/ /g, '_');
     str = str.replace(/\,/g, '_');
     str = str.replace(/\-/g, '_');
@@ -39,7 +39,7 @@ fn fileName(&self, ext: &str,  type: &str) -> String {
    * @param {string} type
    */
 fn commonFileName(&self, ext: &str,  type: &str) -> String {
-    var str = faker.random.words() + "." + (ext || faker.system.commonFileExt());
+    let str = faker.random.words() + "." + (ext || faker.system.commonFileExt());
     str = str.replace(/ /g, '_');
     str = str.replace(/\,/g, '_');
     str = str.replace(/\-/g, '_');
@@ -64,7 +64,7 @@ fn mimeType(&self) -> String {
    * @method faker.system.commonFileType
    */
 fn commonFileType(&self) -> String {
-    var types = ['video', 'audio', 'image', 'text', 'application'];
+    let types = ['video', 'audio', 'image', 'text', 'application'];
     return thread_rng().choose(types)
   };
 
@@ -75,7 +75,7 @@ fn commonFileType(&self) -> String {
    * @param {string} type
    */
 fn commonFileExt(&self, type: &str) -> String {
-    var types = [
+    let types = [
       'application/pdf',
       'audio/mpeg',
       'audio/wav',
@@ -96,10 +96,10 @@ fn commonFileExt(&self, type: &str) -> String {
    * @method faker.system.fileType
    */
 fn fileType(&self) -> String {
-    var types = [];
-    var mimes = self.faker.system_mimeTypes();
+    let types = [];
+    let mimes = self.faker.system_mimeTypes();
     Object.keys(mimes).forEach(function(m){
-      var parts = m.split('/');
+      let parts = m.split('/');
       if (types.indexOf(parts[0]) === -1) {
         types.push(parts[0]);
       }
@@ -114,8 +114,8 @@ fn fileType(&self) -> String {
    * @param {string} mimeType
    */
 fn fileExt(&self, mimeType: &str) -> String {
-    var exts = [];
-    var mimes = self.faker.system_mimeTypes();
+    let exts = [];
+    let mimes = self.faker.system_mimeTypes();
 
     // get specific ext by mime-type
     if (typeof mimes[mimeType] === "object") {
@@ -139,7 +139,7 @@ fn fileExt(&self, mimeType: &str) -> String {
    * @method faker.system.directoryPath
    */
 fn directoryPath(&self) -> String {
-      var paths = self.faker.system_directoryPaths()
+      let paths = self.faker.system_directoryPaths()
       return thread_rng().choose(paths);
   };
 

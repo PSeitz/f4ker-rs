@@ -10,7 +10,7 @@ impl Address {
     fn new() -> Self {
 
     }
-  var f = faker.fake,
+  let f = faker.fake,
       Helpers = faker.helpers;
 
   /**
@@ -23,7 +23,7 @@ impl Address {
 fn zipCode(&self, format: &str) -> String {
     // if zip format is not specified, use the zip format defined for the locale
     if (typeof format === 'undefined') {
-      var localeFormat = self.faker.address_postcode();
+      let localeFormat = self.faker.address_postcode();
       if (typeof localeFormat === 'string') {
         format = localeFormat;
       } else {
@@ -44,7 +44,7 @@ fn zipCode(&self, format: &str) -> String {
    * @param {String} state
    */
 fn zipCodeByState(&self, state: &str) -> String {
-    var zipRange = self.faker.address_postcode_by_state()[state];
+    let zipRange = self.faker.address_postcode_by_state()[state];
     if (zipRange) {
       return faker.random.number(zipRange);
     }
@@ -67,7 +67,7 @@ fn zipCodeByState(&self, state: &str) -> String {
    * @param {String} format
    */
 fn city(&self, format: &str) -> String {
-    var formats = [
+    let formats = [
       '{{address.cityPrefix}} {{name.firstName}}{{address.citySuffix}}',
       '{{address.cityPrefix}} {{name.firstName}}',
       '{{name.firstName}}{{address.citySuffix}}',
@@ -105,8 +105,8 @@ fn citySuffix(&self) -> String {
    * @method faker.address.streetName
    */
 fn streetName(&self) -> String {
-      var result;
-      var suffix = faker.address.streetSuffix();
+      let result;
+      let suffix = faker.address.streetSuffix();
       if (suffix !== "") {
           suffix = " " + suffix
       }
@@ -133,7 +133,7 @@ fn streetName(&self) -> String {
    */
 fn streetAddress(&self, useFullAddress: &str) -> String {
       if (useFullAddress === undefined) { useFullAddress = false; }
-      var address = "";
+      let address = "";
       switch (faker.random.number(2)) {
       case 0:
           address = Helpers.replaceSymbolWithNumber("#####") + " " + faker.address.streetName();
@@ -342,16 +342,16 @@ fn nearbyGPSCoordinate(&self, coordinate: &str,  radius: &str,  isMetric: &str) 
             return miles * 0.621371;
         }
         function coordinateWithOffset(coordinate, bearing, distance, isMetric) {
-            var R = 6378.137; // Radius of the Earth (http://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html)
-            var d = isMetric ? distance : kilometersToMiles(distance); // Distance in km
+            let R = 6378.137; // Radius of the Earth (http://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html)
+            let d = isMetric ? distance : kilometersToMiles(distance); // Distance in km
 
-            var lat1 = degreesToRadians(coordinate[0]); //Current lat point converted to radians
-            var lon1 = degreesToRadians(coordinate[1]); //Current long point converted to radians
+            let lat1 = degreesToRadians(coordinate[0]); //Current lat point converted to radians
+            let lon1 = degreesToRadians(coordinate[1]); //Current long point converted to radians
 
-            var lat2 = Math.asin(Math.sin(lat1) * Math.cos(d/R) +
+            let lat2 = Math.asin(Math.sin(lat1) * Math.cos(d/R) +
                 Math.cos(lat1) * Math.sin(d/R) * Math.cos(bearing));
 
-            var lon2 = lon1 + Math.atan2(
+            let lon2 = lon1 + Math.atan2(
                 Math.sin(bearing) * Math.sin(d/R) * Math.cos(lat1),
                 Math.cos(d/R) - Math.sin(lat1) * Math.sin(lat2));
 
@@ -376,7 +376,7 @@ fn nearbyGPSCoordinate(&self, coordinate: &str,  radius: &str,  isMetric: &str) 
         // Possibly include param to function that allows user to choose between distributions.
 
         // This approach will likely result in a higher density of points near the center.
-        var randomCoord = coordinateWithOffset(coordinate, degreesToRadians(Math.random() * 360.0), radius, isMetric);
+        let randomCoord = coordinateWithOffset(coordinate, degreesToRadians(Math.random() * 360.0), radius, isMetric);
         return [randomCoord[0].toFixed(4), randomCoord[1].toFixed(4)];
     }
 

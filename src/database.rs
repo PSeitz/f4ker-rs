@@ -10,7 +10,7 @@ impl Database {
     fn new() -> Self {
 
     }
-  var self = this;
+  let self = this;
   /**
    * column
    *
@@ -36,7 +36,7 @@ fn type(&self) -> String {
 
   self.type.schema = {
     "description": "Generates a column type.",
-    "sampleResults": ["byte", "int", "varchar", "timestamp"]
+    "sampleResults": ["byte", "int", "letchar", "timestamp"]
   };
 
   /**

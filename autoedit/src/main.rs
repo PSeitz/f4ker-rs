@@ -495,6 +495,9 @@ pub fn {}() -> Option<&'static [&'static str]> {{
             }).to_string()
         }).collect();
 
+        let lines:Vec<String> = lines.iter().map(|line|{
+            line.replace("var", "let")
+        }).collect();
 
         //eg. convert faker.definitions.address.postcode to self.faker.address_postcode()
         let re_def_name = Regex::new(r#"(.*?)faker\.definitions\.([A-Za-z\._]*)(.*)"#).unwrap();

@@ -10,7 +10,7 @@ impl Phone {
     fn new() -> Self {
 
     }
-  var self = this;
+  let self = this;
 
   /**
    * phoneNumber

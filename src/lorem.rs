@@ -11,8 +11,8 @@ impl Lorem {
     fn new() -> Self {
 
     }
-  var self = this;
-  var Helpers = faker.helpers;
+  let self = this;
+  let Helpers = faker.helpers;
 
   /**
    * word
@@ -32,8 +32,8 @@ fn word(&self, num: &str) -> String {
    */
 fn words(&self, num: &str) -> String {
       if (typeof num == 'undefined') { num = 3; }
-      var words = [];
-      for (var i = 0; i < num; i++) {
+      let words = [];
+      for (let i = 0; i < num; i++) {
         words.push(faker.lorem.word());
       }
       return words.join(' ');
@@ -53,7 +53,7 @@ fn sentence(&self, wordCount: &str,  range: &str) -> String {
       // strange issue with the node_min_test failing for captialize, please fix and add faker.lorem.back
       //return  faker.lorem.words(wordCount + Helpers.randomNumber(range)).join(' ').capitalize();
 
-      var sentence = faker.lorem.words(wordCount);
+      let sentence = faker.lorem.words(wordCount);
       return sentence.charAt(0).toUpperCase() + sentence.slice(1) + '.';
   };
 
@@ -64,7 +64,7 @@ fn sentence(&self, wordCount: &str,  range: &str) -> String {
    * @param {number} wordCount number of words, defaults to 3
    */
 fn slug(&self, wordCount: &str) -> String {
-      var words = faker.lorem.words(wordCount);
+      let words = faker.lorem.words(wordCount);
       return Helpers.slugify(words);
   };
 
@@ -78,7 +78,7 @@ fn slug(&self, wordCount: &str) -> String {
 fn sentences(&self, sentenceCount: &str,  separator: &str) -> String {
       if (typeof sentenceCount === 'undefined') { sentenceCount = faker.random.number({ min: 2, max: 6 });}
       if (typeof separator == 'undefined') { separator = " "; }
-      var sentences = [];
+      let sentences = [];
       for (sentenceCount; sentenceCount > 0; sentenceCount--) {
         sentences.push(faker.lorem.sentence());
       }
@@ -108,7 +108,7 @@ fn paragraphs(&self, paragraphCount: &str,  separator: &str) -> String {
       separator = "\n \r";
     }
     if (typeof paragraphCount == 'undefined') { paragraphCount = 3; }
-    var paragraphs = [];
+    let paragraphs = [];
     for (paragraphCount; paragraphCount > 0; paragraphCount--) {
         paragraphs.push(faker.lorem.paragraph());
     }
@@ -122,8 +122,8 @@ fn paragraphs(&self, paragraphCount: &str,  separator: &str) -> String {
    * @param {number} times
    */
 fn text(&self, times: &str) -> String {
-    var loremMethods = ['lorem.word', 'lorem.words', 'lorem.sentence', 'lorem.sentences', 'lorem.paragraph', 'lorem.paragraphs', 'lorem.lines'];
-    var randomLoremMethod = thread_rng().choose(loremMethods);
+    let loremMethods = ['lorem.word', 'lorem.words', 'lorem.sentence', 'lorem.sentences', 'lorem.paragraph', 'lorem.paragraphs', 'lorem.lines'];
+    let randomLoremMethod = thread_rng().choose(loremMethods);
     return faker.fake('{{' + randomLoremMethod + '}}');
   };
 

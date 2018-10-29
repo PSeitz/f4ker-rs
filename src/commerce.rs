@@ -10,7 +10,7 @@ impl Commerce {
     fn new() -> Self {
 
     }
-  var self = this;
+  let self = this;
 
   /**
    * color
@@ -62,17 +62,17 @@ fn price(&self, min: &str,  max: &str,  dec: &str,  symbol: &str) -> String {
           return symbol + 0.00;
       }
 
-      var randValue = faker.random.number({ max: max, min: min });
+      let randValue = faker.random.number({ max: max, min: min });
 
       return symbol + (Math.round(randValue * Math.pow(10, dec)) / Math.pow(10, dec)).toFixed(dec);
   };
 
   /*
 fn categories(&self, num: &str) -> String {
-      var categories = [];
+      let categories = [];
 
       do {
-          var category = thread_rng().choose(self.faker.commerce_department());
+          let category = thread_rng().choose(self.faker.commerce_department());
           if(categories.indexOf(category) === -1) {
               categories.push(category);
           }
@@ -84,10 +84,10 @@ fn categories(&self, num: &str) -> String {
   */
   /*
 fn mergeCategories(&self, categories: &str) -> String {
-      var separator = self.faker.separator() || " &";
+      let separator = self.faker.separator() || " &";
       // TODO: find undefined here
       categories = categories || self.faker.commerce_categories();
-      var commaSeparated = categories.slice(0, -1).join(', ');
+      let commaSeparated = categories.slice(0, -1).join(', ');
 
       return [commaSeparated, categories[categories.length - 1]].join(separator + " ");
   };

@@ -10,10 +10,10 @@ impl Git {
     fn new() -> Self {
 
     }
-  var self = this;
-  var f = faker.fake;
+  let self = this;
+  let f = faker.fake;
 
-  var hexChars = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"];
+  let hexChars = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"];
 
   /**
    * branch
@@ -21,8 +21,8 @@ impl Git {
    * @method faker.git.branch
    */
 fn branch(&self) -> String {
-    var noun = faker.hacker.noun().replace(' ', '-');
-    var verb = faker.hacker.verb().replace(' ', '-');
+    let noun = faker.hacker.noun().replace(' ', '-');
+    let verb = faker.hacker.verb().replace(' ', '-');
     return noun + '-' + verb;
   }
 
@@ -35,7 +35,7 @@ fn branch(&self) -> String {
 fn commitEntry(&self, options: &str) -> String {
     options = options || {};
 
-    var entry = 'commit {{git.commitSha}}\r\n';
+    let entry = 'commit {{git.commitSha}}\r\n';
 
     if (options.merge || (faker.random.number({ min: 0, max: 4 }) === 0)) {
       entry += 'Merge: {{git.shortSha}} {{git.shortSha}}\r\n';
@@ -54,7 +54,7 @@ fn commitEntry(&self, options: &str) -> String {
    * @method faker.git.commitMessage
    */
 fn commitMessage(&self) -> String {
-    var format = '{{hacker.verb}} {{hacker.adjective}} {{hacker.noun}}';
+    let format = '{{hacker.verb}} {{hacker.adjective}} {{hacker.noun}}';
     return f(format);
   };
 
@@ -64,9 +64,9 @@ fn commitMessage(&self) -> String {
    * @method faker.git.commitSha
    */
 fn commitSha(&self) -> String {
-    var commit = "";
+    let commit = "";
 
-    for (var i = 0; i < 40; i++) {
+    for (let i = 0; i < 40; i++) {
       commit += thread_rng().choose(hexChars);
     }
 
@@ -79,9 +79,9 @@ fn commitSha(&self) -> String {
    * @method faker.git.shortSha
    */
 fn shortSha(&self) -> String {
-    var shortSha = "";
+    let shortSha = "";
 
-    for (var i = 0; i < 7; i++) {
+    for (let i = 0; i < 7; i++) {
       shortSha += thread_rng().choose(hexChars);
     }
 

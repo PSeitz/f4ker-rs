@@ -2,7 +2,7 @@ use rand::{thread_rng, Rng};
 struct Unique {
 {
 }
-var uniqueExec = require('../vendor/unique');
+let uniqueExec = require('../vendor/unique');
 /**
  *
  * @namespace faker.unique
@@ -12,16 +12,16 @@ impl Unique {
 
     }
 
-  // initialize unique module class variables
+  // initialize unique module class letiables
 
   // maximum time unique.exec will attempt to run before aborting
-  var maxTime = 10;
+  let maxTime = 10;
 
   // maximum retries unique.exec will recurse before abortings ( max loop depth )
-  var maxRetries = 10;
+  let maxRetries = 10;
 
   // time the script started
-  // var startTime = 0;
+  // let startTime = 0;
 
   /**
    * unique
