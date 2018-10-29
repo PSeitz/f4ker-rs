@@ -474,7 +474,6 @@ pub fn {}() -> Option<&'static [&'static str]> {{
 
 
         let re_def_name = Regex::new(r#"(.*?)typeof\s*faker\.definitions\.([A-Za-z\._]*)(\s*!==\s*"undefined")"#).unwrap();
-
         let lines:Vec<String> = lines.iter().map(|line|{
             re_def_name.replace_all(line, |caps: &regex::Captures| {
                 caps[1].to_string() + "self.faker."+ &caps[2].replace(".", "_")+ ".is_some()"
@@ -483,7 +482,7 @@ pub fn {}() -> Option<&'static [&'static str]> {{
 
 
         //typeof useAbbr === 'undefined'
-        let re = Regex::new(r#"(.*?)typeof\s*([A-Za-z\._]*)\s*(==|===|!==)\s*["']undefined["'](.*)"#).unwrap();
+        let re = Regex::new(r#"(.*?)typeof\s*([0-9A-Za-z\._\(\)\[\]*)\s*(==|===|!==)\s*["']undefined["'](.*)"#).unwrap();
         let lines:Vec<String> = lines.iter().map(|line|{
             re.replace_all(line, |caps: &regex::Captures| {
                 let suffix = if  &caps[3] == "!=="{
@@ -498,6 +497,8 @@ pub fn {}() -> Option<&'static [&'static str]> {{
         //var to let
         let lines:Vec<String> = lines.iter().map(|line|{
             line.replace("var", "let")
+        }).map(|line|{
+            line.replace("===", "==")
         }).collect();
 
         //eg. convert faker.definitions.address.postcode to self.faker.address_postcode()

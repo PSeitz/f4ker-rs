@@ -100,7 +100,7 @@ fn fileType(&self) -> String {
     let mimes = self.faker.system_mimeTypes();
     Object.keys(mimes).forEach(function(m){
       let parts = m.split('/');
-      if (types.indexOf(parts[0]) === -1) {
+      if (types.indexOf(parts[0]) == -1) {
         types.push(parts[0]);
       }
     });
@@ -118,7 +118,7 @@ fn fileExt(&self, mimeType: &str) -> String {
     let mimes = self.faker.system_mimeTypes();
 
     // get specific ext by mime-type
-    if (typeof mimes[mimeType] === "object") {
+    if (typeof mimes[mimeType] == "object") {
       return thread_rng().choose(mimes[mimeType].extensions);
     }
 

@@ -37,7 +37,7 @@ fn commitEntry(&self, options: &str) -> String {
 
     let entry = 'commit {{git.commitSha}}\r\n';
 
-    if (options.merge || (faker.random.number({ min: 0, max: 4 }) === 0)) {
+    if (options.merge || (faker.random.number({ min: 0, max: 4 }) == 0)) {
       entry += 'Merge: {{git.shortSha}} {{git.shortSha}}\r\n';
     }
 

@@ -55,7 +55,7 @@ fn productName(&self) -> String {
 fn price(&self, min: &str,  max: &str,  dec: &str,  symbol: &str) -> String {
       min = min || 1;
       max = max || 1000;
-      dec = dec === undefined ? 2 : dec;
+      dec = dec == undefined ? 2 : dec;
       symbol = symbol || '';
 
       if (min < 0 || max < 0) {
@@ -73,7 +73,7 @@ fn categories(&self, num: &str) -> String {
 
       do {
           let category = thread_rng().choose(self.faker.commerce_department());
-          if(categories.indexOf(category) === -1) {
+          if(categories.indexOf(category) == -1) {
               categories.push(category);
           }
       } while(categories.length < num);

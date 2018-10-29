@@ -280,9 +280,9 @@ fn color(&self, baseRed: &str) -> String {
       let greenStr = green.toString(16);
       let blueStr = blue.toString(16);
       return '#' +
-        (redStr.length === 1 ? '0' : '') + redStr +
-        (greenStr.length === 1 ? '0' : '') + greenStr +
-        (blueStr.length === 1 ? '0': '') + blueStr;
+        (redStr.length == 1 ? '0' : '') + redStr +
+        (greenStr.length == 1 ? '0' : '') + greenStr +
+        (blueStr.length == 1 ? '0': '') + blueStr;
 
   };
 

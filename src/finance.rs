@@ -75,8 +75,8 @@ fn mask(&self, length: &str,  parens: &str,  ellipsis: &str) -> String {
 
       //set defaults
       length = (length == 0 || !length || length.is_none()) ? 4 : length;
-      parens = (parens === null) ? true : parens;
-      ellipsis = (ellipsis === null) ? true : ellipsis;
+      parens = (parens == null) ? true : parens;
+      ellipsis = (ellipsis == null) ? true : ellipsis;
 
       //create a template for length
       let template = '';
@@ -114,7 +114,7 @@ fn amount(&self, min: &str,  max: &str,  dec: &str,  symbol: &str) -> String {
 
       min = min || 0;
       max = max || 1000;
-      dec = dec === undefined ? 2 : dec;
+      dec = dec == undefined ? 2 : dec;
       symbol = symbol || '';
       let randValue = faker.random.number({ max: max, min: min, precision: Math.pow(10, -dec) });
 
@@ -189,7 +189,7 @@ fn creditCardNumber(&self, provider: &str) -> String {
     let localeFormat = self.faker.finance_credit_card();
     if (provider in localeFormat) {
       formats = localeFormat[provider]; // there chould be multiple formats
-      if (typeof formats === "string") {
+      if (typeof formats == "string") {
         format = formats;
       } else {
         format = thread_rng().choose(formats);
@@ -197,12 +197,12 @@ fn creditCardNumber(&self, provider: &str) -> String {
     } else if (provider.match(/#/)) { // The user chose an optional scheme
       format = provider;
     } else { // Choose a random provider
-      if (typeof localeFormat === 'string') {
+      if (typeof localeFormat == 'string') {
         format = localeFormat;
-      } else if( typeof localeFormat === "object") {
+      } else if( typeof localeFormat == "object") {
         // Credit cards are in a object structure
         formats = faker.random.objectElement(localeFormat, "value"); // There chould be multiple formats
-        if (typeof formats === "string") {
+        if (typeof formats == "string") {
           format = formats;
         } else {
           format = thread_rng().choose(formats);

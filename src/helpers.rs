@@ -45,7 +45,7 @@ fn slugify(&self, string: &str) -> String {
 fn replaceSymbolWithNumber(&self, string: &str,  symbol: &str) -> String {
       string = string || "";
       // default symbol is '#'
-      if (symbol === undefined) {
+      if (symbol == undefined) {
           symbol = '#';
       }
 
@@ -103,7 +103,7 @@ fn replaceCreditCardSymbols(&self, string: &str,  symbol: &str) -> String {
      let getCheckBit = function(number) {
        number.reverse();
        number = number.map(function(num, index){
-         if(index%2 === 0) {
+         if(index%2 == 0) {
            num *= 2;
            if(num>9) {
              num -= 9;
@@ -205,7 +205,7 @@ fn regexpStyleStringParse(&self, string: &str) -> String {
    * @param {array} o
    */
 fn shuffle(&self, o: &str) -> String {
-      if (o.is_none() || o.length === 0) {
+      if (o.is_none() || o.length == 0) {
         return [];
       }
       o = o || ["a", "b", "c"];

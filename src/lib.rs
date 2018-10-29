@@ -35,7 +35,7 @@ fn replace_symbol_with_number(templ:&str) -> String {
 //   self.replaceSymbolWithNumber = function (string, symbol) {
       // string = string || "";
       // default symbol is '#'
-      // if (symbol === undefined) {
+      // if (symbol == undefined) {
       //     symbol = '#';
       // }
 

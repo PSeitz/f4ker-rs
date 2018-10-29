@@ -24,7 +24,7 @@ fn zipCode(&self, format: &str) -> String {
     // if zip format is not specified, use the zip format defined for the locale
     if (format.is_none()) {
       let localeFormat = self.faker.address_postcode();
-      if (typeof localeFormat === 'string') {
+      if (typeof localeFormat == 'string') {
         format = localeFormat;
       } else {
         format = thread_rng().choose(localeFormat);
@@ -132,7 +132,7 @@ fn streetName(&self) -> String {
    * @param {Boolean} useFullAddress
    */
 fn streetAddress(&self, useFullAddress: &str) -> String {
-      if (useFullAddress === undefined) { useFullAddress = false; }
+      if (useFullAddress == undefined) { useFullAddress = false; }
       let address = "";
       switch (faker.random.number(2)) {
       case 0:
@@ -273,7 +273,7 @@ fn longitude(&self, max: &str,  min: &str,  precision: &str) -> String {
    * @param {Boolean} useAbbr return direction abbreviation. defaults to false
    */
 fn direction(&self, useAbbr: &str) -> String {
-    if (useAbbr.is_none() || useAbbr === false) {
+    if (useAbbr.is_none() || useAbbr == false) {
       return thread_rng().choose(self.faker.address_direction());
     }
     return thread_rng().choose(self.faker.address_direction_abbr());
@@ -291,7 +291,7 @@ fn direction(&self, useAbbr: &str) -> String {
    * @param {Boolean} useAbbr return direction abbreviation. defaults to false
    */
 fn cardinalDirection(&self, useAbbr: &str) -> String {
-    if (useAbbr.is_none() || useAbbr === false) {
+    if (useAbbr.is_none() || useAbbr == false) {
       return (
         thread_rng().choose(self.faker.address_direction_slice()(0, 4))
       );
@@ -313,7 +313,7 @@ fn cardinalDirection(&self, useAbbr: &str) -> String {
    * @param {Boolean} useAbbr return direction abbreviation. defaults to false
    */
 fn ordinalDirection(&self, useAbbr: &str) -> String {
-    if (useAbbr.is_none() || useAbbr === false) {
+    if (useAbbr.is_none() || useAbbr == false) {
       return (
         thread_rng().choose(self.faker.address_direction_slice()(4, 8))
       );
@@ -366,7 +366,7 @@ fn nearbyGPSCoordinate(&self, coordinate: &str,  radius: &str,  isMetric: &str) 
         }
 
         // If there is no coordinate, the best we can do is return a random GPS coordinate.
-        if (coordinate === undefined) {
+        if (coordinate == undefined) {
             return [this.latitude(), this.longitude()]
         }
         radius = radius || 10.0;

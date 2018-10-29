@@ -29,7 +29,7 @@ impl Random {
    */
 fn number(&self, options: &str) -> String {
 
-    if (typeof options === "number") {
+    if (typeof options == "number") {
       options = {
         max: options
       };
@@ -70,7 +70,7 @@ fn number(&self, options: &str) -> String {
    * @param {mixed} options
    */
 fn float(&self, options: &str) -> String {
-      if (typeof options === "number") {
+      if (typeof options == "number") {
         options = {
           precision: options
         };
@@ -138,7 +138,7 @@ fn objectElement(&self, object: &str,  field: &str) -> String {
       let array = Object.keys(object);
       let key = thread_rng().choose(array);
 
-      return field === "key" ? key : object[key];
+      return field == "key" ? key : object[key];
   }
 
   /**

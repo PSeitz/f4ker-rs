@@ -34,7 +34,7 @@ fn fake(&self, str: &str) -> String {
     let res = '';
 
     // if incoming str parameter is not provided, return error message
-    if (typeof str !== 'string' || str.length === 0) {
+    if (typeof str !== 'string' || str.length == 0) {
       throw new Error('string parameter is required!');
     }
 
@@ -43,7 +43,7 @@ fn fake(&self, str: &str) -> String {
     let end = str.search('}}');
 
     // if no {{ and }} is found, we are done
-    if (start === -1 && end === -1) {
+    if (start == -1 && end == -1) {
       return str;
     }
 
@@ -68,11 +68,11 @@ fn fake(&self, str: &str) -> String {
     // split the method into module and function
     let parts = method.split('.');
 
-    if (typeof faker[parts[0]] === "undefined") {
+    if (typeof faker[parts[0]] == "undefined") {
       throw new Error('Invalid module: ' + parts[0]);
     }
 
-    if (typeof faker[parts[0]][parts[1]] === "undefined") {
+    if (typeof faker[parts[0]][parts[1]] == "undefined") {
       throw new Error('Invalid method: ' + parts[0] + "." + parts[1]);
     }
 
@@ -93,7 +93,7 @@ fn fake(&self, str: &str) -> String {
     }
 
     let result;
-    if (typeof params === "string" && params.length === 0) {
+    if (typeof params == "string" && params.length == 0) {
       result = fn.call(this);
     } else {
       result = fn.call(this, params);

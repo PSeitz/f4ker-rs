@@ -376,7 +376,7 @@ address_county: address::county(),
 
 //   function bindAll(obj) {
 //       Object.keys(obj).forEach(function(meth) {
-//           if (typeof obj[meth] === 'function') {
+//           if (typeof obj[meth] == 'function') {
 //               obj[meth] = obj[meth].bind(obj);
 //           }
 //       });
@@ -522,11 +522,11 @@ address_county: address::county(),
 
 //   // Create a Getter for all definitions.foo.bar properties
 //   Object.keys(_definitions).forEach(function(d){
-//     if (typeof self.definitions[d] === "undefined") {
+//     if (typeof self.definitions[d] == "undefined") {
 //       self.definitions[d] = {};
 //     }
 
-//     if (typeof _definitions[d] === "string") {
+//     if (typeof _definitions[d] == "string") {
 //         self.definitions[d] = _definitions[d];
 //       return;
 //     }
@@ -534,7 +534,7 @@ address_county: address::county(),
 //     _definitions[d].forEach(function(p){
 //       Object.defineProperty(self.definitions[d], p, {
 //         get: function () {
-//           if (typeof self.locales[self.locale][d] === "undefined" || typeof self.locales[self.locale][d][p] === "undefined") {
+//           if (typeof self.locales[self.locale][d] == "undefined" || typeof self.locales[self.locale][d][p] == "undefined") {
 //             // certain localization sets contain less data then others.
 //             // in the case of a missing definition, use the default localeFallback to substitute the missing set data
 //             // throw new Error('unknown property ' + d + p)

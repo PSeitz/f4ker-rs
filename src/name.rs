@@ -34,7 +34,7 @@ fn firstName(&self, gender: Option<Gender>) -> String {
       // some locale datasets ( like ru ) have first_name split by gender. since the name.first_name field does not exist in these datasets,
       // we must randomly pick a name from either gender array so faker.name.firstName will return the correct locale data ( and not fallback )
       if (typeof gender !== 'number') {
-        if(typeof self.faker.name_first_name() === "undefined") {
+        if(self.faker.name_first_name().is_none()) {
           gender = faker.random.number(1);
         }
         else {
@@ -42,7 +42,7 @@ fn firstName(&self, gender: Option<Gender>) -> String {
           return thread_rng().choose(self.faker.name_first_name());
         }
       }
-      if (gender === 0) {
+      if (gender == 0) {
         return thread_rng().choose(self.faker.name_male_first_name())
       } else {
         return thread_rng().choose(self.faker.name_female_first_name());
@@ -66,7 +66,7 @@ fn lastName(&self, gender: Option<Gender>) -> String {
       if (typeof gender !== 'number') {
         gender = faker.random.number(1);
       }
-      if (gender === 0) {
+      if (gender == 0) {
         return thread_rng().choose(faker.locales[faker.locale].name.male_last_name);
       } else {
         return thread_rng().choose(faker.locales[faker.locale].name.female_last_name);
@@ -146,7 +146,7 @@ fn prefix(&self, gender: Option<Gender>) -> String {
       if (typeof gender !== 'number') {
         gender = faker.random.number(1);
       }
-      if (gender === 0) {
+      if (gender == 0) {
         return thread_rng().choose(faker.locales[faker.locale].name.male_prefix);
       } else {
         return thread_rng().choose(faker.locales[faker.locale].name.female_prefix);
