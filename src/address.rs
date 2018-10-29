@@ -22,7 +22,7 @@ impl Address {
    */
 fn zipCode(&self, format: &str) -> String {
     // if zip format is not specified, use the zip format defined for the locale
-    if (typeof format === 'undefined') {
+    if (format.is_none()) {
       let localeFormat = self.faker.address_postcode();
       if (typeof localeFormat === 'string') {
         format = localeFormat;
@@ -273,7 +273,7 @@ fn longitude(&self, max: &str,  min: &str,  precision: &str) -> String {
    * @param {Boolean} useAbbr return direction abbreviation. defaults to false
    */
 fn direction(&self, useAbbr: &str) -> String {
-    if (typeof useAbbr === 'undefined' || useAbbr === false) {
+    if (useAbbr.is_none() || useAbbr === false) {
       return thread_rng().choose(self.faker.address_direction());
     }
     return thread_rng().choose(self.faker.address_direction_abbr());
@@ -291,7 +291,7 @@ fn direction(&self, useAbbr: &str) -> String {
    * @param {Boolean} useAbbr return direction abbreviation. defaults to false
    */
 fn cardinalDirection(&self, useAbbr: &str) -> String {
-    if (typeof useAbbr === 'undefined' || useAbbr === false) {
+    if (useAbbr.is_none() || useAbbr === false) {
       return (
         thread_rng().choose(self.faker.address_direction_slice()(0, 4))
       );
@@ -313,7 +313,7 @@ fn cardinalDirection(&self, useAbbr: &str) -> String {
    * @param {Boolean} useAbbr return direction abbreviation. defaults to false
    */
 fn ordinalDirection(&self, useAbbr: &str) -> String {
-    if (typeof useAbbr === 'undefined' || useAbbr === false) {
+    if (useAbbr.is_none() || useAbbr === false) {
       return (
         thread_rng().choose(self.faker.address_direction_slice()(4, 8))
       );

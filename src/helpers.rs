@@ -205,7 +205,7 @@ fn regexpStyleStringParse(&self, string: &str) -> String {
    * @param {array} o
    */
 fn shuffle(&self, o: &str) -> String {
-      if (typeof o === 'undefined' || o.length === 0) {
+      if (o.is_none() || o.length === 0) {
         return [];
       }
       o = o || ["a", "b", "c"];
@@ -221,7 +221,7 @@ fn shuffle(&self, o: &str) -> String {
    * @param {object} data
    */
 fn mustache(&self, str: &str,  data: &str) -> String {
-    if (typeof str === 'undefined') {
+    if (str.is_none()) {
       return '';
     }
     for(let p in data) {

@@ -31,7 +31,7 @@ fn word(&self, num: &str) -> String {
    * @param {number} num number of words, defaults to 3
    */
 fn words(&self, num: &str) -> String {
-      if (typeof num == 'undefined') { num = 3; }
+      if (num.is_none()) { num = 3; }
       let words = [];
       for (let i = 0; i < num; i++) {
         words.push(faker.lorem.word());
@@ -47,8 +47,8 @@ fn words(&self, num: &str) -> String {
    * @param {number} range
    */
 fn sentence(&self, wordCount: &str,  range: &str) -> String {
-      if (typeof wordCount == 'undefined') { wordCount = faker.random.number({ min: 3, max: 10 }); }
-      // if (typeof range == 'undefined') { range = 7; }
+      if (wordCount.is_none()) { wordCount = faker.random.number({ min: 3, max: 10 }); }
+      // if (range.is_none()) { range = 7; }
 
       // strange issue with the node_min_test failing for captialize, please fix and add faker.lorem.back
       //return  faker.lorem.words(wordCount + Helpers.randomNumber(range)).join(' ').capitalize();
@@ -76,8 +76,8 @@ fn slug(&self, wordCount: &str) -> String {
    * @param {string} separator defaults to `' '`
    */
 fn sentences(&self, sentenceCount: &str,  separator: &str) -> String {
-      if (typeof sentenceCount === 'undefined') { sentenceCount = faker.random.number({ min: 2, max: 6 });}
-      if (typeof separator == 'undefined') { separator = " "; }
+      if (sentenceCount.is_none()) { sentenceCount = faker.random.number({ min: 2, max: 6 });}
+      if (separator.is_none()) { separator = " "; }
       let sentences = [];
       for (sentenceCount; sentenceCount > 0; sentenceCount--) {
         sentences.push(faker.lorem.sentence());
@@ -92,7 +92,7 @@ fn sentences(&self, sentenceCount: &str,  separator: &str) -> String {
    * @param {number} sentenceCount defaults to 3
    */
 fn paragraph(&self, sentenceCount: &str) -> String {
-      if (typeof sentenceCount == 'undefined') { sentenceCount = 3; }
+      if (sentenceCount.is_none()) { sentenceCount = 3; }
       return faker.lorem.sentences(sentenceCount + faker.random.number(3));
   };
 
@@ -107,7 +107,7 @@ fn paragraphs(&self, paragraphCount: &str,  separator: &str) -> String {
     if (separator.is_none()) {
       separator = "\n \r";
     }
-    if (typeof paragraphCount == 'undefined') { paragraphCount = 3; }
+    if (paragraphCount.is_none()) { paragraphCount = 3; }
     let paragraphs = [];
     for (paragraphCount; paragraphCount > 0; paragraphCount--) {
         paragraphs.push(faker.lorem.paragraph());
@@ -134,7 +134,7 @@ fn text(&self, times: &str) -> String {
    * @param {number} lineCount defaults to a random number between 1 and 5
    */
 fn lines(&self, lineCount: &str) -> String {
-    if (typeof lineCount === 'undefined') { lineCount = faker.random.number({ min: 1, max: 5 });}
+    if (lineCount.is_none()) { lineCount = faker.random.number({ min: 1, max: 5 });}
     return faker.lorem.sentences(lineCount, '\n')
   };
 

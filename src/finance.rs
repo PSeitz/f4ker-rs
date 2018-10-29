@@ -74,7 +74,7 @@ fn routingNumber(&self) -> String {
 fn mask(&self, length: &str,  parens: &str,  ellipsis: &str) -> String {
 
       //set defaults
-      length = (length == 0 || !length || typeof length == 'undefined') ? 4 : length;
+      length = (length == 0 || !length || length.is_none()) ? 4 : length;
       parens = (parens === null) ? true : parens;
       ellipsis = (ellipsis === null) ? true : ellipsis;
 

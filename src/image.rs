@@ -46,11 +46,11 @@ fn imageUrl(&self, width: &str,  height: &str,  category: &str,  randomize: &str
       let width = width || 640;
       let height = height || 480;
       let protocol = 'http://';
-      if (typeof https !== 'undefined' && https === true) {
+      if (https.is_some() && https === true) {
         protocol = 'https://';
       }
       let url = protocol + 'lorempixel.com/' + width + '/' + height;
-      if (typeof category !== 'undefined') {
+      if (category.is_some()) {
         url += '/' + category;
       }
 

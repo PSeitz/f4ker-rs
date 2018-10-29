@@ -455,7 +455,7 @@ pub fn {}() -> Option<&'static [&'static str]> {{
             lines.insert(2, "}".to_string());
         }
 
-        //this.zipCode = function(format) {
+        //this.zipCode = function(format) {  ->  fn zipCode(&self, ..param:String)
         let re = Regex::new(r"^\s*(this|self)\.([A-Za-z]*)\s*=\s*function\s*[A-Za-z]*\s*\(([A-Za-z,\s]*)\)*.").unwrap(); // var Phone = function (faker) {
         let lines: Vec<String> = lines.iter().flat_map(|line|{
             if let Some(pat) = re.captures(&line) {
@@ -483,7 +483,7 @@ pub fn {}() -> Option<&'static [&'static str]> {{
 
 
         //typeof useAbbr === 'undefined'
-        let re = Regex::new(r#"(.*?)typeof\s*([A-Za-z\._]*)\s*(==|===|!==)\s*"undefined"(.*)"#).unwrap();
+        let re = Regex::new(r#"(.*?)typeof\s*([A-Za-z\._]*)\s*(==|===|!==)\s*["']undefined["'](.*)"#).unwrap();
         let lines:Vec<String> = lines.iter().map(|line|{
             re.replace_all(line, |caps: &regex::Captures| {
                 let suffix = if  &caps[3] == "!=="{
@@ -495,6 +495,7 @@ pub fn {}() -> Option<&'static [&'static str]> {{
             }).to_string()
         }).collect();
 
+        //var to let
         let lines:Vec<String> = lines.iter().map(|line|{
             line.replace("var", "let")
         }).collect();

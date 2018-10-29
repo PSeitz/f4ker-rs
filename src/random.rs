@@ -80,7 +80,7 @@ fn float(&self, options: &str) -> String {
       for (let p in options) {
         opts[p] = options[p];
       }
-      if (typeof opts.precision === 'undefined') {
+      if (opts.precision.is_none()) {
         opts.precision = 0.01;
       }
       return faker.random.number(opts);
