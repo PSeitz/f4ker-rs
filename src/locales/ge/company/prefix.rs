@@ -1,6 +1,1 @@
-pub static PREFIX: &'static [&'static str] = &[ 
-  "შპს",
-  "სს",
-  "ააიპ",
-  "სსიპ"
-];
+pub static PREFIX: &'static [&'static str] = &["შპს", "სს", "ააიპ", "სსიპ"];

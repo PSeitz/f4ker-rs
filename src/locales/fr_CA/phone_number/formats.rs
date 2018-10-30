@@ -1,5 +1,1 @@
-pub static FORMATS: &'static [&'static str] = &[ 
-  "### ###-####",
-  "1 ### ###-####",
-  "### ###-####, poste ###"
-];
+pub static FORMATS: &'static [&'static str] = &["### ###-####", "1 ### ###-####", "### ###-####, poste ###"];

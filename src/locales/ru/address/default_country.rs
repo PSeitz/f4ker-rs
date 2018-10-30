@@ -1,3 +1,1 @@
-pub static DEFAULT_COUNTRY: &'static [&'static str] = &[ 
-  "Россия"
-];
+pub static DEFAULT_COUNTRY: &'static [&'static str] = &["Россия"];

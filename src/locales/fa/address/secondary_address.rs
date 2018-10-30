@@ -1,4 +1,1 @@
-pub static SECONDARY_ADDRESS: &'static [&'static str] = &[ 
-  "واحد #",
-  "# طبقه"
-];
+pub static SECONDARY_ADDRESS: &'static [&'static str] = &["واحد #", "# طبقه"];

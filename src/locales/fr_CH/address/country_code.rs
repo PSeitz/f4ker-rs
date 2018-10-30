@@ -1,3 +1,1 @@
-pub static COUNTRY_CODE: &'static [&'static str] = &[ 
-  "CH",
-];
+pub static COUNTRY_CODE: &'static [&'static str] = &["CH"];

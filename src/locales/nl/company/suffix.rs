@@ -1,6 +1,1 @@
-pub static SUFFIX: &'static [&'static str] = &[ 
-  "BV",
-  "V.O.F.",
-  "Group",
-  "en Zonen"
-];
+pub static SUFFIX: &'static [&'static str] = &["BV", "V.O.F.", "Group", "en Zonen"];

@@ -1,8 +1,1 @@
-pub static BUILDING_NUMBER: &'static [&'static str] = &[ 
-  "#",
-  "##",
-  "###",
-  "###a",
-  "###b",
-  "###c"
-];
+pub static BUILDING_NUMBER: &'static [&'static str] = &["#", "##", "###", "###a", "###b", "###c"];

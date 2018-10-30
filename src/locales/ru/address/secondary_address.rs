@@ -1,3 +1,1 @@
-pub static SECONDARY_ADDRESS: &'static [&'static str] = &[ 
-  "кв. ###"
-];
+pub static SECONDARY_ADDRESS: &'static [&'static str] = &["кв. ###"];

@@ -1,5 +1,4 @@
-
-pub static DESCRIPTOR: &'static [&'static str] = &[ 
+pub static DESCRIPTOR: &'static [&'static str] = &[
     "Головний",
     "Генеральний",
     "Провідний",
@@ -9,17 +8,17 @@ pub static DESCRIPTOR: &'static [&'static str] = &[
     "Районний",
     "Глобальний",
     "Міжнародний",
-    "Центральний"
+    "Центральний",
 ];
-pub static LEVEL: &'static [&'static str] = &[ 
+pub static LEVEL: &'static [&'static str] = &[
     "маркетинговий",
     "оптимізаційний",
     "страховий",
     "функціональний",
     "інтеграційний",
-    "логістичний"
+    "логістичний",
 ];
-pub static JOB: &'static [&'static str] = &[ 
+pub static JOB: &'static [&'static str] = &[
     "інженер",
     "агент",
     "адміністратор",
@@ -35,6 +34,5 @@ pub static JOB: &'static [&'static str] = &[
     "розробник",
     "спеціаліст",
     "співробітник",
-    "технік"
+    "технік",
 ];
-

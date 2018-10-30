@@ -1,1 +1,1 @@
-pub static SUFFIX: &'static [&'static str] = &[ ];
+pub static SUFFIX: &'static [&'static str] = &[];

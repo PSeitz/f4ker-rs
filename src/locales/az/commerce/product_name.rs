@@ -1,5 +1,4 @@
-
-pub static ADJECTIVE: &'static [&'static str] = &[ 
+pub static ADJECTIVE: &'static [&'static str] = &[
     "Balaca",
     "Ergonomik",
     "Kobud",
@@ -9,18 +8,10 @@ pub static ADJECTIVE: &'static [&'static str] = &[
     "Fantastik",
     "Əlverişli",
     "Parlaq",
-    "Mükəmməl"
+    "Mükəmməl",
 ];
-pub static MATERIAL: &'static [&'static str] = &[ 
-    "Polad",
-    "Ağac",
-    "Beton",
-    "Plastik",
-    "Pambıq",
-    "Qranit",
-    "Rezin"
-];
-pub static PRODUCT: &'static [&'static str] = &[ 
+pub static MATERIAL: &'static [&'static str] = &["Polad", "Ağac", "Beton", "Plastik", "Pambıq", "Qranit", "Rezin"];
+pub static PRODUCT: &'static [&'static str] = &[
     "Stul",
     "Avtomobil",
     "Kompyuter",
@@ -30,4 +21,3 @@ pub static PRODUCT: &'static [&'static str] = &[
     "Sviter",
     "Kəmər",
 ];
-

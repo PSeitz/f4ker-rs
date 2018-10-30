@@ -1,4 +1,1 @@
-pub static AUTHOR: &'static [&'static str] = &[ 
-  "#{Name.name}",
-  "#{Company.name}"
-];
+pub static AUTHOR: &'static [&'static str] = &["#{Name.name}", "#{Company.name}"];

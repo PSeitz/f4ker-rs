@@ -1,4 +1,1 @@
-pub static POSTCODE: &'static [&'static str] = &[ 
-  "LV####",
-  "LV-####"
-];
+pub static POSTCODE: &'static [&'static str] = &["LV####", "LV-####"];

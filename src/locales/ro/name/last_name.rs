@@ -1,4 +1,4 @@
-pub static LAST_NAME: &'static [&'static str] = &[ 
+pub static LAST_NAME: &'static [&'static str] = &[
     "Achim",
     "Adam",
     "Albu",
@@ -298,5 +298,5 @@ pub static LAST_NAME: &'static [&'static str] = &[
     "Voicu",
     "Voinea",
     "Zaharia",
-    "Zamfir"
+    "Zamfir",
 ];

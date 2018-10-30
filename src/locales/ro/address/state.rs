@@ -1,4 +1,4 @@
-pub static STATE: &'static [&'static str] = &[ 
+pub static STATE: &'static [&'static str] = &[
     "Alba",
     "Arad",
     "Arges",
@@ -40,5 +40,5 @@ pub static STATE: &'static [&'static str] = &[
     "Tulcea",
     "Valcea",
     "Vaslui",
-    "Vrancea"
+    "Vrancea",
 ];

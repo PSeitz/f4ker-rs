@@ -1,4 +1,4 @@
-pub static CITY_NAME: &'static [&'static str] = &[ 
+pub static CITY_NAME: &'static [&'static str] = &[
     "تهران",
     "مشهد",
     "اصفهان",
@@ -48,5 +48,5 @@ pub static CITY_NAME: &'static [&'static str] = &[
     "قرچک",
     "سیرجان",
     "بیرجند",
-    "ایلام"
+    "ایلام",
 ];

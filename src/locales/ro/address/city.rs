@@ -1,4 +1,4 @@
-pub static CITY: &'static [&'static str] = &[ 
+pub static CITY: &'static [&'static str] = &[
     "București",
     "Cluj-Napoca",
     "Timișoara",
@@ -298,5 +298,5 @@ pub static CITY: &'static [&'static str] = &[
     "Vașcău",
     "Nucet",
     "Solca",
-    "Băile Tușnad"
+    "Băile Tușnad",
 ];

@@ -1,3 +1,1 @@
-pub static FORMATS: &'static [&'static str] = &[ 
-  "(9##)###-##-##"
-];
+pub static FORMATS: &'static [&'static str] = &["(9##)###-##-##"];

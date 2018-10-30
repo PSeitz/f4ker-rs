@@ -1,3 +1,1 @@
-pub static CITY: &'static [&'static str] = &[ 
-  "#{Address.city_name}"
-];
+pub static CITY: &'static [&'static str] = &["#{Address.city_name}"];

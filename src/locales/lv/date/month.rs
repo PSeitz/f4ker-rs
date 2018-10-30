@@ -1,5 +1,4 @@
-
-pub static WIDE: &'static [&'static str] = &[ 
+pub static WIDE: &'static [&'static str] = &[
     "janvāris",
     "februāris",
     "marts",
@@ -11,9 +10,9 @@ pub static WIDE: &'static [&'static str] = &[
     "septembris",
     "oktobris",
     "novembris",
-    "decembris"
+    "decembris",
 ];
-pub static WIDE_CONTEXT: &'static [&'static str] = &[ 
+pub static WIDE_CONTEXT: &'static [&'static str] = &[
     "janvārī",
     "februārī",
     "martā",
@@ -25,34 +24,11 @@ pub static WIDE_CONTEXT: &'static [&'static str] = &[
     "septembrī",
     "oktobrī",
     "novembrī",
-    "decembrī"
+    "decembrī",
 ];
-pub static ABBR: &'static [&'static str] = &[ 
-    "jan.",
-    "feb.",
-    "mar.",
-    "apr.",
-    "mai.",
-    "jūn.",
-    "jūl.",
-    "aug.",
-    "sep.",
-    "okt.",
-    "nov.",
-    "dec."
+pub static ABBR: &'static [&'static str] = &[
+    "jan.", "feb.", "mar.", "apr.", "mai.", "jūn.", "jūl.", "aug.", "sep.", "okt.", "nov.", "dec.",
 ];
-pub static ABBR_CONTEXT: &'static [&'static str] = &[ 
-    "janv.",
-    "febr.",
-    "mar.",
-    "apr.",
-    "mai.",
-    "jūn.",
-    "jūl.",
-    "aug.",
-    "sept.",
-    "okt.",
-    "nov.",
-    "dec."
+pub static ABBR_CONTEXT: &'static [&'static str] = &[
+    "janv.", "febr.", "mar.", "apr.", "mai.", "jūn.", "jūl.", "aug.", "sept.", "okt.", "nov.", "dec.",
 ];
-

@@ -1,4 +1,4 @@
-pub static DEPARTMENT: &'static [&'static str] = &[ 
+pub static DEPARTMENT: &'static [&'static str] = &[
     "Librería",
     "Deportes",
     "Videojuegos",
@@ -17,5 +17,5 @@ pub static DEPARTMENT: &'static [&'static str] = &[
     "Cine",
     "Música",
     "Hogar",
-    "Decoración"
+    "Decoración",
 ];

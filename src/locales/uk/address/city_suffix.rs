@@ -1,3 +1,1 @@
-pub static CITY_SUFFIX: &'static [&'static str] = &[ 
-  "град"
-];
+pub static CITY_SUFFIX: &'static [&'static str] = &["град"];

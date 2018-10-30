@@ -1,3 +1,1 @@
-pub static BUILDING_NUMBER: &'static [&'static str] = &[ 
-  "Bloc ##"
-];
+pub static BUILDING_NUMBER: &'static [&'static str] = &["Bloc ##"];

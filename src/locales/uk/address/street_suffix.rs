@@ -1,3 +1,1 @@
-pub static STREET_SUFFIX: &'static [&'static str] = &[ 
-  "майдан"
-];
+pub static STREET_SUFFIX: &'static [&'static str] = &["майдан"];

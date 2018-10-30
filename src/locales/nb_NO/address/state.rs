@@ -1,3 +1,1 @@
-pub static STATE: &'static [&'static str] = &[ 
-  ""
-];
+pub static STATE: &'static [&'static str] = &[""];

@@ -1,5 +1,4 @@
-
-pub static ADJECTIVE: &'static [&'static str] = &[ 
+pub static ADJECTIVE: &'static [&'static str] = &[
     "Mazs",
     "Ergonomisks",
     "Raupjš",
@@ -10,19 +9,19 @@ pub static ADJECTIVE: &'static [&'static str] = &[
     "Praktisks",
     "Spalvains",
     "Ciets",
-	"Mīksts",
-	"Rūgts"
+    "Mīksts",
+    "Rūgts",
 ];
-pub static MATERIAL: &'static [&'static str] = &[ 
+pub static MATERIAL: &'static [&'static str] = &[
     "dzelzs",
     "koka",
     "betona",
     "plastmasas",
     "kokvilnas",
     "granīta",
-    "gumijas"
+    "gumijas",
 ];
-pub static PRODUCT: &'static [&'static str] = &[ 
+pub static PRODUCT: &'static [&'static str] = &[
     "krēsls",
     "auto",
     "dators",
@@ -32,17 +31,16 @@ pub static PRODUCT: &'static [&'static str] = &[
     "džemperis",
     "zābaks",
     "kažoks",
-	"radio",
-	"skaļrunis",
-	"monitors",
-	"televizors",
-	"skapis",
-	"ritenis",
-	"plakāts",
-	"ceļarullis",
-	"nazis",
-	"plāksteris",
-	"telefons",
-	"pončiks"
+    "radio",
+    "skaļrunis",
+    "monitors",
+    "televizors",
+    "skapis",
+    "ritenis",
+    "plakāts",
+    "ceļarullis",
+    "nazis",
+    "plāksteris",
+    "telefons",
+    "pončiks",
 ];
-

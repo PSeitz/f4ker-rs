@@ -1,5 +1,4 @@
-
-pub static ADJECTIVE: &'static [&'static str] = &[ 
+pub static ADJECTIVE: &'static [&'static str] = &[
     "Small",
     "Ergonomic",
     "Rustic",
@@ -16,45 +15,12 @@ pub static ADJECTIVE: &'static [&'static str] = &[
     "Licensed",
     "Refined",
     "Unbranded",
-    "Tasty"
+    "Tasty",
 ];
-pub static MATERIAL: &'static [&'static str] = &[ 
-    "Steel",
-    "Wooden",
-    "Concrete",
-    "Plastic",
-    "Cotton",
-    "Granite",
-    "Rubber",
-    "Metal",
-    "Soft",
-    "Fresh",
-    "Frozen"
+pub static MATERIAL: &'static [&'static str] = &[
+    "Steel", "Wooden", "Concrete", "Plastic", "Cotton", "Granite", "Rubber", "Metal", "Soft", "Fresh", "Frozen",
 ];
-pub static PRODUCT: &'static [&'static str] = &[ 
-    "Chair",
-    "Car",
-    "Computer",
-    "Keyboard",
-    "Mouse",
-    "Bike",
-    "Ball",
-    "Gloves",
-    "Pants",
-    "Shirt",
-    "Table",
-    "Shoes",
-    "Hat",
-    "Towels",
-    "Soap",
-    "Tuna",
-    "Chicken",
-    "Fish",
-    "Cheese",
-    "Bacon",
-    "Pizza",
-    "Salad",
-    "Sausages",
-    "Chips"
+pub static PRODUCT: &'static [&'static str] = &[
+    "Chair", "Car", "Computer", "Keyboard", "Mouse", "Bike", "Ball", "Gloves", "Pants", "Shirt", "Table", "Shoes",
+    "Hat", "Towels", "Soap", "Tuna", "Chicken", "Fish", "Cheese", "Bacon", "Pizza", "Salad", "Sausages", "Chips",
 ];
-

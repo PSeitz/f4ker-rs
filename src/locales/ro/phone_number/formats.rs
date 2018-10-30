@@ -1,4 +1,4 @@
-pub static FORMATS: &'static [&'static str] = &[ 
+pub static FORMATS: &'static [&'static str] = &[
     "021######",
     "031######",
     "0258######",
@@ -80,5 +80,5 @@ pub static FORMATS: &'static [&'static str] = &[
     "0235######",
     "0335######",
     "0237######",
-    "0337######"
+    "0337######",
 ];

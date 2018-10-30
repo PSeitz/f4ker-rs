@@ -1,5 +1,4 @@
-
-pub static ADJECTIVE: &'static [&'static str] = &[ 
+pub static ADJECTIVE: &'static [&'static str] = &[
     "Pequeno",
     "Ergonómico",
     "Rústico",
@@ -16,9 +15,9 @@ pub static ADJECTIVE: &'static [&'static str] = &[
     "Licenciado",
     "Refinado",
     "Sem Marca",
-    "Saboroso"
+    "Saboroso",
 ];
-pub static MATERIAL: &'static [&'static str] = &[ 
+pub static MATERIAL: &'static [&'static str] = &[
     "Aço",
     "Madeira",
     "Betão",
@@ -29,9 +28,9 @@ pub static MATERIAL: &'static [&'static str] = &[
     "Metal",
     "Suave",
     "Fresco",
-    "Congelado"
+    "Congelado",
 ];
-pub static PRODUCT: &'static [&'static str] = &[ 
+pub static PRODUCT: &'static [&'static str] = &[
     "Cadeira",
     "Carro",
     "Computador",
@@ -55,6 +54,5 @@ pub static PRODUCT: &'static [&'static str] = &[
     "Pizza",
     "Salada",
     "Salsichas",
-    "Batatas Fritas"
+    "Batatas Fritas",
 ];
-

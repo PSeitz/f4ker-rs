@@ -1,4 +1,4 @@
-pub static FORMATS: &'static [&'static str] = &[ 
+pub static FORMATS: &'static [&'static str] = &[
     "0726######",
     "0723######",
     "0722######",
@@ -57,5 +57,5 @@ pub static FORMATS: &'static [&'static str] = &[
     "0749######",
     "0750######",
     "0751######",
-    "0752######"
+    "0752######",
 ];

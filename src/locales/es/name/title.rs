@@ -1,5 +1,4 @@
-
-pub static DESCRIPTOR: &'static [&'static str] = &[ 
+pub static DESCRIPTOR: &'static [&'static str] = &[
     "Jefe",
     "Senior",
     "Directo",
@@ -20,9 +19,9 @@ pub static DESCRIPTOR: &'static [&'static str] = &[
     "Interno",
     "Humano",
     "Gerente",
-    "Director"
+    "Director",
 ];
-pub static LEVEL: &'static [&'static str] = &[ 
+pub static LEVEL: &'static [&'static str] = &[
     "Soluciones",
     "Programa",
     "Marca",
@@ -58,9 +57,9 @@ pub static LEVEL: &'static [&'static str] = &[
     "Interacciones",
     "Factores",
     "Usabilidad",
-    "Métricas"
+    "Métricas",
 ];
-pub static JOB: &'static [&'static str] = &[ 
+pub static JOB: &'static [&'static str] = &[
     "Supervisor",
     "Asociado",
     "Ejecutivo",
@@ -85,6 +84,5 @@ pub static JOB: &'static [&'static str] = &[
     "Facilitador",
     "Agente",
     "Representante",
-    "Estratega"
+    "Estratega",
 ];
-

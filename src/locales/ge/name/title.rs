@@ -1,13 +1,12 @@
-
-pub static DESCRIPTOR: &'static [&'static str] = &[ 
+pub static DESCRIPTOR: &'static [&'static str] = &[
     "გენერალური",
     "მთავარი",
     "სტაჟიორ",
     "უმცროსი",
     "ყოფილი",
-    "წამყვანი"
+    "წამყვანი",
 ];
-pub static LEVEL: &'static [&'static str] = &[ 
+pub static LEVEL: &'static [&'static str] = &[
     "აღრიცხვების",
     "ბრენდინგის",
     "ბრენიდს",
@@ -32,9 +31,9 @@ pub static LEVEL: &'static [&'static str] = &[
     "ფინანსთა",
     "ქსელის",
     "ხარისხის",
-    "ჯგუფის"
+    "ჯგუფის",
 ];
-pub static JOB: &'static [&'static str] = &[ 
+pub static JOB: &'static [&'static str] = &[
     "აგენტი",
     "ადვოკატი",
     "ადმინისტრატორი",
@@ -71,6 +70,5 @@ pub static JOB: &'static [&'static str] = &[
     "სტრატეგისტი",
     "ტექნიკოსი",
     "ფოტოგრაფი",
-    "წარმომადგენელი"
+    "წარმომადგენელი",
 ];
-

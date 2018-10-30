@@ -1,6 +1,6 @@
 // source: http://unicode.org/cldr/trac/browser/tags/release-27/common/main/ru.xml#L1734
 
-pub static WIDE: &'static [&'static str] = &[ 
+pub static WIDE: &'static [&'static str] = &[
     "январь",
     "февраль",
     "март",
@@ -12,9 +12,9 @@ pub static WIDE: &'static [&'static str] = &[
     "сентябрь",
     "октябрь",
     "ноябрь",
-    "декабрь"
+    "декабрь",
 ];
-pub static WIDE_CONTEXT: &'static [&'static str] = &[ 
+pub static WIDE_CONTEXT: &'static [&'static str] = &[
     "января",
     "февраля",
     "марта",
@@ -26,9 +26,9 @@ pub static WIDE_CONTEXT: &'static [&'static str] = &[
     "сентября",
     "октября",
     "ноября",
-    "декабря"
+    "декабря",
 ];
-pub static ABBR: &'static [&'static str] = &[ 
+pub static ABBR: &'static [&'static str] = &[
     "янв.",
     "февр.",
     "март",
@@ -40,9 +40,9 @@ pub static ABBR: &'static [&'static str] = &[
     "сент.",
     "окт.",
     "нояб.",
-    "дек."
+    "дек.",
 ];
-pub static ABBR_CONTEXT: &'static [&'static str] = &[ 
+pub static ABBR_CONTEXT: &'static [&'static str] = &[
     "янв.",
     "февр.",
     "марта",
@@ -54,6 +54,5 @@ pub static ABBR_CONTEXT: &'static [&'static str] = &[
     "сент.",
     "окт.",
     "нояб.",
-    "дек."
+    "дек.",
 ];
-

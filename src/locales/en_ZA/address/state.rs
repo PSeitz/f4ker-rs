@@ -1,4 +1,4 @@
-pub static STATE: &'static [&'static str] = &[ 
+pub static STATE: &'static [&'static str] = &[
     "Limpopo",
     "Gauteng",
     "Free State,",
@@ -7,5 +7,5 @@ pub static STATE: &'static [&'static str] = &[
     "Western Cape,",
     "KwaZulu-Natal",
     "Mpumalanga",
-    "Eastern Cape"
+    "Eastern Cape",
 ];

@@ -1,4 +1,1 @@
-pub static SUFFIX: &'static [&'static str] = &[ 
-  "k-dze",
-  "kundze"
-];
+pub static SUFFIX: &'static [&'static str] = &["k-dze", "kundze"];

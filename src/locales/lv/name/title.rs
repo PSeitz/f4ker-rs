@@ -1,5 +1,4 @@
-
-pub static DESCRIPTOR: &'static [&'static str] = &[ 
+pub static DESCRIPTOR: &'static [&'static str] = &[
     "Galvenais",
     "Vecākais",
     "Tiešo",
@@ -11,9 +10,9 @@ pub static DESCRIPTOR: &'static [&'static str] = &[
     "Investīciju",
     "Starptautiskās",
     "Iekšējās",
-    "Personu"
+    "Personu",
 ];
-pub static LEVEL: &'static [&'static str] = &[ 
+pub static LEVEL: &'static [&'static str] = &[
     "risinājumu",
     "programmu",
     "drošības",
@@ -43,9 +42,9 @@ pub static LEVEL: &'static [&'static str] = &[
     "grāmatojumu",
     "sadarbības",
     "lietojamības",
-    "mērījumu"
+    "mērījumu",
 ];
-pub static JOB: &'static [&'static str] = &[ 
+pub static JOB: &'static [&'static str] = &[
     "uzraugs",
     "vadītājs",
     "pārstāvis",
@@ -67,6 +66,5 @@ pub static JOB: &'static [&'static str] = &[
     "konsultants",
     "asistents",
     "aģents",
-    "stratēģis"
+    "stratēģis",
 ];
-

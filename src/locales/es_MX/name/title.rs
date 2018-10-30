@@ -1,4 +1,4 @@
-pub static DESCRIPTOR: &'static [&'static str] = &[ 
+pub static DESCRIPTOR: &'static [&'static str] = &[
     "Jefe",
     "Senior",
     "Directo",
@@ -20,9 +20,9 @@ pub static DESCRIPTOR: &'static [&'static str] = &[
     "Humano",
     "Gerente",
     "SubGerente",
-    "Director"
+    "Director",
 ];
-pub static LEVEL: &'static [&'static str] = &[ 
+pub static LEVEL: &'static [&'static str] = &[
     "Soluciones",
     "Programa",
     "Marca",
@@ -60,7 +60,7 @@ pub static LEVEL: &'static [&'static str] = &[
     "Usabilidad",
     "Métricas",
 ];
-pub static JOB: &'static [&'static str] = &[ 
+pub static JOB: &'static [&'static str] = &[
     "Supervisor",
     "Asociado",
     "Ejecutivo",
@@ -89,6 +89,5 @@ pub static JOB: &'static [&'static str] = &[
     "Scrum Master",
     "Scrum Owner",
     "Product Owner",
-    "Scrum Developer"
+    "Scrum Developer",
 ];
-

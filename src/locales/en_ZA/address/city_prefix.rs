@@ -1,4 +1,4 @@
-pub static CITY_PREFIX: &'static [&'static str] = &[ 
+pub static CITY_PREFIX: &'static [&'static str] = &[
     "Polokwane",
     "Johannesburg",
     "Pretoria",
@@ -12,5 +12,5 @@ pub static CITY_PREFIX: &'static [&'static str] = &[
     "East London",
     "Kimberley",
     "Rustenburg",
-    "Bloemfontein "
+    "Bloemfontein ",
 ];

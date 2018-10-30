@@ -1,5 +1,4 @@
-
-pub static ADJECTIVE: &'static [&'static str] = &[ 
+pub static ADJECTIVE: &'static [&'static str] = &[
     "Liten",
     "Ergonomisk",
     "Robust",
@@ -9,28 +8,11 @@ pub static ADJECTIVE: &'static [&'static str] = &[
     "Fatastisk",
     "Praktisk",
     "Slimmad",
-    "Grym"
+    "Grym",
 ];
-pub static MATERIAL: &'static [&'static str] = &[ 
-    "Stål",
-    "Metall",
-    "Trä",
-    "Betong",
-    "Plast",
-    "Bomul",
-    "Grnit",
-    "Gummi",
-    "Latex"
+pub static MATERIAL: &'static [&'static str] = &[
+    "Stål", "Metall", "Trä", "Betong", "Plast", "Bomul", "Grnit", "Gummi", "Latex",
 ];
-pub static PRODUCT: &'static [&'static str] = &[ 
-    "Stol",
-    "Bil",
-    "Dator",
-    "Handskar",
-    "Pants",
-    "Shirt",
-    "Table",
-    "Shoes",
-    "Hat"
+pub static PRODUCT: &'static [&'static str] = &[
+    "Stol", "Bil", "Dator", "Handskar", "Pants", "Shirt", "Table", "Shoes", "Hat",
 ];
-

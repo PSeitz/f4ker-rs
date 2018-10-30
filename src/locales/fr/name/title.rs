@@ -1,5 +1,4 @@
-
-pub static JOB: &'static [&'static str] = &[ 
+pub static JOB: &'static [&'static str] = &[
     "Superviseur",
     "Executif",
     "Manager",
@@ -17,6 +16,5 @@ pub static JOB: &'static [&'static str] = &[
     "Consultant",
     "Assistant",
     "Agent",
-    "Stagiaire"
+    "Stagiaire",
 ];
-

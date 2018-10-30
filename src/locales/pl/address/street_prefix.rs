@@ -1,4 +1,1 @@
-pub static STREET_PREFIX: &'static [&'static str] = &[ 
-  "ul.",
-  "al."
-];
+pub static STREET_PREFIX: &'static [&'static str] = &["ul.", "al."];

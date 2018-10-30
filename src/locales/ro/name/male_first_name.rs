@@ -1,4 +1,4 @@
-pub static MALE_FIRST_NAME: &'static [&'static str] = &[ 
+pub static MALE_FIRST_NAME: &'static [&'static str] = &[
     "Achim",
     "Adam",
     "Adelin",
@@ -286,5 +286,5 @@ pub static MALE_FIRST_NAME: &'static [&'static str] = &[
     "Vlaicu",
     "Voicu",
     "Zamfir",
-    "Zeno"
+    "Zeno",
 ];

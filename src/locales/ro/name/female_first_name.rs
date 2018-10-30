@@ -1,4 +1,4 @@
-pub static FEMALE_FIRST_NAME: &'static [&'static str] = &[ 
+pub static FEMALE_FIRST_NAME: &'static [&'static str] = &[
     "Ada",
     "Adela",
     "Adelaida",
@@ -385,5 +385,5 @@ pub static FEMALE_FIRST_NAME: &'static [&'static str] = &[
     "Zenobia",
     "Zenovia",
     "Zina",
-    "Zoe"
+    "Zoe",
 ];

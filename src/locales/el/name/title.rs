@@ -1,13 +1,12 @@
-
-pub static DESCRIPTOR: &'static [&'static str] = &[ 
+pub static DESCRIPTOR: &'static [&'static str] = &[
     "Senior",
     "Εταιρείες",
     "Πελάτης",
     "Επενδυτής",
     "Εσωτερικό",
-    "Κύριος"
+    "Κύριος",
 ];
-pub static LEVEL: &'static [&'static str] = &[ 
+pub static LEVEL: &'static [&'static str] = &[
     "Λύσεις",
     "Πρόγραμμα",
     "Μάρκα",
@@ -37,9 +36,9 @@ pub static LEVEL: &'static [&'static str] = &[
     "Δεδομένα",
     "Δημιουργική",
     "Διαμόρφωση",
-    "Μετρήσεις"
+    "Μετρήσεις",
 ];
-pub static JOB: &'static [&'static str] = &[ 
+pub static JOB: &'static [&'static str] = &[
     "Επόπτης",
     "Συνεργάτης",
     "Σύμβουλος",
@@ -58,6 +57,5 @@ pub static JOB: &'static [&'static str] = &[
     "Βοηθός",
     "Συντονιστής",
     "Εκπρόσωπος",
-    "Αντιπρόσωπος"
+    "Αντιπρόσωπος",
 ];
-

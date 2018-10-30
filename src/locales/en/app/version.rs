@@ -1,7 +1,1 @@
-pub static VERSION: &'static [&'static str] = &[ 
-  "0.#.#",
-  "0.##",
-  "#.##",
-  "#.#",
-  "#.#.#"
-];
+pub static VERSION: &'static [&'static str] = &["0.#.#", "0.##", "#.##", "#.#", "#.#.#"];

@@ -1,4 +1,4 @@
-pub static FIRST_NAME: &'static [&'static str] = &[ 
+pub static FIRST_NAME: &'static [&'static str] = &[
     "Adolf",
     "Adrian",
     "Agnes",
@@ -335,5 +335,4 @@ pub static FIRST_NAME: &'static [&'static str] = &[
     "Yves",
     "Yvette",
     "Yvonne",
-
 ];
