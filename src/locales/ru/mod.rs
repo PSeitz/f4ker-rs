@@ -6,5 +6,5 @@ pub mod hacker;
 pub mod internet;
 pub mod name;
 pub mod phone_number;
-pub const title: &str = "Russian";
+pub const TITLE: &str = "Russian";
 pub const separator: &str = " и ";

@@ -4,4 +4,4 @@ pub mod company;
 pub mod internet;
 pub mod name;
 pub mod phone_number;
-pub const title: &str = "South Africa (Zulu)";
+pub const TITLE: &str = "South Africa (Zulu)";

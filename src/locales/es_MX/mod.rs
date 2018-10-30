@@ -7,5 +7,5 @@ pub mod lorem;
 pub mod name;
 pub mod phone_number;
 pub mod team;
-pub const title: &str = "Spanish Mexico";
+pub const TITLE: &str = "Spanish Mexico";
 pub const separator: &str = " & ";

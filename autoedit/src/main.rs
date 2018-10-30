@@ -445,6 +445,8 @@ pub fn {}() -> Option<&'static [&'static str]> {{
         let lines = into_lines(&entry.path());
         let lines:Vec<String> = lines.iter().map(|line|{
             line.replace("pub const title", "pub const TITLE")
+        }).map(|line|{
+            line.replace("pub const separator", "pub const SEPARATOR")
         }).collect();
         write_lines(lines, &entry.path());
     }
@@ -557,7 +559,9 @@ pub fn {}() -> Option<&'static [&'static str]> {{
         let lines:Vec<String> = lines.into_iter().map(|mut line|{
             if let Some(pos) = line.find_end("thread_rng().choose(") {
                 if let Some(end_braces) = find_matching_braces(&line[pos..], '(', ')') {
-                    line.insert_str(pos+end_braces, ".unwrap()");
+                    if !line[pos+end_braces ..].starts_with(".unwrap()") && !line[pos+end_braces ..].starts_with(".cloned()") {
+                        line.insert_str(pos+end_braces, ".unwrap()");
+                    }
                 }
             }
             line

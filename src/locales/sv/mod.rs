@@ -7,4 +7,4 @@ pub mod internet;
 pub mod name;
 pub mod phone_number;
 pub mod team;
-pub const title: &str = "Swedish";
+pub const TITLE: &str = "Swedish";

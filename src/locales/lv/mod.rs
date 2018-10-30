@@ -7,5 +7,5 @@ pub mod internet;
 pub mod lorem;
 pub mod name;
 pub mod phone_number;
-pub const title: &str = "Latvian";
+pub const TITLE: &str = "Latvian";
 pub const separator: &str = " un ";

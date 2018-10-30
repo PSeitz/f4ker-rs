@@ -3,4 +3,4 @@ pub mod company;
 pub mod internet;
 pub mod name;
 pub mod phone_number;
-pub const title: &str = "Ukrainian";
+pub const TITLE: &str = "Ukrainian";

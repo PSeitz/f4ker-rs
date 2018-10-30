@@ -4,4 +4,4 @@ pub mod internet;
 pub mod lorem;
 pub mod name;
 pub mod phone_number;
-pub const title: &str = "Dutch";
+pub const TITLE: &str = "Dutch";

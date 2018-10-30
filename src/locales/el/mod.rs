@@ -12,5 +12,5 @@ pub mod lorem;
 pub mod name;
 pub mod phone_number;
 pub mod team;
-pub const title: &str = "Ελληνικά";
+pub const TITLE: &str = "Ελληνικά";
 pub const separator: &str = " & ";

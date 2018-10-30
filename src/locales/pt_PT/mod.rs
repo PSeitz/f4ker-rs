@@ -5,4 +5,4 @@ pub mod date;
 pub mod internet;
 pub mod name;
 pub mod phone_number;
-pub const title: &str = "Portuguese (Portugal)";
+pub const TITLE: &str = "Portuguese (Portugal)";

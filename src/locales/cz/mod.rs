@@ -5,4 +5,4 @@ pub mod internet;
 pub mod lorem;
 pub mod name;
 pub mod phone_number;
-pub const title: &str = "Czech";
+pub const TITLE: &str = "Czech";

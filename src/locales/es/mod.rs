@@ -5,4 +5,4 @@ pub mod company;
 pub mod internet;
 pub mod name;
 pub mod phone_number;
-pub const title: &str = "Spanish";
+pub const TITLE: &str = "Spanish";

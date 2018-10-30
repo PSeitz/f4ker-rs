@@ -4,4 +4,4 @@ pub mod date;
 pub mod internet;
 pub mod name;
 pub mod phone_number;
-pub const title: &str = "Indonesia";
+pub const TITLE: &str = "Indonesia";

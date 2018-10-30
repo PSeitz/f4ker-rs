@@ -2,4 +2,4 @@ pub mod address;
 pub mod cell_phone;
 pub mod name;
 pub mod phone_number;
-pub const title: &str = "Japanese";
+pub const TITLE: &str = "Japanese";

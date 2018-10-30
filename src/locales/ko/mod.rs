@@ -4,4 +4,4 @@ pub mod internet;
 pub mod lorem;
 pub mod name;
 pub mod phone_number;
-pub const title: &str = "Korean";
+pub const TITLE: &str = "Korean";
