@@ -1,6 +1,7 @@
 use crate::locales;
 use rand::{thread_rng, Rng};
-
+use std::borrow::Cow;
+use crate::name;
 #[derive(Debug, Clone)]
 pub struct Faker {
     // pub name_first_name: Option<&'static [&'static str]>,
@@ -134,7 +135,7 @@ pub struct Faker {
 macro_rules! new_faker {
     () => {{
         Faker {
-            //             app_version: app::version(),
+            // app_version: app::version(),
             // app_name: app::name(),
             // app_author: app::author(),
             phone_number_formats: phone_number::formats(),
@@ -257,11 +258,123 @@ macro_rules! new_faker {
     }};
 }
 
+
+// mod test {
+//     extern crate test;
+//     use super::*;
+//     #[test]
+//     fn interpol_fake() {
+//         let facker = Faker::new();
+//         println!("interpol_fake {:?}", facker.fake("{{name.last_name}}, {{name.first_name}} {{name.suffix}}"));
+//     }
+
+//     #[bench]
+//     fn bench_interpol_new_faker(b: &mut test::Bencher) {
+//         b.iter(|| {
+//             let facker = Faker::new();
+//             facker.fake("{{name.last_name}}, {{name.first_name}} {{name.suffix}}")
+//         })
+//     }
+//     #[bench]
+//     fn bench_interpol_reuse_faker(b: &mut test::Bencher) {
+//         b.iter(|| {
+//             let facker = Faker::new();
+//             facker.fake("{{name.last_name}}, {{name.first_name}} {{name.suffix}}")
+//         })
+//     }
+// }
+
 impl Faker {
     pub fn new() -> Self {
         use self::locales::en::*;
 
         new_faker!()
+    }
+
+    // pub fn fake(&self, pattern: &str) -> crate::name::Name {
+    //     crate::name::Name::new(self)
+    // }
+    fn fake(&self, templ: &str) -> String {
+        let mut templ = templ.to_string();
+        while let Some(start_bytes) = templ.find("{{") {
+            if let Some(end) = &templ[start_bytes..].find("}}") {
+                let pattern = &templ[start_bytes + 2..start_bytes + end];
+                templ.replace_range(start_bytes..start_bytes + end + 2, &self.from_pattern(pattern));
+            }
+        }
+        templ
+    }
+
+    pub fn from_pattern(&self, pat: &str) -> Cow<'_, str> {
+        match pat {
+            "name.first_name" => Cow::from(self.name().first_name(None)),
+            "name.last_name" => Cow::from(self.name().last_name(None)),
+            "name.prefix" => Cow::from(self.name().prefix(None)),
+            "name.suffix" => Cow::from(self.name().suffix()),
+            "name.title" => Cow::from(self.name().title()),
+            "name.male_prefix" => Cow::from(self.name().prefix(Some(name::Gender::Male))),
+            "name.female_prefix" => Cow::from(self.name().prefix(Some(name::Gender::Female))),
+            "name.male_first_name" => Cow::from(self.name().first_name(Some(name::Gender::Male))),
+            "name.female_first_name" => Cow::from(self.name().first_name(Some(name::Gender::Female))),
+            "name.male_middle_name" => Cow::from(self.name().middle_name(Some(name::Gender::Male))),
+            "name.female_middle_name" => Cow::from(self.name().middle_name(Some(name::Gender::Female))),
+            "name.male_last_name" => Cow::from(self.name().last_name(Some(name::Gender::Male))),
+            "name.female_last_name" => Cow::from(self.name().last_name(Some(name::Gender::Female))),
+            // "address.city_prefix" => {},
+            // "address.city_suffix" => {},
+            // "address.street_suffix" => {},
+            // "address.county" => {},
+            // "address.country" => {},
+            // "address.country_code" => {},
+            // "address.state" => {},
+            // "address.state_abbr" => {},
+            // "address.street_prefix" => {},
+            // "address.postcode" => {},
+            // "address.postcode_by_state" => {},
+            // "address.direction" => {},
+            // "address.direction_abbr" => {},
+            // "company.adjective" => {},
+            // "company.noun" => {},
+            // "company.descriptor" => {},
+            // "company.bs_adjective" => {},
+            // "company.bs_noun" => {},
+            // "company.bs_verb" => {},
+            // "company.suffix" => {},
+            // "lorem.words" => {},
+            // "hacker.abbreviation" => {},
+            // "hacker.adjective" => {},
+            // "hacker.noun" => {},
+            // "hacker.verb" => {},
+            // "hacker.ingverb" => {},
+            // "hacker.phrase" => {},
+            // "phone_number.formats" => {},
+            // "finance.account_type" => {},
+            // "finance.transaction_type" => {},
+            // "finance.currency" => {},
+            // "finance.iban" => {},
+            // "finance.credit_card" => {},
+            // "internet.avatar_uri" => {},
+            // "internet.domain_suffix" => {},
+            // "internet.free_email" => {},
+            // "internet.example_email" => {},
+            // "internet.password" => {},
+            // "commerce.color" => {},
+            // "commerce.department" => {},
+            // "commerce.product_name" => {},
+            // "commerce.price" => {},
+            // "commerce.categories" => {},
+            // "database.collation" => {},
+            // "database.column" => {},
+            // "database.engine" => {},
+            // "database.type" => {},
+            // "system.mimeTypes" => {},
+            // "system.directoryPaths" => {},
+            // "date.month" => {},
+            // "date.weekday" => {},
+            // "title": => {},
+            // "separator": {},
+            _ => panic!("{:?} not recognized", pat)
+        }
     }
 
     pub fn name(&self) -> crate::name::Name {
