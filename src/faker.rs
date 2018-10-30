@@ -131,9 +131,9 @@ pub struct Faker {
     pub separator: String
 }
 
-impl Faker {
-    pub fn new() -> Self {
-        use self::locales::en::*;
+
+macro_rules! new_faker {
+    () => ({
         Faker {
 //             app_version: app::version(),
 // app_name: app::name(),
@@ -256,6 +256,14 @@ address_county: address::county(),
             separator: "".to_string()
         }
 
+    })
+}
+
+impl Faker {
+    pub fn new() -> Self {
+        use self::locales::en::*;
+        
+        new_faker!()
     }
 
 
