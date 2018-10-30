@@ -132,7 +132,7 @@ pub struct Faker {
 }
 
 impl Faker {
-    fn new() -> Self {
+    pub fn new() -> Self {
         use self::locales::en::*;
         Faker {
 //             app_version: app::version(),
@@ -257,79 +257,12 @@ address_county: address::county(),
         }
 
     }
-//     fn new_de() -> Self {
-//         use self::locales::de;
-//         Faker {
-//             name_first_name: de::name::first_name::first_name,
-//             name_last_name: de::name::last_name::last_name,
-//             name_prefix: de::name::prefix::prefix,
-//             name_suffix: &[],
-//             name_gender: &[],
-//             // name_title: de::name::title,
-//             // name_male_prefix: de::name::male_prefix,
-//             // name_female_prefix: de::name::female_prefix,
-//             name_male_first_name: &[],
-//             name_female_first_name: &[],
-//             // name_male_middle_name: de::name::male_middle_name,
-//             // name_female_middle_name: de::name::female_middle_name,
-//             // name_male_last_name: de::name::male_last_name,
-//             // name_female_last_name: de::name::female_last_name,
-//             // address_city_prefix: de::address::city_prefix::city_prefix,
-//             // address_city_suffix: de::address::city_suffix::city_suffix,
-//             // address_street_suffix: de::address::street_suffix::street_suffix,
-//             // address_county: de::address::county::county,
-//             // address_country: de::address::country::country,
-//             // address_country_code: de::address::country_code::country_code,
-//             // address_state: de::address::state::state,
-//             // address_state_abbr: de::address::state_abbr::state_abbr,
-//             // address_street_prefix: de::address::street_prefix::street_prefix,
-//             // address_postcode: de::address::postcode::postcode,
-//             // address_postcode_by_state: de::address::postcode_by_state::postcode_by_state,
-//             // address_direction: de::address::direction::direction,
-//             // address_direction_abbr: de::address::direction_abbr::direction_abbr,
-//             // company_adjective: de::company::adjective::adjective,
-//             // company_noun: de::company::noun::noun,
-//             // company_descriptor: de::company::descriptor::descriptor,
-//             // company_bs_adjective: de::company::bs_adjective::bs_adjective,
-//             // company_bs_noun: de::company::bs_noun::bs_noun,
-//             // company_bs_verb: de::company::bs_verb::bs_verb,
-//             // company_suffix: de::company::suffix::suffix,
-//             // lorem_words: de::lorem_words::lorem_words,
-//             // hacker_abbreviation: de::abbreviation::abbreviation,
-//             // hacker_adjective: de::adjective::adjective,
-//             // hacker_noun: de::noun::noun,
-//             // hacker_verb: de::verb::verb,
-//             // hacker_ingverb: de::ingverb::ingverb,
-//             // hacker_phrase: de::phrase::phrase,
-//             // phone_number_formats: de::phone_number_formats::phone_number_formats,
-//             // finance_account_type: de::finance_account_type::finance_account_type,
-//             // finance_transaction_type: de::finance_transaction_type::finance_transaction_type,
-//             // finance_currency: de::finance_currency::finance_currency,
-//             // finance_iban: de::finance_iban::finance_iban,
-//             // finance_credit_card: de::finance_credit_card::finance_credit_card,
-//             // internet_avatar_uri: de::internet_avatar_uri::internet_avatar_uri,
-//             // internet_domain_suffix: de::internet_domain_suffix::internet_domain_suffix,
-//             // internet_free_email: de::internet_free_email::internet_free_email,
-//             // internet_example_email: de::internet_example_email::internet_example_email,
-//             // internet_password: de::internet_password::internet_password,
-//             // commerce_color: de::color::color,
-//             // commerce_department: de::department::department,
-//             // commerce_product_name: de::product_name::product_name,
-//             // commerce_price: de::price::price,
-//             // commerce_categories: de::categories::categories,
-//             // database_collation: de::collation::collation,
-//             // database_column: de::column::column,
-//             // database_engine: de::engine::engine,
-//             // database_type: &[],
-//             // system_mimeTypes: de::system_mimeTypes,
-//             // system_directoryPaths: de::system_directoryPaths,
-//             // date_month: de::date_month,
-//             // date_weekday: de::date_weekday,
-//             title: "".to_string(),
-//             separator: "".to_string()
-//         }
 
-//     }
+
+    pub fn name(&self) -> crate::name::Name {
+        crate::name::Name::new(self)
+    }
+
 }
 
 /*

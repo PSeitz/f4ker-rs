@@ -7,4 +7,4 @@ pub mod internet;
 pub mod name;
 pub mod phone_number;
 pub const TITLE: &str = "Russian";
-pub const separator: &str = " и ";
+pub const SEPARATOR: &str = " и ";

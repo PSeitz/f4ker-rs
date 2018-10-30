@@ -6,4 +6,4 @@ pub mod internet;
 pub mod name;
 pub mod phone_number;
 pub const TITLE: &str = "Azerbaijani";
-pub const separator: &str = " və ";
+pub const SEPARATOR: &str = " və ";

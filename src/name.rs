@@ -1,8 +1,8 @@
 use rand::{thread_rng, Rng};
 use crate::faker::Faker;
 #[derive(Debug, Clone)]
-pub struct Name {
-    faker: Faker
+pub struct Name<'a> {
+    faker: &'a Faker
 }
 
 #[derive(Debug, Clone, Copy, Eq, PartialEq)]
@@ -32,8 +32,18 @@ impl RandArray for Option<&'static [&'static str]> {
     }
 }
 
-impl Name {
-    pub(crate) fn new(faker: Faker) -> Self {
+
+#[test]
+fn name() {
+    let facker = Faker::new();
+    let name = Name::new(&facker);
+    println!("{:?}", name.find_name());
+    println!("{:?}", Faker::new().name().find_name());
+
+}
+
+impl<'a> Name<'a> {
+    pub(crate) fn new(faker: &'a Faker) -> Self {
         Name{faker}
     }
 
@@ -92,10 +102,6 @@ impl Name {
             &self.job_area() + " " +
             &self.job_type();
     }
-
-    // pub(crate) fn gender(&self) -> String {
-    //     return self.faker.name_gender.rand();
-    // }
 
     pub(crate) fn prefix(&self, gender: Option<Gender>) -> String {
         let gender = gender.unwrap_or_else(||thread_rng().choose(&GENDERS).cloned().unwrap());

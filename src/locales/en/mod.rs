@@ -15,4 +15,4 @@ pub mod phone_number;
 pub mod system;
 pub mod team;
 pub const TITLE: &str = "English";
-pub const separator: &str = " & ";
+pub const SEPARATOR: &str = " & ";

@@ -8,4 +8,4 @@ pub mod lorem;
 pub mod name;
 pub mod phone_number;
 pub const TITLE: &str = "Latvian";
-pub const separator: &str = " un ";
+pub const SEPARATOR: &str = " un ";

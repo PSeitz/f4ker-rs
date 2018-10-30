@@ -5,4 +5,4 @@ pub mod internet;
 pub mod name;
 pub mod phone_number;
 pub const TITLE: &str = "Georgian";
-pub const separator: &str = " და ";
+pub const SEPARATOR: &str = " და ";
