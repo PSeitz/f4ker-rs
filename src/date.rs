@@ -140,7 +140,7 @@ fn month(&self, options: &str) -> String {
 
       let source = self.faker.date_month()[type];
 
-      return thread_rng().choose(source);
+      return thread_rng().choose(source).unwrap();
   };
 
   /**
@@ -162,7 +162,7 @@ fn weekday(&self, options: &str) -> String {
 
       let source = self.faker.date_weekday()[type];
 
-      return thread_rng().choose(source);
+      return thread_rng().choose(source).unwrap();
   };
 
   return self;

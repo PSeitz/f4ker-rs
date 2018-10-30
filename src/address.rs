@@ -27,7 +27,7 @@ fn zipCode(&self, format: &str) -> String {
       if (typeof localeFormat == 'string') {
         format = localeFormat;
       } else {
-        format = thread_rng().choose(localeFormat);
+        format = thread_rng().choose(localeFormat).unwrap();
       }
     }
     return Helpers.replaceSymbols(format);
@@ -87,7 +87,7 @@ fn city(&self, format: &str) -> String {
    * @method faker.address.cityPrefix
    */
 fn cityPrefix(&self) -> String {
-    return thread_rng().choose(self.faker.address_city_prefix());
+    return thread_rng().choose(self.faker.address_city_prefix()).unwrap();
   }
 
   /**
@@ -96,7 +96,7 @@ fn cityPrefix(&self) -> String {
    * @method faker.address.citySuffix
    */
 fn citySuffix(&self) -> String {
-    return thread_rng().choose(self.faker.address_city_suffix());
+    return thread_rng().choose(self.faker.address_city_suffix()).unwrap();
   }
 
   /**
@@ -154,7 +154,7 @@ fn streetAddress(&self, useFullAddress: &str) -> String {
    * @method faker.address.streetSuffix
    */
 fn streetSuffix(&self) -> String {
-      return thread_rng().choose(self.faker.address_street_suffix());
+      return thread_rng().choose(self.faker.address_street_suffix()).unwrap();
   }
 
   /**
@@ -163,7 +163,7 @@ fn streetSuffix(&self) -> String {
    * @method faker.address.streetPrefix
    */
 fn streetPrefix(&self) -> String {
-      return thread_rng().choose(self.faker.address_street_prefix());
+      return thread_rng().choose(self.faker.address_street_prefix()).unwrap();
   }
 
   /**
@@ -186,7 +186,7 @@ fn secondaryAddress(&self) -> String {
    * @method faker.address.county
    */
 fn county(&self) -> String {
-    return thread_rng().choose(self.faker.address_county());
+    return thread_rng().choose(self.faker.address_county()).unwrap();
   }
 
   /**
@@ -195,7 +195,7 @@ fn county(&self) -> String {
    * @method faker.address.country
    */
 fn country(&self) -> String {
-    return thread_rng().choose(self.faker.address_country());
+    return thread_rng().choose(self.faker.address_country()).unwrap();
   }
 
   /**
@@ -204,7 +204,7 @@ fn country(&self) -> String {
    * @method faker.address.countryCode
    */
 fn countryCode(&self) -> String {
-    return thread_rng().choose(self.faker.address_country_code());
+    return thread_rng().choose(self.faker.address_country_code()).unwrap();
   }
 
   /**
@@ -214,7 +214,7 @@ fn countryCode(&self) -> String {
    * @param {Boolean} useAbbr
    */
 fn state(&self, useAbbr: &str) -> String {
-      return thread_rng().choose(self.faker.address_state());
+      return thread_rng().choose(self.faker.address_state()).unwrap();
   }
 
   /**
@@ -223,7 +223,7 @@ fn state(&self, useAbbr: &str) -> String {
    * @method faker.address.stateAbbr
    */
 fn stateAbbr(&self) -> String {
-      return thread_rng().choose(self.faker.address_state_abbr());
+      return thread_rng().choose(self.faker.address_state_abbr()).unwrap();
   }
 
   /**
@@ -274,9 +274,9 @@ fn longitude(&self, max: &str,  min: &str,  precision: &str) -> String {
    */
 fn direction(&self, useAbbr: &str) -> String {
     if (useAbbr.is_none() || useAbbr == false) {
-      return thread_rng().choose(self.faker.address_direction());
+      return thread_rng().choose(self.faker.address_direction()).unwrap();
     }
-    return thread_rng().choose(self.faker.address_direction_abbr());
+    return thread_rng().choose(self.faker.address_direction_abbr()).unwrap();
   }
 
   this.direction.schema = {
@@ -293,11 +293,11 @@ fn direction(&self, useAbbr: &str) -> String {
 fn cardinalDirection(&self, useAbbr: &str) -> String {
     if (useAbbr.is_none() || useAbbr == false) {
       return (
-        thread_rng().choose(self.faker.address_direction_slice()(0, 4))
+        thread_rng().choose(self.faker.address_direction_slice()(0, 4)).unwrap()
       );
     }
     return (
-      thread_rng().choose(self.faker.address_direction_abbr_slice()(0, 4))
+      thread_rng().choose(self.faker.address_direction_abbr_slice()(0, 4)).unwrap()
     );
   }
 
@@ -315,11 +315,11 @@ fn cardinalDirection(&self, useAbbr: &str) -> String {
 fn ordinalDirection(&self, useAbbr: &str) -> String {
     if (useAbbr.is_none() || useAbbr == false) {
       return (
-        thread_rng().choose(self.faker.address_direction_slice()(4, 8))
+        thread_rng().choose(self.faker.address_direction_slice()(4, 8)).unwrap()
       );
     }
     return (
-      thread_rng().choose(self.faker.address_direction_abbr_slice()(4, 8))
+      thread_rng().choose(self.faker.address_direction_abbr_slice()(4, 8)).unwrap()
     );
   }
 

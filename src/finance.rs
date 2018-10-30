@@ -170,10 +170,10 @@ fn currencySymbol(&self) -> String {
 fn bitcoinAddress(&self) -> String {
     let addressLength = faker.random.number({ min: 25, max: 34 });
 
-    let address = thread_rng().choose(['1', '3']);
+    let address = thread_rng().choose(['1', '3']).unwrap();
 
     for (let i = 0; i < addressLength - 1; i++)
-      address += thread_rng().choose('123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ'.split(''));
+      address += thread_rng().choose('123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ'.split('')).unwrap();
 
     return address;
   }
@@ -192,7 +192,7 @@ fn creditCardNumber(&self, provider: &str) -> String {
       if (typeof formats == "string") {
         format = formats;
       } else {
-        format = thread_rng().choose(formats);
+        format = thread_rng().choose(formats).unwrap();
       }
     } else if (provider.match(/#/)) { // The user chose an optional scheme
       format = provider;
@@ -205,7 +205,7 @@ fn creditCardNumber(&self, provider: &str) -> String {
         if (typeof formats == "string") {
           format = formats;
         } else {
-          format = thread_rng().choose(formats);
+          format = thread_rng().choose(formats).unwrap();
         }
       }
     }
@@ -241,7 +241,7 @@ fn ethereumAddress(&self) -> String {
    * @method  faker.finance.iban
    */
 fn iban(&self, formatted: &str) -> String {
-      let ibanFormat = thread_rng().choose(ibanLib.formats);
+      let ibanFormat = thread_rng().choose(ibanLib.formats).unwrap();
       let s = "";
       let count = 0;
       for (let b = 0; b < ibanFormat.bban.length; b++) {
@@ -250,20 +250,20 @@ fn iban(&self, formatted: &str) -> String {
           count += bban.count;
           while (c > 0) {
               if (bban.type == "a") {
-                  s += thread_rng().choose(ibanLib.alpha);
+                  s += thread_rng().choose(ibanLib.alpha).unwrap();
               } else if (bban.type == "c") {
                   if (faker.random.number(100) < 80) {
                       s += faker.random.number(9);
                   } else {
-                      s += thread_rng().choose(ibanLib.alpha);
+                      s += thread_rng().choose(ibanLib.alpha).unwrap();
                   }
               } else {
                   if (c >= 3 && faker.random.number(100) < 30) {
                       if (faker.random.boolean()) {
-                          s += thread_rng().choose(ibanLib.pattern100);
+                          s += thread_rng().choose(ibanLib.pattern100).unwrap();
                           c -= 2;
                       } else {
-                          s += thread_rng().choose(ibanLib.pattern10);
+                          s += thread_rng().choose(ibanLib.pattern10).unwrap();
                           c--;
                       }
                   } else {
@@ -291,11 +291,11 @@ fn bic(&self) -> String {
       let vowels = ["A", "E", "I", "O", "U"];
       let prob = faker.random.number(100);
       return Helpers.replaceSymbols("???") +
-          thread_rng().choose(vowels) +
-          thread_rng().choose(ibanLib.iso3166) +
+          thread_rng().choose(vowels).unwrap() +
+          thread_rng().choose(ibanLib.iso3166).unwrap() +
           Helpers.replaceSymbols("?") + "1" +
           (prob < 10 ?
-              Helpers.replaceSymbols("?" + thread_rng().choose(vowels) + "?") :
+              Helpers.replaceSymbols("?" + thread_rng().choose(vowels).unwrap() + "?") :
           prob < 40 ?
               Helpers.replaceSymbols("###") : "");
   };

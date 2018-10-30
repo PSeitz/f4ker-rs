@@ -13,162 +13,125 @@ pub enum Gender {
 
 const GENDERS: [Gender;2] = [Gender::Male, Gender::Female];
 
+trait RandArray {
+    fn rand(&self) -> String;
+}
+
+impl RandArray for &'static [&'static str] {
+    fn rand(&self) -> String{
+        thread_rng().choose(&self).unwrap().to_string()
+    }
+}
+
+impl RandArray for Option<&'static [&'static str]> {
+    fn rand(&self) -> String{
+        if let Some(arr) = self {
+            return thread_rng().choose(&arr).unwrap().to_string();
+        }
+        "".to_string()
+    }
+}
+
 impl Name {
-    fn new(faker: Faker) -> Self {
+    pub(crate) fn new(faker: Faker) -> Self {
         Name{faker}
     }
 
-    fn firstName(&self, gender: Option<Gender>) -> String {
-        let gender = gender.unwrap_or_else(||thread_rng().choose(&GENDERS));
+    pub(crate) fn first_name(&self, gender: Option<Gender>) -> String {
+        let gender = gender.unwrap_or_else(||thread_rng().choose(&GENDERS).cloned().unwrap());
 
         if let (Some(name_male_first_name),Some(name_female_first_name)) = (self.faker.name_male_first_name,self.faker.name_female_first_name) {
         // if (self.faker.name_male_first_name.is_some() && self.faker.name_female_first_name.is_some()) {
             // some locale datasets ( like ru ) have first_name split by gender. since the name.first_name field does not exist in these datasets,
-            // we must randomly pick a name from either gender array so faker.name.firstName will return the correct locale data ( and not fallback )
+            // we must randomly pick a name from either gender array so faker.name.first_name will return the correct locale data ( and not fallback )
             if gender == Gender::Male {
-                return thread_rng().choose(name_male_first_name)
+                return name_male_first_name.rand()
             } else {
-                return thread_rng().choose(name_female_first_name);
+                return name_female_first_name.rand()
             }
         }
-        return thread_rng().choose(self.faker.name_first_name());
+        return self.faker.name_first_name.rand()
     }
 
-    fn lastName(&self, gender: Option<Gender>) -> String {
-        let gender = gender.unwrap_or_else(||thread_rng().choose(&GENDERS));
-        if (self.faker.name_male_last_name.is_some() && self.faker.name_female_last_name.is_some()) {
+    pub(crate) fn last_name(&self, gender: Option<Gender>) -> String {
+        let gender = gender.unwrap_or_else(||thread_rng().choose(&GENDERS).cloned().unwrap());
+        if self.faker.name_male_last_name.is_some() &&
+     self.faker.name_female_last_name.is_some() {
             // some locale datasets ( like ru ) have last_name split by gender. i have no idea how last names can have GENDERS, but also i do not speak russian
-            // see above comment of firstName method
+            // see above comment of first_name method
             if gender == Gender::Male {
-                return thread_rng().choose(self.faker.name_male_last_name());
+                return self.faker.name_male_last_name.rand();
             } else {
-                return thread_rng().choose(self.faker.name_female_last_name());
+                return self.faker.name_female_last_name.rand();
             }
         }
-        return thread_rng().choose(self.faker.name_last_name());
+        return self.faker.name_last_name.rand();
     }
 
-    /**
-     * findName
-     *
-     * @method findName
-     * @param {string} firstName
-     * @param {string} lastName
-     * @param {mixed} gender
-     * @memberof faker.name
-     */
-    fn findName(&self) -> String {
-        let gender = gender.unwrap_or_else(||thread_rng().choose(&GENDERS));
+    pub(crate) fn find_name(&self) -> String {
+        let gender = thread_rng().choose(&GENDERS).cloned().unwrap();
         let r = thread_rng().gen_range(0, 8);
         // in particular locales first and last names split by gender,
         // thus we keep consistency by passing 0 as male and 1 as female
-        let firstName = self.firstName(gender);
-        let lastName = self.lastName(gender);
+        let first_name = self.first_name(Some(gender));
+        let last_name = self.last_name(Some(gender));
         match r {
             0 => {
-                self.prefix(gender) + " " + &firstName + " " + &lastName;
+                self.prefix(Some(gender)) + " " + &first_name + " " + &last_name
             },
             1 => {
-                firstName + " " + &lastName + " " + &self.suffix(gender);
+                first_name + " " + &last_name + " " + &self.suffix()
             },
-            _ => firstName + " " + &lastName
+            _ => first_name + " " + &last_name
         }
 
     }
 
-    /**
-     * jobTitle
-     *
-     * @method jobTitle
-     * @memberof self.faker.name
-     */
-    fn jobTitle(&self) -> String {
-        return  self.jobDescriptor() + " " +
-            self.jobArea() + " " +
-            self.jobType();
+    pub(crate) fn job_title(&self) -> String {
+        return  self.job_descriptor() + " " +
+            &self.job_area() + " " +
+            &self.job_type();
     }
 
-    /**
-     * gender
-     *
-     * @method gender
-     * @memberof faker.name
-     */
-    fn gender(&self) -> String {
-        return thread_rng().choose(self.faker.name_gender());
-    }
+    // pub(crate) fn gender(&self) -> String {
+    //     return self.faker.name_gender.rand();
+    // }
 
-    /**
-     * prefix
-     *
-     * @method prefix
-     * @param {mixed} gender
-     * @memberof faker.name
-     */
-    fn prefix(&self, gender: Option<Gender>) -> String {
-        let gender = gender.unwrap_or_else(||thread_rng().choose(&GENDERS));
-        if (self.faker.name_male_prefix.is_some() && self.faker.name_female_prefix.is_some()) {
+    pub(crate) fn prefix(&self, gender: Option<Gender>) -> String {
+        let gender = gender.unwrap_or_else(||thread_rng().choose(&GENDERS).cloned().unwrap());
+        if self.faker.name_male_prefix.is_some() &&
+     self.faker.name_female_prefix.is_some() {
             if gender == Gender::Male {
-                return thread_rng().choose(self.faker.name_male_prefix());
+                return self.faker.name_male_prefix.rand();
             } else {
-                return thread_rng().choose(self.faker.name_female_prefix());
+                return self.faker.name_female_prefix.rand();
             }
         }
-        return thread_rng().choose(self.faker.name_prefix());
+        return self.faker.name_prefix.rand();
     }
 
-    /**
-     * suffix
-     *
-     * @method suffix
-     * @memberof faker.name
-     */
-    fn suffix(&self) -> String {
-            return thread_rng().choose(self.faker.name_suffix());
+    pub(crate) fn suffix(&self) -> String {
+            return self.faker.name_suffix.rand();
     }
 
-    /**
-     * title
-     *
-     * @method title
-     * @memberof faker.name
-     */
-    fn title(&self) -> String {
-        let descriptor  = thread_rng().choose(self.faker.name_title_descriptor());
-        let level       = thread_rng().choose(self.faker.name_title_level());
-        let job         = thread_rng().choose(self.faker.name_title_job());
+    pub(crate) fn title(&self) -> String {
+        let descriptor  = self.faker.name_title_descriptor.rand();
+        let level       = self.faker.name_title_level.rand();
+        let job         = self.faker.name_title_job.rand();
 
-        return descriptor.to_string() + " " + level + " " + job;
+        return descriptor.to_string() + " " + &level + " " + &job;
     }
 
-    /**
-     * jobDescriptor
-     *
-     * @method jobDescriptor
-     * @memberof faker.name
-     */
-    fn jobDescriptor(&self) -> String {
-        return thread_rng().choose(self.faker.name_title_descriptor());
+    pub(crate) fn job_descriptor(&self) -> String {
+        return self.faker.name_title_descriptor.rand();
     }
 
-    /**
-     * jobArea
-     *
-     * @method jobArea
-     * @memberof faker.name
-     */
-    fn jobArea(&self) -> String {
-        return thread_rng().choose(self.faker.name_title_level());
+    pub(crate) fn job_area(&self) -> String {
+        return self.faker.name_title_level.rand();
     }
 
-    /**
-     * jobType
-     *
-     * @method jobType
-     * @memberof faker.name
-     */
-    fn jobType(&self) -> String {
-        return thread_rng().choose(self.faker.name_title_job());
+    pub(crate) fn job_type(&self) -> String {
+        return self.faker.name_title_job.rand();
     }
 
 }

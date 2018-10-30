@@ -357,7 +357,7 @@ pub fn {}() -> Option<&'static [&'static str]> {{
 
     // convert module["exports"] = [
     // az.title = "Azerbaijani"; to const title
-    // az.separator = "Azerbaijani"; to const title
+    // az.separator = "Azerbaijani"; to const separator
     for entry in WalkDir::new("../src/locales") {
         let entry = entry.unwrap();
         if entry.path().is_dir() {
@@ -437,6 +437,19 @@ pub fn {}() -> Option<&'static [&'static str]> {{
         }
     }
 
+    for entry in WalkDir::new("../src/locales") {
+        let entry = entry.unwrap();
+        if entry.path().is_dir() {
+            continue;
+        }
+        let lines = into_lines(&entry.path());
+        let lines:Vec<String> = lines.iter().map(|line|{
+            line.replace("pub const title", "pub const TITLE")
+        }).collect();
+        write_lines(lines, &entry.path());
+    }
+
+
     // handle lib files
     for entry in WalkDir::new("../src/") {
         let entry = entry.unwrap();
@@ -506,6 +519,7 @@ pub fn {}() -> Option<&'static [&'static str]> {{
         }).collect();
 
 
+        //GENERIC
         //typeof useAbbr === 'undefined'
         let re = Regex::new(r#"(.*?)typeof\s*([0-9A-Za-z\._\(\)\[\]]*)\s*(==|===|!==)\s*["']undefined["'](.*)"#).unwrap();
         let lines:Vec<String> = lines.iter().map(|line|{
@@ -525,6 +539,8 @@ pub fn {}() -> Option<&'static [&'static str]> {{
         }).map(|line|{
             line.replace("===", "==")
         }).collect();
+        //GENERIC END
+
 
         //eg. convert faker.definitions.address.postcode to self.faker.address_postcode()
         let re_def_name = Regex::new(r#"(.*?)faker\.definitions\.([A-Za-z\._]*)(.*)"#).unwrap();

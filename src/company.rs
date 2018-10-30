@@ -51,7 +51,7 @@ fn companyName(&self, format: &str) -> String {
    * @method faker.company.companySuffix
    */
 fn companySuffix(&self) -> String {
-      return thread_rng().choose(faker.company.suffixes());
+      return thread_rng().choose(faker.company.suffixes()).unwrap();
   }
 
   /**
@@ -78,7 +78,7 @@ fn bs(&self) -> String {
    * @method faker.company.catchPhraseAdjective
    */
 fn catchPhraseAdjective(&self) -> String {
-      return thread_rng().choose(self.faker.company_adjective());
+      return thread_rng().choose(self.faker.company_adjective()).unwrap();
   }
 
   /**
@@ -87,7 +87,7 @@ fn catchPhraseAdjective(&self) -> String {
    * @method faker.company.catchPhraseDescriptor
    */
 fn catchPhraseDescriptor(&self) -> String {
-      return thread_rng().choose(self.faker.company_descriptor());
+      return thread_rng().choose(self.faker.company_descriptor()).unwrap();
   }
 
   /**
@@ -96,7 +96,7 @@ fn catchPhraseDescriptor(&self) -> String {
    * @method faker.company.catchPhraseNoun
    */
 fn catchPhraseNoun(&self) -> String {
-      return thread_rng().choose(self.faker.company_noun());
+      return thread_rng().choose(self.faker.company_noun()).unwrap();
   }
 
   /**
@@ -105,7 +105,7 @@ fn catchPhraseNoun(&self) -> String {
    * @method faker.company.bsAdjective
    */
 fn bsAdjective(&self) -> String {
-      return thread_rng().choose(self.faker.company_bs_adjective());
+      return thread_rng().choose(self.faker.company_bs_adjective()).unwrap();
   }
 
   /**
@@ -114,7 +114,7 @@ fn bsAdjective(&self) -> String {
    * @method faker.company.bsBuzz
    */
 fn bsBuzz(&self) -> String {
-      return thread_rng().choose(self.faker.company_bs_verb());
+      return thread_rng().choose(self.faker.company_bs_verb()).unwrap();
   }
 
   /**
@@ -123,7 +123,7 @@ fn bsBuzz(&self) -> String {
    * @method faker.company.bsNoun
    */
 fn bsNoun(&self) -> String {
-      return thread_rng().choose(self.faker.company_bs_noun());
+      return thread_rng().choose(self.faker.company_bs_noun()).unwrap();
   }
   
 }

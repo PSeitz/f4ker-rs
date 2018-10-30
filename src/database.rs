@@ -17,7 +17,7 @@ impl Database {
    * @method faker.database.column
    */
 fn column(&self) -> String {
-      return thread_rng().choose(self.faker.database_column());
+      return thread_rng().choose(self.faker.database_column()).unwrap();
   };
 
   self.column.schema = {
@@ -31,7 +31,7 @@ fn column(&self) -> String {
    * @method faker.database.type
    */
 fn type(&self) -> String {
-      return thread_rng().choose(self.faker.database_type());
+      return thread_rng().choose(self.faker.database_type()).unwrap();
   };
 
   self.type.schema = {
@@ -45,7 +45,7 @@ fn type(&self) -> String {
    * @method faker.database.collation
    */
 fn collation(&self) -> String {
-      return thread_rng().choose(self.faker.database_collation());
+      return thread_rng().choose(self.faker.database_collation()).unwrap();
   };
 
   self.collation.schema = {
@@ -59,7 +59,7 @@ fn collation(&self) -> String {
    * @method faker.database.engine
    */
 fn engine(&self) -> String {
-      return thread_rng().choose(self.faker.database_engine());
+      return thread_rng().choose(self.faker.database_engine()).unwrap();
   };
 
   self.engine.schema = {

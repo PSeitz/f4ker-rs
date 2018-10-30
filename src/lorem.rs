@@ -21,7 +21,7 @@ impl Lorem {
    * @param {number} num
    */
 fn word(&self, num: &str) -> String {
-    return thread_rng().choose(self.faker.lorem_words());
+    return thread_rng().choose(self.faker.lorem_words()).unwrap();
   };
 
   /**
@@ -123,7 +123,7 @@ fn paragraphs(&self, paragraphCount: &str,  separator: &str) -> String {
    */
 fn text(&self, times: &str) -> String {
     let loremMethods = ['lorem.word', 'lorem.words', 'lorem.sentence', 'lorem.sentences', 'lorem.paragraph', 'lorem.paragraphs', 'lorem.lines'];
-    let randomLoremMethod = thread_rng().choose(loremMethods);
+    let randomLoremMethod = thread_rng().choose(loremMethods).unwrap();
     return faker.fake('{{' + randomLoremMethod + '}}');
   };
 

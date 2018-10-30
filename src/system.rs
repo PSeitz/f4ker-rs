@@ -55,7 +55,7 @@ fn commonFileName(&self, ext: &str,  type: &str) -> String {
    * @method faker.system.mimeType
    */
 fn mimeType(&self) -> String {
-    return thread_rng().choose(Object.keys(self.faker.system_mimeTypes()));
+    return thread_rng().choose(Object.keys(self.faker.system_mimeTypes())).unwrap();
   };
 
   /**
@@ -65,7 +65,7 @@ fn mimeType(&self) -> String {
    */
 fn commonFileType(&self) -> String {
     let types = ['video', 'audio', 'image', 'text', 'application'];
-    return thread_rng().choose(types)
+    return thread_rng().choose(types).unwrap()
   };
 
   /**
@@ -86,7 +86,7 @@ fn commonFileExt(&self, type: &str) -> String {
       'video/mpeg',
       'text/html'
     ];
-    return faker.system.fileExt(thread_rng().choose(types));
+    return faker.system.fileExt(thread_rng().choose(types).unwrap());
   };
 
 
@@ -104,7 +104,7 @@ fn fileType(&self) -> String {
         types.push(parts[0]);
       }
     });
-    return thread_rng().choose(types);
+    return thread_rng().choose(types).unwrap();
   };
 
   /**
@@ -119,7 +119,7 @@ fn fileExt(&self, mimeType: &str) -> String {
 
     // get specific ext by mime-type
     if (typeof mimes[mimeType] == "object") {
-      return thread_rng().choose(mimes[mimeType].extensions);
+      return thread_rng().choose(mimes[mimeType].extensions).unwrap();
     }
 
     // reduce mime-types to those with file-extensions
@@ -130,7 +130,7 @@ fn fileExt(&self, mimeType: &str) -> String {
         });
       }
     });
-    return thread_rng().choose(exts);
+    return thread_rng().choose(exts).unwrap();
   };
 
   /**
@@ -140,7 +140,7 @@ fn fileExt(&self, mimeType: &str) -> String {
    */
 fn directoryPath(&self) -> String {
       let paths = self.faker.system_directoryPaths()
-      return thread_rng().choose(paths);
+      return thread_rng().choose(paths).unwrap();
   };
 
   /**

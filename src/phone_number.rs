@@ -43,7 +43,7 @@ fn phoneNumberFormat(&self, phoneFormatsArrayIndex: &str) -> String {
    * @method faker.phone.phoneFormats
    */
 fn phoneFormats(&self) -> String {
-    return thread_rng().choose(self.faker.phone_number_formats());
+    return thread_rng().choose(self.faker.phone_number_formats()).unwrap();
   };
   
   return self;

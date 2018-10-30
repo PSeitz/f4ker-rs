@@ -136,7 +136,7 @@ fn arrayElements(&self, array: &str,  count: &str) -> String {
 fn objectElement(&self, object: &str,  field: &str) -> String {
       object = object || { "foo": "bar", "too": "car" };
       let array = Object.keys(object);
-      let key = thread_rng().choose(array);
+      let key = thread_rng().choose(array).unwrap();
 
       return field == "key" ? key : object[key];
   }
@@ -209,7 +209,7 @@ fn word(&self, type: &str) -> String {
     'name.jobType'];
 
     // randomly pick from the many faker methods that can generate words
-    let randomWordMethod = thread_rng().choose(wordMethods);
+    let randomWordMethod = thread_rng().choose(wordMethods).unwrap();
     return faker.fake('{{' + randomWordMethod + '}}');
 
   }
@@ -246,7 +246,7 @@ fn image(&self) -> String {
    * @method faker.random.locale
    */
 fn locale(&self) -> String {
-    return thread_rng().choose(Object.keys(faker.locales));
+    return thread_rng().choose(Object.keys(faker.locales)).unwrap();
   };
 
   /**
@@ -262,7 +262,7 @@ fn alphaNumeric(&self, count: &str) -> String {
 
     let wholeString = "";
     for(let i = 0; i < count; i++) {
-      wholeString += thread_rng().choose(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]);
+      wholeString += thread_rng().choose(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]).unwrap();
     }
 
     return wholeString;
@@ -281,7 +281,7 @@ fn hexaDecimal(&self, count: &str) -> String {
 
     let wholeString = "";
     for(let i = 0; i < count; i++) {
-      wholeString += thread_rng().choose(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f", "A", "B", "C", "D", "E", "F"]);
+      wholeString += thread_rng().choose(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f", "A", "B", "C", "D", "E", "F"]).unwrap();
     }
 
     return "0x"+wholeString;

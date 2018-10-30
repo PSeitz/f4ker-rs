@@ -18,7 +18,7 @@ impl Commerce {
    * @method faker.commerce.color
    */
 fn color(&self) -> String {
-      return thread_rng().choose(self.faker.commerce_color());
+      return thread_rng().choose(self.faker.commerce_color()).unwrap();
   };
 
   /**
@@ -27,7 +27,7 @@ fn color(&self) -> String {
    * @method faker.commerce.department
    */
 fn department(&self) -> String {
-      return thread_rng().choose(self.faker.commerce_department());
+      return thread_rng().choose(self.faker.commerce_department()).unwrap();
   };
 
   /**
@@ -72,7 +72,7 @@ fn categories(&self, num: &str) -> String {
       let categories = [];
 
       do {
-          let category = thread_rng().choose(self.faker.commerce_department());
+          let category = thread_rng().choose(self.faker.commerce_department()).unwrap();
           if(categories.indexOf(category) == -1) {
               categories.push(category);
           }
@@ -99,7 +99,7 @@ fn mergeCategories(&self, categories: &str) -> String {
    * @method faker.commerce.productAdjective
    */
 fn productAdjective(&self) -> String {
-      return thread_rng().choose(self.faker.commerce_product_name_adjective());
+      return thread_rng().choose(self.faker.commerce_product_name_adjective()).unwrap();
   };
 
   /**
@@ -108,7 +108,7 @@ fn productAdjective(&self) -> String {
    * @method faker.commerce.productMaterial
    */
 fn productMaterial(&self) -> String {
-      return thread_rng().choose(self.faker.commerce_product_name_material());
+      return thread_rng().choose(self.faker.commerce_product_name_material()).unwrap();
   };
 
   /**
@@ -117,7 +117,7 @@ fn productMaterial(&self) -> String {
    * @method faker.commerce.product
    */
 fn product(&self) -> String {
-      return thread_rng().choose(self.faker.commerce_product_name_product());
+      return thread_rng().choose(self.faker.commerce_product_name_product()).unwrap();
   };
 
   return self;

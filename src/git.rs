@@ -67,7 +67,7 @@ fn commitSha(&self) -> String {
     let commit = "";
 
     for (let i = 0; i < 40; i++) {
-      commit += thread_rng().choose(hexChars);
+      commit += thread_rng().choose(hexChars).unwrap();
     }
 
     return commit;
@@ -82,7 +82,7 @@ fn shortSha(&self) -> String {
     let shortSha = "";
 
     for (let i = 0; i < 7; i++) {
-      shortSha += thread_rng().choose(hexChars);
+      shortSha += thread_rng().choose(hexChars).unwrap();
     }
 
     return shortSha;

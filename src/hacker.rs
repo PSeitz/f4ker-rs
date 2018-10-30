@@ -18,7 +18,7 @@ impl Hacker {
    * @method faker.hacker.abbreviation
    */
 fn abbreviation(&self) -> String {
-    return thread_rng().choose(self.faker.hacker_abbreviation());
+    return thread_rng().choose(self.faker.hacker_abbreviation()).unwrap();
   };
 
   /**
@@ -27,7 +27,7 @@ fn abbreviation(&self) -> String {
    * @method faker.hacker.adjective
    */
 fn adjective(&self) -> String {
-    return thread_rng().choose(self.faker.hacker_adjective());
+    return thread_rng().choose(self.faker.hacker_adjective()).unwrap();
   };
 
   /**
@@ -36,7 +36,7 @@ fn adjective(&self) -> String {
    * @method faker.hacker.noun
    */
 fn noun(&self) -> String {
-    return thread_rng().choose(self.faker.hacker_noun());
+    return thread_rng().choose(self.faker.hacker_noun()).unwrap();
   };
 
   /**
@@ -45,7 +45,7 @@ fn noun(&self) -> String {
    * @method faker.hacker.verb
    */
 fn verb(&self) -> String {
-    return thread_rng().choose(self.faker.hacker_verb());
+    return thread_rng().choose(self.faker.hacker_verb()).unwrap();
   };
 
   /**
@@ -54,7 +54,7 @@ fn verb(&self) -> String {
    * @method faker.hacker.ingverb
    */
 fn ingverb(&self) -> String {
-    return thread_rng().choose(self.faker.hacker_ingverb());
+    return thread_rng().choose(self.faker.hacker_ingverb()).unwrap();
   };
 
   /**
@@ -72,7 +72,7 @@ fn phrase(&self) -> String {
       verb: self.verb
     };
 
-    let phrase = thread_rng().choose(self.faker.hacker_phrase());
+    let phrase = thread_rng().choose(self.faker.hacker_phrase()).unwrap();
     return faker.helpers.mustache(phrase, data);
   };
   

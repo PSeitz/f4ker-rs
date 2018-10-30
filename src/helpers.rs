@@ -21,7 +21,7 @@ impl Helpers {
    */
 fn randomize(&self, array: &str) -> String {
       array = array || ["a", "b", "c"];
-      return thread_rng().choose(array);
+      return thread_rng().choose(array).unwrap();
   };
 
   /**
@@ -78,9 +78,9 @@ fn replaceSymbols(&self, string: &str) -> String {
           if (string.charAt(i) == "#") {
               str += faker.random.number(9);
           } else if (string.charAt(i) == "?") {
-              str += thread_rng().choose(alpha);
+              str += thread_rng().choose(alpha).unwrap();
           } else if (string.charAt(i) == "*") {
-            str += faker.random.boolean() ? thread_rng().choose(alpha) : faker.random.number(9);
+            str += faker.random.boolean() ? thread_rng().choose(alpha).unwrap() : faker.random.number(9);
           } else {
               str += string.charAt(i);
           }

@@ -23,7 +23,7 @@ impl Image {
    */
 fn image(&self, width: &str,  height: &str,  randomize: &str) -> String {
     let categories = ["abstract", "animals", "business", "cats", "city", "food", "nightlife", "fashion", "people", "nature", "sports", "technics", "transport"];
-    return self[thread_rng().choose(categories)](width, height, randomize);
+    return self[thread_rng().choose(categories).unwrap()](width, height, randomize);
   };
   /**
    * avatar
