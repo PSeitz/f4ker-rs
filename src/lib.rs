@@ -1,6 +1,4 @@
 use rand::{thread_rng, Rng};
-use crate::faker::Faker;
-use crate::RandArray;
 use std::char;
 
 mod faker;
@@ -10,16 +8,25 @@ mod name;
 pub use self::faker::Faker;
 
 
-trait RandArray {
+trait RandArray<T> {
+    fn rand(&self) -> &T;
+}
+impl<T> RandArray<T> for &[T] {
+    fn rand(&self) -> &T {
+        thread_rng().choose(&self).unwrap() //unwrap, because empty arrays are not allowed in locales
+    }
+}
+
+trait RandArrayStatic {
     fn rand(&self) -> &'static str;
 }
-impl RandArray for &'static [&'static str] {
+impl RandArrayStatic for &'static [&'static str] {
     fn rand(&self) -> &'static str {
         thread_rng().choose(&self).unwrap() //unwrap, because empty arrays are not allowed in locales
     }
 }
 
-impl RandArray for Option<&'static [&'static str]> {
+impl RandArrayStatic for Option<&'static [&'static str]> {
     fn rand(&self) -> &'static str {
         if let Some(arr) = self {
             return thread_rng().choose(&arr).unwrap(); //unwrap, because empty arrays are not allowed in locales

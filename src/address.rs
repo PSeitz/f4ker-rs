@@ -1,6 +1,6 @@
 use rand::{thread_rng, Rng};
 use crate::faker::Faker;
-use crate::RandArray;
+use crate::*;
 #[derive(Debug, Clone)]
 pub struct Address <'a> {
     faker: &'a Faker,
@@ -25,6 +25,7 @@ impl Address {
    */
 fn zip_code(&self, format: &str) -> String {
     // if zip format is not specified, use the zip format defined for the locale
+    let locale_format = format.or(self.faker.address_postcode.map(thread_rng().choose(locale_format).unwrap())).expect("no fromat in zip code provided and not zip code in locale found");
     if (format.is_none()) {
       let localeFormat = self.faker.address_postcode();
       if (typeof localeFormat == 'string') {

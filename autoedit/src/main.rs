@@ -618,7 +618,7 @@ pub fn {}() -> Option<&'static [&'static str]> {{
             .collect();
         lines.insert(0, "use rand::{thread_rng, Rng};".to_string());
         lines.insert(1, "use crate::faker::Faker;".to_string());
-        lines.insert(2, "use crate::RandArray;".to_string());
+        lines.insert(2, "use crate::*;".to_string());
 
         // println!("result {:?}", result);
 

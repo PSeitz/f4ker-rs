@@ -1,6 +1,6 @@
 use rand::{thread_rng, Rng};
 use crate::faker::Faker;
-use crate::RandArray;
+use crate::*;
 
 #[derive(Debug, Clone)]
 pub struct Name<'a> {
@@ -15,25 +15,9 @@ pub enum Gender {
 
 const GENDERS: [Gender; 2] = [Gender::Male, Gender::Female];
 
-// trait RandArray {
-//     fn rand(&self) -> String;
-// }
-
-// impl RandArray for &'static [&'static str] {
-//     fn rand(&self) -> String {
-//         thread_rng().choose(&self).unwrap().to_string()
-//     }
-// }
-
-// impl RandArray for Option<&'static [&'static str]> {
-//     fn rand(&self) -> String {
-//         if let Some(arr) = self {
-//             return thread_rng().choose(&arr).unwrap().to_string();
-//         }
-//         "".to_string()
-//     }
-// }
-
+macro_rules! rand_cloned {
+    ($arr:expr) => (thread_rng().choose(&$arr).cloned().unwrap())
+}
 
 #[test]
 fn name() {
@@ -49,7 +33,7 @@ impl<'a> Name<'a> {
     }
 
     pub fn first_name(&self, gender: Option<Gender>) -> &'static str {
-        let gender = gender.unwrap_or_else(|| thread_rng().choose(&GENDERS).cloned().unwrap());
+        let gender = gender.unwrap_or_else(|| rand_cloned!(GENDERS));
 
         if let (Some(_name_male_first_name), Some(_name_female_first_name)) =
             (self.faker.name_male_first_name, self.faker.name_female_first_name)
@@ -66,7 +50,7 @@ impl<'a> Name<'a> {
     }
 
     pub fn last_name(&self, gender: Option<Gender>) -> &'static str {
-        let gender = gender.unwrap_or_else(|| thread_rng().choose(&GENDERS).cloned().unwrap());
+        let gender = gender.unwrap_or_else(|| rand_cloned!(GENDERS));
         if self.faker.name_male_last_name.is_some() && self.faker.name_female_last_name.is_some() {
             if gender == Gender::Male {
                 return self.faker.name_male_last_name.rand();
@@ -78,7 +62,7 @@ impl<'a> Name<'a> {
     }
 
     pub fn middle_name(&self, gender: Option<Gender>) -> &'static str {
-        let gender = gender.unwrap_or_else(|| thread_rng().choose(&GENDERS).cloned().unwrap());
+        let gender = gender.unwrap_or_else(|| rand_cloned!(GENDERS));
         if self.faker.name_male_middle_name.is_some() && self.faker.name_female_middle_name.is_some() {
             if gender == Gender::Male {
                 return self.faker.name_male_middle_name.rand();
@@ -91,7 +75,7 @@ impl<'a> Name<'a> {
     }
 
     pub fn find_name(&self) -> String {
-        let gender = thread_rng().choose(&GENDERS).cloned().unwrap();
+        let gender = rand_cloned!(GENDERS);
         let r = thread_rng().gen_range(0, 8);
         // in particular locales first and last names split by gender,
         // thus we keep consistency by passing 0 as male and 1 as female
@@ -109,7 +93,7 @@ impl<'a> Name<'a> {
     }
 
     pub fn prefix(&self, gender: Option<Gender>) -> &'static str {
-        let gender = gender.unwrap_or_else(|| thread_rng().choose(&GENDERS).cloned().unwrap());
+        let gender = gender.unwrap_or_else(|| rand_cloned!(GENDERS));
         if self.faker.name_male_prefix.is_some() && self.faker.name_female_prefix.is_some() {
             if gender == Gender::Male {
                 return self.faker.name_male_prefix.rand();

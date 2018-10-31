@@ -1,6 +1,6 @@
 use rand::{thread_rng, Rng};
 use crate::faker::Faker;
-use crate::RandArray;
+use crate::*;
 #[derive(Debug, Clone)]
 pub struct Image <'a> {
     faker: &'a Faker,
