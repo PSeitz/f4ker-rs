@@ -23,7 +23,7 @@ impl Phone {
    * @param {string} format
    * @memberOf faker.phone
    */
-fn phone_number(&self, format: &str) -> String {
+    pub fn phone_number(&self, format: &str) -> String {
       format = format || faker.phone.phoneFormats();
       return faker.helpers.replaceSymbolWithNumber(format);
   };
@@ -36,7 +36,7 @@ fn phone_number(&self, format: &str) -> String {
    * @param phoneFormatsArrayIndex
    * @memberOf faker.phone
    */
-fn phone_number_format(&self, phoneFormatsArrayIndex: &str) -> String {
+    pub fn phone_number_format(&self, phoneFormatsArrayIndex: &str) -> String {
       phoneFormatsArrayIndex = phoneFormatsArrayIndex || 0;
       return faker.helpers.replaceSymbolWithNumber(self.faker.phone_number_formats()[phoneFormatsArrayIndex]);
   };
@@ -46,7 +46,7 @@ fn phone_number_format(&self, phoneFormatsArrayIndex: &str) -> String {
    *
    * @method faker.phone.phoneFormats
    */
-fn phone_formats(&self) -> String {
+    pub fn phone_formats(&self) -> String {
     return thread_rng().choose(self.faker.phone_number_formats()).unwrap();
   };
   

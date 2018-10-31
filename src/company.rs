@@ -22,7 +22,7 @@ impl Company {
    *
    * @method faker.company.suffixes
    */
-fn suffixes(&self) -> String {
+    pub fn suffixes(&self) -> String {
     // Don't want the source array exposed to modification, so return a copy
     return self.faker.company_suffix_slice()(0);
   }
@@ -33,7 +33,7 @@ fn suffixes(&self) -> String {
    * @method faker.company.companyName
    * @param {string} format
    */
-fn company_name(&self, format: &str) -> String {
+    pub fn company_name(&self, format: &str) -> String {
 
     let formats = [
       '{{name.lastName}} {{company.companySuffix}}',
@@ -53,7 +53,7 @@ fn company_name(&self, format: &str) -> String {
    *
    * @method faker.company.companySuffix
    */
-fn company_suffix(&self) -> String {
+    pub fn company_suffix(&self) -> String {
       return thread_rng().choose(faker.company.suffixes()).unwrap();
   }
 
@@ -62,7 +62,7 @@ fn company_suffix(&self) -> String {
    *
    * @method faker.company.catchPhrase
    */
-fn catch_phrase(&self) -> String {
+    pub fn catch_phrase(&self) -> String {
     return f('{{company.catchPhraseAdjective}} {{company.catchPhraseDescriptor}} {{company.catchPhraseNoun}}')
   }
 
@@ -71,7 +71,7 @@ fn catch_phrase(&self) -> String {
    *
    * @method faker.company.bs
    */
-fn bs(&self) -> String {
+    pub fn bs(&self) -> String {
     return f('{{company.bsBuzz}} {{company.bsAdjective}} {{company.bsNoun}}');
   }
 
@@ -80,7 +80,7 @@ fn bs(&self) -> String {
    *
    * @method faker.company.catchPhraseAdjective
    */
-fn catch_phrase_adjective(&self) -> String {
+    pub fn catch_phrase_adjective(&self) -> String {
       return thread_rng().choose(self.faker.company_adjective()).unwrap();
   }
 
@@ -89,7 +89,7 @@ fn catch_phrase_adjective(&self) -> String {
    *
    * @method faker.company.catchPhraseDescriptor
    */
-fn catch_phrase_descriptor(&self) -> String {
+    pub fn catch_phrase_descriptor(&self) -> String {
       return thread_rng().choose(self.faker.company_descriptor()).unwrap();
   }
 
@@ -98,7 +98,7 @@ fn catch_phrase_descriptor(&self) -> String {
    *
    * @method faker.company.catchPhraseNoun
    */
-fn catch_phrase_noun(&self) -> String {
+    pub fn catch_phrase_noun(&self) -> String {
       return thread_rng().choose(self.faker.company_noun()).unwrap();
   }
 
@@ -107,7 +107,7 @@ fn catch_phrase_noun(&self) -> String {
    *
    * @method faker.company.bsAdjective
    */
-fn bs_adjective(&self) -> String {
+    pub fn bs_adjective(&self) -> String {
       return thread_rng().choose(self.faker.company_bs_adjective()).unwrap();
   }
 
@@ -116,7 +116,7 @@ fn bs_adjective(&self) -> String {
    *
    * @method faker.company.bsBuzz
    */
-fn bs_buzz(&self) -> String {
+    pub fn bs_buzz(&self) -> String {
       return thread_rng().choose(self.faker.company_bs_verb()).unwrap();
   }
 
@@ -125,7 +125,7 @@ fn bs_buzz(&self) -> String {
    *
    * @method faker.company.bsNoun
    */
-fn bs_noun(&self) -> String {
+    pub fn bs_noun(&self) -> String {
       return thread_rng().choose(self.faker.company_bs_noun()).unwrap();
   }
   

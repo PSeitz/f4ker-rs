@@ -25,7 +25,7 @@ impl System {
    * @param {string} ext
    * @param {string} type
    */
-fn file_name(&self, ext: &str,  type: &str) -> String {
+    pub fn file_name(&self, ext: &str,  type: &str) -> String {
     let str = faker.fake("{{random.words}}.{{system.fileExt}}");
     str = str.replace(/ /g, '_');
     str = str.replace(/\,/g, '_');
@@ -43,7 +43,7 @@ fn file_name(&self, ext: &str,  type: &str) -> String {
    * @param {string} ext
    * @param {string} type
    */
-fn common_file_name(&self, ext: &str,  type: &str) -> String {
+    pub fn common_file_name(&self, ext: &str,  type: &str) -> String {
     let str = faker.random.words() + "." + (ext || faker.system.commonFileExt());
     str = str.replace(/ /g, '_');
     str = str.replace(/\,/g, '_');
@@ -59,7 +59,7 @@ fn common_file_name(&self, ext: &str,  type: &str) -> String {
    *
    * @method faker.system.mimeType
    */
-fn mime_type(&self) -> String {
+    pub fn mime_type(&self) -> String {
     return thread_rng().choose(Object.keys(self.faker.system_mimeTypes())).unwrap();
   };
 
@@ -68,7 +68,7 @@ fn mime_type(&self) -> String {
    *
    * @method faker.system.commonFileType
    */
-fn common_file_type(&self) -> String {
+    pub fn common_file_type(&self) -> String {
     let types = ['video', 'audio', 'image', 'text', 'application'];
     return thread_rng().choose(types).unwrap()
   };
@@ -79,7 +79,7 @@ fn common_file_type(&self) -> String {
    * @method faker.system.commonFileExt
    * @param {string} type
    */
-fn common_file_ext(&self, type: &str) -> String {
+    pub fn common_file_ext(&self, type: &str) -> String {
     let types = [
       'application/pdf',
       'audio/mpeg',
@@ -100,7 +100,7 @@ fn common_file_ext(&self, type: &str) -> String {
    *
    * @method faker.system.fileType
    */
-fn file_type(&self) -> String {
+    pub fn file_type(&self) -> String {
     let types = [];
     let mimes = self.faker.system_mimeTypes();
     Object.keys(mimes).forEach(function(m){
@@ -118,7 +118,7 @@ fn file_type(&self) -> String {
    * @method faker.system.fileExt
    * @param {string} mimeType
    */
-fn file_ext(&self, mimeType: &str) -> String {
+    pub fn file_ext(&self, mimeType: &str) -> String {
     let exts = [];
     let mimes = self.faker.system_mimeTypes();
 
@@ -143,7 +143,7 @@ fn file_ext(&self, mimeType: &str) -> String {
    *
    * @method faker.system.directoryPath
    */
-fn directory_path(&self) -> String {
+    pub fn directory_path(&self) -> String {
       let paths = self.faker.system_directoryPaths()
       return thread_rng().choose(paths).unwrap();
   };
@@ -153,7 +153,7 @@ fn directory_path(&self) -> String {
    *
    * @method faker.system.filePath
    */
-fn file_path(&self) -> String {
+    pub fn file_path(&self) -> String {
       return faker.fake("{{system.directoryPath}}/{{system.fileName}}");
   };
 
@@ -162,7 +162,7 @@ fn file_path(&self) -> String {
    *
    * @method faker.system.semver
    */
-fn semver(&self) -> String {
+    pub fn semver(&self) -> String {
       return [faker.random.number(9),
               faker.random.number(9),
               faker.random.number(9)].join('.');

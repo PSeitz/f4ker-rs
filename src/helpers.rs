@@ -23,7 +23,7 @@ impl Helpers {
    * @method faker.helpers.randomize
    * @param {array} array
    */
-fn randomize(&self, array: &str) -> String {
+    pub fn randomize(&self, array: &str) -> String {
       array = array || ["a", "b", "c"];
       return thread_rng().choose(array).unwrap();
   };
@@ -34,7 +34,7 @@ fn randomize(&self, array: &str) -> String {
    * @method faker.helpers.slugify
    * @param {string} string
    */
-fn slugify(&self, string: &str) -> String {
+    pub fn slugify(&self, string: &str) -> String {
       string = string || "";
       return string.replace(/ /g, '-').replace(/[^\w\.\-]+/g, '');
   };
@@ -46,7 +46,7 @@ fn slugify(&self, string: &str) -> String {
    * @param {string} string
    * @param {string} symbol defaults to `"#"`
    */
-fn replace_symbol_with_number(&self, string: &str,  symbol: &str) -> String {
+    pub fn replace_symbol_with_number(&self, string: &str,  symbol: &str) -> String {
       string = string || "";
       // default symbol is '#'
       if (symbol == undefined) {
@@ -73,7 +73,7 @@ fn replace_symbol_with_number(&self, string: &str,  symbol: &str) -> String {
    * @method faker.helpers.replaceSymbols
    * @param {string} string
    */
-fn replace_symbols(&self, string: &str) -> String {
+    pub fn replace_symbols(&self, string: &str) -> String {
       string = string || "";
       let alpha = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
       let str = '';
@@ -100,7 +100,7 @@ fn replace_symbols(&self, string: &str) -> String {
    * @param {string} symbol
    */
 
-fn replace_credit_card_symbols(&self, string: &str,  symbol: &str) -> String {
+    pub fn replace_credit_card_symbols(&self, string: &str,  symbol: &str) -> String {
      symbol = symbol || "#";
 
      // Function calculating the Luhn checksum of a number string
@@ -134,7 +134,7 @@ fn replace_credit_card_symbols(&self, string: &str,  symbol: &str) -> String {
    * @param {string} string
    * @param {number} num
    */
-fn repeat_string(&self, string: &str, num: &str) -> String {
+    pub fn repeat_string(&self, string: &str, num: &str) -> String {
      if(num.is_none()) {
        num = 0;
      }
@@ -153,7 +153,7 @@ fn repeat_string(&self, string: &str, num: &str) -> String {
     * @method faker.helpers.regexpStyleStringParse
     * @param {string} string
     */
-fn regexp_style_string_parse(&self, string: &str) -> String {
+    pub fn regexp_style_string_parse(&self, string: &str) -> String {
      string = string || "";
      // Deal with range repeat `{min,max}`
      let RANGE_REP_REG = /(.)\{(\d+)\,(\d+)\}/;
@@ -208,7 +208,7 @@ fn regexp_style_string_parse(&self, string: &str) -> String {
    * @method faker.helpers.shuffle
    * @param {array} o
    */
-fn shuffle(&self, o: &str) -> String {
+    pub fn shuffle(&self, o: &str) -> String {
       if (o.is_none() || o.length == 0) {
         return [];
       }
@@ -224,7 +224,7 @@ fn shuffle(&self, o: &str) -> String {
    * @param {string} str
    * @param {object} data
    */
-fn mustache(&self, str: &str,  data: &str) -> String {
+    pub fn mustache(&self, str: &str,  data: &str) -> String {
     if (str.is_none()) {
       return '';
     }
@@ -240,7 +240,7 @@ fn mustache(&self, str: &str,  data: &str) -> String {
    *
    * @method faker.helpers.createCard
    */
-fn create_card(&self) -> String {
+    pub fn create_card(&self) -> String {
       return {
           "name": faker.name.findName(),
           "username": faker.internet.userName(),
@@ -295,7 +295,7 @@ fn create_card(&self) -> String {
    *
    * @method faker.helpers.contextualCard
    */
-fn contextual_card(&self) -> String {
+    pub fn contextual_card(&self) -> String {
     let name = faker.name.firstName(),
         userName = faker.internet.userName(name);
     return {
@@ -330,7 +330,7 @@ fn contextual_card(&self) -> String {
    *
    * @method faker.helpers.userCard
    */
-fn user_card(&self) -> String {
+    pub fn user_card(&self) -> String {
       return {
           "name": faker.name.findName(),
           "username": faker.internet.userName(),
@@ -360,7 +360,7 @@ fn user_card(&self) -> String {
    *
    * @method faker.helpers.createTransaction
    */
-fn create_transaction(&self) -> String {
+    pub fn create_transaction(&self) -> String {
     return {
       "amount" : faker.finance.amount(),
       "date" : new Date(2012, 1, 2),  //TODO: add a ranged date method

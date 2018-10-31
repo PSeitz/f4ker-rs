@@ -23,7 +23,7 @@ impl Git {
    *
    * @method faker.git.branch
    */
-fn branch(&self) -> String {
+    pub fn branch(&self) -> String {
     let noun = faker.hacker.noun().replace(' ', '-');
     let verb = faker.hacker.verb().replace(' ', '-');
     return noun + '-' + verb;
@@ -35,7 +35,7 @@ fn branch(&self) -> String {
    * @method faker.git.commitEntry
    * @param {object} options
    */
-fn commit_entry(&self, options: &str) -> String {
+    pub fn commit_entry(&self, options: &str) -> String {
     options = options || {};
 
     let entry = 'commit {{git.commitSha}}\r\n';
@@ -56,7 +56,7 @@ fn commit_entry(&self, options: &str) -> String {
    *
    * @method faker.git.commitMessage
    */
-fn commit_message(&self) -> String {
+    pub fn commit_message(&self) -> String {
     let format = '{{hacker.verb}} {{hacker.adjective}} {{hacker.noun}}';
     return f(format);
   };
@@ -66,7 +66,7 @@ fn commit_message(&self) -> String {
    *
    * @method faker.git.commitSha
    */
-fn commit_sha(&self) -> String {
+    pub fn commit_sha(&self) -> String {
     let commit = "";
 
     for (let i = 0; i < 40; i++) {
@@ -81,7 +81,7 @@ fn commit_sha(&self) -> String {
    *
    * @method faker.git.shortSha
    */
-fn short_sha(&self) -> String {
+    pub fn short_sha(&self) -> String {
     let shortSha = "";
 
     for (let i = 0; i < 7; i++) {

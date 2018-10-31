@@ -21,7 +21,7 @@ impl Hacker {
    *
    * @method faker.hacker.abbreviation
    */
-fn abbreviation(&self) -> String {
+    pub fn abbreviation(&self) -> String {
     return thread_rng().choose(self.faker.hacker_abbreviation()).unwrap();
   };
 
@@ -30,7 +30,7 @@ fn abbreviation(&self) -> String {
    *
    * @method faker.hacker.adjective
    */
-fn adjective(&self) -> String {
+    pub fn adjective(&self) -> String {
     return thread_rng().choose(self.faker.hacker_adjective()).unwrap();
   };
 
@@ -39,7 +39,7 @@ fn adjective(&self) -> String {
    *
    * @method faker.hacker.noun
    */
-fn noun(&self) -> String {
+    pub fn noun(&self) -> String {
     return thread_rng().choose(self.faker.hacker_noun()).unwrap();
   };
 
@@ -48,7 +48,7 @@ fn noun(&self) -> String {
    *
    * @method faker.hacker.verb
    */
-fn verb(&self) -> String {
+    pub fn verb(&self) -> String {
     return thread_rng().choose(self.faker.hacker_verb()).unwrap();
   };
 
@@ -57,7 +57,7 @@ fn verb(&self) -> String {
    *
    * @method faker.hacker.ingverb
    */
-fn ingverb(&self) -> String {
+    pub fn ingverb(&self) -> String {
     return thread_rng().choose(self.faker.hacker_ingverb()).unwrap();
   };
 
@@ -66,7 +66,7 @@ fn ingverb(&self) -> String {
    *
    * @method faker.hacker.phrase
    */
-fn phrase(&self) -> String {
+    pub fn phrase(&self) -> String {
 
     let data = {
       abbreviation: self.abbreviation,

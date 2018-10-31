@@ -25,7 +25,7 @@ impl Image {
    * @param {boolean} randomize
    * @method faker.image.image
    */
-fn image(&self, width: &str,  height: &str,  randomize: &str) -> String {
+    pub fn image(&self, width: &str,  height: &str,  randomize: &str) -> String {
     let categories = ["abstract", "animals", "business", "cats", "city", "food", "nightlife", "fashion", "people", "nature", "sports", "technics", "transport"];
     return self[thread_rng().choose(categories).unwrap()](width, height, randomize);
   };
@@ -34,7 +34,7 @@ fn image(&self, width: &str,  height: &str,  randomize: &str) -> String {
    *
    * @method faker.image.avatar
    */
-fn avatar(&self) -> String {
+    pub fn avatar(&self) -> String {
     return faker.internet.avatar();
   };
   /**
@@ -46,7 +46,7 @@ fn avatar(&self) -> String {
    * @param {boolean} randomize
    * @method faker.image.imageUrl
    */
-fn image_url(&self, width: &str,  height: &str,  category: &str,  randomize: &str,  https: &str) -> String {
+    pub fn image_url(&self, width: &str,  height: &str,  category: &str,  randomize: &str,  https: &str) -> String {
       let width = width || 640;
       let height = height || 480;
       let protocol = 'http://';
@@ -72,7 +72,7 @@ fn image_url(&self, width: &str,  height: &str,  category: &str,  randomize: &st
    * @param {boolean} randomize
    * @method faker.image.abstract
    */
-fn abstract(&self, width: &str,  height: &str,  randomize: &str) -> String {
+    pub fn abstract(&self, width: &str,  height: &str,  randomize: &str) -> String {
     return faker.image.imageUrl(width, height, 'abstract', randomize);
   };
   /**
@@ -83,7 +83,7 @@ fn abstract(&self, width: &str,  height: &str,  randomize: &str) -> String {
    * @param {boolean} randomize
    * @method faker.image.animals
    */
-fn animals(&self, width: &str,  height: &str,  randomize: &str) -> String {
+    pub fn animals(&self, width: &str,  height: &str,  randomize: &str) -> String {
     return faker.image.imageUrl(width, height, 'animals', randomize);
   };
   /**
@@ -94,7 +94,7 @@ fn animals(&self, width: &str,  height: &str,  randomize: &str) -> String {
    * @param {boolean} randomize
    * @method faker.image.business
    */
-fn business(&self, width: &str,  height: &str,  randomize: &str) -> String {
+    pub fn business(&self, width: &str,  height: &str,  randomize: &str) -> String {
     return faker.image.imageUrl(width, height, 'business', randomize);
   };
   /**
@@ -105,7 +105,7 @@ fn business(&self, width: &str,  height: &str,  randomize: &str) -> String {
    * @param {boolean} randomize
    * @method faker.image.cats
    */
-fn cats(&self, width: &str,  height: &str,  randomize: &str) -> String {
+    pub fn cats(&self, width: &str,  height: &str,  randomize: &str) -> String {
     return faker.image.imageUrl(width, height, 'cats', randomize);
   };
   /**
@@ -116,7 +116,7 @@ fn cats(&self, width: &str,  height: &str,  randomize: &str) -> String {
    * @param {boolean} randomize
    * @method faker.image.city
    */
-fn city(&self, width: &str,  height: &str,  randomize: &str) -> String {
+    pub fn city(&self, width: &str,  height: &str,  randomize: &str) -> String {
     return faker.image.imageUrl(width, height, 'city', randomize);
   };
   /**
@@ -127,7 +127,7 @@ fn city(&self, width: &str,  height: &str,  randomize: &str) -> String {
    * @param {boolean} randomize
    * @method faker.image.food
    */
-fn food(&self, width: &str,  height: &str,  randomize: &str) -> String {
+    pub fn food(&self, width: &str,  height: &str,  randomize: &str) -> String {
     return faker.image.imageUrl(width, height, 'food', randomize);
   };
   /**
@@ -138,7 +138,7 @@ fn food(&self, width: &str,  height: &str,  randomize: &str) -> String {
    * @param {boolean} randomize
    * @method faker.image.nightlife
    */
-fn nightlife(&self, width: &str,  height: &str,  randomize: &str) -> String {
+    pub fn nightlife(&self, width: &str,  height: &str,  randomize: &str) -> String {
     return faker.image.imageUrl(width, height, 'nightlife', randomize);
   };
   /**
@@ -149,7 +149,7 @@ fn nightlife(&self, width: &str,  height: &str,  randomize: &str) -> String {
    * @param {boolean} randomize
    * @method faker.image.fashion
    */
-fn fashion(&self, width: &str,  height: &str,  randomize: &str) -> String {
+    pub fn fashion(&self, width: &str,  height: &str,  randomize: &str) -> String {
     return faker.image.imageUrl(width, height, 'fashion', randomize);
   };
   /**
@@ -160,7 +160,7 @@ fn fashion(&self, width: &str,  height: &str,  randomize: &str) -> String {
    * @param {boolean} randomize
    * @method faker.image.people
    */
-fn people(&self, width: &str,  height: &str,  randomize: &str) -> String {
+    pub fn people(&self, width: &str,  height: &str,  randomize: &str) -> String {
     return faker.image.imageUrl(width, height, 'people', randomize);
   };
   /**
@@ -171,7 +171,7 @@ fn people(&self, width: &str,  height: &str,  randomize: &str) -> String {
    * @param {boolean} randomize
    * @method faker.image.nature
    */
-fn nature(&self, width: &str,  height: &str,  randomize: &str) -> String {
+    pub fn nature(&self, width: &str,  height: &str,  randomize: &str) -> String {
     return faker.image.imageUrl(width, height, 'nature', randomize);
   };
   /**
@@ -182,7 +182,7 @@ fn nature(&self, width: &str,  height: &str,  randomize: &str) -> String {
    * @param {boolean} randomize
    * @method faker.image.sports
    */
-fn sports(&self, width: &str,  height: &str,  randomize: &str) -> String {
+    pub fn sports(&self, width: &str,  height: &str,  randomize: &str) -> String {
     return faker.image.imageUrl(width, height, 'sports', randomize);
   };
   /**
@@ -193,7 +193,7 @@ fn sports(&self, width: &str,  height: &str,  randomize: &str) -> String {
    * @param {boolean} randomize
    * @method faker.image.technics
    */
-fn technics(&self, width: &str,  height: &str,  randomize: &str) -> String {
+    pub fn technics(&self, width: &str,  height: &str,  randomize: &str) -> String {
     return faker.image.imageUrl(width, height, 'technics', randomize);
   };
   /**
@@ -204,7 +204,7 @@ fn technics(&self, width: &str,  height: &str,  randomize: &str) -> String {
    * @param {boolean} randomize
    * @method faker.image.transport
    */
-fn transport(&self, width: &str,  height: &str,  randomize: &str) -> String {
+    pub fn transport(&self, width: &str,  height: &str,  randomize: &str) -> String {
     return faker.image.imageUrl(width, height, 'transport', randomize);
   };
   /**
@@ -215,7 +215,7 @@ fn transport(&self, width: &str,  height: &str,  randomize: &str) -> String {
    * @param {string} color
    * @method faker.image.dataUri
    */
-fn data_uri(&self, width: &str,  height: &str,  color: &str) -> String {
+    pub fn data_uri(&self, width: &str,  height: &str,  color: &str) -> String {
     color = color || 'grey';
     let svgString = '<svg xmlns="http://www.w3.org/2000/svg" version="1.1" baseProfile="full" width="' + width + '" height="' + height + '"><rect width="100%" height="100%" fill="' + color + '"/><text x="' + width / 2 + '" y="' + height / 2 + '" font-size="20" alignment-baseline="middle" text-anchor="middle" fill="white">' + width + 'x' + height + '</text></svg>';
     let rawPrefix = 'data:image/svg+xml;charset=UTF-8,';

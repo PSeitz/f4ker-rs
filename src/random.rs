@@ -32,7 +32,7 @@ impl Random {
    * @method faker.random.number
    * @param {mixed} options {min, max, precision}
    */
-fn number(&self, options: &str) -> String {
+    pub fn number(&self, options: &str) -> String {
 
     if (typeof options == "number") {
       options = {
@@ -74,7 +74,7 @@ fn number(&self, options: &str) -> String {
    * @method faker.random.float
    * @param {mixed} options
    */
-fn float(&self, options: &str) -> String {
+    pub fn float(&self, options: &str) -> String {
       if (typeof options == "number") {
         options = {
           precision: options
@@ -97,7 +97,7 @@ fn float(&self, options: &str) -> String {
    * @method faker.random.arrayElement
    * @param {array} array
    */
-fn array_element(&self, array: &str) -> String {
+    pub fn array_element(&self, array: &str) -> String {
       array = array || ["a", "b", "c"];
       let r = faker.random.number({ max: array.length - 1 });
       return array[r];
@@ -110,7 +110,7 @@ fn array_element(&self, array: &str) -> String {
    * @param {array} array
    * @param {number} count number of elements to pick
    */
-fn array_elements(&self, array: &str,  count: &str) -> String {
+    pub fn array_elements(&self, array: &str,  count: &str) -> String {
       array = array || ["a", "b", "c"];
 
       if (typeof count !== 'number') {
@@ -138,7 +138,7 @@ fn array_elements(&self, array: &str,  count: &str) -> String {
    * @param {object} object
    * @param {mixed} field
    */
-fn object_element(&self, object: &str,  field: &str) -> String {
+    pub fn object_element(&self, object: &str,  field: &str) -> String {
       object = object || { "foo": "bar", "too": "car" };
       let array = Object.keys(object);
       let key = thread_rng().choose(array).unwrap();
@@ -151,7 +151,7 @@ fn object_element(&self, object: &str,  field: &str) -> String {
    *
    * @method faker.random.uuid
    */
-fn uuid(&self) -> String {
+    pub fn uuid(&self) -> String {
       let RFC4122_TEMPLATE = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx';
       let replacePlaceholders = function (placeholder) {
           let random = self.number({ min: 0, max: 15 });
@@ -166,7 +166,7 @@ fn uuid(&self) -> String {
    *
    * @method faker.random.boolean
    */
-fn boolean(&self) -> String {
+    pub fn boolean(&self) -> String {
       return !!faker.random.number(1)
   }
 
@@ -177,7 +177,7 @@ fn boolean(&self) -> String {
    * @method faker.random.word
    * @param {string} type
    */
-fn word(&self, type: &str) -> String {
+    pub fn word(&self, type: &str) -> String {
 
     let wordMethods = [
     'commerce.department',
@@ -224,7 +224,7 @@ fn word(&self, type: &str) -> String {
    * @method faker.random.words
    * @param {number} count defaults to a random value between 1 and 3
    */
-fn words(&self, count: &str) -> String {
+    pub fn words(&self, count: &str) -> String {
     let words = [];
     if (count.is_none()) {
       count = faker.random.number({min:1, max: 3});
@@ -240,7 +240,7 @@ fn words(&self, count: &str) -> String {
    *
    * @method faker.random.image
    */
-fn image(&self) -> String {
+    pub fn image(&self) -> String {
     return faker.image.image();
   }
 
@@ -249,7 +249,7 @@ fn image(&self) -> String {
    *
    * @method faker.random.locale
    */
-fn locale(&self) -> String {
+    pub fn locale(&self) -> String {
     return thread_rng().choose(Object.keys(faker.locales)).unwrap();
   };
 
@@ -259,7 +259,7 @@ fn locale(&self) -> String {
    * @method faker.random.alphaNumeric
    * @param {number} count defaults to 1
    */
-fn alpha_numeric(&self, count: &str) -> String {
+    pub fn alpha_numeric(&self, count: &str) -> String {
     if (count.is_none()) {
       count = 1;
     }
@@ -278,7 +278,7 @@ fn alpha_numeric(&self, count: &str) -> String {
    * @method faker.random.hexaDecimal
    * @param {number} count defaults to 1
    */
-fn hexa_decimal(&self, count: &str) -> String {
+    pub fn hexa_decimal(&self, count: &str) -> String {
     if (count.is_none()) {
       count = 1;
     }

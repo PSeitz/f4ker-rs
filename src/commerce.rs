@@ -21,7 +21,7 @@ impl Commerce {
    *
    * @method faker.commerce.color
    */
-fn color(&self) -> String {
+    pub fn color(&self) -> String {
       return thread_rng().choose(self.faker.commerce_color()).unwrap();
   };
 
@@ -30,7 +30,7 @@ fn color(&self) -> String {
    *
    * @method faker.commerce.department
    */
-fn department(&self) -> String {
+    pub fn department(&self) -> String {
       return thread_rng().choose(self.faker.commerce_department()).unwrap();
   };
 
@@ -39,7 +39,7 @@ fn department(&self) -> String {
    *
    * @method faker.commerce.productName
    */
-fn product_name(&self) -> String {
+    pub fn product_name(&self) -> String {
       return faker.commerce.productAdjective() + " " +
               faker.commerce.productMaterial() + " " +
               faker.commerce.product();
@@ -56,7 +56,7 @@ fn product_name(&self) -> String {
    *
    * @return {string}
    */
-fn price(&self, min: &str,  max: &str,  dec: &str,  symbol: &str) -> String {
+    pub fn price(&self, min: &str,  max: &str,  dec: &str,  symbol: &str) -> String {
       min = min || 1;
       max = max || 1000;
       dec = dec == undefined ? 2 : dec;
@@ -72,7 +72,7 @@ fn price(&self, min: &str,  max: &str,  dec: &str,  symbol: &str) -> String {
   };
 
   /*
-fn categories(&self, num: &str) -> String {
+    pub fn categories(&self, num: &str) -> String {
       let categories = [];
 
       do {
@@ -87,7 +87,7 @@ fn categories(&self, num: &str) -> String {
 
   */
   /*
-fn merge_categories(&self, categories: &str) -> String {
+    pub fn merge_categories(&self, categories: &str) -> String {
       let separator = self.faker.separator() || " &";
       // TODO: find undefined here
       categories = categories || self.faker.commerce_categories();
@@ -102,7 +102,7 @@ fn merge_categories(&self, categories: &str) -> String {
    *
    * @method faker.commerce.productAdjective
    */
-fn product_adjective(&self) -> String {
+    pub fn product_adjective(&self) -> String {
       return thread_rng().choose(self.faker.commerce_product_name_adjective()).unwrap();
   };
 
@@ -111,7 +111,7 @@ fn product_adjective(&self) -> String {
    *
    * @method faker.commerce.productMaterial
    */
-fn product_material(&self) -> String {
+    pub fn product_material(&self) -> String {
       return thread_rng().choose(self.faker.commerce_product_name_material()).unwrap();
   };
 
@@ -120,7 +120,7 @@ fn product_material(&self) -> String {
    *
    * @method faker.commerce.product
    */
-fn product(&self) -> String {
+    pub fn product(&self) -> String {
       return thread_rng().choose(self.faker.commerce_product_name_product()).unwrap();
   };
 

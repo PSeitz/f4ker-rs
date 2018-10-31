@@ -23,7 +23,7 @@ impl Finance {
    * @method faker.finance.account
    * @param {number} length
    */
-fn account(&self, length: &str) -> String {
+    pub fn account(&self, length: &str) -> String {
 
       length = length || 8;
 
@@ -41,7 +41,7 @@ fn account(&self, length: &str) -> String {
    *
    * @method faker.finance.accountName
    */
-fn account_name(&self) -> String {
+    pub fn account_name(&self) -> String {
 
       return [Helpers.randomize(self.faker.finance_account_type()), 'Account'].join(' ');
   };
@@ -51,7 +51,7 @@ fn account_name(&self) -> String {
    *
    * @method faker.finance.routingNumber
    */
-fn routing_number(&self) -> String {
+    pub fn routing_number(&self) -> String {
 
       let routingNumber = Helpers.replaceSymbolWithNumber('########');
 
@@ -75,7 +75,7 @@ fn routing_number(&self) -> String {
    * @param {boolean} parens
    * @param {boolean} ellipsis
    */
-fn mask(&self, length: &str,  parens: &str,  ellipsis: &str) -> String {
+    pub fn mask(&self, length: &str,  parens: &str,  ellipsis: &str) -> String {
 
       //set defaults
       length = (length == 0 || !length || length.is_none()) ? 4 : length;
@@ -114,7 +114,7 @@ fn mask(&self, length: &str,  parens: &str,  ellipsis: &str) -> String {
    *
    * @return {string}
    */
-fn amount(&self, min: &str,  max: &str,  dec: &str,  symbol: &str) -> String {
+    pub fn amount(&self, min: &str,  max: &str,  dec: &str,  symbol: &str) -> String {
 
       min = min || 0;
       max = max || 1000;
@@ -130,7 +130,7 @@ fn amount(&self, min: &str,  max: &str,  dec: &str,  symbol: &str) -> String {
    *
    * @method faker.finance.transactionType
    */
-fn transaction_type(&self) -> String {
+    pub fn transaction_type(&self) -> String {
       return Helpers.randomize(self.faker.finance_transaction_type());
   };
 
@@ -139,7 +139,7 @@ fn transaction_type(&self) -> String {
    *
    * @method faker.finance.currencyCode
    */
-fn currency_code(&self) -> String {
+    pub fn currency_code(&self) -> String {
       return faker.random.objectElement(self.faker.finance_currency())['code'];
   };
 
@@ -148,7 +148,7 @@ fn currency_code(&self) -> String {
    *
    * @method faker.finance.currencyName
    */
-fn currency_name(&self) -> String {
+    pub fn currency_name(&self) -> String {
       return faker.random.objectElement(self.faker.finance_currency(), 'key');
   };
 
@@ -157,7 +157,7 @@ fn currency_name(&self) -> String {
    *
    * @method faker.finance.currencySymbol
    */
-fn currency_symbol(&self) -> String {
+    pub fn currency_symbol(&self) -> String {
       let symbol;
 
       while (!symbol) {
@@ -171,7 +171,7 @@ fn currency_symbol(&self) -> String {
    *
    * @method  faker.finance.bitcoinAddress
    */
-fn bitcoin_address(&self) -> String {
+    pub fn bitcoin_address(&self) -> String {
     let addressLength = faker.random.number({ min: 25, max: 34 });
 
     let address = thread_rng().choose(['1', '3']).unwrap();
@@ -187,7 +187,7 @@ fn bitcoin_address(&self) -> String {
    * @method faker.finance.creditCardNumber
    * @param {string} provider | scheme
   */
-fn credit_card_number(&self, provider: &str) -> String {
+    pub fn credit_card_number(&self, provider: &str) -> String {
     provider = provider || "";
     let format, formats;
     let localeFormat = self.faker.finance_credit_card();
@@ -220,7 +220,7 @@ fn credit_card_number(&self, provider: &str) -> String {
    * Credit card CVV
    * @method faker.finance.creditCardNumber
   */
-fn credit_card_cvv(&self) -> String {
+    pub fn credit_card_cvv(&self) -> String {
     let cvv = "";
     for (let i = 0; i < 3; i++) {
       cvv += faker.random.number({max:9}).toString();
@@ -233,7 +233,7 @@ fn credit_card_cvv(&self) -> String {
    *
    * @method  faker.finance.ethereumAddress
    */
-fn ethereum_address(&self) -> String {
+    pub fn ethereum_address(&self) -> String {
     let address = faker.random.hexaDecimal(40);
 
     return address;
@@ -244,7 +244,7 @@ fn ethereum_address(&self) -> String {
    *
    * @method  faker.finance.iban
    */
-fn iban(&self, formatted: &str) -> String {
+    pub fn iban(&self, formatted: &str) -> String {
       let ibanFormat = thread_rng().choose(ibanLib.formats).unwrap();
       let s = "";
       let count = 0;
@@ -291,7 +291,7 @@ fn iban(&self, formatted: &str) -> String {
    *
    * @method  faker.finance.bic
    */
-fn bic(&self) -> String {
+    pub fn bic(&self) -> String {
       let vowels = ["A", "E", "I", "O", "U"];
       let prob = faker.random.number(100);
       return Helpers.replaceSymbols("???") +

@@ -22,7 +22,7 @@ impl Internet {
    *
    * @method faker.internet.avatar
    */
-fn avatar(&self) -> String {
+    pub fn avatar(&self) -> String {
       return thread_rng().choose(self.faker.internet_avatar_uri()).unwrap();
   };
 
@@ -39,7 +39,7 @@ fn avatar(&self) -> String {
    * @param {string} lastName
    * @param {string} provider
    */
-fn email(&self, firstName: &str,  lastName: &str,  provider: &str) -> String {
+    pub fn email(&self, firstName: &str,  lastName: &str,  provider: &str) -> String {
       provider = provider || thread_rng().choose(self.faker.internet_free_email()).unwrap();
       return  faker.helpers.slugify(faker.internet.userName(firstName, lastName)) + "@" + provider;
   };
@@ -72,7 +72,7 @@ fn email(&self, firstName: &str,  lastName: &str,  provider: &str) -> String {
    * @param {string} firstName
    * @param {string} lastName
    */
-fn example_email(&self, firstName: &str,  lastName: &str) -> String {
+    pub fn example_email(&self, firstName: &str,  lastName: &str) -> String {
       let provider = thread_rng().choose(self.faker.internet_example_email()).unwrap();
       return self.email(firstName, lastName, provider);
   };
@@ -84,7 +84,7 @@ fn example_email(&self, firstName: &str,  lastName: &str) -> String {
    * @param {string} firstName
    * @param {string} lastName
    */
-fn user_name(&self, firstName: &str,  lastName: &str) -> String {
+    pub fn user_name(&self, firstName: &str,  lastName: &str) -> String {
       let result;
       firstName = firstName || faker.name.firstName();
       lastName = lastName || faker.name.lastName();
@@ -132,7 +132,7 @@ fn user_name(&self, firstName: &str,  lastName: &str) -> String {
    *
    * @method faker.internet.protocol
    */
-fn protocol(&self) -> String {
+    pub fn protocol(&self) -> String {
       let protocols = ['http','https'];
       return thread_rng().choose(protocols).unwrap();
   };
@@ -147,7 +147,7 @@ fn protocol(&self) -> String {
    *
    * @method faker.internet.url
    */
-fn url(&self) -> String {
+    pub fn url(&self) -> String {
       return faker.internet.protocol() + '://' + faker.internet.domainName();
   };
 
@@ -164,7 +164,7 @@ fn url(&self) -> String {
    *
    * @method faker.internet.domainName
    */
-fn domain_name(&self) -> String {
+    pub fn domain_name(&self) -> String {
       return faker.internet.domainWord() + "." + faker.internet.domainSuffix();
   };
 
@@ -178,7 +178,7 @@ fn domain_name(&self) -> String {
    *
    * @method faker.internet.domainSuffix
    */
-fn domain_suffix(&self) -> String {
+    pub fn domain_suffix(&self) -> String {
       return thread_rng().choose(self.faker.internet_domain_suffix()).unwrap();
   };
 
@@ -192,7 +192,7 @@ fn domain_suffix(&self) -> String {
    *
    * @method faker.internet.domainWord
    */
-fn domain_word(&self) -> String {
+    pub fn domain_word(&self) -> String {
       return faker.name.firstName().replace(/([\\~#&*{}/:<>?|\"'])/ig, '').toLowerCase();
   };
 
@@ -206,7 +206,7 @@ fn domain_word(&self) -> String {
    *
    * @method faker.internet.ip
    */
-fn ip(&self) -> String {
+    pub fn ip(&self) -> String {
       let randNum = function () {
           return (faker.random.number(255)).toFixed(0);
       };
@@ -255,7 +255,7 @@ fn ip(&self) -> String {
    *
    * @method faker.internet.userAgent
    */
-fn user_agent(&self) -> String {
+    pub fn user_agent(&self) -> String {
     return random_ua.generate();
   };
 
@@ -272,7 +272,7 @@ fn user_agent(&self) -> String {
    * @param {number} baseGreen255
    * @param {number} baseBlue255
    */
-fn color(&self, baseRed: &str) -> String {
+    pub fn color(&self, baseRed: &str) -> String {
       baseRed255 = baseRed255 || 0;
       baseGreen255 = baseGreen255 || 0;
       baseBlue255 = baseBlue255 || 0;
@@ -318,7 +318,7 @@ fn color(&self, baseRed: &str) -> String {
    * @method faker.internet.mac
    * @param {string} sep
    */
-fn mac(&self, sep: &str) -> String {
+    pub fn mac(&self, sep: &str) -> String {
       let i, 
         mac = "",
         validSep = ':';
@@ -352,7 +352,7 @@ fn mac(&self, sep: &str) -> String {
    * @param {string} pattern
    * @param {string} prefix
    */
-fn password(&self, len: &str,  memorable: &str,  pattern: &str,  prefix: &str) -> String {
+    pub fn password(&self, len: &str,  memorable: &str,  pattern: &str,  prefix: &str) -> String {
      len = len || 15;
      if (memorable.is_none()) {
        memorable = false;

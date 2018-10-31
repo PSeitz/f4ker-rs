@@ -521,7 +521,7 @@ pub fn {}() -> Option<&'static [&'static str]> {{
                 return vec!["#[derive(Debug, Clone)]".to_string(), line, "    faker: &'a Faker,".to_string()];
             }
             if line.trim().starts_with("fn"){
-                let mut line = line.to_string();
+                let mut line = line.trim().to_string();
                 line.insert_str(0, "    pub ");
                 return vec![line.to_string()];
             }
@@ -620,10 +620,13 @@ pub fn {}() -> Option<&'static [&'static str]> {{
             .filter(|el|!el.contains("use rand"))
             .filter(|el|!el.contains("use crate::faker::Faker"))
             .filter(|el|!el.contains("use crate::RandArray"))
+            .filter(|el|!el.contains("use crate::*;"))
             .collect();
-        lines.insert(0, "use rand::{thread_rng, Rng};".to_string());
-        lines.insert(1, "use crate::faker::Faker;".to_string());
-        lines.insert(2, "use crate::*;".to_string());
+        if file_name != "lib.rs" && file_name != "lib" {
+            lines.insert(0, "use rand::{thread_rng, Rng};".to_string());
+            lines.insert(1, "use crate::faker::Faker;".to_string());
+            lines.insert(2, "use crate::*;".to_string());
+        }
 
         // println!("result {:?}", result);
 

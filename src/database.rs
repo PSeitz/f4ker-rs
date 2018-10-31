@@ -20,7 +20,7 @@ impl Database {
    *
    * @method faker.database.column
    */
-fn column(&self) -> String {
+    pub fn column(&self) -> String {
       return thread_rng().choose(self.faker.database_column()).unwrap();
   };
 
@@ -34,7 +34,7 @@ fn column(&self) -> String {
    *
    * @method faker.database.type
    */
-fn type(&self) -> String {
+    pub fn type(&self) -> String {
       return thread_rng().choose(self.faker.database_type()).unwrap();
   };
 
@@ -48,7 +48,7 @@ fn type(&self) -> String {
    *
    * @method faker.database.collation
    */
-fn collation(&self) -> String {
+    pub fn collation(&self) -> String {
       return thread_rng().choose(self.faker.database_collation()).unwrap();
   };
 
@@ -62,7 +62,7 @@ fn collation(&self) -> String {
    *
    * @method faker.database.engine
    */
-fn engine(&self) -> String {
+    pub fn engine(&self) -> String {
       return thread_rng().choose(self.faker.database_engine()).unwrap();
   };
 

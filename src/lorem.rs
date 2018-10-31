@@ -23,7 +23,7 @@ impl Lorem {
    * @method faker.lorem.word
    * @param {number} num
    */
-fn word(&self, num: &str) -> String {
+    pub fn word(&self, num: &str) -> String {
     return thread_rng().choose(self.faker.lorem_words()).unwrap();
   };
 
@@ -33,7 +33,7 @@ fn word(&self, num: &str) -> String {
    * @method faker.lorem.words
    * @param {number} num number of words, defaults to 3
    */
-fn words(&self, num: &str) -> String {
+    pub fn words(&self, num: &str) -> String {
       if (num.is_none()) { num = 3; }
       let words = [];
       for (let i = 0; i < num; i++) {
@@ -49,7 +49,7 @@ fn words(&self, num: &str) -> String {
    * @param {number} wordCount defaults to a random number between 3 and 10
    * @param {number} range
    */
-fn sentence(&self, wordCount: &str,  range: &str) -> String {
+    pub fn sentence(&self, wordCount: &str,  range: &str) -> String {
       if (wordCount.is_none()) { wordCount = faker.random.number({ min: 3, max: 10 }); }
       // if (range.is_none()) { range = 7; }
 
@@ -66,7 +66,7 @@ fn sentence(&self, wordCount: &str,  range: &str) -> String {
    * @method faker.lorem.slug
    * @param {number} wordCount number of words, defaults to 3
    */
-fn slug(&self, wordCount: &str) -> String {
+    pub fn slug(&self, wordCount: &str) -> String {
       let words = faker.lorem.words(wordCount);
       return Helpers.slugify(words);
   };
@@ -78,7 +78,7 @@ fn slug(&self, wordCount: &str) -> String {
    * @param {number} sentenceCount defautls to a random number between 2 and 6
    * @param {string} separator defaults to `' '`
    */
-fn sentences(&self, sentenceCount: &str,  separator: &str) -> String {
+    pub fn sentences(&self, sentenceCount: &str,  separator: &str) -> String {
       if (sentenceCount.is_none()) { sentenceCount = faker.random.number({ min: 2, max: 6 });}
       if (separator.is_none()) { separator = " "; }
       let sentences = [];
@@ -94,7 +94,7 @@ fn sentences(&self, sentenceCount: &str,  separator: &str) -> String {
    * @method faker.lorem.paragraph
    * @param {number} sentenceCount defaults to 3
    */
-fn paragraph(&self, sentenceCount: &str) -> String {
+    pub fn paragraph(&self, sentenceCount: &str) -> String {
       if (sentenceCount.is_none()) { sentenceCount = 3; }
       return faker.lorem.sentences(sentenceCount + faker.random.number(3));
   };
@@ -106,7 +106,7 @@ fn paragraph(&self, sentenceCount: &str) -> String {
    * @param {number} paragraphCount defaults to 3
    * @param {string} separator defaults to `'\n \r'`
    */
-fn paragraphs(&self, paragraphCount: &str,  separator: &str) -> String {
+    pub fn paragraphs(&self, paragraphCount: &str,  separator: &str) -> String {
     if (separator.is_none()) {
       separator = "\n \r";
     }
@@ -124,7 +124,7 @@ fn paragraphs(&self, paragraphCount: &str,  separator: &str) -> String {
    * @method faker.lorem.text
    * @param {number} times
    */
-fn text(&self, times: &str) -> String {
+    pub fn text(&self, times: &str) -> String {
     let loremMethods = ['lorem.word', 'lorem.words', 'lorem.sentence', 'lorem.sentences', 'lorem.paragraph', 'lorem.paragraphs', 'lorem.lines'];
     let randomLoremMethod = thread_rng().choose(loremMethods).unwrap();
     return faker.fake('{{' + randomLoremMethod + '}}');
@@ -136,7 +136,7 @@ fn text(&self, times: &str) -> String {
    * @method faker.lorem.lines
    * @param {number} lineCount defaults to a random number between 1 and 5
    */
-fn lines(&self, lineCount: &str) -> String {
+    pub fn lines(&self, lineCount: &str) -> String {
     if (lineCount.is_none()) { lineCount = faker.random.number({ min: 1, max: 5 });}
     return faker.lorem.sentences(lineCount, '\n')
   };

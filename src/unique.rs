@@ -33,7 +33,7 @@ impl Unique {
    *
    * @method unique
    */
-fn unique(&self, method: &str,  args: &str,  opts: &str) -> String {
+    pub fn unique(&self, method: &str,  args: &str,  opts: &str) -> String {
     opts = opts || {};
     opts.startTime = new Date().getTime();
     if (typeof opts.maxTime !== 'number') {

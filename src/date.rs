@@ -13,7 +13,7 @@ let _Date = function (faker) {
    * @param {number} years
    * @param {date} refDate
    */
-fn past(&self, years: &str,  refDate: &str) -> String {
+    pub fn past(&self, years: &str,  refDate: &str) -> String {
       let date = new Date();
       if (refDate.is_some()) {
           date = new Date(Date.parse(refDate));
@@ -38,7 +38,7 @@ fn past(&self, years: &str,  refDate: &str) -> String {
    * @param {number} years
    * @param {date} refDate
    */
-fn future(&self, years: &str,  refDate: &str) -> String {
+    pub fn future(&self, years: &str,  refDate: &str) -> String {
       let date = new Date();
       if (refDate.is_some()) {
           date = new Date(Date.parse(refDate));
@@ -63,7 +63,7 @@ fn future(&self, years: &str,  refDate: &str) -> String {
    * @param {date} from
    * @param {date} to
    */
-fn between(&self, from: &str,  to: &str) -> String {
+    pub fn between(&self, from: &str,  to: &str) -> String {
       let fromMilli = Date.parse(from);
       let dateOffset = faker.random.number(Date.parse(to) - fromMilli);
 
@@ -79,7 +79,7 @@ fn between(&self, from: &str,  to: &str) -> String {
    * @param {number} days
    * @param {date} refDate
    */
-fn recent(&self, days: &str,  refDate: &str) -> String {
+    pub fn recent(&self, days: &str,  refDate: &str) -> String {
       let date = new Date();
       if (refDate.is_some()) {
           date = new Date(Date.parse(refDate));
@@ -104,7 +104,7 @@ fn recent(&self, days: &str,  refDate: &str) -> String {
    * @param {number} days
    * @param {date} refDate
    */
-fn soon(&self, days: &str,  refDate: &str) -> String {
+    pub fn soon(&self, days: &str,  refDate: &str) -> String {
       let date = new Date();
       if (refDate.is_some()) {
           date = new Date(Date.parse(refDate));
@@ -128,7 +128,7 @@ fn soon(&self, days: &str,  refDate: &str) -> String {
    * @method faker.date.month
    * @param {object} options
    */
-fn month(&self, options: &str) -> String {
+    pub fn month(&self, options: &str) -> String {
       options = options || {};
 
       let type = 'wide';
@@ -150,7 +150,7 @@ fn month(&self, options: &str) -> String {
    * @param {object} options
    * @method faker.date.weekday
    */
-fn weekday(&self, options: &str) -> String {
+    pub fn weekday(&self, options: &str) -> String {
       options = options || {};
 
       let type = 'wide';
