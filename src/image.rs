@@ -44,7 +44,7 @@ fn avatar(&self) -> String {
    * @param {boolean} randomize
    * @method faker.image.imageUrl
    */
-fn imageUrl(&self, width: &str,  height: &str,  category: &str,  randomize: &str,  https: &str) -> String {
+fn image_url(&self, width: &str,  height: &str,  category: &str,  randomize: &str,  https: &str) -> String {
       let width = width || 640;
       let height = height || 480;
       let protocol = 'http://';
@@ -213,7 +213,7 @@ fn transport(&self, width: &str,  height: &str,  randomize: &str) -> String {
    * @param {string} color
    * @method faker.image.dataUri
    */
-fn dataUri(&self, width: &str,  height: &str,  color: &str) -> String {
+fn data_uri(&self, width: &str,  height: &str,  color: &str) -> String {
     color = color || 'grey';
     let svgString = '<svg xmlns="http://www.w3.org/2000/svg" version="1.1" baseProfile="full" width="' + width + '" height="' + height + '"><rect width="100%" height="100%" fill="' + color + '"/><text x="' + width / 2 + '" y="' + height / 2 + '" font-size="20" alignment-baseline="middle" text-anchor="middle" fill="white">' + width + 'x' + height + '</text></svg>';
     let rawPrefix = 'data:image/svg+xml;charset=UTF-8,';

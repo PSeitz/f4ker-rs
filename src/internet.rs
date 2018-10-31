@@ -70,7 +70,7 @@ fn email(&self, firstName: &str,  lastName: &str,  provider: &str) -> String {
    * @param {string} firstName
    * @param {string} lastName
    */
-fn exampleEmail(&self, firstName: &str,  lastName: &str) -> String {
+fn example_email(&self, firstName: &str,  lastName: &str) -> String {
       let provider = thread_rng().choose(self.faker.internet_example_email()).unwrap();
       return self.email(firstName, lastName, provider);
   };
@@ -82,7 +82,7 @@ fn exampleEmail(&self, firstName: &str,  lastName: &str) -> String {
    * @param {string} firstName
    * @param {string} lastName
    */
-fn userName(&self, firstName: &str,  lastName: &str) -> String {
+fn user_name(&self, firstName: &str,  lastName: &str) -> String {
       let result;
       firstName = firstName || faker.name.firstName();
       lastName = lastName || faker.name.lastName();
@@ -162,7 +162,7 @@ fn url(&self) -> String {
    *
    * @method faker.internet.domainName
    */
-fn domainName(&self) -> String {
+fn domain_name(&self) -> String {
       return faker.internet.domainWord() + "." + faker.internet.domainSuffix();
   };
 
@@ -176,7 +176,7 @@ fn domainName(&self) -> String {
    *
    * @method faker.internet.domainSuffix
    */
-fn domainSuffix(&self) -> String {
+fn domain_suffix(&self) -> String {
       return thread_rng().choose(self.faker.internet_domain_suffix()).unwrap();
   };
 
@@ -190,7 +190,7 @@ fn domainSuffix(&self) -> String {
    *
    * @method faker.internet.domainWord
    */
-fn domainWord(&self) -> String {
+fn domain_word(&self) -> String {
       return faker.name.firstName().replace(/([\\~#&*{}/:<>?|\"'])/ig, '').toLowerCase();
   };
 
@@ -253,7 +253,7 @@ fn ip(&self) -> String {
    *
    * @method faker.internet.userAgent
    */
-fn userAgent(&self) -> String {
+fn user_agent(&self) -> String {
     return random_ua.generate();
   };
 

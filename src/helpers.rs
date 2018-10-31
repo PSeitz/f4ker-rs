@@ -44,7 +44,7 @@ fn slugify(&self, string: &str) -> String {
    * @param {string} string
    * @param {string} symbol defaults to `"#"`
    */
-fn replaceSymbolWithNumber(&self, string: &str,  symbol: &str) -> String {
+fn replace_symbol_with_number(&self, string: &str,  symbol: &str) -> String {
       string = string || "";
       // default symbol is '#'
       if (symbol == undefined) {
@@ -71,7 +71,7 @@ fn replaceSymbolWithNumber(&self, string: &str,  symbol: &str) -> String {
    * @method faker.helpers.replaceSymbols
    * @param {string} string
    */
-fn replaceSymbols(&self, string: &str) -> String {
+fn replace_symbols(&self, string: &str) -> String {
       string = string || "";
       let alpha = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
       let str = '';
@@ -98,7 +98,7 @@ fn replaceSymbols(&self, string: &str) -> String {
    * @param {string} symbol
    */
 
-fn replaceCreditCardSymbols(&self, string: &str,  symbol: &str) -> String {
+fn replace_credit_card_symbols(&self, string: &str,  symbol: &str) -> String {
      symbol = symbol || "#";
 
      // Function calculating the Luhn checksum of a number string
@@ -132,7 +132,7 @@ fn replaceCreditCardSymbols(&self, string: &str,  symbol: &str) -> String {
    * @param {string} string
    * @param {number} num
    */
-fn repeatString(&self, string: &str, num: &str) -> String {
+fn repeat_string(&self, string: &str, num: &str) -> String {
      if(num.is_none()) {
        num = 0;
      }
@@ -151,7 +151,7 @@ fn repeatString(&self, string: &str, num: &str) -> String {
     * @method faker.helpers.regexpStyleStringParse
     * @param {string} string
     */
-fn regexpStyleStringParse(&self, string: &str) -> String {
+fn regexp_style_string_parse(&self, string: &str) -> String {
      string = string || "";
      // Deal with range repeat `{min,max}`
      let RANGE_REP_REG = /(.)\{(\d+)\,(\d+)\}/;
@@ -238,7 +238,7 @@ fn mustache(&self, str: &str,  data: &str) -> String {
    *
    * @method faker.helpers.createCard
    */
-fn createCard(&self) -> String {
+fn create_card(&self) -> String {
       return {
           "name": faker.name.findName(),
           "username": faker.internet.userName(),
@@ -293,7 +293,7 @@ fn createCard(&self) -> String {
    *
    * @method faker.helpers.contextualCard
    */
-fn contextualCard(&self) -> String {
+fn contextual_card(&self) -> String {
     let name = faker.name.firstName(),
         userName = faker.internet.userName(name);
     return {
@@ -328,7 +328,7 @@ fn contextualCard(&self) -> String {
    *
    * @method faker.helpers.userCard
    */
-fn userCard(&self) -> String {
+fn user_card(&self) -> String {
       return {
           "name": faker.name.findName(),
           "username": faker.internet.userName(),
@@ -358,7 +358,7 @@ fn userCard(&self) -> String {
    *
    * @method faker.helpers.createTransaction
    */
-fn createTransaction(&self) -> String {
+fn create_transaction(&self) -> String {
     return {
       "amount" : faker.finance.amount(),
       "date" : new Date(2012, 1, 2),  //TODO: add a ranged date method

@@ -33,7 +33,7 @@ fn branch(&self) -> String {
    * @method faker.git.commitEntry
    * @param {object} options
    */
-fn commitEntry(&self, options: &str) -> String {
+fn commit_entry(&self, options: &str) -> String {
     options = options || {};
 
     let entry = 'commit {{git.commitSha}}\r\n';
@@ -54,7 +54,7 @@ fn commitEntry(&self, options: &str) -> String {
    *
    * @method faker.git.commitMessage
    */
-fn commitMessage(&self) -> String {
+fn commit_message(&self) -> String {
     let format = '{{hacker.verb}} {{hacker.adjective}} {{hacker.noun}}';
     return f(format);
   };
@@ -64,7 +64,7 @@ fn commitMessage(&self) -> String {
    *
    * @method faker.git.commitSha
    */
-fn commitSha(&self) -> String {
+fn commit_sha(&self) -> String {
     let commit = "";
 
     for (let i = 0; i < 40; i++) {
@@ -79,7 +79,7 @@ fn commitSha(&self) -> String {
    *
    * @method faker.git.shortSha
    */
-fn shortSha(&self) -> String {
+fn short_sha(&self) -> String {
     let shortSha = "";
 
     for (let i = 0; i < 7; i++) {

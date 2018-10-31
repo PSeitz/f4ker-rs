@@ -21,7 +21,7 @@ impl Address {
    * @method faker.address.zipCode
    * @param {String} format
    */
-fn zipCode(&self, format: &str) -> String {
+fn zip_code(&self, format: &str) -> String {
     // if zip format is not specified, use the zip format defined for the locale
     if (format.is_none()) {
       let localeFormat = self.faker.address_postcode();
@@ -44,7 +44,7 @@ fn zipCode(&self, format: &str) -> String {
    * @method faker.address.zipCodeByState
    * @param {String} state
    */
-fn zipCodeByState(&self, state: &str) -> String {
+fn zip_code_by_state(&self, state: &str) -> String {
     let zipRange = self.faker.address_postcode_by_state()[state];
     if (zipRange) {
       return faker.random.number(zipRange);
@@ -87,7 +87,7 @@ fn city(&self, format: &str) -> String {
    * Return a random localized city prefix
    * @method faker.address.cityPrefix
    */
-fn cityPrefix(&self) -> String {
+fn city_prefix(&self) -> String {
     return thread_rng().choose(self.faker.address_city_prefix()).unwrap();
   }
 
@@ -96,7 +96,7 @@ fn cityPrefix(&self) -> String {
    *
    * @method faker.address.citySuffix
    */
-fn citySuffix(&self) -> String {
+fn city_suffix(&self) -> String {
     return thread_rng().choose(self.faker.address_city_suffix()).unwrap();
   }
 
@@ -105,7 +105,7 @@ fn citySuffix(&self) -> String {
    *
    * @method faker.address.streetName
    */
-fn streetName(&self) -> String {
+fn street_name(&self) -> String {
       let result;
       let suffix = faker.address.streetSuffix();
       if (suffix !== "") {
@@ -132,7 +132,7 @@ fn streetName(&self) -> String {
    * @method faker.address.streetAddress
    * @param {Boolean} useFullAddress
    */
-fn streetAddress(&self, useFullAddress: &str) -> String {
+fn street_address(&self, useFullAddress: &str) -> String {
       if (useFullAddress == undefined) { useFullAddress = false; }
       let address = "";
       switch (faker.random.number(2)) {
@@ -154,7 +154,7 @@ fn streetAddress(&self, useFullAddress: &str) -> String {
    *
    * @method faker.address.streetSuffix
    */
-fn streetSuffix(&self) -> String {
+fn street_suffix(&self) -> String {
       return thread_rng().choose(self.faker.address_street_suffix()).unwrap();
   }
 
@@ -163,7 +163,7 @@ fn streetSuffix(&self) -> String {
    *
    * @method faker.address.streetPrefix
    */
-fn streetPrefix(&self) -> String {
+fn street_prefix(&self) -> String {
       return thread_rng().choose(self.faker.address_street_prefix()).unwrap();
   }
 
@@ -172,7 +172,7 @@ fn streetPrefix(&self) -> String {
    *
    * @method faker.address.secondaryAddress
    */
-fn secondaryAddress(&self) -> String {
+fn secondary_address(&self) -> String {
       return Helpers.replaceSymbolWithNumber(thread_rng().choose(
           [
               'Apt. ###',
@@ -204,7 +204,7 @@ fn country(&self) -> String {
    *
    * @method faker.address.countryCode
    */
-fn countryCode(&self) -> String {
+fn country_code(&self) -> String {
     return thread_rng().choose(self.faker.address_country_code()).unwrap();
   }
 
@@ -223,7 +223,7 @@ fn state(&self, useAbbr: &str) -> String {
    *
    * @method faker.address.stateAbbr
    */
-fn stateAbbr(&self) -> String {
+fn state_abbr(&self) -> String {
       return thread_rng().choose(self.faker.address_state_abbr()).unwrap();
   }
 
@@ -291,7 +291,7 @@ fn direction(&self, useAbbr: &str) -> String {
    * @method faker.address.cardinalDirection
    * @param {Boolean} useAbbr return direction abbreviation. defaults to false
    */
-fn cardinalDirection(&self, useAbbr: &str) -> String {
+fn cardinal_direction(&self, useAbbr: &str) -> String {
     if (useAbbr.is_none() || useAbbr == false) {
       return (
         thread_rng().choose(self.faker.address_direction_slice()(0, 4)).unwrap()
@@ -313,7 +313,7 @@ fn cardinalDirection(&self, useAbbr: &str) -> String {
    * @method faker.address.ordinalDirection
    * @param {Boolean} useAbbr return direction abbreviation. defaults to false
    */
-fn ordinalDirection(&self, useAbbr: &str) -> String {
+fn ordinal_direction(&self, useAbbr: &str) -> String {
     if (useAbbr.is_none() || useAbbr == false) {
       return (
         thread_rng().choose(self.faker.address_direction_slice()(4, 8)).unwrap()
@@ -329,7 +329,7 @@ fn ordinalDirection(&self, useAbbr: &str) -> String {
     "sampleResults": ["Northwest", "Southeast", "SW", "NE"]
   };
 
-fn nearbyGPSCoordinate(&self, coordinate: &str,  radius: &str,  isMetric: &str) -> String {
+fn nearby_gps_coordinate(&self, coordinate: &str,  radius: &str,  isMetric: &str) -> String {
         function randomFloat(min, max) {
             return Math.random() * (max-min) + min;
         }

@@ -39,7 +39,7 @@ fn account(&self, length: &str) -> String {
    *
    * @method faker.finance.accountName
    */
-fn accountName(&self) -> String {
+fn account_name(&self) -> String {
 
       return [Helpers.randomize(self.faker.finance_account_type()), 'Account'].join(' ');
   };
@@ -49,7 +49,7 @@ fn accountName(&self) -> String {
    *
    * @method faker.finance.routingNumber
    */
-fn routingNumber(&self) -> String {
+fn routing_number(&self) -> String {
 
       let routingNumber = Helpers.replaceSymbolWithNumber('########');
 
@@ -128,7 +128,7 @@ fn amount(&self, min: &str,  max: &str,  dec: &str,  symbol: &str) -> String {
    *
    * @method faker.finance.transactionType
    */
-fn transactionType(&self) -> String {
+fn transaction_type(&self) -> String {
       return Helpers.randomize(self.faker.finance_transaction_type());
   };
 
@@ -137,7 +137,7 @@ fn transactionType(&self) -> String {
    *
    * @method faker.finance.currencyCode
    */
-fn currencyCode(&self) -> String {
+fn currency_code(&self) -> String {
       return faker.random.objectElement(self.faker.finance_currency())['code'];
   };
 
@@ -146,7 +146,7 @@ fn currencyCode(&self) -> String {
    *
    * @method faker.finance.currencyName
    */
-fn currencyName(&self) -> String {
+fn currency_name(&self) -> String {
       return faker.random.objectElement(self.faker.finance_currency(), 'key');
   };
 
@@ -155,7 +155,7 @@ fn currencyName(&self) -> String {
    *
    * @method faker.finance.currencySymbol
    */
-fn currencySymbol(&self) -> String {
+fn currency_symbol(&self) -> String {
       let symbol;
 
       while (!symbol) {
@@ -169,7 +169,7 @@ fn currencySymbol(&self) -> String {
    *
    * @method  faker.finance.bitcoinAddress
    */
-fn bitcoinAddress(&self) -> String {
+fn bitcoin_address(&self) -> String {
     let addressLength = faker.random.number({ min: 25, max: 34 });
 
     let address = thread_rng().choose(['1', '3']).unwrap();
@@ -185,7 +185,7 @@ fn bitcoinAddress(&self) -> String {
    * @method faker.finance.creditCardNumber
    * @param {string} provider | scheme
   */
-fn creditCardNumber(&self, provider: &str) -> String {
+fn credit_card_number(&self, provider: &str) -> String {
     provider = provider || "";
     let format, formats;
     let localeFormat = self.faker.finance_credit_card();
@@ -218,7 +218,7 @@ fn creditCardNumber(&self, provider: &str) -> String {
    * Credit card CVV
    * @method faker.finance.creditCardNumber
   */
-fn creditCardCVV(&self) -> String {
+fn credit_card_cvv(&self) -> String {
     let cvv = "";
     for (let i = 0; i < 3; i++) {
       cvv += faker.random.number({max:9}).toString();
@@ -231,7 +231,7 @@ fn creditCardCVV(&self) -> String {
    *
    * @method  faker.finance.ethereumAddress
    */
-fn ethereumAddress(&self) -> String {
+fn ethereum_address(&self) -> String {
     let address = faker.random.hexaDecimal(40);
 
     return address;

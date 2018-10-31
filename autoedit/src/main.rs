@@ -7,6 +7,7 @@ use std::fs::OpenOptions;
 use std::io::prelude::*;
 use regex::Regex;
 
+use heck::SnakeCase;
 fn find_matching_braces(text: &str, opening_brace:char, closing_brace:char) -> Option<usize> {
     let mut num = 1;
     for (i, cha) in text.char_indices() {
@@ -552,6 +553,14 @@ pub fn {}() -> Option<&'static [&'static str]> {{
         let lines:Vec<String> = lines.iter().map(|line|{
             re_def_name.replace_all(line, |caps: &regex::Captures| {
                 caps[1].to_string() + "self.faker."+ &caps[2].replace(".", "_")+ ".is_some()"
+            }).to_string()
+        }).collect();
+
+        //fn zipCode( to snake_case
+        let re_def_name = Regex::new(r#"(.*?)(fn\s*)([A-Za-z\._]*)(.*)"#).unwrap();
+        let lines:Vec<String> = lines.iter().map(|line|{
+            re_def_name.replace_all(line, |caps: &regex::Captures| {
+                caps[1].to_string() + &caps[2]+ &caps[3].to_snake_case()+ &caps[4]
             }).to_string()
         }).collect();
 

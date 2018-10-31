@@ -4,6 +4,7 @@ edition = "2018"
 name = "autoedit"
 version = "0.1.0"
 [dependencies]
+heck = "0.3.0"
 rand = "0.5.5"
 regex = "1.0.5"
 walkdir = "2.2.5"

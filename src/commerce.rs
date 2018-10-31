@@ -37,7 +37,7 @@ fn department(&self) -> String {
    *
    * @method faker.commerce.productName
    */
-fn productName(&self) -> String {
+fn product_name(&self) -> String {
       return faker.commerce.productAdjective() + " " +
               faker.commerce.productMaterial() + " " +
               faker.commerce.product();
@@ -85,7 +85,7 @@ fn categories(&self, num: &str) -> String {
 
   */
   /*
-fn mergeCategories(&self, categories: &str) -> String {
+fn merge_categories(&self, categories: &str) -> String {
       let separator = self.faker.separator() || " &";
       // TODO: find undefined here
       categories = categories || self.faker.commerce_categories();
@@ -100,7 +100,7 @@ fn mergeCategories(&self, categories: &str) -> String {
    *
    * @method faker.commerce.productAdjective
    */
-fn productAdjective(&self) -> String {
+fn product_adjective(&self) -> String {
       return thread_rng().choose(self.faker.commerce_product_name_adjective()).unwrap();
   };
 
@@ -109,7 +109,7 @@ fn productAdjective(&self) -> String {
    *
    * @method faker.commerce.productMaterial
    */
-fn productMaterial(&self) -> String {
+fn product_material(&self) -> String {
       return thread_rng().choose(self.faker.commerce_product_name_material()).unwrap();
   };
 

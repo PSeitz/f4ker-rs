@@ -95,7 +95,7 @@ fn float(&self, options: &str) -> String {
    * @method faker.random.arrayElement
    * @param {array} array
    */
-fn arrayElement(&self, array: &str) -> String {
+fn array_element(&self, array: &str) -> String {
       array = array || ["a", "b", "c"];
       let r = faker.random.number({ max: array.length - 1 });
       return array[r];
@@ -108,7 +108,7 @@ fn arrayElement(&self, array: &str) -> String {
    * @param {array} array
    * @param {number} count number of elements to pick
    */
-fn arrayElements(&self, array: &str,  count: &str) -> String {
+fn array_elements(&self, array: &str,  count: &str) -> String {
       array = array || ["a", "b", "c"];
 
       if (typeof count !== 'number') {
@@ -136,7 +136,7 @@ fn arrayElements(&self, array: &str,  count: &str) -> String {
    * @param {object} object
    * @param {mixed} field
    */
-fn objectElement(&self, object: &str,  field: &str) -> String {
+fn object_element(&self, object: &str,  field: &str) -> String {
       object = object || { "foo": "bar", "too": "car" };
       let array = Object.keys(object);
       let key = thread_rng().choose(array).unwrap();
@@ -257,7 +257,7 @@ fn locale(&self) -> String {
    * @method faker.random.alphaNumeric
    * @param {number} count defaults to 1
    */
-fn alphaNumeric(&self, count: &str) -> String {
+fn alpha_numeric(&self, count: &str) -> String {
     if (count.is_none()) {
       count = 1;
     }
@@ -276,7 +276,7 @@ fn alphaNumeric(&self, count: &str) -> String {
    * @method faker.random.hexaDecimal
    * @param {number} count defaults to 1
    */
-fn hexaDecimal(&self, count: &str) -> String {
+fn hexa_decimal(&self, count: &str) -> String {
     if (count.is_none()) {
       count = 1;
     }
