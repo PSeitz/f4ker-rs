@@ -520,6 +520,11 @@ pub fn {}() -> Option<&'static [&'static str]> {{
                 line = line.replace("{", "<'a> {");
                 return vec!["#[derive(Debug, Clone)]".to_string(), line, "    faker: &'a Faker,".to_string()];
             }
+            if line.trim().starts_with("fn"){
+                let mut line = line.to_string();
+                line.insert_str(0, "    pub ");
+                return vec![line.to_string()];
+            }
             vec![line.to_string()]
         }).collect();
 

@@ -15,10 +15,6 @@ pub enum Gender {
 
 const GENDERS: [Gender; 2] = [Gender::Male, Gender::Female];
 
-macro_rules! rand_cloned {
-    ($arr:expr) => (thread_rng().choose(&$arr).cloned().unwrap())
-}
-
 #[test]
 fn name() {
     let facker = Faker::new();
@@ -71,7 +67,6 @@ impl<'a> Name<'a> {
             }
         }
         panic!("no middle name found");
-        // return self.faker.name_middle_name.rand();
     }
 
     pub fn find_name(&self) -> String {

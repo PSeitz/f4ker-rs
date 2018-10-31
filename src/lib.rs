@@ -7,14 +7,9 @@ mod name;
 
 pub use self::faker::Faker;
 
-
-trait RandArray<T> {
-    fn rand(&self) -> &T;
-}
-impl<T> RandArray<T> for &[T] {
-    fn rand(&self) -> &T {
-        thread_rng().choose(&self).unwrap() //unwrap, because empty arrays are not allowed in locales
-    }
+#[macro_export]
+macro_rules! rand_cloned {
+    ($arr:expr) => (thread_rng().choose(&$arr).cloned().unwrap())
 }
 
 trait RandArrayStatic {
