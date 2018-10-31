@@ -388,7 +388,6 @@ impl Faker {
 
 //     }
 
-//   let self = this;
 
 //   opts = opts || {};
 

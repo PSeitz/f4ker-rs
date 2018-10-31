@@ -13,7 +13,6 @@ impl Hacker {
         Self { faker }
 
     }
-  let self = this;
   
   /**
    * abbreviation

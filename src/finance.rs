@@ -13,7 +13,6 @@ impl Finance {
 
     }
   let ibanLib = require("./iban");
-  let Helpers = faker.helpers,
       self = this;
 
   /**

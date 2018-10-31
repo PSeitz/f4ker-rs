@@ -13,8 +13,6 @@ impl Git {
         Self { faker }
 
     }
-  let self = this;
-  let f = faker.fake;
 
   let hexChars = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"];
 

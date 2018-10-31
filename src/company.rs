@@ -14,8 +14,6 @@ impl Company {
 
     }
   
-  let self = this;
-  let f = faker.fake;
   
   /**
    * suffixes

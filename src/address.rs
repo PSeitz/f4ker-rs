@@ -13,8 +13,6 @@ impl Address {
         Self { faker }
 
     }
-  let f = faker.fake,
-      Helpers = faker.helpers;
 
   /**
    * Generates random zipcode from format. If format is not specified, the

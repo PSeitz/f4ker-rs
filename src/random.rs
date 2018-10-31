@@ -150,7 +150,6 @@ fn objectElement(&self, object: &str,  field: &str) -> String {
    * @method faker.random.uuid
    */
 fn uuid(&self) -> String {
-      let self = this;
       let RFC4122_TEMPLATE = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx';
       let replacePlaceholders = function (placeholder) {
           let random = self.number({ min: 0, max: 15 });

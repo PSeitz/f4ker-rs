@@ -13,7 +13,6 @@ impl Commerce {
         Self { faker }
 
     }
-  let self = this;
 
   /**
    * color

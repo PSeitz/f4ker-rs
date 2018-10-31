@@ -14,8 +14,6 @@ impl Lorem {
         Self { faker }
 
     }
-  let self = this;
-  let Helpers = faker.helpers;
 
   /**
    * word

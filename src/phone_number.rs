@@ -13,7 +13,6 @@ impl Phone {
         Self { faker }
 
     }
-  let self = this;
 
   /**
    * phoneNumber

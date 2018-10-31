@@ -14,7 +14,6 @@ impl Image {
 
     }
 
-  let self = this;
 
   /**
    * image

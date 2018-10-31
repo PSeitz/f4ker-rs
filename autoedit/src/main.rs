@@ -522,6 +522,13 @@ pub fn {}() -> Option<&'static [&'static str]> {{
             vec![line.to_string()]
         }).collect();
 
+        let lines: Vec<String> = lines.into_iter().filter(|line|{
+            !line.contains("let f = faker.fake")
+        }).filter(|line|{
+            !line.contains("Helpers = faker.helpers")
+        }).filter(|line|{
+            !line.contains("let self = this;")
+        }).collect();
 
         //this.zipCode = function(format) {  ->  fn zipCode(&self, ..param:String)
         let re = Regex::new(r"^\s*(this|self)\.([A-Za-z]*)\s*=\s*function\s*[A-Za-z]*\s*\(([A-Za-z,\s]*)\)*.").unwrap(); // var Phone = function (faker) {

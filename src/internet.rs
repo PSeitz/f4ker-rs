@@ -15,7 +15,6 @@ impl Internet {
         Self { faker }
 
     }
-  let self = this;
   /**
    * avatar
    *

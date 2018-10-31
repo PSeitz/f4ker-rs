@@ -13,7 +13,6 @@ impl Database {
         Self { faker }
 
     }
-  let self = this;
   /**
    * column
    *

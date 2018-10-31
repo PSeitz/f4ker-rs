@@ -14,7 +14,6 @@ impl Helpers {
 
     }
 
-  let self = this;
 
   /**
    * backword-compatibility

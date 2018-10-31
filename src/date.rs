@@ -4,7 +4,6 @@ use rand::{thread_rng, Rng};
  * @namespace faker.date
  */
 let _Date = function (faker) {
-  let self = this;
   /**
    * past
    *
