@@ -1,4 +1,6 @@
 use rand::{thread_rng, Rng};
+use crate::faker::Faker;
+use crate::RandArray;
 #[derive(Debug, Clone)]
 pub struct Commerce <'a> {
     faker: &'a Faker,

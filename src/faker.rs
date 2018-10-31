@@ -1,4 +1,6 @@
 use rand::{thread_rng, Rng};
+use crate::faker::Faker;
+use crate::RandArray;
 use crate::locales;
 use std::borrow::Cow;
 use crate::name;
