@@ -25,9 +25,10 @@ impl Address {
      */
     pub fn zip_code(&self, format: &str) -> String {
         // if zip format is not specified, use the zip format defined for the locale
-        let locale_format = format.or(self.faker.address_postcode.map(locale_format.rand())).expect("no fromat in zip code provided and not zip code in locale found");
+        let locale_format = format.or(self.faker.address_postcode.map(locale_format.rand()))
+            .expect("no format in zip code provided and not zip code in locale found");
 
-        return Helpers.replaceSymbols(format);
+        replace_symbols(format)
     }
 
     /**
@@ -40,13 +41,13 @@ impl Address {
      * @method faker.address.zipCodeByState
      * @param {String} state
      */
-    pub fn zip_code_by_state(&self, state: &str) -> String {
-        let zipRange = self.faker.address_postcode_by_state()[state];
-        if (zipRange) {
-            return faker.random.number(zipRange);
-        }
-        return this.zipCode();
-    }
+    // pub fn zip_code_by_state(&self, state: &str) -> String { //TODO
+    //     let zipRange = self.faker.address_postcode_by_state()[state];
+    //     if (zipRange) {
+    //         return faker.random.number(zipRange);
+    //     }
+    //     return this.zipCode();
+    // }
 
     /**
      * Generates a random localized city name. The format string can contain any
@@ -65,17 +66,19 @@ impl Address {
      */
     pub fn city(&self, format: &str) -> String {
         let formats = [
-            "{{address.cityPrefix}} {{name.firstName}}{{address.citySuffix}}",
-            "{{address.cityPrefix}} {{name.firstName}}",
-            "{{name.firstName}}{{address.citySuffix}}",
-            "{{name.lastName}}{{address.citySuffix}}"
+            "{{address.city_prefix}} {{name.first_name}}{{address.city_suffix}}",
+            "{{address.city_prefix}} {{name.first_name}}",
+            "{{name.first_name}}{{address.city_suffix}}",
+            "{{name.last_name}}{{address.city_suffix}}"
         ];
 
-        if (typeof format !== "number") {
-            format = faker.random.number(formats.length - 1);
-        }
+        // if (typeof format !== "number") {
+        //     format = faker.random.number(formats.length - 1);
+        // }
 
-        return f(formats[format]);
+        self.faker.fake(formats.rand())
+
+        // return f(formats[format]);
 
     }
 
@@ -84,7 +87,7 @@ impl Address {
      * @method faker.address.cityPrefix
      */
     pub fn city_prefix(&self) -> String {
-        return thread_rng().choose(self.faker.address_city_prefix()).unwrap();
+        return self.faker.address_city_prefix.rand();
     }
 
     /**
@@ -93,7 +96,7 @@ impl Address {
      * @method faker.address.citySuffix
      */
     pub fn city_suffix(&self) -> String {
-        return thread_rng().choose(self.faker.address_city_suffix()).unwrap();
+        return self.faker.address_city_suffix.rand();
     }
 
     /**
@@ -133,13 +136,13 @@ impl Address {
             let address = "";
             switch (faker.random.number(2)) {
             case 0:
-                    address = Helpers.replaceSymbolWithNumber("#####") + " " + faker.address.streetName();
+                    address = replaceSymbolWithNumber("#####") + " " + faker.address.streetName();
                     break;
             case 1:
-                    address = Helpers.replaceSymbolWithNumber("####") +  " " + faker.address.streetName();
+                    address = replaceSymbolWithNumber("####") +  " " + faker.address.streetName();
                     break;
             case 2:
-                    address = Helpers.replaceSymbolWithNumber("###") + " " + faker.address.streetName();
+                    address = replaceSymbolWithNumber("###") + " " + faker.address.streetName();
                     break;
             }
             return useFullAddress ? (address + " " + faker.address.secondaryAddress()) : address;
@@ -151,7 +154,7 @@ impl Address {
      * @method faker.address.streetSuffix
      */
     pub fn street_suffix(&self) -> String {
-            return thread_rng().choose(self.faker.address_street_suffix()).unwrap();
+            return self.faker.address_street_suffix.rand();
     }
 
     /**
@@ -160,7 +163,7 @@ impl Address {
      * @method faker.address.streetPrefix
      */
     pub fn street_prefix(&self) -> String {
-            return thread_rng().choose(self.faker.address_street_prefix()).unwrap();
+            return self.faker.address_street_prefix.rand();
     }
 
     /**
@@ -169,7 +172,7 @@ impl Address {
      * @method faker.address.secondaryAddress
      */
     pub fn secondary_address(&self) -> String {
-            return Helpers.replaceSymbolWithNumber(thread_rng().choose(
+            return replaceSymbolWithNumber(thread_rng().choose(
                     [
                             "Apt. ###",
                             "Suite ###"

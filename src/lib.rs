@@ -30,13 +30,16 @@ impl RandArrayStatic for Option<&'static [&'static str]> {
     }
 }
 
-fn replace_symbol_with_number(templ: &str) -> String {
 
+fn random_digit() -> char {
+    char::from_digit(thread_rng().gen_range::<u32>(0, 9), 10).unwrap()
+}
+pub fn replace_symbol_with_number(templ: &str) -> String {
     let templ = templ
         .chars()
         .map(|cha| {
             if cha == '#' {
-                char::from_digit(thread_rng().gen_range::<u32>(0, 9), 10).unwrap()
+                random_digit()
             } else if cha == '!' {
                 char::from_digit(thread_rng().gen_range::<u32>(2, 9), 10).unwrap()
             } else {
@@ -46,6 +49,30 @@ fn replace_symbol_with_number(templ: &str) -> String {
         .collect();
     templ
 }
+
+pub fn replace_symbols(string: &str) -> String {
+    let alpha = &['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+    string
+    .chars()
+    .map(|cha| {
+        if cha == '#' {
+            random_digit()
+        } else if cha == '?' {
+            *thread_rng().choose(alpha).unwrap()
+        } else if cha == '*' {
+            if rand::random() {
+                *thread_rng().choose(alpha).unwrap()
+            }else{
+                random_digit()
+            }
+        } else {
+            cha
+        }
+    })
+    .collect()
+
+}
+
 
 #[cfg(test)]
 mod tests {
