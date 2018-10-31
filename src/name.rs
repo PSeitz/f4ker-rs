@@ -33,16 +33,16 @@ const GENDERS: [Gender; 2] = [Gender::Male, Gender::Female];
 // }
 
 trait RandArray {
-    fn rand(&self) -> &str;
+    fn rand(&self) -> &'static str;
 }
 impl RandArray for &'static [&'static str] {
-    fn rand(&self) -> &str {
+    fn rand(&self) -> &'static str {
         thread_rng().choose(&self).unwrap()
     }
 }
 
 impl RandArray for Option<&'static [&'static str]> {
-    fn rand(&self) -> &str {
+    fn rand(&self) -> &'static str {
         if let Some(arr) = self {
             return thread_rng().choose(&arr).unwrap();
         }
@@ -59,11 +59,11 @@ fn name() {
 }
 
 impl<'a> Name<'a> {
-    pub(crate) fn new(faker: &'a Faker) -> Self {
+    pub fn new(faker: &'a Faker) -> Self {
         Name { faker }
     }
 
-    pub(crate) fn first_name(&self, gender: Option<Gender>) -> &'a str {
+    pub fn first_name(&self, gender: Option<Gender>) -> &'static str {
         let gender = gender.unwrap_or_else(|| thread_rng().choose(&GENDERS).cloned().unwrap());
 
         if let (Some(_name_male_first_name), Some(_name_female_first_name)) =
@@ -80,7 +80,7 @@ impl<'a> Name<'a> {
         return self.faker.name_first_name.rand();
     }
 
-    pub(crate) fn last_name(&self, gender: Option<Gender>) -> &'a str {
+    pub fn last_name(&self, gender: Option<Gender>) -> &'static str {
         let gender = gender.unwrap_or_else(|| thread_rng().choose(&GENDERS).cloned().unwrap());
         if self.faker.name_male_last_name.is_some() && self.faker.name_female_last_name.is_some() {
             if gender == Gender::Male {
@@ -92,7 +92,7 @@ impl<'a> Name<'a> {
         return self.faker.name_last_name.rand();
     }
 
-    pub(crate) fn middle_name(&self, gender: Option<Gender>) -> &'a str {
+    pub fn middle_name(&self, gender: Option<Gender>) -> &'static str {
         let gender = gender.unwrap_or_else(|| thread_rng().choose(&GENDERS).cloned().unwrap());
         if self.faker.name_male_middle_name.is_some() && self.faker.name_female_middle_name.is_some() {
             if gender == Gender::Male {
@@ -105,7 +105,7 @@ impl<'a> Name<'a> {
         // return self.faker.name_middle_name.rand();
     }
 
-    pub(crate) fn find_name(&self) -> String {
+    pub fn find_name(&self) -> String {
         let gender = thread_rng().choose(&GENDERS).cloned().unwrap();
         let r = thread_rng().gen_range(0, 8);
         // in particular locales first and last names split by gender,
@@ -119,11 +119,11 @@ impl<'a> Name<'a> {
         }
     }
 
-    pub(crate) fn job_title(&self) -> String {
+    pub fn job_title(&self) -> String {
         return self.job_descriptor().to_owned() + " " + &self.job_area() + " " + &self.job_type();
     }
 
-    pub(crate) fn prefix(&self, gender: Option<Gender>) -> &'a str {
+    pub fn prefix(&self, gender: Option<Gender>) -> &'static str {
         let gender = gender.unwrap_or_else(|| thread_rng().choose(&GENDERS).cloned().unwrap());
         if self.faker.name_male_prefix.is_some() && self.faker.name_female_prefix.is_some() {
             if gender == Gender::Male {
@@ -135,11 +135,11 @@ impl<'a> Name<'a> {
         return self.faker.name_prefix.rand();
     }
 
-    pub(crate) fn suffix(&self) -> &'a str {
+    pub fn suffix(&self) -> &'static str {
         return self.faker.name_suffix.rand();
     }
 
-    pub(crate) fn title(&self) -> String {
+    pub fn title(&self) -> String {
         let descriptor = self.faker.name_title_descriptor.rand();
         let level = self.faker.name_title_level.rand();
         let job = self.faker.name_title_job.rand();
@@ -147,15 +147,15 @@ impl<'a> Name<'a> {
         return descriptor.to_string() + " " + &level + " " + &job;
     }
 
-    pub(crate) fn job_descriptor(&self) -> &'a str {
+    pub fn job_descriptor(&self) -> &'static str {
         return self.faker.name_title_descriptor.rand();
     }
 
-    pub(crate) fn job_area(&self) -> &'a str {
+    pub fn job_area(&self) -> &'static str {
         return self.faker.name_title_level.rand();
     }
 
-    pub(crate) fn job_type(&self) -> &'a str {
+    pub fn job_type(&self) -> &'static str {
         return self.faker.name_title_job.rand();
     }
 }

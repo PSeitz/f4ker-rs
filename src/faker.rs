@@ -4,16 +4,6 @@ use std::borrow::Cow;
 use crate::name;
 #[derive(Debug, Clone)]
 pub struct Faker {
-    // pub name_first_name: Option<&'static [&'static str]>,
-    // pub name_last_name: Option<&'static [&'static str]>,
-    // pub name_prefix: Option<&'static [&'static str]>,
-    // pub name_suffix: Option<&'static [&'static str]>,
-    // pub name_gender: Option<&'static [&'static str]>,
-    // pub name_title: Option<&'static [&'static str]>,
-    // pub name_male_prefix: Option<&'static [&'static str]>,
-    // pub name_female_prefix: Option<&'static [&'static str]>,
-    // pub name_male_first_name: Option<&'static [&'static str]>,
-    // pub name_female_first_name: Option<&'static [&'static str]>,
     pub phone_number_formats: Option<&'static [&'static str]>,
     pub phone_number_exchange_code: Option<&'static [&'static str]>,
     pub phone_number_area_code: Option<&'static [&'static str]>,
@@ -135,9 +125,6 @@ pub struct Faker {
 macro_rules! new_faker {
     () => {{
         Faker {
-            // app_version: app::version(),
-            // app_name: app::name(),
-            // app_author: app::author(),
             phone_number_formats: phone_number::formats(),
             phone_number_exchange_code: phone_number::exchange_code(),
             phone_number_area_code: phone_number::area_code(),
@@ -259,30 +246,11 @@ macro_rules! new_faker {
 }
 
 
-// mod test {
-//     extern crate test;
-//     use super::*;
-//     #[test]
-//     fn interpol_fake() {
-//         let facker = Faker::new();
-//         println!("interpol_fake {:?}", facker.fake("{{name.last_name}}, {{name.first_name}} {{name.suffix}}"));
-//     }
-
-//     #[bench]
-//     fn bench_interpol_new_faker(b: &mut test::Bencher) {
-//         b.iter(|| {
-//             let facker = Faker::new();
-//             facker.fake("{{name.last_name}}, {{name.first_name}} {{name.suffix}}")
-//         })
-//     }
-//     #[bench]
-//     fn bench_interpol_reuse_faker(b: &mut test::Bencher) {
-//         b.iter(|| {
-//             let facker = Faker::new();
-//             facker.fake("{{name.last_name}}, {{name.first_name}} {{name.suffix}}")
-//         })
-//     }
-// }
+#[test]
+fn interpol_fake() {
+    let facker = Faker::new();
+    println!("interpol_fake {:?}", facker.fake("{{name.last_name}}, {{name.first_name}} {{name.suffix}}"));
+}
 
 impl Faker {
     pub fn new() -> Self {
@@ -294,7 +262,7 @@ impl Faker {
     // pub fn fake(&self, pattern: &str) -> crate::name::Name {
     //     crate::name::Name::new(self)
     // }
-    fn fake(&self, templ: &str) -> String {
+    pub fn fake2(&self, templ: &str) -> String {
         let mut templ = templ.to_string();
         while let Some(start_bytes) = templ.find("{{") {
             if let Some(end) = &templ[start_bytes..].find("}}") {
@@ -304,8 +272,18 @@ impl Faker {
         }
         templ
     }
+    pub fn fake(&self, templ: &str) -> String {
+        let iter_pairs = templ.rmatch_indices("{{").map(|el|el.0).zip(templ.rmatch_indices("}}").map(|el|el.0));
 
-    pub fn from_pattern(&self, pat: &str) -> Cow<'_, str> {
+        let mut oge = templ.to_string();
+        for pair in iter_pairs {
+            let pattern = &templ[pair.0 + 2..pair.1];
+            oge.replace_range(pair.0..pair.1 + 2, &self.from_pattern(pattern));
+        }
+        oge
+    }
+
+    fn from_pattern(&self, pat: &str) -> Cow<'_, str> {
         match pat {
             "name.first_name" => Cow::from(self.name().first_name(None)),
             "name.last_name" => Cow::from(self.name().last_name(None)),

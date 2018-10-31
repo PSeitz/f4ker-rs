@@ -489,11 +489,39 @@ pub fn {}() -> Option<&'static [&'static str]> {{
             vec![line.to_string()]
         }).collect();
 
+
+
         for structo in structs {
             lines.insert(0, format!("struct {} {{", structo));
             lines.insert(1, "{".to_string());
             lines.insert(2, "}".to_string());
         }
+
+
+        //Convert to
+        // #[derive(Debug, Clone)]
+        // pub struct Name<'a> {
+        //     faker: &'a Faker,
+        // }
+        // impl<'a> Name<'a> {
+        //     pub fn new(faker: &'a Faker) -> Self {
+        //         Name { faker }
+        //     }
+        // }
+
+        let lines: Vec<String> = lines.iter().flat_map(|line|{
+            if line.trim().starts_with("fn new() -> Self {"){
+                return vec!["    pub fn new(faker: &'a Faker) -> Self {".to_string(), "        Name { faker }".to_string()];
+            }
+            if line.trim().starts_with("struct") {
+                let mut line = line.to_string();
+                line.insert_str(0, "pub ");
+                line = line.replace("{", "<'a> {");
+                return vec!["#[derive(Debug, Clone)]".to_string(), line, "    faker: &'a Faker,".to_string()];
+            }
+            vec![line.to_string()]
+        }).collect();
+
 
         //this.zipCode = function(format) {  ->  fn zipCode(&self, ..param:String)
         let re = Regex::new(r"^\s*(this|self)\.([A-Za-z]*)\s*=\s*function\s*[A-Za-z]*\s*\(([A-Za-z,\s]*)\)*.").unwrap(); // var Phone = function (faker) {

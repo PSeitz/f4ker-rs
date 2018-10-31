@@ -1,4 +1,3 @@
-// #![feature(test)]
 use rand::{thread_rng, Rng};
 use std::char;
 
@@ -6,6 +5,7 @@ mod faker;
 pub mod locales;
 mod name;
 
+pub use self::faker::Faker;
 
 fn replace_symbol_with_number(templ: &str) -> String {
 
