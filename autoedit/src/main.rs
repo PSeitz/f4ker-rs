@@ -511,7 +511,7 @@ pub fn {}() -> Option<&'static [&'static str]> {{
 
         let lines: Vec<String> = lines.iter().flat_map(|line|{
             if line.trim().starts_with("fn new() -> Self {"){
-                return vec!["    pub fn new(faker: &'a Faker) -> Self {".to_string(), "        Name { faker }".to_string()];
+                return vec!["    pub fn new(faker: &'a Faker) -> Self {".to_string(), "        Self { faker }".to_string()];
             }
             if line.trim().starts_with("struct") {
                 let mut line = line.to_string();

@@ -1,5 +1,7 @@
 use rand::{thread_rng, Rng};
-struct System {
+#[derive(Debug, Clone)]
+pub struct System <'a> {
+    faker: &'a Faker,
 {
 }
 // generates fake data for many computer systems properties
@@ -9,7 +11,8 @@ struct System {
  * @namespace faker.system
  */
 impl System {
-    fn new() -> Self {
+    pub fn new(faker: &'a Faker) -> Self {
+        Self { faker }
 
     }
 

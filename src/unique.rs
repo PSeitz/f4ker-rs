@@ -1,5 +1,7 @@
 use rand::{thread_rng, Rng};
-struct Unique {
+#[derive(Debug, Clone)]
+pub struct Unique <'a> {
+    faker: &'a Faker,
 {
 }
 let uniqueExec = require('../vendor/unique');
@@ -8,7 +10,8 @@ let uniqueExec = require('../vendor/unique');
  * @namespace faker.unique
  */
 impl Unique {
-    fn new() -> Self {
+    pub fn new(faker: &'a Faker) -> Self {
+        Self { faker }
 
     }
 

@@ -1,12 +1,15 @@
 use rand::{thread_rng, Rng};
-struct Finance {
+#[derive(Debug, Clone)]
+pub struct Finance <'a> {
+    faker: &'a Faker,
 {
 }
 /**
  * @namespace faker.finance
  */
 impl Finance {
-    fn new() -> Self {
+    pub fn new(faker: &'a Faker) -> Self {
+        Self { faker }
 
     }
   let ibanLib = require("./iban");

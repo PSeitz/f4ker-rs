@@ -1,5 +1,7 @@
 use rand::{thread_rng, Rng};
-struct Phone {
+#[derive(Debug, Clone)]
+pub struct Phone <'a> {
+    faker: &'a Faker,
 {
 }
 /**
@@ -7,7 +9,8 @@ struct Phone {
  * @namespace faker.phone
  */
 impl Phone {
-    fn new() -> Self {
+    pub fn new(faker: &'a Faker) -> Self {
+        Self { faker }
 
     }
   let self = this;

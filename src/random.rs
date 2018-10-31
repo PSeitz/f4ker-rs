@@ -1,5 +1,7 @@
 use rand::{thread_rng, Rng};
-struct Random {
+#[derive(Debug, Clone)]
+pub struct Random <'a> {
+    faker: &'a Faker,
 {
 }
 let mersenne = require('../vendor/mersenne');
@@ -9,7 +11,8 @@ let mersenne = require('../vendor/mersenne');
  * @namespace faker.random
  */
 impl Random {
-    fn new() -> Self {
+    pub fn new(faker: &'a Faker) -> Self {
+        Self { faker }
 
     }
   // Use a user provided seed if it exists

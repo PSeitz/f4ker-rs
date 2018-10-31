@@ -1,5 +1,7 @@
 use rand::{thread_rng, Rng};
-struct Internet {
+#[derive(Debug, Clone)]
+pub struct Internet <'a> {
+    faker: &'a Faker,
 {
 }
 let random_ua = require('../vendor/user-agent');
@@ -9,7 +11,8 @@ let random_ua = require('../vendor/user-agent');
  * @namespace faker.internet
  */
 impl Internet {
-    fn new() -> Self {
+    pub fn new(faker: &'a Faker) -> Self {
+        Self { faker }
 
     }
   let self = this;

@@ -1,5 +1,5 @@
-use crate::locales;
 use rand::{thread_rng, Rng};
+use crate::locales;
 use std::borrow::Cow;
 use crate::name;
 #[derive(Debug, Clone)]

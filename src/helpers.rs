@@ -1,5 +1,7 @@
 use rand::{thread_rng, Rng};
-struct Helpers {
+#[derive(Debug, Clone)]
+pub struct Helpers <'a> {
+    faker: &'a Faker,
 {
 }
 /**
@@ -7,7 +9,8 @@ struct Helpers {
  * @namespace faker.helpers
  */
 impl Helpers {
-    fn new() -> Self {
+    pub fn new(faker: &'a Faker) -> Self {
+        Self { faker }
 
     }
 

@@ -1,5 +1,7 @@
 use rand::{thread_rng, Rng};
-struct Git {
+#[derive(Debug, Clone)]
+pub struct Git <'a> {
+    faker: &'a Faker,
 {
 }
 /**
@@ -7,7 +9,8 @@ struct Git {
  */
 
 impl Git {
-    fn new() -> Self {
+    pub fn new(faker: &'a Faker) -> Self {
+        Self { faker }
 
     }
   let self = this;

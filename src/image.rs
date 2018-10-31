@@ -1,5 +1,7 @@
 use rand::{thread_rng, Rng};
-struct Image {
+#[derive(Debug, Clone)]
+pub struct Image <'a> {
+    faker: &'a Faker,
 {
 }
 /**
@@ -7,7 +9,8 @@ struct Image {
  * @namespace faker.image
  */
 impl Image {
-    fn new() -> Self {
+    pub fn new(faker: &'a Faker) -> Self {
+        Self { faker }
 
     }
 

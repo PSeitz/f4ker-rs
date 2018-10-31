@@ -1,5 +1,7 @@
 use rand::{thread_rng, Rng};
-struct Lorem {
+#[derive(Debug, Clone)]
+pub struct Lorem <'a> {
+    faker: &'a Faker,
 {
 }
 
@@ -8,7 +10,8 @@ struct Lorem {
  * @namespace faker.lorem
  */
 impl Lorem {
-    fn new() -> Self {
+    pub fn new(faker: &'a Faker) -> Self {
+        Self { faker }
 
     }
   let self = this;
