@@ -7,6 +7,25 @@ mod name;
 
 pub use self::faker::Faker;
 
+
+trait RandArray {
+    fn rand(&self) -> &'static str;
+}
+impl RandArray for &'static [&'static str] {
+    fn rand(&self) -> &'static str {
+        thread_rng().choose(&self).unwrap() //unwrap, because empty arrays are not allowed in locales
+    }
+}
+
+impl RandArray for Option<&'static [&'static str]> {
+    fn rand(&self) -> &'static str {
+        if let Some(arr) = self {
+            return thread_rng().choose(&arr).unwrap(); //unwrap, because empty arrays are not allowed in locales
+        }
+        ""
+    }
+}
+
 fn replace_symbol_with_number(templ: &str) -> String {
 
     let templ = templ

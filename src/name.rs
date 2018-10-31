@@ -1,5 +1,7 @@
 use rand::{thread_rng, Rng};
 use crate::faker::Faker;
+use crate::RandArray;
+
 #[derive(Debug, Clone)]
 pub struct Name<'a> {
     faker: &'a Faker,
@@ -32,23 +34,6 @@ const GENDERS: [Gender; 2] = [Gender::Male, Gender::Female];
 //     }
 // }
 
-trait RandArray {
-    fn rand(&self) -> &'static str;
-}
-impl RandArray for &'static [&'static str] {
-    fn rand(&self) -> &'static str {
-        thread_rng().choose(&self).unwrap()
-    }
-}
-
-impl RandArray for Option<&'static [&'static str]> {
-    fn rand(&self) -> &'static str {
-        if let Some(arr) = self {
-            return thread_rng().choose(&arr).unwrap();
-        }
-        ""
-    }
-}
 
 #[test]
 fn name() {

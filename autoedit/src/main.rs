@@ -611,9 +611,14 @@ pub fn {}() -> Option<&'static [&'static str]> {{
             line
         }).collect();
 
-
-        let mut lines:Vec<String> = lines.into_iter().filter(|el|!el.contains("use rand")).collect();
+        let mut lines:Vec<String> = lines.into_iter()
+            .filter(|el|!el.contains("use rand"))
+            .filter(|el|!el.contains("use crate::faker::Faker"))
+            .filter(|el|!el.contains("use crate::RandArray"))
+            .collect();
         lines.insert(0, "use rand::{thread_rng, Rng};".to_string());
+        lines.insert(1, "use crate::faker::Faker;".to_string());
+        lines.insert(2, "use crate::RandArray;".to_string());
 
         // println!("result {:?}", result);
 
