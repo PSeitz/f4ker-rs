@@ -193,36 +193,6 @@ fn main() -> Result<(), std::io::Error> {
         }
     }
 
-    //reexport
-    for entry in WalkDir::new("../src/locales") {
-        let entry = entry.unwrap();
-        let file_name = entry.gimme_filename();
-
-        if file_name == "mod.rs" {
-            let mut liness:Vec<_> = into_lines(&entry.path()).into_iter().filter(|el|!el.contains("pub use")).collect();
-
-            // let reexport = liness.iter()
-            // .filter(|el|!el.contains("pub use"))
-            // .filter(|line|!line.trim().starts_with("//")) // is commented
-            // .flat_map(|line| get_between(&line, "mod", ";") )
-            // .filter(|module|{
-            //     let mod_path = entry.path().parent().unwrap().gimme_that()+"/" + module.trim()+".rs";
-            //     let path = Path::new(&mod_path);
-            //     if !path.exists(){
-            //         return true;
-            //     }
-            //     let commented_file = lines(&path).iter().all(|line| line.trim().starts_with("//") || line.trim()=="");
-            //     !commented_file
-            // })
-            // .map(|module|format!("pub use self::{}::*;", module.trim())).collect::<Vec<_>>();
-
-            // liness.extend(reexport);
-
-            write_lines(liness, &entry.path());
-
-        }
-    }
-
     let re_static_name = Regex::new(r#"(\s*pub static )([A-Za-z_]*)(: &'static \[&'static str\].*)"#).unwrap();
     //convert static arrays to upper case
     for entry in WalkDir::new("../src/locales") {
@@ -393,7 +363,7 @@ pub fn {}() -> Option<&'static [&'static str]> {{
         }
     }
 
-    // fix object to arrays -- commented only once
+    // fix object to arrays
     for entry in WalkDir::new("../src/locales") {
         let entry = entry.unwrap();
         if entry.path().is_dir() {
@@ -472,7 +442,7 @@ pub fn {}() -> Option<&'static [&'static str]> {{
             if let Some(pat) = re.captures(&line) {
                 structs.push(pat[1].to_string());
                 return vec![format!("impl {} {{",  &pat[1]),
-                    "    fn new() -> Self {".to_string(),
+                    "    pub fn new() -> Self {".to_string(),
                     "".to_string(),
                     "    }".to_string()
                 ];
@@ -482,7 +452,7 @@ pub fn {}() -> Option<&'static [&'static str]> {{
                 println!("{:?}", &pat[1]);
                 structs.push(pat[1].to_string());
                 return vec![format!("impl {} {{",  &pat[1]),
-                    "    fn new() -> Self {".to_string(),
+                    "    pub fn new() -> Self {".to_string(),
                     "".to_string(),
                     "    }".to_string()
                 ];
@@ -520,11 +490,11 @@ pub fn {}() -> Option<&'static [&'static str]> {{
                 line = line.replace("{", "<'a> {");
                 return vec!["#[derive(Debug, Clone)]".to_string(), line, "    faker: &'a Faker,".to_string()];
             }
-            if line.trim().starts_with("fn"){
-                let mut line = line.trim().to_string();
-                line.insert_str(0, "    pub ");
-                return vec![line.to_string()];
-            }
+            // if line.trim().starts_with("fn"){
+            //     let mut line = line.trim().to_string();
+            //     line.insert_str(0, "    pub ");
+            //     return vec![line.to_string()];
+            // }
             vec![line.to_string()]
         }).collect();
 
@@ -545,9 +515,9 @@ pub fn {}() -> Option<&'static [&'static str]> {{
 
                     let params = pat[3].to_string().split(",").map(|el| el.to_string() + ": &str").collect::<Vec<_>>().join(", ");
 
-                    return vec![format!("fn {}(&self, {}) -> String {{", pat[2].to_string(), params)]
+                    return vec![format!("pub fn {}(&self, {}) -> String {{", pat[2].to_string(), params)]
                 }
-                return vec![format!("fn {}(&self) -> String {{", pat[2].to_string())]
+                return vec![format!("pub fn {}(&self) -> String {{", pat[2].to_string())]
 
             }
             return vec![line.to_string()]
@@ -605,7 +575,7 @@ pub fn {}() -> Option<&'static [&'static str]> {{
             line.replace("faker.random.arrayElement(", "thread_rng().choose(")
         }).collect();
 
-        let lines:Vec<String> = lines.into_iter().map(|mut line|{
+        let mut lines:Vec<String> = lines.into_iter().map(|mut line|{
             if let Some(pos) = line.find_end("thread_rng().choose(") {
                 if let Some(end_braces) = find_matching_braces(&line[pos..], '(', ')') {
                     if !line[pos+end_braces ..].starts_with(".unwrap()") && !line[pos+end_braces ..].starts_with(".cloned()") {
@@ -616,13 +586,14 @@ pub fn {}() -> Option<&'static [&'static str]> {{
             line
         }).collect();
 
-        let mut lines:Vec<String> = lines.into_iter()
-            .filter(|el|!el.contains("use rand"))
-            .filter(|el|!el.contains("use crate::faker::Faker"))
-            .filter(|el|!el.contains("use crate::RandArray"))
-            .filter(|el|!el.contains("use crate::*;"))
-            .collect();
-        if file_name != "lib.rs" && file_name != "lib" {
+        if file_name != "lib.rs" && file_name != "faker.rs" {
+            lines = lines.into_iter()
+                .filter(|el|!el.contains("use rand"))
+                .filter(|el|!el.contains("use crate::faker::Faker"))
+                .filter(|el|!el.contains("use crate::RandArray"))
+                .filter(|el|!el.contains("use crate::*;"))
+                .collect();
+        
             lines.insert(0, "use rand::{thread_rng, Rng};".to_string());
             lines.insert(1, "use crate::faker::Faker;".to_string());
             lines.insert(2, "use crate::*;".to_string());
