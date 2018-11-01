@@ -6,129 +6,60 @@ pub struct Company <'a> {
     faker: &'a Faker,
 {
 }
-/**
- *
- * @namespace faker.company
- */
 impl Company {
     pub fn new(faker: &'a Faker) -> Self {
         Self { faker }
-
     }
   
-  
-  /**
-   * suffixes
-   *
-   * @method faker.company.suffixes
-   */
-    pub fn suffixes(&self) -> String {
-    // Don't want the source array exposed to modification, so return a copy
-    return self.faker.company_suffix_slice()(0);
-  }
 
-  /**
-   * companyName
-   *
-   * @method faker.company.companyName
-   * @param {string} format
-   */
     pub fn company_name(&self, format: &str) -> String {
 
     let formats = [
-      '{{name.lastName}} {{company.companySuffix}}',
-      '{{name.lastName}} - {{name.lastName}}',
-      '{{name.lastName}}, {{name.lastName}} and {{name.lastName}}'
+      "{{name.last_name}} {{company.company_suffix}}",
+      "{{name.last_name}} - {{name.last_name}}",
+      "{{name.last_name}}, {{name.last_name}} and {{name.last_name}}"
     ];
 
-    if (typeof format !== "number") {
-      format = faker.random.number(formats.length - 1);
-    }
-
-    return f(formats[format]);
+    self.faker.fake(rand!(formats))
   }
 
-  /**
-   * companySuffix
-   *
-   * @method faker.company.companySuffix
-   */
-    pub fn company_suffix(&self) -> String {
-      return thread_rng().choose(faker.company.suffixes()).unwrap();
+    pub fn company_suffix(&self) -> &'static str {
+      return self.faker.company_suffix.rand();
   }
 
-  /**
-   * catchPhrase
-   *
-   * @method faker.company.catchPhrase
-   */
+  /// format "{{company.catchPhraseAdjective}} {{company.catchPhraseDescriptor}} {{company.catchPhraseNoun}}"
     pub fn catch_phrase(&self) -> String {
-    return f('{{company.catchPhraseAdjective}} {{company.catchPhraseDescriptor}} {{company.catchPhraseNoun}}')
+    self.faker.fake("{{company.catchPhraseAdjective}} {{company.catchPhraseDescriptor}} {{company.catchPhraseNoun}}")
   }
 
-  /**
-   * bs
-   *
-   * @method faker.company.bs
-   */
+  /// format "{{company.bsBuzz}} {{company.bsAdjective}} {{company.bsNoun}}"
     pub fn bs(&self) -> String {
-    return f('{{company.bsBuzz}} {{company.bsAdjective}} {{company.bsNoun}}');
+    self.faker.fake("{{company.bsBuzz}} {{company.bsAdjective}} {{company.bsNoun}}")
   }
 
-  /**
-   * catchPhraseAdjective
-   *
-   * @method faker.company.catchPhraseAdjective
-   */
-    pub fn catch_phrase_adjective(&self) -> String {
-      return thread_rng().choose(self.faker.company_adjective()).unwrap();
+    pub fn catch_phrase_adjective(&self) -> &'static str {
+      self.faker.company_adjective.rand()
   }
 
-  /**
-   * catchPhraseDescriptor
-   *
-   * @method faker.company.catchPhraseDescriptor
-   */
-    pub fn catch_phrase_descriptor(&self) -> String {
-      return thread_rng().choose(self.faker.company_descriptor()).unwrap();
+    pub fn catch_phrase_descriptor(&self) -> &'static str {
+      self.faker.company_descriptor.rand()
   }
 
-  /**
-   * catchPhraseNoun
-   *
-   * @method faker.company.catchPhraseNoun
-   */
-    pub fn catch_phrase_noun(&self) -> String {
-      return thread_rng().choose(self.faker.company_noun()).unwrap();
+    pub fn catch_phrase_noun(&self) -> &'static str {
+      self.faker.company_noun.rand()
   }
 
-  /**
-   * bsAdjective
-   *
-   * @method faker.company.bsAdjective
-   */
-    pub fn bs_adjective(&self) -> String {
-      return thread_rng().choose(self.faker.company_bs_adjective()).unwrap();
+    pub fn bs_adjective(&self) -> &'static str {
+      self.faker.company_bs_adjective.rand()
   }
 
-  /**
-   * bsBuzz
-   *
-   * @method faker.company.bsBuzz
-   */
-    pub fn bs_buzz(&self) -> String {
-      return thread_rng().choose(self.faker.company_bs_verb()).unwrap();
+    pub fn bs_buzz(&self) -> &'static str {
+      self.faker.company_bs_verb.rand()
   }
 
-  /**
-   * bsNoun
-   *
-   * @method faker.company.bsNoun
-   */
-    pub fn bs_noun(&self) -> String {
+    pub fn bs_noun(&self) -> &'static str {
       return thread_rng().choose(self.faker.company_bs_noun()).unwrap();
   }
   
 }
 
-module['exports'] = Company;

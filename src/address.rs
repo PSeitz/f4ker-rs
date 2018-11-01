@@ -26,21 +26,6 @@ fn to_precision(val: f32, precision: u8) -> String {
 fn name() {
     let faker = Faker::new();
     let address = faker.address();
-    // let name = Name::new(&facker);
-    // println!("{:?}", name.find_name());
-    // println!("JOB TITLE: {:?}", name.job_title());
-    // println!("{:?}", Faker::new().name().find_name());
-    // println!("first_name: {:?}", name.first_name(None));
-    // println!("last_name: {:?}", name.last_name(None));
-    // println!("middle_name: {:?}", name.middle_name(None));
-    // println!("find_name: {:?}", name.find_name());
-    // println!("prefix: {:?}", name.prefix(None));
-    // println!("job_title: {:?}", name.job_title());
-    // println!("suffix: {:?}", name.suffix());
-    // println!("job_descriptor: {:?}", name.job_descriptor());
-    // println!("job_area: {:?}", name.job_area());
-    // println!("job_type: {:?}", name.job_type());
-
     println!("\nzip_code {:?}", address.zip_code(None));
     println!("zip_code_by_state {:?}", "address.zip_code_by_state()");
     println!("city {:?}", address.city());

@@ -19,13 +19,13 @@ const GENDERS: [Gender; 2] = [Gender::Male, Gender::Female];
 fn name() {
     let facker = Faker::new();
     let name = Name::new(&facker);
-    // println!("{:?}", name.find_name());
+    // println!("{:?}", name.full_name());
     // println!("JOB TITLE: {:?}", name.job_title());
-    // println!("{:?}", Faker::new().name().find_name());
+    // println!("{:?}", Faker::new().name().full_name());
     // println!("first_name: {:?}", name.first_name(None));
     // println!("last_name: {:?}", name.last_name(None));
     // println!("middle_name: {:?}", name.middle_name(None));
-    // println!("find_name: {:?}", name.find_name());
+    // println!("full_name: {:?}", name.full_name());
     // println!("prefix: {:?}", name.prefix(None));
     // println!("job_title: {:?}", name.job_title());
     // println!("suffix: {:?}", name.suffix());
@@ -84,7 +84,7 @@ impl<'a> Name<'a> {
     }
 
     /// e.g. "Miss Janet Dare"
-    pub fn find_name(&self) -> String {
+    pub fn full_name(&self) -> String {
         let gender = rand_cloned!(GENDERS);
         let r = thread_rng().gen_range(0, 8);
         // in particular locales first and last names split by gender,

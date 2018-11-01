@@ -1,3 +1,26 @@
+/*!
+Crate `faker` is a library for generating realistic fake data
+[`faker::Faker`](faker/struct.Faker.html) type.
+# Installation
+Simply add a corresponding entry to your `Cargo.toml` dependency list:
+```ignore
+[dependencies]
+faker = "0.2"
+```
+And add this to your crate root:
+```ignore
+extern crate faker;
+```
+
+```rust
+extern crate faker;
+use faker::Faker;
+fn main() {
+    println!("{:?}", Faker::new().fake("{{name.lastName}}, {{name.lastName}} and {{name.lastName}}"));
+}
+```
+*/
+
 use rand::{thread_rng, Rng};
 use std::char;
 
