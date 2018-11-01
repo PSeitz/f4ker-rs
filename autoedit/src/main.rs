@@ -148,16 +148,11 @@ fn main() -> Result<(), std::io::Error> {
 
     }
 
+    //all to snek
     let mut conv = vec![];
-        //all to snek
     for entry in WalkDir::new("../src/locales") {
         let entry = entry.unwrap();
-        // let entree = entry.path().gimme_that();
-
         if entry.path().is_dir() && entry.depth() == 1 {
-            println!("{:?}", entry.path().gimme_that());
-            println!("{:?}", entry.path().parent().unwrap().gimme_that()+ "/"+ &entry.path().iter().last().unwrap().gimme_that().to_snake_case());
-            
             conv.push((entry.path().gimme_that(), entry.path().parent().unwrap().gimme_that()+ "/"+ &entry.path().iter().last().unwrap().gimme_that().to_snake_case()));
         }
     }

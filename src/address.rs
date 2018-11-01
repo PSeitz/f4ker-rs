@@ -23,7 +23,7 @@ fn to_precision(val: f32, precision: u8) -> String {
 }
 
 #[test]
-fn name() {
+fn adress() {
     let faker = Faker::new();
     let address = faker.address();
     println!("\nzip_code {:?}", address.zip_code(None));

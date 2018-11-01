@@ -318,13 +318,14 @@ impl Faker {
             // "address.postcode_by_state" => {Cow::from(self.address().postcode_by_state())},
             "address.direction" => Cow::from(self.address().direction()),
             "address.direction_abbr" => Cow::from(self.address().direction_abbr()),
-            // "company.adjective" => {},
-            // "company.noun" => {},
-            // "company.descriptor" => {},
-            // "company.bs_adjective" => {},
-            // "company.bs_noun" => {},
-            // "company.bs_verb" => {},
-            // "company.suffix" => {},
+            "company.adjective" => { Cow::from(self.company().catch_phrase_adjective())},
+            "company.noun" => { Cow::from(self.company().catch_phrase_noun())},
+            "company.descriptor" => { Cow::from(self.company().catch_phrase_descriptor())},
+            "company.bs" => { Cow::from(self.company().bs())},
+            "company.bs_adjective" => { Cow::from(self.company().bs_adjective())},
+            "company.bs_noun" => { Cow::from(self.company().bs_noun())},
+            "company.bs_verb" => { Cow::from(self.company().bs_buzz())},
+            "company.suffix" => { Cow::from(self.company().company_suffix())},
             // "lorem.words" => {},
             // "hacker.abbreviation" => {},
             // "hacker.adjective" => {},
@@ -368,6 +369,9 @@ impl Faker {
 
     pub fn address(&self) -> crate::Address {
         crate::Address::new(self)
+    }
+    pub fn company(&self) -> crate::Company {
+        crate::Company::new(self)
     }
 }
 

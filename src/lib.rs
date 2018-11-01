@@ -24,14 +24,16 @@ fn main() {
 use rand::{thread_rng, Rng};
 use std::char;
 
+pub mod locales;
 mod address;
 mod faker;
-pub mod locales;
 mod name;
+mod company;
 
 pub use self::address::Address;
 pub use self::faker::Faker;
 pub use self::name::Name;
+pub use self::company::Company;
 
 #[macro_export]
 macro_rules! rand_cloned {
