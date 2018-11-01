@@ -1,8 +1,8 @@
-use rand::{thread_rng, Rng};
-use crate::*;
 use crate::locales;
-use std::borrow::Cow;
 use crate::name;
+use crate::*;
+use rand::{thread_rng, Rng};
+use std::borrow::Cow;
 #[derive(Debug, Clone)]
 pub struct Faker {
     pub phone_number_formats: Option<&'static [&'static str]>,
@@ -246,11 +246,13 @@ macro_rules! new_faker {
     }};
 }
 
-
 #[test]
 fn interpol_fake() {
     let facker = Faker::new();
-    println!("interpol_fake {:?}", facker.fake("{{name.last_name}}, {{name.first_name}} {{name.suffix}}"));
+    println!(
+        "interpol_fake {:?}",
+        facker.fake("{{name.last_name}}, {{name.first_name}} {{name.suffix}}")
+    );
 }
 
 impl Faker {
@@ -273,8 +275,12 @@ impl Faker {
         }
         templ
     }
+
     pub fn fake(&self, templ: &str) -> String {
-        let iter_pairs = templ.rmatch_indices("{{").map(|el|el.0).zip(templ.rmatch_indices("}}").map(|el|el.0));
+        let iter_pairs = templ
+            .rmatch_indices("{{")
+            .map(|el| el.0)
+            .zip(templ.rmatch_indices("}}").map(|el| el.0));
 
         let mut oge = templ.to_string();
         for pair in iter_pairs {
@@ -299,19 +305,19 @@ impl Faker {
             "name.female_middle_name" => Cow::from(self.name().middle_name(Some(name::Gender::Female))),
             "name.male_last_name" => Cow::from(self.name().last_name(Some(name::Gender::Male))),
             "name.female_last_name" => Cow::from(self.name().last_name(Some(name::Gender::Female))),
-            "address.city_prefix" => {Cow::from(self.address().city_prefix())},
-            "address.city_suffix" => {Cow::from(self.address().city_suffix())},
-            "address.street_suffix" => {Cow::from(self.address().street_suffix())},
-            "address.county" => {Cow::from(self.address().county())},
-            "address.country" => {Cow::from(self.address().country())},
-            "address.country_code" => {Cow::from(self.address().country_code())},
-            "address.state" => {Cow::from(self.address().state())},
-            "address.state_abbr" => {Cow::from(self.address().state_abbr())},
-            "address.street_prefix" => {Cow::from(self.address().street_prefix())},
-            "address.zip_code" => {Cow::from(self.address().zip_code(None))},
+            "address.city_prefix" => Cow::from(self.address().city_prefix()),
+            "address.city_suffix" => Cow::from(self.address().city_suffix()),
+            "address.street_suffix" => Cow::from(self.address().street_suffix()),
+            "address.county" => Cow::from(self.address().county()),
+            "address.country" => Cow::from(self.address().country()),
+            "address.country_code" => Cow::from(self.address().country_code()),
+            "address.state" => Cow::from(self.address().state()),
+            "address.state_abbr" => Cow::from(self.address().state_abbr()),
+            "address.street_prefix" => Cow::from(self.address().street_prefix()),
+            "address.zip_code" => Cow::from(self.address().zip_code(None)),
             // "address.postcode_by_state" => {Cow::from(self.address().postcode_by_state())},
-            "address.direction" => {Cow::from(self.address().direction())},
-            "address.direction_abbr" => {Cow::from(self.address().direction_abbr())},
+            "address.direction" => Cow::from(self.address().direction()),
+            "address.direction_abbr" => Cow::from(self.address().direction_abbr()),
             // "company.adjective" => {},
             // "company.noun" => {},
             // "company.descriptor" => {},
@@ -352,13 +358,14 @@ impl Faker {
             // "date.weekday" => {},
             // "title": => {},
             // "separator": {},
-            _ => panic!("{:?} not recognized", pat)
+            _ => panic!("{:?} not recognized", pat),
         }
     }
 
     pub fn name(&self) -> crate::Name {
         crate::Name::new(self)
     }
+
     pub fn address(&self) -> crate::Address {
         crate::Address::new(self)
     }
@@ -391,7 +398,6 @@ impl Faker {
 //     fn new() -> Self {
 
 //     }
-
 
 //   opts = opts || {};
 

@@ -1,23 +1,27 @@
 use rand::{thread_rng, Rng};
 use std::char;
 
+mod address;
 mod faker;
 pub mod locales;
 mod name;
-mod address;
 
+pub use self::address::Address;
 pub use self::faker::Faker;
 pub use self::name::Name;
-pub use self::address::Address;
 
 #[macro_export]
 macro_rules! rand_cloned {
-    ($arr:expr) => (thread_rng().choose(&$arr).cloned().unwrap())
+    ($arr:expr) => {
+        thread_rng().choose(&$arr).cloned().unwrap()
+    };
 }
 
 #[macro_export]
 macro_rules! rand {
-    ($arr:expr) => (thread_rng().choose(&$arr).unwrap())
+    ($arr:expr) => {
+        thread_rng().choose(&$arr).unwrap()
+    };
 }
 
 trait RandArrayStatic {
@@ -37,7 +41,6 @@ impl RandArrayStatic for Option<&'static [&'static str]> {
         ""
     }
 }
-
 
 fn random_digit() -> char {
     char::from_digit(thread_rng().gen_range::<u32>(0, 9), 10).unwrap()
@@ -59,28 +62,29 @@ pub fn replace_symbol_with_number(templ: &str) -> String {
 }
 
 pub fn replace_symbols(string: &str) -> String {
-    let alpha = &['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+    let alpha = &[
+        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V',
+        'W', 'X', 'Y', 'Z',
+    ];
     string
-    .chars()
-    .map(|cha| {
-        if cha == '#' {
-            random_digit()
-        } else if cha == '?' {
-            *thread_rng().choose(alpha).unwrap()
-        } else if cha == '*' {
-            if rand::random() {
-                *thread_rng().choose(alpha).unwrap()
-            }else{
+        .chars()
+        .map(|cha| {
+            if cha == '#' {
                 random_digit()
+            } else if cha == '?' {
+                *thread_rng().choose(alpha).unwrap()
+            } else if cha == '*' {
+                if rand::random() {
+                    *thread_rng().choose(alpha).unwrap()
+                } else {
+                    random_digit()
+                }
+            } else {
+                cha
             }
-        } else {
-            cha
-        }
-    })
-    .collect()
-
+        })
+        .collect()
 }
-
 
 #[cfg(test)]
 mod tests {

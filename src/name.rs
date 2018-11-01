@@ -1,6 +1,6 @@
-use rand::{thread_rng, Rng};
 use crate::faker::Faker;
 use crate::*;
+use rand::{thread_rng, Rng};
 
 #[derive(Debug, Clone)]
 pub struct Name<'a> {
@@ -32,8 +32,6 @@ fn name() {
     // println!("job_descriptor: {:?}", name.job_descriptor());
     // println!("job_area: {:?}", name.job_area());
     // println!("job_type: {:?}", name.job_type());
-
-
 }
 
 impl<'a> Name<'a> {
@@ -41,7 +39,7 @@ impl<'a> Name<'a> {
         Name { faker }
     }
 
-/// e.g. "Miriam"
+    /// e.g. "Miriam"
     pub fn first_name(&self, gender: Option<Gender>) -> &'static str {
         let gender = gender.unwrap_or_else(|| rand_cloned!(GENDERS));
 
@@ -59,7 +57,7 @@ impl<'a> Name<'a> {
         return self.faker.name_first_name.rand();
     }
 
-/// e.g. "Rowe"
+    /// e.g. "Rowe"
     pub fn last_name(&self, gender: Option<Gender>) -> &'static str {
         let gender = gender.unwrap_or_else(|| rand_cloned!(GENDERS));
         if self.faker.name_male_last_name.is_some() && self.faker.name_female_last_name.is_some() {
@@ -85,7 +83,7 @@ impl<'a> Name<'a> {
         ""
     }
 
-/// e.g. "Miss Janet Dare"
+    /// e.g. "Miss Janet Dare"
     pub fn find_name(&self) -> String {
         let gender = rand_cloned!(GENDERS);
         let r = thread_rng().gen_range(0, 8);
@@ -100,9 +98,7 @@ impl<'a> Name<'a> {
         }
     }
 
-
-
-/// e.g. "Dr."
+    /// e.g. "Dr."
     pub fn prefix(&self, gender: Option<Gender>) -> &'static str {
         let gender = gender.unwrap_or_else(|| rand_cloned!(GENDERS));
         if self.faker.name_male_prefix.is_some() && self.faker.name_female_prefix.is_some() {
@@ -122,22 +118,22 @@ impl<'a> Name<'a> {
         return self.job_descriptor().to_owned() + " " + self.job_area() + " " + self.job_type();
     }
 
-/// e.g. "I"
+    /// e.g. "I"
     pub fn suffix(&self) -> &'static str {
         return self.faker.name_suffix.rand();
     }
 
-/// e.g. "Corporate"
+    /// e.g. "Corporate"
     pub fn job_descriptor(&self) -> &'static str {
         return self.faker.name_title_descriptor.rand();
     }
 
-/// e.g. "Interactions"
+    /// e.g. "Interactions"
     pub fn job_area(&self) -> &'static str {
         return self.faker.name_title_level.rand();
     }
 
-/// e.g. "Director"
+    /// e.g. "Director"
     pub fn job_type(&self) -> &'static str {
         return self.faker.name_title_job.rand();
     }
