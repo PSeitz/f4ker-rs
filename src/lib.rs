@@ -4,12 +4,20 @@ use std::char;
 mod faker;
 pub mod locales;
 mod name;
+mod address;
 
 pub use self::faker::Faker;
+pub use self::name::Name;
+pub use self::address::Address;
 
 #[macro_export]
 macro_rules! rand_cloned {
     ($arr:expr) => (thread_rng().choose(&$arr).cloned().unwrap())
+}
+
+#[macro_export]
+macro_rules! rand {
+    ($arr:expr) => (thread_rng().choose(&$arr).unwrap())
 }
 
 trait RandArrayStatic {

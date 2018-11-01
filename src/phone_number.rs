@@ -25,7 +25,7 @@ impl Phone {
    */
     pub fn phone_number(&self, format: &str) -> String {
       format = format || faker.phone.phoneFormats();
-      return faker.helpers.replaceSymbolWithNumber(format);
+      return faker.helpers.replace_symbol_with_number(format);
   };
 
   // FIXME: this is strange passing in an array index.
@@ -38,7 +38,7 @@ impl Phone {
    */
     pub fn phone_number_format(&self, phoneFormatsArrayIndex: &str) -> String {
       phoneFormatsArrayIndex = phoneFormatsArrayIndex || 0;
-      return faker.helpers.replaceSymbolWithNumber(self.faker.phone_number_formats()[phoneFormatsArrayIndex]);
+      return faker.helpers.replace_symbol_with_number(self.faker.phone_number_formats()[phoneFormatsArrayIndex]);
   };
 
   /**

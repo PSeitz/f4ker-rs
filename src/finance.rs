@@ -33,7 +33,7 @@ impl Finance {
           template = template + '#';
       }
       length = null;
-      return Helpers.replaceSymbolWithNumber(template);
+      return Helpers.replace_symbol_with_number(template);
   };
 
   /**
@@ -53,7 +53,7 @@ impl Finance {
    */
     pub fn routing_number(&self) -> String {
 
-      let routingNumber = Helpers.replaceSymbolWithNumber('########');
+      let routingNumber = Helpers.replace_symbol_with_number('########');
 
       // Modules 10 straight summation.
       let sum = 0;
@@ -95,7 +95,7 @@ impl Finance {
       template = (parens) ? ['(', template, ')'].join('') : template;
 
       //generate random numbers
-      template = Helpers.replaceSymbolWithNumber(template);
+      template = Helpers.replace_symbol_with_number(template);
 
       return template;
   };
@@ -294,14 +294,14 @@ impl Finance {
     pub fn bic(&self) -> String {
       let vowels = ["A", "E", "I", "O", "U"];
       let prob = faker.random.number(100);
-      return Helpers.replaceSymbols("???") +
+      return Helpers.replace_symbols("???") +
           thread_rng().choose(vowels).unwrap() +
           thread_rng().choose(ibanLib.iso3166).unwrap() +
-          Helpers.replaceSymbols("?") + "1" +
+          Helpers.replace_symbols("?") + "1" +
           (prob < 10 ?
-              Helpers.replaceSymbols("?" + thread_rng().choose(vowels).unwrap() + "?") :
+              Helpers.replace_symbols("?" + thread_rng().choose(vowels).unwrap() + "?") :
           prob < 40 ?
-              Helpers.replaceSymbols("###") : "");
+              Helpers.replace_symbols("###") : "");
   };
 };
 

@@ -4,31 +4,90 @@ use crate::*;
 #[derive(Debug, Clone)]
 pub struct Address <'a> {
         faker: &'a Faker,
-{
 }
-/**
- *
- * @namespace faker.address
- */
-impl Address {
+
+fn to_precision(val: f32, precision: u8) -> String {
+    match precision {
+        0 => format!("{:.0}", val),
+        1 => format!("{:.1}", val),
+        2 => format!("{:.2}", val),
+        3 => format!("{:.3}", val),
+        4 => format!("{:.4}", val),
+        5 => format!("{:.5}", val),
+        6 => format!("{:.6}", val),
+        7 => format!("{:.7}", val),
+        8 => format!("{:.8}", val),
+        9 => format!("{:.9}", val),
+        _ => panic!("precision 0-9 supported, but got {:?}", precision)
+    }
+}
+
+#[test]
+fn name() {
+    let faker = Faker::new();
+    let address = faker.address();
+    // let name = Name::new(&facker);
+    // println!("{:?}", name.find_name());
+    // println!("JOB TITLE: {:?}", name.job_title());
+    // println!("{:?}", Faker::new().name().find_name());
+    // println!("first_name: {:?}", name.first_name(None));
+    // println!("last_name: {:?}", name.last_name(None));
+    // println!("middle_name: {:?}", name.middle_name(None));
+    // println!("find_name: {:?}", name.find_name());
+    // println!("prefix: {:?}", name.prefix(None));
+    // println!("job_title: {:?}", name.job_title());
+    // println!("suffix: {:?}", name.suffix());
+    // println!("job_descriptor: {:?}", name.job_descriptor());
+    // println!("job_area: {:?}", name.job_area());
+    // println!("job_type: {:?}", name.job_type());
+
+    println!("\nzip_code {:?}", address.zip_code(None) );
+    println!("zip_code_by_state {:?}", "address.zip_code_by_state()" );
+    println!("city {:?}", address.city() );
+    println!("city_prefix {:?}", address.city_prefix() );
+    println!("city_suffix {:?}", address.city_suffix() );
+    println!("street_name {:?}", address.street_name() );
+    println!("street_address {:?}", address.street_address(true) );
+    println!("street_suffix {:?}", address.street_suffix() );
+    println!("street_prefix {:?}", address.street_prefix() );
+    println!("secondary_address {:?}", address.secondary_address() );
+    println!("county {:?}", address.county() );
+    println!("country {:?}", address.country() );
+    println!("country_code {:?}", address.country_code() );
+    println!("state {:?}", address.state() );
+    println!("state_abbr {:?}", address.state_abbr() );
+    println!("latitude {:?}", address.latitude() );
+    println!("lat_long_with_opt {:?}", Address::lat_long_with_opt(-90., 90., 4) );
+    println!("longitude {:?}", address.longitude() );
+    println!("direction {:?}", address.direction() );
+    println!("direction_abbr {:?}", address.direction_abbr() );
+    println!("cardinal_direction {:?}", address.cardinal_direction() );
+    println!("cardinal_direction_abbr {:?}", address.cardinal_direction_abbr() );
+    println!("ordinal_direction {:?}", address.ordinal_direction() );
+    println!("ordinal_direction_abbr {:?}", address.ordinal_direction_abbr() );
+    println!("nearby_gps_coordinate {:?}", address.nearby_gps_coordinate([49.250990, 8.517120], 10., 20.) );
+
+
+}
+
+
+impl<'a> Address<'a> {
         pub fn new(faker: &'a Faker) -> Self {
                 Self { faker }
 
         }
 
-    /**
-     * Generates random zipcode from format. If format is not specified, the
-     * locale's zip format is used.
-     *
-     * @method faker.address.zipCode
-     * @param {String} format
-     */
-    pub fn zip_code(&self, format: &str) -> String {
+    /// 
+    /// Generates random zipcode from format. If format is not specified, the
+    /// locale's zip format is used.
+    /// 
+    /// e.g. "88855"
+    pub fn zip_code(&self, format: Option<&str>) -> String {
         // if zip format is not specified, use the zip format defined for the locale
-        let locale_format = format.or(self.faker.address_postcode.map(locale_format.rand()))
+        let locale_format = format.or(self.faker.address_postcode.map(|el|el.rand()))
             .expect("no format in zip code provided and not zip code in locale found");
 
-        replace_symbols(format)
+        replace_symbols(locale_format)
     }
 
     /**
@@ -41,7 +100,8 @@ impl Address {
      * @method faker.address.zipCodeByState
      * @param {String} state
      */
-    // pub fn zip_code_by_state(&self, state: &str) -> String { //TODO
+     /// e.g. "address.zip_code_by_state()"
+    // pub fn zip_code_by_state(&self, state: &str) -> &'static str { //TODO
     //     let zipRange = self.faker.address_postcode_by_state()[state];
     //     if (zipRange) {
     //         return faker.random.number(zipRange);
@@ -49,22 +109,19 @@ impl Address {
     //     return this.zipCode();
     // }
 
-    /**
-     * Generates a random localized city name. The format string can contain any
-     * method provided by faker wrapped in `{{}}`, e.g. `{{name.firstName}}` in
-     * order to build the city name.
-     *
-     * If no format string is provided one of the following is randomly used:
-     *
-     * * `{{address.cityPrefix}} {{name.firstName}}{{address.citySuffix}}`
-     * * `{{address.cityPrefix}} {{name.firstName}}`
-     * * `{{name.firstName}}{{address.citySuffix}}`
-     * * `{{name.lastName}}{{address.citySuffix}}`
-     *
-     * @method faker.address.city
-     * @param {String} format
-     */
-    pub fn city(&self, format: &str) -> String {
+    /// 
+    /// Generates a random localized city name.
+    /// 
+    /// One of the following is randomly used:
+    /// 
+    /// * `{{address.cityPrefix}} {{name.first_name}}{{address.citySuffix}}`
+    /// * `{{address.cityPrefix}} {{name.first_name}}`
+    /// * `{{name.first_name}}{{address.citySuffix}}`
+    /// * `{{name.last_name}}{{address.citySuffix}}`
+    /// 
+    /// 
+    /// e.g. "New Kayport"
+    pub fn city(&self) -> String {
         let formats = [
             "{{address.city_prefix}} {{name.first_name}}{{address.city_suffix}}",
             "{{address.city_prefix}} {{name.first_name}}",
@@ -72,315 +129,186 @@ impl Address {
             "{{name.last_name}}{{address.city_suffix}}"
         ];
 
-        // if (typeof format !== "number") {
-        //     format = faker.random.number(formats.length - 1);
-        // }
-
-        self.faker.fake(formats.rand())
-
-        // return f(formats[format]);
+        self.faker.fake(rand!(formats))
 
     }
 
-    /**
-     * Return a random localized city prefix
-     * @method faker.address.cityPrefix
-     */
-    pub fn city_prefix(&self) -> String {
+/// e.g. "Port"
+    pub fn city_prefix(&self) -> &'static str {
         return self.faker.address_city_prefix.rand();
     }
 
-    /**
-     * Return a random localized city suffix
-     *
-     * @method faker.address.citySuffix
-     */
-    pub fn city_suffix(&self) -> String {
+/// e.g. "chester"
+    pub fn city_suffix(&self) -> &'static str {
         return self.faker.address_city_suffix.rand();
     }
 
-    /**
-     * Returns a random localized street name
-     *
-     * @method faker.address.streetName
-     */
+/// e.g. "Paucek Landing"
     pub fn street_name(&self) -> String {
-            let result;
-            let suffix = faker.address.streetSuffix();
-            if (suffix !== "") {
-                    suffix = " " + suffix
+            let mut suffix = self.street_suffix().to_string();
+            if suffix != "" {
+                suffix.insert(0, ' ');
             }
-
-            switch (faker.random.number(1)) {
-            case 0:
-                    result = faker.name.lastName() + suffix;
-                    break;
-            case 1:
-                    result = faker.name.firstName() + suffix;
-                    break;
+            if rand::random() {
+                self.faker.name().last_name(None).to_owned() + &suffix
+            }else {
+                self.faker.name().first_name(None).to_owned() + &suffix
             }
-            return result;
     }
 
-    //
-    // TODO: change all these methods that accept a boolean to instead accept an options hash.
-    //
-    /**
-     * Returns a random localized street address
-     *
-     * @method faker.address.streetAddress
-     * @param {Boolean} useFullAddress
-     */
-    pub fn street_address(&self, useFullAddress: &str) -> String {
-            if (useFullAddress == undefined) { useFullAddress = false; }
-            let address = "";
-            switch (faker.random.number(2)) {
-            case 0:
-                    address = replaceSymbolWithNumber("#####") + " " + faker.address.streetName();
-                    break;
-            case 1:
-                    address = replaceSymbolWithNumber("####") +  " " + faker.address.streetName();
-                    break;
-            case 2:
-                    address = replaceSymbolWithNumber("###") + " " + faker.address.streetName();
-                    break;
+    /// 
+    /// Returns a random localized street address, use_full_address adds `secondary_address`
+    /// 
+    /// e.g. "26432 Corey Rapids Apt. 074"
+    pub fn street_address(&self, use_full_address: bool) -> String {
+            // if (use_full_address == undefined) { use_full_address = false; }
+            let address = match thread_rng().gen_range::<u8>(0, 2) {
+                0 => replace_symbol_with_number("#####") + " " + &self.street_name(),
+                1 => replace_symbol_with_number("####") +  " " + &self.street_name(),
+                2 => replace_symbol_with_number("###") + " " + &self.street_name(),
+                _ => panic!("thread_rng().gen_range::<u8>(0, 2) produced other value than 0, 1, 2")
+            };
+            if use_full_address {
+                (address + " " + &self.secondary_address())
+            }else {
+                address
             }
-            return useFullAddress ? (address + " " + faker.address.secondaryAddress()) : address;
     }
 
-    /**
-     * streetSuffix
-     *
-     * @method faker.address.streetSuffix
-     */
-    pub fn street_suffix(&self) -> String {
+/// e.g. "Haven"
+    pub fn street_suffix(&self) -> &'static str {
             return self.faker.address_street_suffix.rand();
     }
 
-    /**
-     * streetPrefix
-     *
-     * @method faker.address.streetPrefix
-     */
-    pub fn street_prefix(&self) -> String {
+/// e.g. "East"                                
+    pub fn street_prefix(&self) -> &'static str {
             return self.faker.address_street_prefix.rand();
     }
 
-    /**
-     * secondaryAddress
-     *
-     * @method faker.address.secondaryAddress
-     */
-    pub fn secondary_address(&self) -> String {
-            return replaceSymbolWithNumber(thread_rng().choose(
-                    [
-                            "Apt. ###",
-                            "Suite ###"
-                    ]
-            ));
+    /// adds send adress in the format "Apt. ###" "Suite ###"
+    /// e.g. "Apt. 757"
+    pub fn secondary_address(&self) ->String {
+        let options = ["Apt. ###", "Suite ###"];
+        return replace_symbol_with_number(rand!(options));
     }
 
-    /**
-     * county
-     *
-     * @method faker.address.county
-     */
-    pub fn county(&self) -> String {
-        return thread_rng().choose(self.faker.address_county()).unwrap();
+/// e.g. "Borders"
+    pub fn county(&self) -> &'static str {
+        return self.faker.address_county.rand();
     }
 
-    /**
-     * country
-     *
-     * @method faker.address.country
-     */
-    pub fn country(&self) -> String {
-        return thread_rng().choose(self.faker.address_country()).unwrap();
+/// e.g. "Chad"
+    pub fn country(&self) -> &'static str {
+        return self.faker.address_country.rand();
     }
 
-    /**
-     * countryCode
-     *
-     * @method faker.address.countryCode
-     */
-    pub fn country_code(&self) -> String {
-        return thread_rng().choose(self.faker.address_country_code()).unwrap();
+/// e.g. "BQ"
+    pub fn country_code(&self) -> &'static str {
+        return self.faker.address_country_code.rand();
     }
 
-    /**
-     * state
-     *
-     * @method faker.address.state
-     * @param {Boolean} useAbbr
-     */
-    pub fn state(&self, useAbbr: &str) -> String {
-            return thread_rng().choose(self.faker.address_state()).unwrap();
+/// e.g. "New Hampshire"
+    pub fn state(&self) -> &'static str {
+        self.faker.address_state.rand()
     }
 
-    /**
-     * stateAbbr
-     *
-     * @method faker.address.stateAbbr
-     */
-    pub fn state_abbr(&self) -> String {
-            return thread_rng().choose(self.faker.address_state_abbr()).unwrap();
+/// e.g. "LA"
+    pub fn state_abbr(&self) -> &'static str {
+            return self.faker.address_state_abbr.rand();
     }
 
-    /**
-     * latitude
-     *
-     * @method faker.address.latitude
-     * @param {Double} max default is 90
-     * @param {Double} min default is -90
-     * @param {number} precision default is 4
-     */
-    pub fn latitude(&self, max: &str,  min: &str,  precision: &str) -> String {
-            max       = max || 90
-            min       = min || -90
-            precision = precision || 4
+    /// 
+    /// longitude between -90 and 90 and precision 4
+    /// 
+    /// e.g. "-13.9834"
+    pub fn latitude(&self) -> String {
+        Self::lat_long_with_opt(-90., 90., 4)
+    } 
 
-            return faker.random.number({
-                max: max,
-                min: min,
-                precision: parseFloat((0.0).toPrecision(precision) + '1')
-            }).toFixed(precision);
+    /// 
+    /// use for custom longitude or latitude
+    /// 
+    /// e.g. "-72.0782"
+    pub fn lat_long_with_opt(min: f32, max: f32, precision: u8) -> String {
+        to_precision(thread_rng().gen_range(min, max), precision)
     }
 
-    /**
-     * longitude
-     *
-     * @method faker.address.longitude
-     * @param {Double} max default is 180
-     * @param {Double} min default is -180
-     * @param {number} precision default is 4
-     */
-    pub fn longitude(&self, max: &str,  min: &str,  precision: &str) -> String {
-            max       = max || 180
-            min       = min || -180
-            precision = precision || 4
-
-            return faker.random.number({
-                max: max,
-                min: min,
-                precision: parseFloat((0.0).toPrecision(precision) + '1')
-            }).toFixed(precision);
+    /// 
+    /// longitude between -180 and 180 and precision 4
+    /// 
+    /// e.g. "36.2274"
+    pub fn longitude(&self) -> String {
+        Self::lat_long_with_opt(-180., 180., 4)
     }
 
-    /**
-     *  direction
-     *
-     * @method faker.address.direction
-     * @param {Boolean} useAbbr return direction abbreviation. defaults to false
-     */
-    pub fn direction(&self, useAbbr: &str) -> String {
-        if (useAbbr.is_none() || useAbbr == false) {
-            return thread_rng().choose(self.faker.address_direction()).unwrap();
-        }
-        return thread_rng().choose(self.faker.address_direction_abbr()).unwrap();
+    /// will return empty string if not existent in locale
+    /// use `direction_abbr`  for a direction abbreviation.
+    /// e.g. "East"
+    pub fn direction(&self) -> &'static str {
+        self.faker.address_direction.rand()
     }
 
-    this.direction.schema = {
-        "description": "Generates a direction. Use optional useAbbr bool to return abbrevation",
-        "sampleResults": ["Northwest", "South", "SW", "E"]
-    };
-
-    /**
-     * cardinal direction
-     *
-     * @method faker.address.cardinalDirection
-     * @param {Boolean} useAbbr return direction abbreviation. defaults to false
-     */
-    pub fn cardinal_direction(&self, useAbbr: &str) -> String {
-        if (useAbbr.is_none() || useAbbr == false) {
-            return (
-                thread_rng().choose(self.faker.address_direction_slice()(0, 4)).unwrap()
-            );
-        }
-        return (
-            thread_rng().choose(self.faker.address_direction_abbr_slice()(0, 4)).unwrap()
-        );
+    /// direction abbreviation, will return empty string if not existent in locale
+    /// e.g. "W"
+    pub fn direction_abbr(&self) -> &'static str {
+        self.faker.address_direction_abbr.rand()
     }
 
-    this.cardinalDirection.schema = {
-        "description": "Generates a cardinal direction. Use optional useAbbr boolean to return abbrevation",
-        "sampleResults": ["North", "South", "E", "W"]
-    };
-
-    /**
-     * ordinal direction
-     *
-     * @method faker.address.ordinalDirection
-     * @param {Boolean} useAbbr return direction abbreviation. defaults to false
-     */
-    pub fn ordinal_direction(&self, useAbbr: &str) -> String {
-        if (useAbbr.is_none() || useAbbr == false) {
-            return (
-                thread_rng().choose(self.faker.address_direction_slice()(4, 8)).unwrap()
-            );
-        }
-        return (
-            thread_rng().choose(self.faker.address_direction_abbr_slice()(4, 8)).unwrap()
-        );
+/// e.g. "West"
+    pub fn cardinal_direction(&self) -> &'static str {
+        self.faker.address_direction.rand()
+    }
+    /// e.g. "E"
+    pub fn cardinal_direction_abbr(&self) -> &'static str {
+        self.faker.address_direction_abbr.rand()
     }
 
-    this.ordinalDirection.schema = {
-        "description": "Generates an ordinal direction. Use optional useAbbr boolean to return abbrevation",
-        "sampleResults": ["Northwest", "Southeast", "SW", "NE"]
-    };
+/// e.g. "Southwest"
+    pub fn ordinal_direction(&self) -> &'static str {
+        self.faker.address_direction.rand()
+    }
 
-    pub fn nearby_gps_coordinate(&self, coordinate: &str,  radius: &str,  isMetric: &str) -> String {
-                function randomFloat(min, max) {
-                        return Math.random() * (max-min) + min;
+/// e.g. "N"
+    pub fn ordinal_direction_abbr(&self) -> &'static str {
+        self.faker.address_direction_abbr.rand()
+    }
+
+/// e.g. [49.240253, 8.360744]
+    pub fn nearby_gps_coordinate(&self, coordinate:[f32;2], min_distance: f32, max_distance: f32) -> [f32;2] {
+                fn degrees_to_radians(degrees:f32) -> f32 {
+                        degrees * std::f32::consts::PI/180.0
                 }
-                function degreesToRadians(degrees) {
-                        return degrees * (Math.PI/180.0);
+                fn radians_to_degrees(radians:f32) -> f32 {
+                        radians * 180.0/std::f32::consts::PI
                 }
-                function radiansToDegrees(radians) {
-                        return radians * (180.0/Math.PI);
-                }
-                function kilometersToMiles(miles) {
-                        return miles * 0.621371;
-                }
-                function coordinateWithOffset(coordinate, bearing, distance, isMetric) {
-                        let R = 6378.137; // Radius of the Earth (http://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html)
-                        let d = isMetric ? distance : kilometersToMiles(distance); // Distance in km
+                fn coordinate_with_offset(coordinate:[f32;2], bearing:f32, distance:f32) -> [f32;2] {
+                        const R:f32 = 6378.137; // Radius of the Earth (http://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html)
+                        
+                        let d = distance; // Distance in km
 
-                        let lat1 = degreesToRadians(coordinate[0]); //Current lat point converted to radians
-                        let lon1 = degreesToRadians(coordinate[1]); //Current long point converted to radians
+                        let lat1 = degrees_to_radians(coordinate[0]); //Current lat point converted to radians
+                        let lon1 = degrees_to_radians(coordinate[1]); //Current long point converted to radians
 
-                        let lat2 = Math.asin(Math.sin(lat1) * Math.cos(d/R) +
-                                Math.cos(lat1) * Math.sin(d/R) * Math.cos(bearing));
+                        let lat2 = ((lat1).sin() * (d/R).cos() + (lat1).cos() * (d/R).sin() * (bearing).cos()).asin();
 
-                        let lon2 = lon1 + Math.atan2(
-                                Math.sin(bearing) * Math.sin(d/R) * Math.cos(lat1),
-                                Math.cos(d/R) - Math.sin(lat1) * Math.sin(lat2));
+                        let mut lon2 = lon1 + (
+                                bearing.sin() * (d/R).sin() * (lat1).cos()
+                                ).atan2((d/R).cos() - (lat1).sin() * (lat2).sin());
 
                         // Keep longitude in range [-180, 180]
-                        if (lon2 > degreesToRadians(180)) {
-                                lon2 = lon2 - degreesToRadians(360);
-                        } else if (lon2 < degreesToRadians(-180)) {
-                                lon2 = lon2 + degreesToRadians(360);
+                        if lon2 > degrees_to_radians(180.0) {
+                                lon2 = lon2 - degrees_to_radians(360.0);
+                        } else if lon2 < degrees_to_radians(-180.0) {
+                                lon2 = lon2 + degrees_to_radians(360.0);
                         }
 
-                        return [radiansToDegrees(lat2), radiansToDegrees(lon2)];
+                        return [radians_to_degrees(lat2), radians_to_degrees(lon2)];
                 }
 
-                // If there is no coordinate, the best we can do is return a random GPS coordinate.
-                if (coordinate == undefined) {
-                        return [this.latitude(), this.longitude()]
-                }
-                radius = radius || 10.0;
-                isMetric = isMetric || false;
+                let distance = thread_rng().gen_range(min_distance, max_distance);
 
-                // TODO: implement either a gaussian/uniform distribution of points in cicular region.
-                // Possibly include param to function that allows user to choose between distributions.
-
-                // This approach will likely result in a higher density of points near the center.
-                let randomCoord = coordinateWithOffset(coordinate, degreesToRadians(Math.random() * 360.0), radius, isMetric);
-                return [randomCoord[0].toFixed(4), randomCoord[1].toFixed(4)];
+                let random_coord = coordinate_with_offset(coordinate, degrees_to_radians(thread_rng().gen_range(0., 360.)), distance);
+                return [random_coord[0], random_coord[1]];
         }
 
-    return this;
 }
-
-module.exports = Address;

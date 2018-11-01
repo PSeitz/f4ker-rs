@@ -19,8 +19,21 @@ const GENDERS: [Gender; 2] = [Gender::Male, Gender::Female];
 fn name() {
     let facker = Faker::new();
     let name = Name::new(&facker);
-    println!("{:?}", name.find_name());
-    println!("{:?}", Faker::new().name().find_name());
+    // println!("{:?}", name.find_name());
+    // println!("JOB TITLE: {:?}", name.job_title());
+    // println!("{:?}", Faker::new().name().find_name());
+    // println!("first_name: {:?}", name.first_name(None));
+    // println!("last_name: {:?}", name.last_name(None));
+    // println!("middle_name: {:?}", name.middle_name(None));
+    // println!("find_name: {:?}", name.find_name());
+    // println!("prefix: {:?}", name.prefix(None));
+    // println!("job_title: {:?}", name.job_title());
+    // println!("suffix: {:?}", name.suffix());
+    // println!("job_descriptor: {:?}", name.job_descriptor());
+    // println!("job_area: {:?}", name.job_area());
+    // println!("job_type: {:?}", name.job_type());
+
+
 }
 
 impl<'a> Name<'a> {
@@ -28,6 +41,7 @@ impl<'a> Name<'a> {
         Name { faker }
     }
 
+/// e.g. "Miriam"
     pub fn first_name(&self, gender: Option<Gender>) -> &'static str {
         let gender = gender.unwrap_or_else(|| rand_cloned!(GENDERS));
 
@@ -45,6 +59,7 @@ impl<'a> Name<'a> {
         return self.faker.name_first_name.rand();
     }
 
+/// e.g. "Rowe"
     pub fn last_name(&self, gender: Option<Gender>) -> &'static str {
         let gender = gender.unwrap_or_else(|| rand_cloned!(GENDERS));
         if self.faker.name_male_last_name.is_some() && self.faker.name_female_last_name.is_some() {
@@ -57,6 +72,7 @@ impl<'a> Name<'a> {
         return self.faker.name_last_name.rand();
     }
 
+    /// returns empty string if middle names don't exist in the locale
     pub fn middle_name(&self, gender: Option<Gender>) -> &'static str {
         let gender = gender.unwrap_or_else(|| rand_cloned!(GENDERS));
         if self.faker.name_male_middle_name.is_some() && self.faker.name_female_middle_name.is_some() {
@@ -66,9 +82,10 @@ impl<'a> Name<'a> {
                 return self.faker.name_female_middle_name.rand();
             }
         }
-        panic!("no middle name found");
+        ""
     }
 
+/// e.g. "Miss Janet Dare"
     pub fn find_name(&self) -> String {
         let gender = rand_cloned!(GENDERS);
         let r = thread_rng().gen_range(0, 8);
@@ -83,10 +100,9 @@ impl<'a> Name<'a> {
         }
     }
 
-    pub fn job_title(&self) -> String {
-        return self.job_descriptor().to_owned() + " " + &self.job_area() + " " + &self.job_type();
-    }
 
+
+/// e.g. "Dr."
     pub fn prefix(&self, gender: Option<Gender>) -> &'static str {
         let gender = gender.unwrap_or_else(|| rand_cloned!(GENDERS));
         if self.faker.name_male_prefix.is_some() && self.faker.name_female_prefix.is_some() {
@@ -99,26 +115,29 @@ impl<'a> Name<'a> {
         return self.faker.name_prefix.rand();
     }
 
+    /// generates a title via job_descriptor +  job_area + job_type
+    /// e.g. Central Data Administrator
+    /// e.g. "Principal Metrics Developer"
+    pub fn job_title(&self) -> String {
+        return self.job_descriptor().to_owned() + " " + self.job_area() + " " + self.job_type();
+    }
+
+/// e.g. "I"
     pub fn suffix(&self) -> &'static str {
         return self.faker.name_suffix.rand();
     }
 
-    pub fn title(&self) -> String {
-        let descriptor = self.faker.name_title_descriptor.rand();
-        let level = self.faker.name_title_level.rand();
-        let job = self.faker.name_title_job.rand();
-
-        return descriptor.to_string() + " " + &level + " " + &job;
-    }
-
+/// e.g. "Corporate"
     pub fn job_descriptor(&self) -> &'static str {
         return self.faker.name_title_descriptor.rand();
     }
 
+/// e.g. "Interactions"
     pub fn job_area(&self) -> &'static str {
         return self.faker.name_title_level.rand();
     }
 
+/// e.g. "Director"
     pub fn job_type(&self) -> &'static str {
         return self.faker.name_title_job.rand();
     }

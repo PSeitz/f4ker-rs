@@ -290,7 +290,7 @@ impl Faker {
             "name.last_name" => Cow::from(self.name().last_name(None)),
             "name.prefix" => Cow::from(self.name().prefix(None)),
             "name.suffix" => Cow::from(self.name().suffix()),
-            "name.title" => Cow::from(self.name().title()),
+            "name.job_title" => Cow::from(self.name().job_title()),
             "name.male_prefix" => Cow::from(self.name().prefix(Some(name::Gender::Male))),
             "name.female_prefix" => Cow::from(self.name().prefix(Some(name::Gender::Female))),
             "name.male_first_name" => Cow::from(self.name().first_name(Some(name::Gender::Male))),
@@ -299,19 +299,19 @@ impl Faker {
             "name.female_middle_name" => Cow::from(self.name().middle_name(Some(name::Gender::Female))),
             "name.male_last_name" => Cow::from(self.name().last_name(Some(name::Gender::Male))),
             "name.female_last_name" => Cow::from(self.name().last_name(Some(name::Gender::Female))),
-            // "address.city_prefix" => {},
-            // "address.city_suffix" => {},
-            // "address.street_suffix" => {},
-            // "address.county" => {},
-            // "address.country" => {},
-            // "address.country_code" => {},
-            // "address.state" => {},
-            // "address.state_abbr" => {},
-            // "address.street_prefix" => {},
-            // "address.postcode" => {},
-            // "address.postcode_by_state" => {},
-            // "address.direction" => {},
-            // "address.direction_abbr" => {},
+            "address.city_prefix" => {Cow::from(self.address().city_prefix())},
+            "address.city_suffix" => {Cow::from(self.address().city_suffix())},
+            "address.street_suffix" => {Cow::from(self.address().street_suffix())},
+            "address.county" => {Cow::from(self.address().county())},
+            "address.country" => {Cow::from(self.address().country())},
+            "address.country_code" => {Cow::from(self.address().country_code())},
+            "address.state" => {Cow::from(self.address().state())},
+            "address.state_abbr" => {Cow::from(self.address().state_abbr())},
+            "address.street_prefix" => {Cow::from(self.address().street_prefix())},
+            "address.zip_code" => {Cow::from(self.address().zip_code(None))},
+            // "address.postcode_by_state" => {Cow::from(self.address().postcode_by_state())},
+            "address.direction" => {Cow::from(self.address().direction())},
+            "address.direction_abbr" => {Cow::from(self.address().direction_abbr())},
             // "company.adjective" => {},
             // "company.noun" => {},
             // "company.descriptor" => {},
@@ -356,8 +356,11 @@ impl Faker {
         }
     }
 
-    pub fn name(&self) -> crate::name::Name {
-        crate::name::Name::new(self)
+    pub fn name(&self) -> crate::Name {
+        crate::Name::new(self)
+    }
+    pub fn address(&self) -> crate::Address {
+        crate::Address::new(self)
     }
 }
 

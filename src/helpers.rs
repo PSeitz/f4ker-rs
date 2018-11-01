@@ -42,7 +42,7 @@ impl Helpers {
   /**
    * parses string for a symbol and replace it with a random number from 1-10
    *
-   * @method faker.helpers.replaceSymbolWithNumber
+   * @method faker.helpers.replace_symbol_with_number
    * @param {string} string
    * @param {string} symbol defaults to `"#"`
    */
@@ -121,7 +121,7 @@ impl Helpers {
 
      string = string || "";
      string = faker.helpers.regexpStyleStringParse(string); // replace [4-9] with a random number in range etc...
-     string = faker.helpers.replaceSymbolWithNumber(string, symbol); // replace ### with random numbers
+     string = faker.helpers.replace_symbol_with_number(string, symbol); // replace ### with random numbers
 
      let numberList = string.replace(/\D/g,"").split("").map(function(num){return parseInt(num);});
      let checkNum = getCheckBit(numberList);
