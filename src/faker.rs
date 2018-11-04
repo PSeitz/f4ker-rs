@@ -87,7 +87,7 @@ pub struct Faker {
     // pub(crate) credit_card_discover: Option<&'static [&'static str]>,
     pub(crate) database_column: Option<&'static [&'static str]>,
     pub(crate) database_engine: Option<&'static [&'static str]>,
-    // pub(crate)  database_type: Option<&'static [&'static str]>,
+    pub(crate) database_data_type: Option<&'static [&'static str]>,
     pub(crate) database_collation: Option<&'static [&'static str]>,
     pub(crate) address_state_abbr: Option<&'static [&'static str]>,
     pub(crate) address_state: Option<&'static [&'static str]>,
@@ -123,7 +123,7 @@ pub struct Faker {
     pub(crate) separator: String,
 }
 
-macro_rules! new_faker {
+macro_rules! faker_constr {
     () => {{
         Faker {
             phone_number_formats: phone_number::formats(),
@@ -166,28 +166,28 @@ macro_rules! new_faker {
             company_adjetive: company::adjetive(),
             company_descriptor: company::descriptor(),
             company_bs_adjective: company::bs_adjective(),
-            cell_phone_common_cell_prefix: cell_phone::common_cell_prefix(),
-            cell_phone_formats: cell_phone::formats(),
-            business_credit_card_expiry_dates: business::credit_card_expiry_dates(),
-            business_credit_card_numbers: business::credit_card_numbers(),
-            business_credit_card_types: business::credit_card_types(),
-            hacker_adjective: hacker::adjective(),
-            hacker_abbreviation: hacker::abbreviation(),
-            hacker_phrase: hacker::phrase(),
-            hacker_ingverb: hacker::ingverb(),
-            hacker_noun: hacker::noun(),
-            hacker_verb: hacker::verb(),
+            cell_phone_common_cell_prefix: self::locales::en::cell_phone::common_cell_prefix(),
+            cell_phone_formats: self::locales::en::cell_phone::formats(),
+            business_credit_card_expiry_dates: self::locales::en::business::credit_card_expiry_dates(),
+            business_credit_card_numbers: self::locales::en::business::credit_card_numbers(),
+            business_credit_card_types: self::locales::en::business::credit_card_types(),
+            hacker_adjective: self::locales::en::hacker::adjective(),
+            hacker_abbreviation: self::locales::en::hacker::abbreviation(),
+            hacker_phrase: self::locales::en::hacker::phrase(),
+            hacker_ingverb: self::locales::en::hacker::ingverb(),
+            hacker_noun: self::locales::en::hacker::noun(),
+            hacker_verb: self::locales::en::hacker::verb(),
             internet_free_email: internet::free_email(),
             internet_example_email: internet::example_email(),
             internet_avatar_uri: internet::avatar_uri(),
             internet_domain_suffix: internet::domain_suffix(),
-            team_name: team::name(),
-            team_creature: team::creature(),
-            team_suffix: team::suffix(),
-            finance_account_type: finance::account_type(),
-            finance_transaction_type: finance::transaction_type(),
-            lorem_words: lorem::words(),
-            lorem_supplemental: lorem::supplemental(),
+            team_name: self::locales::en::team::name(),
+            team_creature: self::locales::en::team::creature(),
+            team_suffix: self::locales::en::team::suffix(),
+            finance_account_type: self::locales::en::finance::account_type(),
+            finance_transaction_type: self::locales::en::finance::transaction_type(),
+            lorem_words: self::locales::en::lorem::words(),
+            lorem_supplemental: self::locales::en::lorem::supplemental(),
             commerce_color: commerce::color(),
             commerce_department: commerce::department(),
             commerce_product_name_adjective: commerce::product_name_adjective(),
@@ -206,10 +206,10 @@ macro_rules! new_faker {
             // credit_card_maestro: credit_card::maestro(),
             // credit_card_visa: credit_card::visa(),
             // credit_card_discover: credit_card::discover(),
-            database_column: database::column(),
-            database_engine: database::engine(),
-            // database_type: database::type(),
-            database_collation: database::collation(),
+            database_column: self::locales::en::database::column(),
+            database_engine: self::locales::en::database::engine(),
+            database_data_type: self::locales::en::database::data_type(),
+            database_collation: self::locales::en::database::collation(),
             address_state_abbr: address::state_abbr(),
             address_state: address::state(),
             address_streets: address::streets(),
@@ -246,6 +246,17 @@ macro_rules! new_faker {
     }};
 }
 
+macro_rules! new_faker {
+    ($constr_name:ident, $locale:ident) => (
+
+        pub fn $constr_name() -> Self {
+            use self::locales::$locale::*;
+
+            faker_constr!()
+        }
+    )
+}
+
 #[test]
 fn interpol_fake() {
     let facker = Faker::new();
@@ -259,8 +270,55 @@ impl Faker {
     pub fn new() -> Self {
         use self::locales::en::*;
 
-        new_faker!()
+        faker_constr!()
     }
+
+    new_faker!(new_en, en);
+
+
+    // new_faker!(new_az, az);
+    // new_faker!(new_ar, ar);
+    // new_faker!(new_cz, cz);
+    // new_faker!(new_de, de);
+    // new_faker!(new_de_at, de_at);
+    // new_faker!(new_de_ch, de_ch);
+    // new_faker!(new_en, en);
+    // new_faker!(new_en_au, en_au);
+    // new_faker!(new_en_bork, en_bork);
+    // new_faker!(new_en_ca, en_ca);
+    // new_faker!(new_en_gb, en_gb);
+    // new_faker!(new_en_ie, en_ie);
+    // new_faker!(new_en_ind, en_ind);
+    // new_faker!(new_en_us, en_us);
+    // new_faker!(new_en_za, en_za);
+    // new_faker!(new_en_au_ocker, en_au_ocker);
+    // new_faker!(new_es, es);
+    // new_faker!(new_es_mx, es_mx);
+    // new_faker!(new_fa, fa);
+    // new_faker!(new_fr, fr);
+    // new_faker!(new_fr_ca, fr_ca);
+    // new_faker!(new_fr_ch, fr_ch);
+    // new_faker!(new_ge, ge);
+    // new_faker!(new_id_id, id_id);
+    // new_faker!(new_it, it);
+    // new_faker!(new_ja, ja);
+    // new_faker!(new_ko, ko);
+    // new_faker!(new_nb_no, nb_no);
+    // new_faker!(new_nep, nep);
+    // new_faker!(new_nl_be, nl_be);
+    // new_faker!(new_nl, nl);
+    // new_faker!(new_pl, pl);
+    // new_faker!(new_pt_br, pt_br);
+    // new_faker!(new_pt_pt, pt_pt);
+    // new_faker!(new_ro, ro);
+    // new_faker!(new_ru, ru);
+    // new_faker!(new_sk, sk);
+    // new_faker!(new_sv, sv);
+    // new_faker!(new_tr, tr);
+    // new_faker!(new_uk, uk);
+    // new_faker!(new_vi, vi);
+    // new_faker!(new_zh_cn, zh_cn);
+    // new_faker!(new_zh_tw, zh_tw);
 
     // pub fn fake2(&self, templ: &str) -> String {
     //     let mut templ = templ.to_string();
@@ -318,14 +376,14 @@ impl Faker {
             // "address.postcode_by_state" => {Cow::from(self.address().postcode_by_state())},
             "address.direction" => Cow::from(self.address().direction()),
             "address.direction_abbr" => Cow::from(self.address().direction_abbr()),
-            "company.adjective" => { Cow::from(self.company().catch_phrase_adjective())},
-            "company.noun" => { Cow::from(self.company().catch_phrase_noun())},
-            "company.descriptor" => { Cow::from(self.company().catch_phrase_descriptor())},
-            "company.bs" => { Cow::from(self.company().bs())},
-            "company.bs_adjective" => { Cow::from(self.company().bs_adjective())},
-            "company.bs_noun" => { Cow::from(self.company().bs_noun())},
-            "company.bs_verb" => { Cow::from(self.company().bs_buzz())},
-            "company.suffix" => { Cow::from(self.company().company_suffix())},
+            "company.adjective" => Cow::from(self.company().catch_phrase_adjective()),
+            "company.noun" => Cow::from(self.company().catch_phrase_noun()),
+            "company.descriptor" => Cow::from(self.company().catch_phrase_descriptor()),
+            "company.bs" => Cow::from(self.company().bs()),
+            "company.bs_adjective" => Cow::from(self.company().bs_adjective()),
+            "company.bs_noun" => Cow::from(self.company().bs_noun()),
+            "company.bs_verb" => Cow::from(self.company().bs_buzz()),
+            "company.suffix" => Cow::from(self.company().company_suffix()),
             // "lorem.words" => {},
             // "hacker.abbreviation" => {},
             // "hacker.adjective" => {},
@@ -370,6 +428,7 @@ impl Faker {
     pub fn address(&self) -> crate::Address {
         crate::Address::new(self)
     }
+
     pub fn company(&self) -> crate::Company {
         crate::Company::new(self)
     }

@@ -253,29 +253,81 @@ fn main() -> Result<(), std::io::Error> {
         }
     }
 
+
+    let mut all_data_paths: HashSet<String> = HashSet::new();
+    //Collecting PATHS OF ALL DATA(STATIC ARRAY)
+    for entry in WalkDir::new("../src/locales") {
+        let entry = entry.unwrap();
+        let file_name = entry.gimme_filename();
+
+        if entry.path().is_dir() && entry.depth() >= 2 && file_name != "mod.rs" {
+
+            let paths:Vec<_> = entry.path().iter().skip(4).map(|el|el.gimme_that()).collect();
+            // if let Some(last) = paths.last_mut() {
+            //     *last = last[..last.len()-3].to_string();
+            // }
+            // paths.last_mut().unwrap().file_stem();
+            // println!("{:?}", paths.join("_"));
+            // let set = file_name_to_submodules.entry(file_name.to_string()).or_insert(HashSet::new());
+            let sub_modules: Vec<(String, String)> = entry.path()
+                .read_diro().iter()
+                .filter(|entry|entry.file_name() != "mod.rs")
+                .flat_map(|entry|{
+                    if entry.path().is_dir() {
+                        return vec![].into_iter();
+                    }
+                    let lines = into_lines(&entry.path());
+                    let vecco = lines.iter().flat_map(|line|re_static_name.captures(line)).map(|cap|cap[2].to_string())
+                        .map(|array_name|(entry.path().file_stem().gimme_that(),array_name)).collect::<Vec<_>>();
+                    vecco.into_iter()
+                })
+                .collect();
+            // set.extend(sub_modules.clone());
+            // sub_modules.iter().map(|el|{
+            //     if condition {
+            //         unimplemented!();
+            //     }
+            // })
+            for module in sub_modules {
+                let mut paths = paths.clone();
+                if module.0 == module.1.to_lowercase() {
+                    paths.push(module.0.to_string());
+                }else{
+                    paths.push(module.0.to_string());
+                    paths.push(module.1.to_string());
+                }
+                all_data_paths.insert(paths.join("_"));
+                
+            }
+
+        }
+    }
+
+    println!("{:?}", all_data_paths);
+
     // name_first_name: en::name::first_name(),
-    let vecco: Vec<String> = file_name_to_submodules.iter()
-        .flat_map(|(file_name, sub_modules)|{
-            let file_name = file_name.to_string();
-            sub_modules.iter().map(move |(sub_mod, array_name)|{
+    // let vecco: Vec<String> = file_name_to_submodules.iter()
+    //     .flat_map(|(file_name, sub_modules)|{
+    //         let file_name = file_name.to_string();
+    //         sub_modules.iter().map(move |(sub_mod, array_name)|{
 
-                let fun_name = if sub_mod == &array_name.to_lowercase() {
-                    array_name.to_lowercase()
-                }else{
-                    sub_mod.to_string()+"_"+&array_name.to_lowercase()
-                };
+    //             let fun_name = if sub_mod == &array_name.to_lowercase() {
+    //                 array_name.to_lowercase()
+    //             }else{
+    //                 sub_mod.to_string()+"_"+&array_name.to_lowercase()
+    //             };
 
 
-                let name = if sub_mod == &array_name.to_lowercase() {
-                    file_name.to_string()+"_"+&array_name.to_lowercase()
-                }else{
-                    file_name.to_string()+"_"+&sub_mod.to_string()+"_"+&array_name.to_lowercase()
-                };
-                name + ": "  + &format!("{}::{}()", file_name, fun_name)
-            })
-        }).collect();
+    //             let name = if sub_mod == &array_name.to_lowercase() {
+    //                 file_name.to_string()+"_"+&array_name.to_lowercase()
+    //             }else{
+    //                 file_name.to_string()+"_"+&sub_mod.to_string()+"_"+&array_name.to_lowercase()
+    //             };
+    //             name + ": "  + &format!("{}::{}()", file_name, fun_name)
+    //         })
+    //     }).collect();
 
-    println!("{}", vecco.join(",\n"));
+    // println!("{}", vecco.join(",\n"));
     //Add Accessor functions
     println!("{:?}", file_name_to_submodules);
     for entry in WalkDir::new("../src/locales") {
@@ -442,7 +494,7 @@ pub fn {}() -> Option<&'static [&'static str]> {{
             continue;
         }
         let file_name = entry.gimme_filename();
-        println!("{:?}", file_name);
+        // println!("{:?}", file_name);
         let re = Regex::new(r"^function ([A-Z][A-Za-z]*).*").unwrap(); // function Address (faker) {
         let re2 = Regex::new(r"^var ([A-Z][A-Za-z]*).*").unwrap(); // var Phone = function (faker) {
 
