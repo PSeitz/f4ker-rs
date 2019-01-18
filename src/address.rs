@@ -202,11 +202,18 @@ impl<'a> Address<'a> {
     }
 
     ///
-    /// longitude between -90 and 90 and precision 4
+    /// longitude between -90 and 90 and precision 6
     ///
     /// e.g. "-13.9834"
-    pub fn latitude(&self) -> String {
-        Self::lat_long_with_opt(-90., 90., 4)
+    pub fn latitude(&self) -> String { //TODO remove &self
+        Self::latitude_with_precision(6)
+    }
+    ///
+    /// longitude between -90 and 90 and precision 6
+    ///
+    /// e.g. "-13.9834"
+    pub fn latitude_with_precision(precision: u8) -> String {
+        Self::lat_long_with_opt(-90., 90., precision)
     }
 
     ///
@@ -218,11 +225,18 @@ impl<'a> Address<'a> {
     }
 
     ///
-    /// longitude between -180 and 180 and precision 4
+    /// longitude between -180 and 180 and precision 6
     ///
     /// e.g. "36.2274"
-    pub fn longitude(&self) -> String {
-        Self::lat_long_with_opt(-180., 180., 4)
+    pub fn longitude(&self) -> String { //TODO remove &self
+        Self::longitude_with_precision(6)
+    }
+    ///
+    /// longitude between -180 and 180
+    ///
+    /// e.g. "36.2274"
+    pub fn longitude_with_precision(precision: u8) -> String {
+        Self::lat_long_with_opt(-180., 180., precision)
     }
 
     /// will return empty string if not existent in locale
