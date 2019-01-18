@@ -11,7 +11,7 @@ pub fn column() -> Option<&'static [&'static str]> {
     Some(self::column::COLUMN)
 }
 
-pub fn data_type_type() -> Option<&'static [&'static str]> {
+pub fn data_type() -> Option<&'static [&'static str]> {
     Some(self::data_type::TYPE)
 }
 
