@@ -18,7 +18,7 @@ const GENDERS: [Gender; 2] = [Gender::Male, Gender::Female];
 #[test]
 fn name() {
     let facker = Faker::new();
-    let name = Name::new(&facker);
+    let _name = Name::new(&facker);
     // println!("{:?}", name.full_name());
     // println!("JOB TITLE: {:?}", name.job_title());
     // println!("{:?}", Faker::new().name().full_name());

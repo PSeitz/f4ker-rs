@@ -49,7 +49,7 @@ impl Phone {
     pub fn phone_formats(&self) -> String {
     return thread_rng().choose(self.faker.phone_number_formats()).unwrap();
   };
-  
+
   return self;
 
 };

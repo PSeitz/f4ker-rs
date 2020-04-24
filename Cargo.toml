@@ -5,3 +5,4 @@ name = "f4ker"
 version = "0.1.0"
 [dependencies]
 rand = "0.5.5"
+uuid = { version = "0.8", features = ["v4"] }

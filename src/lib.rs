@@ -29,11 +29,13 @@ mod company;
 mod faker;
 pub mod locales;
 mod name;
+mod random;
 
 pub use self::address::Address;
 pub use self::company::Company;
 pub use self::faker::Faker;
 pub use self::name::Name;
+pub use self::random::Random;
 
 #[macro_export]
 macro_rules! rand_cloned {
