@@ -1,6 +1,6 @@
-use rand::{thread_rng, Rng};
 use crate::faker::Faker;
 use crate::*;
+use rand::{thread_rng, Rng};
 #[derive(Debug, Clone)]
 pub struct Company<'a> {
     faker: &'a Faker,

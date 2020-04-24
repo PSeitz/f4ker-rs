@@ -1,11 +1,4 @@
-pub static DESCRIPTOR: &'static [&'static str] = &[
-    "გენერალური",
-    "მთავარი",
-    "სტაჟიორ",
-    "უმცროსი",
-    "ყოფილი",
-    "წამყვანი",
-];
+pub static DESCRIPTOR: &'static [&'static str] = &["გენერალური", "მთავარი", "სტაჟიორ", "უმცროსი", "ყოფილი", "წამყვანი"];
 pub static LEVEL: &'static [&'static str] = &[
     "აღრიცხვების",
     "ბრენდინგის",

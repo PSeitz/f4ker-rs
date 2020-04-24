@@ -1,6 +1,6 @@
-use rand::{thread_rng, Rng};
 use crate::faker::Faker;
 use crate::*;
+use rand::{thread_rng, Rng};
 #[derive(Debug, Clone)]
 pub struct Address<'a> {
     faker: &'a Faker,
@@ -205,9 +205,11 @@ impl<'a> Address<'a> {
     /// longitude between -90 and 90 and precision 6
     ///
     /// e.g. "-13.9834"
-    pub fn latitude(&self) -> String { //TODO remove &self
+    pub fn latitude(&self) -> String {
+        //TODO remove &self
         Self::latitude_with_precision(6)
     }
+
     ///
     /// longitude between -90 and 90 and precision 6
     ///
@@ -228,9 +230,11 @@ impl<'a> Address<'a> {
     /// longitude between -180 and 180 and precision 6
     ///
     /// e.g. "36.2274"
-    pub fn longitude(&self) -> String { //TODO remove &self
+    pub fn longitude(&self) -> String {
+        //TODO remove &self
         Self::longitude_with_precision(6)
     }
+
     ///
     /// longitude between -180 and 180
     ///

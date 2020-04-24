@@ -1,11 +1,5 @@
-pub static DESCRIPTOR: &'static [&'static str] = &[
-    "Senior",
-    "Εταιρείες",
-    "Πελάτης",
-    "Επενδυτής",
-    "Εσωτερικό",
-    "Κύριος",
-];
+pub static DESCRIPTOR: &'static [&'static str] =
+    &["Senior", "Εταιρείες", "Πελάτης", "Επενδυτής", "Εσωτερικό", "Κύριος"];
 pub static LEVEL: &'static [&'static str] = &[
     "Λύσεις",
     "Πρόγραμμα",

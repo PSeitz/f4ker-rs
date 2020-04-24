@@ -10,13 +10,7 @@ pub static ADJECTIVE: &'static [&'static str] = &[
     "Χειροποίητο",
     "Άδεια",
 ];
-pub static MATERIAL: &'static [&'static str] = &[
-    "Ξύλινο",
-    "Πλαστικό",
-    "Μέταλο",
-    "Φρέσκο",
-    "Κατεψυγμένο",
-];
+pub static MATERIAL: &'static [&'static str] = &["Ξύλινο", "Πλαστικό", "Μέταλο", "Φρέσκο", "Κατεψυγμένο"];
 pub static PRODUCT: &'static [&'static str] = &[
     "Καρέκλα",
     "Αυτοκίνητο",

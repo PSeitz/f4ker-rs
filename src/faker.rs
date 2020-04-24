@@ -247,14 +247,13 @@ macro_rules! faker_constr {
 }
 
 macro_rules! new_faker {
-    ($constr_name:ident, $locale:ident) => (
-
+    ($constr_name:ident, $locale:ident) => {
         pub fn $constr_name() -> Self {
             use self::locales::$locale::*;
 
             faker_constr!()
         }
-    )
+    };
 }
 
 #[test]
@@ -267,14 +266,13 @@ fn interpol_fake() {
 }
 
 impl Faker {
+    new_faker!(new_en, en);
+
     pub fn new() -> Self {
         use self::locales::en::*;
 
         faker_constr!()
     }
-
-    new_faker!(new_en, en);
-
 
     // new_faker!(new_az, az);
     // new_faker!(new_ar, ar);
