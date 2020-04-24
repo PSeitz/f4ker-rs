@@ -44,6 +44,10 @@ macro_rules! rand_cloned {
     };
 }
 
+pub fn sample<T>(arr: &[T]) -> &T {
+    thread_rng().choose(&arr).unwrap()
+}
+
 #[macro_export]
 macro_rules! rand {
     ($arr:expr) => {
